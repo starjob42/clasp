@@ -4,6 +4,14 @@
   "purpose": "Single source of truth for the revised CLASP paper. No manuscript table or figure may claim final tuned CLASP-versus-FOARL results until all pending jobs are complete and validated.",
   "paper_workspace": "final_clasp/revised",
   "legacy_archive": "final_clasp/old_CLASP-GRPO for Feasibility-Preserving LLM Combinatorial Optimization (1).zip",
+  "code_snapshot": {
+    "git_commit": "157fbf0",
+    "source_root": "src/clasp",
+    "launchers_root": "scripts",
+    "tests_root": "tests",
+    "validation_command": "python3 scripts/validate_paper_source_of_truth.py",
+    "note": "This commit records the source tree and launchers. Results remain valid only with the recorded data, checkpoint, evaluator, and launch receipts."
+  },
   "canonical_baseline": {
     "cohort": "shared eval[0:100] development cohort",
     "candidate_budget": 8,

@@ -683,7 +683,7 @@ Every cost is clipped into \([0,1]\), every mask is binary, and every sample mus
 \begin{sloppypar}
 \begin{itemize}
 \item Tolerances use \(\epsilon_j=0\) for \texttt{parse\_failure}, \texttt{depot\_boundary}, \texttt{start\_at\_depot}, \texttt{invalid\_node}, \texttt{duplicate\_customer}, \texttt{missing\_customer}, \texttt{duplicate\_visit}, \texttt{duplicate\_node}, \texttt{edge\_conflict}, \texttt{machine\_row\_mismatch}, \texttt{row\_length\_mismatch}, \texttt{duplicate\_job}, \texttt{missing\_job}, \texttt{schedule\_invalid}, and \texttt{interior\_depot}; \(\epsilon_j=0.02\) for \texttt{route\_count\_mismatch} and \texttt{capacity\_overflow}; and \(\epsilon_j=0.015\) for \texttt{length\_overflow}.
-\item The binary feasibility flag used in Eq.~\eqref{eq:alphag} is set to one only when the maximum positive component gap is at most \(10^{-8}\).
+\item The binary feasibility flag is set to one only when the maximum positive component gap is at most \(10^{-8}\).
 \item The \texttt{co\_default} weights are \(5.0\) for \texttt{parse\_failure}, \texttt{missing\_customer}, and \texttt{edge\_conflict}; \(4.0\) for \texttt{invalid\_node}; \(3.5\) for \texttt{depot\_boundary}, \texttt{start\_at\_depot}, \texttt{machine\_row\_mismatch}, \texttt{row\_length\_mismatch}, and \texttt{duplicate\_job}; \(2.5\) for \texttt{interior\_depot}; \(1.5\) for \texttt{route\_count\_mismatch} and \texttt{duplicate\_node}; \(3.0\) for \texttt{capacity\_overflow} and \texttt{length\_overflow}; \(2.0\) for \texttt{duplicate\_visit}; and \(4.5\) for \texttt{missing\_job}.
 \item Task-specific overrides use \(6.0\) for CVRP \texttt{missing\_customer}, MIS \texttt{edge\_conflict}, and JSSP \texttt{schedule\_invalid}; \(5.0\) for CVRP \texttt{duplicate\_customer} and JSSP \texttt{missing\_job}; \(4.0\) for CVRP \texttt{capacity\_overflow}, CVRP \texttt{depot\_boundary}, OP \texttt{length\_overflow}, and OP \texttt{start\_at\_depot}; and \(1.0\) for MIS \texttt{duplicate\_node}.
 \end{itemize}
@@ -781,7 +781,7 @@ Let \(G=\{(r_i,g_i(\boldsymbol{\lambda}),v_i)\}_{i=1}^K\) be a finite prompt gro
 \item every completion in the group is infeasible, so \(v_i>0\) for all \(i\in[K]\);
 \item the primal scores are constant across the group, so \(r_i=r_\circ\) for all \(i\in[K]\);
 \item the controller-weighted feasibility gaps are not constant across the group, so there exist \(i,j\in[K]\) with \(g_i(\boldsymbol{\lambda})\neq g_j(\boldsymbol{\lambda})\);
-\item \(\beta\in(0,\infty)\) and \(\varepsilon>0\), so the mixing coefficient in Eq.~\eqref{eq:alphag} satisfies \(\alpha_G\in(0,1)\).
+\item The dense-rank and recovery estimators use finite positive stabilizers and bounded rank scores, so their centered group credits are finite.
 \end{enumerate}
 Then the centered grouped advantages \((A_i^{\mathrm{CLASP}})_{i=1}^K\) defined in Eq.~\eqref{eq:claspadv} are well-defined, sum to zero, and are not identically zero. By contrast, any mean-centered scalar-reward advantage based only on \((r_i)_{i=1}^K\) and proportional to \(r_i-\bar r_G\), including the stabilized standardized quantity \((r_i-\bar r_G)/(\sigma_r^G+\varepsilon)\), is identically zero on the same group.
 \end{theorem}

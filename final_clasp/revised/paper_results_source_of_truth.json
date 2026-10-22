@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "status": "in_progress_pending_final_same_slice_foarl_and_mis_stage2",
+  "purpose": "Single source of truth for the revised CLASP paper. No manuscript table or figure may claim final tuned CLASP-versus-FOARL results until all pending jobs are complete and validated.",
+  "paper_workspace": "final_clasp/revised",
+  "legacy_archive": "final_clasp/old_CLASP-GRPO for Feasibility-Preserving LLM Combinatorial Optimization (1).zip",
+  "canonical_baseline": {
+    "cohort": "shared eval[0:100] development cohort",
+    "candidate_budget": 8,
+    "seed": 271828,
+    "decoding": {"temperature": 0.7, "top_p": 0.9, "top_k": 50},
+    "clasp": {
+      "tsp": {"feasible": 100, "instances": 100, "gap_percent": 0.7083570266048828},
+      "op": {"feasible": 91, "instances": 100, "gap_percent": 1.5279938594325257},
+      "jssp": {"feasible": 100, "instances": 100, "gap_percent": 7.102595887184986},
+      "cvrp": {"feasible": 95, "instances": 100, "gap_percent": 3.986664869060405},
+      "mis": {"feasible": 93, "instances": 100, "gap_percent": 2.0497275833090033}
+    },
+    "foarl": {
+      "tsp": {"feasible": 100, "instances": 100, "gap_percent": 1.133028879124109},
+      "op": {"feasible": 96, "instances": 100, "gap_percent": 1.867559430892491},
+      "jssp": {"feasible": 100, "instances": 100, "gap_percent": 7.060101},
+      "cvrp": {"feasible": 93, "instances": 100, "gap_percent": 3.9489611133267204},
+      "mis": {"feasible": 91, "instances": 100, "gap_percent": 1.764322233074483}
+    },
+    "caveat": "These are matched development evaluations using local FOARL-F638 reimplementations, not official FOARL checkpoints or an official reproduction."
+  },
+  "tuned_validation": {
+    "cohort": "disjoint eval[100:196] development slice from the shared 500-row task files",
+    "candidate_budget": 8,
+    "seed": 271828,
+    "selection_rule": [
+      "maximize feasible instances",
+      "among feasibility ties, minimize mean best-feasible reference gap"
+    ],
+    "clasp_best_completed_by_task": {
+      "tsp": {
+        "configuration": {"temperature": 0.7, "top_p": 0.9, "top_k": 50},
+        "feasible": 96,
+        "instances": 96,
+        "gap_percent": 0.7044998334828876,
+        "status": "complete"
+      },
+      "op": {
+        "configuration": {"temperature": 0.9, "top_p": 0.8, "top_k": 50},
+        "feasible": 96,
+        "instances": 96,
+        "gap_percent": 1.7655829138454707,
+        "status": "complete"
+      },
+      "jssp": {
+        "configuration": {"temperature": 0.5, "top_p": 0.9, "top_k": 50},
+        "feasible": 96,
+        "instances": 96,
+        "gap_percent": 6.335254413286866,
+        "status": "complete"
+      },
+      "cvrp": {
+        "configuration": {"temperature": 0.9, "top_p": 0.9, "top_k": 50},
+        "feasible": 92,
+        "instances": 96,
+        "gap_percent": 3.39320079456436,
+        "status": "complete_partial_search"
+      },
+      "mis": {
+        "configuration": {"temperature": 0.9, "top_p": 0.9, "top_k": 50},
+        "feasible": 91,
+        "instances": 96,
+        "gap_percent": 3.110260028369425,
+        "status": "complete_stage1_search"
+      }
+    },
+    "foarl_same_settings_jobs": {
+      "tsp": {"job_id": "1459452", "status": "complete", "feasible": 93, "instances": 96, "gap_percent": 1.153845796098329},
+      "op": {"job_id": "1459453", "status": "complete", "feasible": 95, "instances": 96, "gap_percent": 1.9221903462322745},
+      "jssp": {"job_id": "1459454", "status": "running"},
+      "cvrp": {"job_id": "1459455", "status": "running"},
+      "mis": {"job_id": "1459456", "status": "complete", "feasible": 89, "instances": 96, "gap_percent": 1.8900757164572218}
+    },
+    "mis_stage2": {
+      "status": "pending",
+      "jobs": ["1460579", "1460580", "1460581", "1460582", "1460583"],
+      "note": "Do not call the stage-one MIS setting globally best until stage two and, ideally, fresh held-out confirmation are complete."
+    },
+    "caveat": "Validation tuning must not overwrite the canonical eval[0:100] comparison or be presented as an unbiased test estimate."
+  },
+  "algorithm_identity": {
+    "name": "clasp_grpo_anchor_v3",
+    "implementation": "current frozen source snapshot; fresh reimplementation, not exact historical source reproduction",
+    "rollout_group_size": 8,
+    "training_steps": 100,
+    "training_seed": 43,
+    "data_seed": 43,
+    "world_size": 4,
+    "learning_rate": 0.000001,
+    "importance_sampling_level": "token",
+    "policy_length_alpha": 0.0,
+    "feasibility_gated": true,
+    "canonical_exact_scale": 1.0,
+    "canonical_grpo_anchor_scale": 1.0,
+    "canonical_quality_anchor_ratio": 0.5,
+    "canonical_recovery_scale": 1.0,
+    "canonical_dual_recovery_coupling": 0.0,
+    "repair": false,
+    "evaluation_dtype": "float16",
+    "max_new_tokens": 3000,
+    "representation_profile": "jiang_f638_clasp"
+  },
+  "artifact_policy": {
+    "legacy_tables_and_plots": "retain only as legacy until their raw sources and generation scripts are found or they are regenerated",
+    "new_tables_and_plots": "generate only from this manifest and validated run summaries",
+    "unsupported_claims": [
+      "global best hyperparameters from a finite single-seed validation sweep",
+      "official FOARL reproduction",
+      "statistical parity or non-inferiority",
+      "exact historical CLASP source reproduction"
+    ]
+  }
+}

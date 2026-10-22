@@ -1,0 +1,97 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 792 468] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 2890 >>
+stream
+BT
+1 1 1 rg 0 0 792 468 re f
+0 0 0 rg
+/F1 16 Tf 1 0 0 1 204.0 445.0 Tm (Interim tuned validation results \(eval[100:196]\)) Tj
+/F1 9 Tf 1 0 0 1 225.0 428.0 Tm (Complete values are shown; pending runs are intentionally grey and unfilled.) Tj
+/F1 11 Tf 1 0 0 1 64.0 389.0 Tm (Instance feasibility \(%\)) Tj
+0.86 0.86 0.86 RG 0.5 w 64 205.0 m 748 205.0 l S
+/F1 8 Tf 1 0 0 1 56.0 202.0 Tm (0) Tj
+0.86 0.86 0.86 RG 0.5 w 64 242.5 m 748 242.5 l S
+/F1 8 Tf 1 0 0 1 56.0 239.5 Tm (25) Tj
+0.86 0.86 0.86 RG 0.5 w 64 280.0 m 748 280.0 l S
+/F1 8 Tf 1 0 0 1 56.0 277.0 Tm (50) Tj
+0.86 0.86 0.86 RG 0.5 w 64 317.5 m 748 317.5 l S
+/F1 8 Tf 1 0 0 1 56.0 314.5 Tm (75) Tj
+0.86 0.86 0.86 RG 0.5 w 64 355.0 m 748 355.0 l S
+/F1 8 Tf 1 0 0 1 56.0 352.0 Tm (100) Tj
+0 0 0 RG 0.7 w 64 205 m 748 205 l S
+/F1 11 Tf 1 0 0 1 64.0 589.0 Tm (Mean best-feasible reference gap \(%\)) Tj
+0.86 0.86 0.86 RG 0.5 w 64 405.0 m 748 405.0 l S
+/F1 8 Tf 1 0 0 1 56.0 402.0 Tm (0) Tj
+0.86 0.86 0.86 RG 0.5 w 64 442.5 m 748 442.5 l S
+/F1 8 Tf 1 0 0 1 56.0 439.5 Tm (2) Tj
+0.86 0.86 0.86 RG 0.5 w 64 480.0 m 748 480.0 l S
+/F1 8 Tf 1 0 0 1 56.0 477.0 Tm (4) Tj
+0.86 0.86 0.86 RG 0.5 w 64 517.5 m 748 517.5 l S
+/F1 8 Tf 1 0 0 1 56.0 514.5 Tm (6) Tj
+0.86 0.86 0.86 RG 0.5 w 64 555.0 m 748 555.0 l S
+/F1 8 Tf 1 0 0 1 56.0 552.0 Tm (8) Tj
+0 0 0 RG 0.7 w 64 405 m 748 405 l S
+/F1 10 Tf 1 0 0 1 124.9 168.0 Tm (TSP) Tj
+0.13 0.4 0.67 rg 110.4 405.0 16.0 13.2 re f
+/F1 7 Tf 1 0 0 1 111.4 423.2 Tm (0.70) Tj
+0.7 0.09 0.17 rg 138.4 405.0 16.0 21.6 re f
+/F1 7 Tf 1 0 0 1 139.4 431.6 Tm (1.15) Tj
+/F1 10 Tf 1 0 0 1 264.2 168.0 Tm (OP) Tj
+0.13 0.4 0.67 rg 247.2 405.0 16.0 33.1 re f
+/F1 7 Tf 1 0 0 1 248.2 443.1 Tm (1.77) Tj
+0.7 0.09 0.17 rg 275.2 405.0 16.0 36.0 re f
+/F1 7 Tf 1 0 0 1 276.2 446.0 Tm (1.92) Tj
+/F1 10 Tf 1 0 0 1 396.0 168.0 Tm (JSSP) Tj
+0.13 0.4 0.67 rg 384.0 405.0 16.0 118.8 re f
+/F1 7 Tf 1 0 0 1 385.0 528.8 Tm (6.34) Tj
+0.86 0.86 0.86 rg 412.0 405.0 16 10 re f
+0.35 0.35 0.35 RG 0.7 w 412.0 405.0 16 10 re S
+/F1 7 Tf 1 0 0 1 407.8 420.0 Tm (pending) Tj
+/F1 10 Tf 1 0 0 1 532.8 168.0 Tm (CVRP) Tj
+0.86 0.86 0.86 rg 520.8 405.0 16 10 re f
+0.35 0.35 0.35 RG 0.7 w 520.8 405.0 16 10 re S
+/F1 7 Tf 1 0 0 1 516.6 420.0 Tm (pending) Tj
+0.86 0.86 0.86 rg 548.8 405.0 16 10 re f
+0.35 0.35 0.35 RG 0.7 w 548.8 405.0 16 10 re S
+/F1 7 Tf 1 0 0 1 544.6 420.0 Tm (pending) Tj
+/F1 10 Tf 1 0 0 1 672.1 168.0 Tm (MIS) Tj
+0.86 0.86 0.86 rg 657.6 405.0 16 10 re f
+0.35 0.35 0.35 RG 0.7 w 657.6 405.0 16 10 re S
+/F1 7 Tf 1 0 0 1 653.4 420.0 Tm (pending) Tj
+0.7 0.09 0.17 rg 685.6 405.0 16.0 35.4 re f
+/F1 7 Tf 1 0 0 1 686.6 445.4 Tm (1.89) Tj
+0.13 0.4 0.67 rg 555.0 420.0 12.0 12.0 re f
+/F1 9 Tf 1 0 0 1 572.0 422.0 Tm (CLASP) Tj
+0.7 0.09 0.17 rg 615.0 420.0 12.0 12.0 re f
+/F1 9 Tf 1 0 0 1 632.0 422.0 Tm (FOARL) Tj
+0.86 0.86 0.86 rg 680 420 12 12 re f 0.35 0.35 0.35 RG 0.7 w 680 420 12 12 re S
+/F1 9 Tf 1 0 0 1 697.0 422.0 Tm (pending) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000000317 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3258
+%%EOF

@@ -10,6 +10,13 @@
     "undefined_references": [],
     "undefined_citations": []
   },
+  "current_plot": {
+    "path": "final_clasp/revised/figs/current_validation_results.pdf",
+    "source_script": "scripts/generate_current_validation_plot.py",
+    "status": "generated_from_manifest",
+    "pending_values_are_blank": true,
+    "note": "This is the authoritative interim plot for the pending validation campaign; legacy PDFs are not current-result plots."
+  },
   "legacy_archive": "final_clasp/old_CLASP-GRPO for Feasibility-Preserving LLM Combinatorial Optimization (1).zip",
   "code_snapshot": {
     "git_commit": "157fbf0",

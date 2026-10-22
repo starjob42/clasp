@@ -251,7 +251,7 @@ Our benchmark covers five tasks: TSP, OP, CVRP, MIS, and JSSP. Unless noted othe
 At evaluation time, we recompute every objective value from the parsed discrete solution rather than from the model's self-reported score. We report candidate feasibility rate, instance feasibility rate, and mean/median best-feasible reference gap. Mean and median gaps are conditional on instances for which the method finds at least one feasible candidate; infeasible instances are captured by the feasibility columns and by Success@\(k\) rates. Because conditional gaps can favor methods that solve only easier instances, we do not use the gap column alone to rank methods when feasibility differs substantially; we interpret each gap together with its corresponding feasibility rate and use Success@\(k\) as an all-instance threshold metric. These metrics separate the ability to find any feasible solution from the ability to find a good one; gap definitions, tie-breaking rules, candidate budgets, and dataset diagnostics are given in Appendix~\ref{app:expdetails}.
 
 \begin{table*}[t]
-\caption{Results on the five tasks shared with \citet{jiang2025endtoendco}: TSP, OP, CVRP, MIS, and JSSP. All results are on our OOD held-out set. Higher feasibility (fea.) and lower reference-value gap (opt.) are better, where the reference value is solver generated near optimal solution. The opt. columns are conditional on instances with at least one feasible candidate and should be read together with feasibility; infeasible instances receive no artificial gap value and count as failures in Success@\(k\) metrics. Under \textbf{This work}, BoN means best-of-\(N\) decoding with \(N=8\), and 2500k/250k denote the base SFT dataset size before RL (500{,}000/50{,}000 examples per task).}
+\caption{Legacy aggregate comparison retained from the archived manuscript. These rows are not the current source-of-truth comparison; use Table~\ref{tab:current_validation} and Figure~\ref{fig:current_validation_results} for the current development results. Higher feasibility (fea.) and lower reference-value gap (opt.) are better. The opt. columns are conditional on instances with at least one feasible candidate.}
 \label{tab:main}
 \centering
 \scriptsize
@@ -296,6 +296,45 @@ CLASP+BoN (ours) 250k & \textbf{100\%} & \textbf{1.01\% $\pm$ 0.91} & 98\% & \te
 \end{tabular}%
 }
 \end{table*}
+
+\paragraph{Interim current validation status.}
+The table below is the current, auditable development comparison and supersedes
+the legacy aggregate rows above for the present paper revision. It uses the
+disjoint \(\mathrm{eval}[100{:}196]\) slice, eight candidates per instance, and
+the task-specific decoder settings selected by the finite CLASP validation
+search. Complete values are reported directly from the source-of-truth
+manifest. A dash means that the corresponding job was still running when this
+revision was prepared; it is not a zero and is not used to rank methods. The
+MIS CLASP value is provisional because its focused second-stage search is
+pending. The JSSP and CVRP FOARL values are likewise pending. These are
+development results, not unbiased test estimates.
+
+\begin{table*}[t]
+\caption{Interim current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Pending jobs are shown as ``--'' and are deliberately not interpreted as results.}
+\label{tab:current_validation}
+\centering
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & CLASP setting & Status \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+ & Feasible & Gap (\%) & Feasible & Gap (\%) & \(T,p,k\) & \\
+\midrule
+TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & \(0.7,0.9,50\) & complete \\
+OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & \(0.9,0.8,50\) & complete \\
+JSSP & 96/96 & 6.3353 & --    & --     & \(0.5,0.9,50\) & FOARL pending \\
+CVRP & 92/96 & 3.3932 & --    & --     & \(0.9,0.9,50\) & search/FOARL pending \\
+MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & \(0.7,0.8,50\) & CLASP stage 2 pending \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figs/current_validation_results.pdf}
+  \caption{Current interim validation results generated from the paper source-of-truth manifest. The upper panel reports instance feasibility and the lower panel reports conditional mean best-feasible reference gap. Grey outlined bars identify pending evaluations; they are not zero-valued observations.}
+  \label{fig:current_validation_results}
+\end{figure}
 
 \begin{table}[!t]
 \centering
@@ -577,7 +616,7 @@ OP/CVRP/MIS/JSSP SFT-eval / GRPO-eval overlap & \(0\) \\
 The primary training configuration uses a Qwen2.5-7B-Instruct base model with multi-node H100 GPU training, bfloat16 arithmetic, and LoRA adaptation. We keep the SFT stage fixed across methods and vary only the RL stage. In the reported five-task setup, the SFT stage uses 50{,}000 supervised examples per task, compared with 500{,}000 in the reproduced Jiang et al. reference setting. Table~\ref{tab:rl_hparams} reports the SFT initialization and the RL-stage hyperparameters that control the CLASP grouped advantage, controller dynamics, and adaptive length mechanism.
 
 \begin{table*}[t]
-\caption{Core training hyperparameters for the reported five-task CLASP configuration. The same rollout group size, batch settings, optimizer-facing overrides, and decoding cap are used for internal RL baselines; the length-normalized sequence surrogate is fixed across constrained variants unless a variant explicitly changes that component.}
+\caption{Historical training hyperparameters retained for audit. The current reproduced comparison is defined by the source-of-truth manifest and the frozen launch receipts, not by this legacy table.}
 \label{tab:rl_hparams}
 \centering
 \small
@@ -605,7 +644,12 @@ Evaluation uses the same prompt template, parsers, and thresholded feasibility c
 \section{Additional Reference Results and Diagnostics}
 \label{app:additional_results}
 
-Figure~\ref{fig:pipeline} provides a compact visual summary of the CLASP-GRPO training loop. Figures~\ref{fig:ablation_feasibility_bar} and \ref{fig:inference_hard_group_recovery} move supporting mechanism summaries out of the main text: the former reports the training-variant feasibility comparison, and the latter shows recovery on prompts where classic GRPO produced no feasible candidate. Figure~\ref{fig:jssp_bon_ablation_appendix} adds a JSSP best-of-\(N\) ablation that varies the candidate budget to show how feasibility and reference-gap change with larger decoding pools. The additional mechanism diagnostics in Figures~\ref{fig:all_infeasible_frequency} and \ref{fig:mechanism_dashboard} show how often hard all-infeasible groups arise and how the grouped advantage and controller behave, while Figure~\ref{fig:curves} compares CLASP against Dual-primal GRPO over training.
+Figure~\ref{fig:current_validation_results} is the authoritative current-result
+plot for this revision. The remaining PDF figures in this appendix are
+legacy diagnostics retained for auditability; their raw generation inputs were
+not present in the archived paper package and they must not be interpreted as
+plots of the current pending evaluation campaign. Figure~\ref{fig:pipeline}
+provides a conceptual visual summary of the CLASP-GRPO training loop.
 
 \begin{figure}[t]
   \centering

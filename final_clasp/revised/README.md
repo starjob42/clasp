@@ -3,6 +3,10 @@
 This directory contains the editable manuscript, figures, checklist, and the
 machine-readable result manifest for the revised CLASP paper.
 
+The compiled paper is [neurips_2026.pdf](neurips_2026.pdf). It was generated
+from `neurips_2026.tex` with Tectonic 0.17.0; the compilation completed without
+undefined references or undefined citations.
+
 ## Source of truth
 
 [`paper_results_source_of_truth.json`](paper_results_source_of_truth.json) is

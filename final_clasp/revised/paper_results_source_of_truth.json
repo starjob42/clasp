@@ -3,6 +3,13 @@
   "status": "in_progress_pending_final_same_slice_foarl_and_mis_stage2",
   "purpose": "Single source of truth for the revised CLASP paper. No manuscript table or figure may claim final tuned CLASP-versus-FOARL results until all pending jobs are complete and validated.",
   "paper_workspace": "final_clasp/revised",
+  "compiled_pdf": {
+    "path": "final_clasp/revised/neurips_2026.pdf",
+    "compiler": "Tectonic 0.17.0",
+    "status": "compiled",
+    "undefined_references": [],
+    "undefined_citations": []
+  },
   "legacy_archive": "final_clasp/old_CLASP-GRPO for Feasibility-Preserving LLM Combinatorial Optimization (1).zip",
   "code_snapshot": {
     "git_commit": "157fbf0",

@@ -38,7 +38,7 @@
 \maketitle
 
 \begin{abstract}
-Large language models can generate solutions to combinatorial optimization problems from natural-language descriptions, but reinforcement learning for this setting remains limited by feasibility: on hard instances, many sampled completions violate constraints, and standard grouped policy optimization provides only weak learning signals when an entire rollout group is poor. We introduce \emph{CLASP-GRPO} (Constrained Lagrangian Adaptive Structured Preference GRPO), a critic-free grouped reinforcement learning method for feasibility-preserving generation. CLASP retains the grouped sampling interface of GRPO, but replaces centered scalar reward with prompt-local comparisons that trade off primal solution quality against a controller-weighted feasibility gap, updates task-specific controller variables from minibatch signed gaps with a feasibility-conditioned step size, and adapts decoding budgets using rolling quantiles of observed completion lengths. On five combinatorial optimization tasks spanning routing, subset selection, and scheduling, CLASP improves feasibility-preserving optimization over centered grouped RL baselines under matched compute and candidate budgets. We support these results with matched experiments, training-variant comparisons, mechanism diagnostics, and a theoretical analysis of a failure mode of centered scalar grouping on hard prompts. Overall, the results suggest that grouped reinforcement learning for LLM-based combinatorial optimization is substantially more effective when within-group comparisons are structured around prompt-local feasibility and solution quality rather than centered scalar reward alone.
+Large language models can generate solutions to combinatorial optimization problems from natural-language descriptions, but reinforcement learning for this setting remains limited by feasibility. We study \emph{CLASP-GRPO}, a critic-free grouped method whose training credit is aligned with best-of-\(K\) evaluation: a group succeeds when at least one completion is feasible, and quality is judged among the feasible completions. The current implementation uses dense, tie-aware rank credit for successful groups and a lower-violation recovery surrogate for all-infeasible groups, together with taskwise projected controller updates. We evaluate a frozen current implementation on five combinatorial optimization tasks and keep canonical matched results separate from decoder-tuned development validation. The resulting evidence supports a reproducible comparison protocol, not a claim of exact historical-source reproduction, official FOARL reproduction, or statistical non-inferiority.
 \end{abstract}
 
 \section{Introduction}
@@ -46,11 +46,11 @@ Combinatorial optimization (CO) is a demanding test for large language models (L
 
 The challenge is especially sharp under group-based policy optimization. Group Relative Policy Optimization (GRPO) compares multiple completions sampled from the same prompt and normalizes reward within the group rather than fitting a learned critic, so learning is driven by relative performance among candidates generated for the same instance \citep{shao2024deepseekmath, mroueh2025rlvr}. In CO, hard prompts often produce groups in which every sampled completion is infeasible. On such groups, centered scalar reward can collapse to small penalty differences, even though the useful comparison is which infeasible sample is closer to feasibility without sacrificing too much solution quality.
 
-We propose \emph{CLASP-GRPO} (Constrained Lagrangian Adaptive Structured Preference GRPO), a grouped RL method for this regime. CLASP keeps the grouped-sampling interface of GRPO, but changes three parts of the update: it uses an adaptive centered grouped advantage over primal quality and controller-weighted feasibility gap, updates taskwise controller variables from minibatch signed gaps with a feasibility-conditioned step size, and allocates generation budget through a task-adaptive rolling quantile of observed completion lengths. The method remains critic-free and prompt-grouped, but no longer treats all within-group variation as if it lay on a single centered reward axis.
+We study \emph{CLASP-GRPO} (Constrained Lagrangian Adaptive Structured Preference GRPO), a grouped RL method for this regime. CLASP keeps the grouped-sampling interface of GRPO, but aligns credit with the best-of-\(K\) deployment objective: successful groups compare feasible candidates by objective quality, while all-infeasible groups receive a lower-violation recovery signal. Taskwise controller variables are updated from minibatch signed gaps. The method remains critic-free and prompt-grouped, but does not reduce every group to a single centered scalar reward.
 
 Our claim is deliberately narrow: in LLM-based CO, grouped RL can work better when completions are compared through \emph{prompt-local feasibility and quality trade-offs} rather than centered scalar reward alone. We test this claim on a unified five-task benchmark spanning TSP, OP, CVRP, MIS, and JSSP, using a shared decoder-only policy and a common natural-language interface. We also study a data-constrained supervised setting. Relative to Jiang et al., our SFT stage uses 10\(\times\) less supervised data, allowing us to test whether CLASP can recover competitive performance when fine-tuning data are limited. Unless otherwise noted, the training and evaluation datasets for these five tasks are taken from \citet{jiang2025endtoendco}.
 
-The paper makes four contributions. First, we introduce a grouped-RL method for feasibility-preserving CO based on an adaptive centered grouped advantage. Second, we present a unified empirical evaluation that separates feasibility, best-feasible quality, and mechanism attribution under compute-matched baselines, training-variant comparisons, and mechanism diagnostics. Third, we connect the method to a constrained multi-task objective with dense task-specific costs and clarify where the practical controller departs from exact Lagrangian optimization under the paper's sign convention. Fourth, we provide limited theoretical support by formalizing population-feasibility alignment under mask completeness, proving a comparative non-degeneracy result for a clearly specified all-infeasible regime, and characterizing fixed-point sign conditions for the projected signed-gap controller.
+The paper makes four contributions. First, we document a grouped-RL implementation whose training credit is aligned with best-of-\(K\) feasible-set evaluation. Second, we present a unified empirical protocol that separates feasibility, best-feasible quality, and development decoder selection. Third, we connect the implementation to a constrained multi-task objective with dense task-specific costs while distinguishing controller statistics from the set utility used for credit. Fourth, we make the source, receipts, caveats, and regeneration status explicit so that the reported comparison can be audited rather than mistaken for an exact historical-source reproduction.
 \section{Related Work}
 We position CLASP at the intersection of learned combinatorial optimization, LLM-based direct solution generation, and grouped RL. In learned CO more broadly, prior neural approaches include autoregressive construction policies, attention-based solvers, multi-solution training, diffusion-style generators, and search-coupled systems such as NeuroLKH, DIMES, DIFUSCO, COMPASS, and DeepACO \citep{bengio2020ml4co, vinyals2015pointer, kool2019attention, kwon2020pomo, xin2021neurolkh, qiu2022dimes, sun2023difusco, chalumeau2023compass, ye2023deepaco}. A related line learns components for exact or hybrid pipelines, including branching, neighborhood selection, and more unified learned solvers \citep{gasse2019exact, wu2021l2lns, wang2021bilevel, liu2024l2pmip, drakulic2025goal, pan2025unico}. Strong classical solvers also remain the main quality reference points for several tasks we study, including Concorde, LKH-style local search, hybrid genetic search, and standard OP/JSSP heuristic or constraint-based methods \citep{applegate2006tsp, helsgaun2017lkh3, vidal2022hgs, vansteenwegen2011op}.
 
@@ -139,49 +139,25 @@ Figure~\ref{fig:hard_group_main} gives a compact inference-only diagnostic of th
 \end{figure}
 
 \subsection{CLASP-GRPO}
-Standard GRPO compares completions by centering a scalar reward within each prompt group. In constrained CO, that comparison is often too crude: the key question is not just which completion has larger reward, but which one is preferable along the local trade-off between objective quality and feasibility. Here, \(r\) denotes the primal score from Eq.~\eqref{eq:primalscore}, and \(g\) denotes the controller-weighted positive feasibility gap defined in the previous subsection. CLASP therefore replaces mean-centered scalar reward with a centered adaptive primal-gap grouped advantage in \((r,g)\)-space.
-
-For readability, the prompt-group notation in this subsection suppresses task superscripts when all completions in the group come from the same task; thus \(g_i(\boldsymbol{\lambda})\) abbreviates \(g_i(\boldsymbol{\lambda}^{(\tau)})\). Consider a prompt group \(G=\{(r_i,g_i(\boldsymbol{\lambda}),v_i)\}_{i=1}^K\), where \(K\) is the rollout group size. CLASP first computes the group feasibility rate
+The current CLASP implementation is aligned with the deployment metric used in evaluation: best feasible solution in a group of \(K\) samples. Let \(q_i\) be a high-is-better objective score, \(v_i\geq 0\) the total violation, and \(z_i=\mathbf{1}[v_i=0]\) the feasibility flag. For a group \(G\), define the set utility
 \begin{align}
-f_G = \frac{1}{K}\sum_{i=1}^K \mathbf{1}[v_i=0],
+U(G) =
+\begin{cases}
+\operatorname{smoothmax}_{i:z_i=1}(q_i), & \sum_i z_i>0,\\
+-\lambda_G, & \sum_i z_i=0.
+\end{cases}
+\label{eq:bonutility}
 \end{align}
-and maps it to a mixing weight
+The exact leave-one-out credit is the marginal
 \begin{align}
-\alpha_G = \sigma\!\left(\beta\left(f_G-\tfrac{1}{2}\right)\right),
-\label{eq:alphag}
-\end{align}
-where \(\sigma\) is the logistic sigmoid and \(\beta>0\) controls the sharpness of the transition. When the group is mostly infeasible, \(\alpha_G\) is small and the grouped comparison emphasizes feasibility pressure; when the group is largely feasible, \(\alpha_G\) is larger and the comparison places more weight on relative solution quality.
-
-Define the within-group means and standard deviations
-\begin{align}
-\bar r_G &= \frac{1}{K}\sum_{k=1}^K r_k,
-\qquad
-\bar g_G = \frac{1}{K}\sum_{k=1}^K g_k(\boldsymbol{\lambda}),
-\\
-\sigma_r^G
-&=
-\left(\frac{1}{K}\sum_{k=1}^K (r_k-\bar r_G)^2\right)^{1/2},
-\qquad
-\sigma_g^G
-=
-\left(\frac{1}{K}\sum_{k=1}^K (g_k(\boldsymbol{\lambda})-\bar g_G)^2\right)^{1/2}.
-\label{eq:groupstats}
-\end{align}
-The CLASP grouped advantage is then defined directly in centered normal form:
-\begin{align}
-A_i^{\mathrm{CLASP}}
-=
-\alpha_G
-\frac{r_i-\bar r_G}{\sigma_r^G+\varepsilon}
-+
-(1-\alpha_G)
-\frac{\bar g_G-g_i(\boldsymbol{\lambda})}{\sigma_g^G+\varepsilon}.
+\Delta_i^{\mathrm{LOO}} = U(G)-U(G\setminus\{i\}).
 \label{eq:claspadv}
 \end{align}
-The first term rewards above-average primal score; the second rewards below-average controller-weighted feasibility gap. The grouped advantage is zero-sum within each group, preserves GRPO's invariance to additive group constants, and shifts its emphasis through the prompt-local feasibility rate. An equivalent reference-sample raw score would add constants that cancel under group centering, so we use the centered normal form as the mathematical definition.
-Operationally, CLASP can retain a nontrivial within-group comparison signal on all-infeasible groups when centered scalar reward provides little ordering signal, provided the controller-weighted positive gaps vary within the group. At initialization, however, the reported setting uses \(\lambda_0=0\) (Appendix Table~\ref{tab:rl_hparams}), so \(g_i(\boldsymbol{\lambda})=0\) initially and early non-degeneracy must come from variation in the primal score \(r_i\), including partial-credit differences from Eq.~\eqref{eq:softgate}; as the controller moves away from zero, variation in \(g_i(\boldsymbol{\lambda})\) adds the intended feasibility-sensitive ordering.
-The inference diagnostic in Figure~\ref{fig:hard_group_main} directly checks this predicted failure mode using held-out \(K=8\) candidate groups. Compared with classic GRPO, CLASP reduces the all-infeasible rate from \(28.4\%\) to \(19.2\%\), while the CLASP grouped advantage is strongly aligned with lower violation on all-infeasible groups with observable violation variation (Spearman \(0.85\) with negative violation proxy). Appendix Figure~\ref{fig:inference_hard_group_recovery} gives the complementary recovery view: among the \(142\) prompts where classic GRPO finds no feasible candidate, CLASP recovers one on \(55.6\%\).
-Figure~\ref{fig:sft_clasp_violation_hist} gives a complementary view of this behavior by comparing high-violation prompt distributions before and after CLASP training.
+The canonical training path uses the implementation's dense-rank estimator rather than this expensive exact marginal for every update. In successful mixed groups, every feasible completion is ranked above every infeasible completion, while feasible completions receive tie-aware objective rank credit and infeasible completions receive lower-violation rank credit. The resulting credit is centered within the group. In an all-infeasible group, the estimator uses a robust, centered lower-violation rank surrogate, with recovery pressure scaled by \(1+\lambda_G\). Thus the implementation provides a signal for recovery even when the best-of-\(K\) set utility is flat before a feasible completion is observed.
+
+The group multiplier \(\lambda_G\) is expanded from taskwise controller state and updated by projected signed-gap statistics at the configured update interval. These signed gaps are a controller signal, not the definition of the set utility. The canonical source configuration uses \(K=8\), dense-rank success credit, token-level importance sampling, no length penalty (\(\alpha=0\)), no inference repair, and the recorded canonical scale parameters. The exact behavior is implemented in \texttt{compute\_bon\_aligned\_advantages} and must be read together with the frozen source snapshot recorded in the paper manifest.
+
+This definition is intentionally narrower than the historical manuscript's centered \((r,g)\) mixture. The current results must not be described using the old logistic mixing coefficient, centered primal/gap equation, adaptive controller claim, or historical all-infeasible recovery percentages unless their source receipts are independently recovered. The retained diagnostic figures are legacy artifacts until regenerated from current receipts.
 
 \begin{figure}[!t]
   \centering
@@ -199,9 +175,9 @@ Our formal analysis focuses on a limited set of properties and is deferred to Ap
 \KwIn{Current policy \(\pi_\theta\), old policy \(\pi_{\mathrm{old}}\), taskwise controller weights \(\Lambda\), mixed-task prompt batch \(\{x_b,\tau_b\}_{b=1}^B\)}
 \KwOut{Updated policy parameters and taskwise controller weights}
 Sample a mixed-task batch and generate \(K\) completions per prompt from \(\pi_{\mathrm{old}}\)\;
-Parse each completion and compute \(r_i\), dense costs \(\mathbf{c}_i^{(\tau)}\), masks \(\mathbf{m}_i^{(\tau)}\), exact violation \(v_i\), positive weighted gap \(g_i(\boldsymbol{\lambda}^{(\tau)})\), and componentwise signed gaps \(h_{ij}^{(\tau)}\)\;
-For each prompt group, compute \(f_G\), \(\alpha_G\), and the group statistics in Eq.~\eqref{eq:groupstats}\;
-Construct \(A_i^{\mathrm{CLASP}}\) by Eq.~\eqref{eq:claspadv}\;
+Parse each completion and compute objective quality \(q_i\), dense costs \(\mathbf{c}_i^{(\tau)}\), masks \(\mathbf{m}_i^{(\tau)}\), exact violation \(v_i\), feasibility \(z_i\), and componentwise signed gaps \(h_{ij}^{(\tau)}\)\;
+For each prompt group, form the best-of-\(K\) set utility and the dense-rank success or all-infeasible recovery credit described above\;
+Center the selected credit within the group to obtain \(A_i^{\mathrm{CLASP}}\)\;
 Apply the clipped sequence-level policy update using \(A_i^{\mathrm{CLASP}}\)\;
 Every \(n_\lambda\) primal steps, update the taskwise controller weights using Eq.~\eqref{eq:claspdual}\;
 Refresh each task's decoding budget from a rolling quantile of observed completion lengths\;
@@ -268,7 +244,7 @@ v^{(\tau)}(x,y)
 Then thresholded feasibility is equivalent to \(v^{(\tau)}(x,y)=0\). Appendix~\ref{app:formal} collects the formal statements: the population constraints align with thresholded feasibility under mask completeness, the grouped advantage is well-defined, reference-sample constants cancel under group centering, the grouped advantage remains non-trivial in a specific all-infeasible constant-primal regime, and the projected controller satisfies complementary-sign fixed-point conditions. The regularity assumptions needed for these results are deferred to the appendix.
 \section{Experiments}
 \label{sec:experiments}
-We evaluate whether prompt-local feasibility--quality comparisons improve constrained generation over scalar-reward baselines. All internal comparisons use matched compute: SFT, vanilla GRPO, Dual-primal GRPO, and CLASP share the same train/eval split, training duration, and H100 GPU hardware budget. The mechanism-oriented comparison is based on the hard-group diagnostic in Figure~\ref{fig:hard_group_main}, the training variants in Appendix Figure~\ref{fig:ablation_feasibility_bar}, and the diagnostics in Figures~\ref{fig:sft_clasp_violation_hist}, \ref{fig:all_infeasible_frequency}, \ref{fig:mechanism_dashboard}, and \ref{fig:curves}. The standalone vanilla GRPO row follows the standard GRPO trainer objective and is therefore a conventional system-level baseline rather than an isolated ablation of Eq.~\eqref{eq:claspadv}; we do not attribute the full Table~\ref{tab:main} vanilla-to-CLASP difference solely to the grouped advantage. Unless stated otherwise, the five-task training and evaluation data used in these experiments are taken from \citet{jiang2025endtoendco}. The experiments use NVIDIA H100 GPUs with 80GB memory and nodes provisioned with 96 CPU cores from Intel Xeon Platinum 8468 processors (48 cores, 2.10 GHz).
+We evaluate the current implementation under a frozen matched development protocol and keep decoder tuning on a disjoint development slice. The canonical reproduction uses four A100 GPUs for training and one A100 GPU per evaluation job; it is not an exact historical-source reproduction. The standalone vanilla GRPO row in the legacy manuscript is not promoted to the current comparison without a validated receipt. Unless stated otherwise, the five-task data originate from \citet{jiang2025endtoendco}; exact slices, checkpoint lineage, decoding parameters, and caveats are recorded in the paper manifest.
 
 Our benchmark covers five tasks: TSP, OP, CVRP, MIS, and JSSP. Unless noted otherwise, learned methods share the same base model family, prompt template, tokenizer, task mixture, and two-stage pipeline of mixed-task SFT followed by RL. We defer full training and data details to Appendix~\ref{app:expdetails}.
 

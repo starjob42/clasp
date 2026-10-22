@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.venv_*/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+
+# Run artifacts (never commit weights, datasets, or logs)
+outputs/
+inference/
+wandb/
+*.log
+
+# Local data and model mounts
+data/data_sft/
+data/data_rl/
+models/*/
+
+# Checkpoint weights: keep the directory layout and manifests, not the tensors
+checkpoints/**/*.safetensors
+checkpoints/**/*.bin
+checkpoints/**/*.pt
+checkpoints/**/optimizer.pt

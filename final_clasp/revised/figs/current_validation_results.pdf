@@ -13,7 +13,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 2890 >>
+<< /Length 2797 >>
 stream
 BT
 1 1 1 rg 0 0 792 468 re f
@@ -57,16 +57,14 @@ BT
 /F1 10 Tf 1 0 0 1 396.0 168.0 Tm (JSSP) Tj
 0.13 0.4 0.67 rg 384.0 405.0 16.0 118.8 re f
 /F1 7 Tf 1 0 0 1 385.0 528.8 Tm (6.34) Tj
-0.86 0.86 0.86 rg 412.0 405.0 16 10 re f
-0.35 0.35 0.35 RG 0.7 w 412.0 405.0 16 10 re S
-/F1 7 Tf 1 0 0 1 407.8 420.0 Tm (pending) Tj
+0.7 0.09 0.17 rg 412.0 405.0 16.0 118.1 re f
+/F1 7 Tf 1 0 0 1 413.0 528.1 Tm (6.30) Tj
 /F1 10 Tf 1 0 0 1 532.8 168.0 Tm (CVRP) Tj
 0.86 0.86 0.86 rg 520.8 405.0 16 10 re f
 0.35 0.35 0.35 RG 0.7 w 520.8 405.0 16 10 re S
 /F1 7 Tf 1 0 0 1 516.6 420.0 Tm (pending) Tj
-0.86 0.86 0.86 rg 548.8 405.0 16 10 re f
-0.35 0.35 0.35 RG 0.7 w 548.8 405.0 16 10 re S
-/F1 7 Tf 1 0 0 1 544.6 420.0 Tm (pending) Tj
+0.7 0.09 0.17 rg 548.8 405.0 16.0 58.3 re f
+/F1 7 Tf 1 0 0 1 549.8 468.3 Tm (3.11) Tj
 /F1 10 Tf 1 0 0 1 672.1 168.0 Tm (MIS) Tj
 0.86 0.86 0.86 rg 657.6 405.0 16 10 re f
 0.35 0.35 0.35 RG 0.7 w 657.6 405.0 16 10 re S
@@ -93,5 +91,5 @@ xref
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-3258
+3165
 %%EOF

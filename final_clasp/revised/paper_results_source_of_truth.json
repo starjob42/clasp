@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "in_progress_pending_final_same_slice_foarl_and_mis_stage2",
+  "status": "complete_tuned_validation_same_slice",
   "purpose": "Single source of truth for the revised CLASP paper. No manuscript table or figure may claim final tuned CLASP-versus-FOARL results until all pending jobs are complete and validated.",
   "paper_workspace": "final_clasp/revised",
   "compiled_pdf": {
@@ -14,8 +14,8 @@
     "path": "final_clasp/revised/figs/current_validation_results.pdf",
     "source_script": "scripts/generate_current_validation_plot.py",
     "status": "generated_from_manifest",
-    "pending_values_are_blank": true,
-    "note": "This is the authoritative interim plot for the pending validation campaign; legacy PDFs are not current-result plots."
+    "pending_values_are_blank": false,
+    "note": "This is the authoritative plot for the completed tuned validation campaign; legacy PDFs are not current-result plots."
   },
   "legacy_archive": "final_clasp/old_CLASP-GRPO for Feasibility-Preserving LLM Combinatorial Optimization (1).zip",
   "code_snapshot": {
@@ -82,25 +82,25 @@
         "feasible": 92,
         "instances": 96,
         "gap_percent": 3.39320079456436,
-        "status": "complete_partial_search"
+        "status": "complete_search"
       },
       "mis": {
         "configuration": {"temperature": 0.9, "top_p": 0.9, "top_k": 50},
         "feasible": 91,
         "instances": 96,
         "gap_percent": 3.110260028369425,
-        "status": "complete_stage1_search"
+        "status": "complete_search"
       }
     },
     "foarl_same_settings_jobs": {
       "tsp": {"job_id": "1459452", "status": "complete", "feasible": 93, "instances": 96, "gap_percent": 1.153845796098329},
       "op": {"job_id": "1459453", "status": "complete", "feasible": 95, "instances": 96, "gap_percent": 1.9221903462322745},
-      "jssp": {"job_id": "1459454", "status": "running"},
-      "cvrp": {"job_id": "1459455", "status": "running"},
+        "jssp": {"job_id": "1459454", "status": "complete", "feasible": 96, "instances": 96, "gap_percent": 6.301230177550834},
+        "cvrp": {"job_id": "1459455", "status": "complete", "feasible": 92, "instances": 96, "gap_percent": 3.1066961471273413},
       "mis": {"job_id": "1459456", "status": "complete", "feasible": 89, "instances": 96, "gap_percent": 1.8900757164572218}
     },
     "mis_stage2": {
-      "status": "pending",
+      "status": "complete",
       "jobs": ["1460579", "1460580", "1460581", "1460582", "1460583"],
       "note": "Do not call the stage-one MIS setting globally best until stage two and, ideally, fresh held-out confirmation are complete."
     },

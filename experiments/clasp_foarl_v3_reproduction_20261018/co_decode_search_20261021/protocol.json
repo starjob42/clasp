@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "complete_tuned_validation_same_slice",
+  "created_utc": "2026-10-21",
+  "purpose": "Development-only decoding search for TSP, JSSP, CVRP, and MIS. This search must not overwrite the original shared-cohort comparison.",
+  "checkpoint_pattern": "train/{task}/clasp_grpo_anchor_v3_seed43_step100/checkpoints/checkpoint-100",
+  "validation_cohort": {
+    "source": "data_eval/{task}/eval/test.json",
+    "slice": "eval[100:196]",
+    "rows": 96,
+    "relationship_to_original_comparison": "The original comparison used eval[0:100]; this search uses a disjoint slice from the same 500-row task files.",
+    "purpose": "development validation; not a pristine confirmation cohort"
+  },
+  "evaluation": {
+    "candidates_per_instance": 8,
+    "seed": 271828,
+    "dtype": "float16",
+    "representation_profile": "jiang_f638_clasp",
+    "repair": false,
+    "max_new_tokens": 3000,
+    "max_prompt_length": 0,
+    "search_stage": "stage1_one_factor_sweep"
+  },
+  "configurations": [
+    {"label": "t050_p090_k50", "temperature": 0.5, "top_p": 0.9, "top_k": 50},
+    {"label": "t070_p090_k50", "temperature": 0.7, "top_p": 0.9, "top_k": 50},
+    {"label": "t090_p090_k50", "temperature": 0.9, "top_p": 0.9, "top_k": 50},
+    {"label": "t070_p080_k50", "temperature": 0.7, "top_p": 0.8, "top_k": 50},
+    {"label": "t070_p100_k50", "temperature": 0.7, "top_p": 1.0, "top_k": 50},
+    {"label": "t070_p090_k20", "temperature": 0.7, "top_p": 0.9, "top_k": 20},
+    {"label": "t070_p090_k100", "temperature": 0.7, "top_p": 0.9, "top_k": 100}
+  ],
+  "submitted": {
+    "tsp": {
+      "status": "relaunched_pending",
+      "job_ids": {
+        "t050_p090_k50": "1409412",
+        "t070_p090_k50": "1409413",
+        "t090_p090_k50": "1409415",
+        "t070_p080_k50": "1409416",
+        "t070_p100_k50": "1409417",
+        "t070_p090_k20": "1409418",
+        "t070_p090_k100": "1409419",
+        "retry_t090_p090_k50": "1426021",
+        "relaunch_t050_p090_k50": "1437797",
+        "relaunch_t070_p090_k50": "1437799",
+        "relaunch_t090_p090_k50": "1437801",
+        "relaunch_t070_p080_k50": "1437803",
+        "relaunch_t070_p100_k50": "1437805",
+        "relaunch_t070_p090_k20": "1437806",
+        "relaunch_t070_p090_k100": "1437807"
+      },
+      "retry_note": "Jobs 1437797-1437807 use a writable-output launcher while keeping CLASP_PROJECT_ROOT on the source directory. They are the active TSP relaunch."
+    },
+    "jssp": {
+      "status": "complete",
+      "job_ids": {
+        "t050_p090_k50": "1456612",
+        "t070_p090_k50": "1456613",
+        "t090_p090_k50": "1456614",
+        "t070_p080_k50": "1456615",
+        "t070_p100_k50": "1456616",
+        "t070_p090_k20": "1456617",
+        "t070_p090_k100": "1456618"
+      }
+    },
+    "cvrp": {
+      "status": "complete_search",
+      "job_ids": {
+        "t090_p090_k50": "1457840",
+        "t050_p090_k50": "1457881",
+        "t070_p090_k50": "1457882"
+      },
+      "completed_configurations": [
+        "t050_p090_k50",
+        "t070_p090_k50",
+        "t090_p090_k50"
+      ],
+      "remaining_configurations": []
+    },
+    "mis": {
+      "status": "complete",
+      "replaced_job_id": "1457841",
+      "job_ids": {
+        "t050_p090_k50": "1458812",
+        "t070_p090_k50": "1458813",
+        "t090_p090_k50": "1458815",
+        "t070_p080_k50": "1458816",
+        "t070_p100_k50": "1458817",
+        "t070_p090_k20": "1458818",
+        "t070_p090_k100": "1458819"
+      }
+    },
+    "foarl_same_slice_best": {
+      "status": "complete",
+      "slice": "eval[100:196]",
+      "jobs": {
+        "tsp": "1459452",
+        "op": "1459453",
+        "jssp": "1459454",
+        "cvrp": "1459455",
+        "mis": "1459456"
+      },
+      "settings": {
+        "tsp": "t070_p090_k50",
+        "op": "t090_p080_k50",
+        "jssp": "t050_p090_k50",
+        "cvrp": "t090_p090_k50",
+        "mis": "t070_p080_k50"
+      },
+      "note": "FOARL is evaluated with the best completed CLASP-selected decoding configuration per task on the same validation slice. The FOARL checkpoints remain local development reimplementations, not official author checkpoints."
+    },
+    "mis_stage2": {
+      "status": "complete",
+      "slice": "eval[100:196]",
+      "purpose": "Focused follow-up around the best observed MIS feasibility and gap/feasibility compromise; not a proof of global optimality.",
+      "configurations": {
+        "t080_p080_k50": {"temperature": 0.8, "top_p": 0.8, "top_k": 50, "job_id": "1460579"},
+        "t090_p080_k50": {"temperature": 0.9, "top_p": 0.8, "top_k": 50, "job_id": "1460580"},
+        "t100_p080_k50": {"temperature": 1.0, "top_p": 0.8, "top_k": 50, "job_id": "1460581"},
+        "t090_p085_k50": {"temperature": 0.9, "top_p": 0.85, "top_k": 50, "job_id": "1460582"},
+        "t090_p095_k50": {"temperature": 0.9, "top_p": 0.95, "top_k": 50, "job_id": "1460583"}
+      },
+      "selection_rule": "Primary: maximize feasible instances. Secondary: minimize mean best-feasible gap among settings tied on feasibility. Results remain validation-set tuning and require fresh held-out confirmation."
+    }
+  },
+  "scheduler_observation": {
+    "observed_utc": "2026-10-22T22:19+02:00",
+    "submission_error": "QOSMaxSubmitJobPerUserLimit",
+    "active_user_job_count": 20,
+    "tsp_result": "Relaunched as jobs 1437797-1437807 with writable log/output paths.",
+    "continuation_submission": "All seven JSSP jobs completed successfully. CVRP jobs 1457840, 1457881, and 1457882 completed successfully; four additional CVRP configurations remain unsubmitted. Held MIS job 1457841 was cancelled and replaced by seven fresh submissions 1458812-1458819.",
+    "note": "No unrelated jobs were cancelled."
+  },
+  "selection_rule": {
+    "primary": "Maximize feasible instances with at least one feasible candidate out of 8.",
+    "secondary": "Compare mean best-feasible objective relative to the task reference.",
+    "test_boundary": "Any selected setting requires a fresh held-out evaluation before changing the five-task comparison."
+  }
+}

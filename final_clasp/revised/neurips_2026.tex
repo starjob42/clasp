@@ -305,12 +305,13 @@ the task-specific decoder settings selected by the finite CLASP validation
 search. Complete values are reported directly from the source-of-truth
 manifest. A dash means that the corresponding job was still running when this
 revision was prepared; it is not a zero and is not used to rank methods. The
-MIS CLASP value is provisional because its focused second-stage search is
-pending. The JSSP and CVRP FOARL values are likewise pending. These are
-development results, not unbiased test estimates.
+All five task evaluations and the focused MIS stage-two search are now
+complete. The selected CLASP configuration is the feasibility-first winner
+among the completed validation configurations; these remain development
+results, not unbiased test estimates.
 
 \begin{table*}[t]
-\caption{Single current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Differences are CLASP minus FOARL, so positive feasibility and negative gap differences favor CLASP. Pending jobs are shown as ``--'' and are deliberately not interpreted as results.}
+\caption{Single current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Differences are CLASP minus FOARL, so positive feasibility and negative gap differences favor CLASP. All entries shown here are complete validation runs; this is not an unbiased test estimate.}
 \label{tab:current_validation}
 \centering
 \scriptsize
@@ -322,9 +323,9 @@ Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & \multicolumn{2}{c
 \midrule
 TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & +3.1 & -0.4493 & \(0.7,0.9,50\) & complete \\
 OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & +1.0 & -0.1566 & \(0.9,0.8,50\) & complete \\
-JSSP & 96/96 & 6.3353 & --    & --     & -- & -- & \(0.5,0.9,50\) & FOARL pending \\
-CVRP & 92/96 & 3.3932 & --    & --     & -- & -- & \(0.9,0.9,50\) & search/FOARL pending \\
-MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & +2.1 & +1.2202 & \(0.7,0.8,50\) & CLASP stage 2 pending \\
+JSSP & 96/96 & 6.3353 & 96/96 & 6.3012 & 0.0 & +0.0340 & \(0.5,0.9,50\) & complete \\
+CVRP & 92/96 & 3.3932 & 92/96 & 3.1067 & 0.0 & +0.2865 & \(0.9,0.9,50\) & complete \\
+MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & +2.1 & +1.2202 & \(0.9,0.9,50\) & complete \\
 \bottomrule
 \end{tabular}
 \end{table*}

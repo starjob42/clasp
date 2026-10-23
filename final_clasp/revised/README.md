@@ -31,3 +31,8 @@ tables and plotting inputs were not included in the archive, so a legacy plot
 is not considered reproducible merely because its PDF is present. New tables
 and figures must be generated from validated receipts and clearly labeled
 when they use development validation data.
+
+The archived `figs/app_train07_clasp_vs_dual_primal_relative.pdf` artifact is
+quarantined and excluded from the compiled paper because its raster content is
+corrupted and the original raw plotting inputs are unavailable. It is not used
+for any result or method claim.

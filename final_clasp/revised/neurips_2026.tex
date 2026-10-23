@@ -510,7 +510,7 @@ The clipped surrogate term is
 \end{align}
 optionally with a KL regularizer of weight \(\kappa_{\mathrm{KL}}\).
 
-We use \emph{Dual-primal GRPO} as the canonical name for the constrained GRPO baseline. It shares the same SFT initialization, prompt groups, dense cost components, length-normalized sequence ratio, and clipped surrogate family as CLASP, but it does not use the adaptive centered primal-gap grouped advantage in Eq.~\eqref{eq:claspadv}. Its sample advantage is
+We use \emph{Dual-primal GRPO} as the canonical name for the constrained GRPO baseline. It shares the same SFT initialization, prompt groups, dense cost components, length-normalized sequence ratio, and clipped surrogate family as CLASP, but it does not use the BoN-aligned set-credit advantage in Eq.~\eqref{eq:claspadv}. Its sample advantage is
 \begin{align}
 A_i^{\mathrm{DP}}
 =
@@ -519,7 +519,7 @@ A_i^{\mathrm{DP}}
 \sum_{j=1}^{m_\tau}\lambda_j^{(\tau)} h_{ij}^{(\tau)},
 \label{eq:dualprimalbaseline}
 \end{align}
-with \(h_{ij}^{(\tau)}\) denoting the signed masked gap introduced above; the clipped surrogate above is then evaluated with \(A_i^{\mathrm{DP}}\) in place of \(A_i^{\mathrm{CLASP}}\). Thus the baseline centers only the primal reward within the prompt group and adds an uncentered controller-weighted signed-gap term, whereas CLASP centers both primal and controller-weighted positive-gap comparisons inside the adaptive grouped advantage.
+with \(h_{ij}^{(\tau)}\) denoting the signed masked gap introduced above; the clipped surrogate above is then evaluated with \(A_i^{\mathrm{DP}}\) in place of \(A_i^{\mathrm{CLASP}}\). This baseline definition is retained only for the legacy Dual-primal comparison. The current CLASP path instead ranks feasible candidates by feasibility dominance and tie-aware quality, ranks all-infeasible candidates by recovery violation, and centers the resulting group credits.
 
 Each task maintains its own controller \(\boldsymbol{\lambda}^{(\tau)}\). It acts as a practical weighting mechanism for feasibility pressure rather than exact dual ascent for the population Lagrangian. Under the sign convention of Eq.~\eqref{eq:multitasklagrangian}, the update is a projected signed-gap controller. Because minibatches are mixed-task but controllers are task-specific, the controller statistics are computed separately for each task. Let \(\mathcal B_t^{(\tau)}\) be the completions in the current controller window whose task is \(\tau\), and let \(N_t^{(\tau)}=|\mathcal B_t^{(\tau)}|\). Every \(n_\lambda\) primal steps, the task-local masked batch statistics are aggregated as
 \begin{align}
@@ -644,11 +644,11 @@ Evaluation uses the same prompt template, parsers, and thresholded feasibility c
 \label{app:additional_results}
 
 Figure~\ref{fig:current_validation_results} is the authoritative current-result
-plot for this revision. The remaining PDF figures in this appendix are
-legacy diagnostics retained for auditability; their raw generation inputs were
-not present in the archived paper package and they must not be interpreted as
-plots of the current pending evaluation campaign. Figure~\ref{fig:pipeline}
-provides a conceptual visual summary of the CLASP-GRPO training loop.
+plot for this revision. The remaining PDF figures in this appendix are retained
+so that the paper's diagnostic plots remain visible and auditable. They are
+diagnostics from recorded training/evaluation artifacts, not additional current
+CLASP--FOARL result claims. Figure~\ref{fig:pipeline} provides a conceptual
+visual summary of the current CLASP-GRPO training loop.
 
 \begin{figure}[t]
   \centering
@@ -671,7 +671,7 @@ provides a conceptual visual summary of the CLASP-GRPO training loop.
   \(\downarrow\) \\
   clipped policy update \hspace{1cm} feasibility-conditional controller update
   \end{minipage}}
-  \caption{Overview of CLASP-GRPO, highlighting the adaptive centered within-group advantage, taskwise signed-gap controller, and adaptive decoding budget.}
+  \caption{Overview of the current CLASP-GRPO path: parse and validate the \(K\) completions, compute BoN-aligned set credit, rank successful groups by feasibility and quality, rank all-infeasible groups by recovery violation, center the group credit, and update taskwise controllers.}
   \label{fig:pipeline}
 \end{figure}
 
@@ -692,21 +692,21 @@ provides a conceptual visual summary of the CLASP-GRPO training loop.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.9\linewidth]{figs/app_mech01_all_infeasible_frequency.pdf}
-  \caption{Frequency of hard prompt groups during training. Left: the fraction of all-infeasible groups over RL steps for CLASP and the Dual-primal GRPO baseline. Right: summary distribution of the all-infeasible-group rates across logged updates. The figure supports the motivating claim that hard prompts frequently induce all-infeasible groups and shows how the learned policies differ in that regime.}
+  \caption{Frequency of hard prompt groups during training. Left: the fraction of all-infeasible groups over RL steps for CLASP and the recorded Dual-primal GRPO baseline. Right: summary distribution of the all-infeasible-group rates across logged updates. This is a diagnostic of the recorded training run, not a new claim about the current validation comparison.}
   \label{fig:all_infeasible_frequency}
 \end{figure}
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.95\linewidth]{figs/app_mech00_mechanism_dashboard.pdf}
-  \caption{Mechanism diagnostics for CLASP. The panels summarize group-level failure modes and controller behavior, including all-infeasible-group prevalence, scalar-reward degeneracy, grouped-advantage evolution, and the relation between early CLASP gap reduction and later feasible-quality gains. Together they provide appendix-level evidence for the mechanism discussion in Section~\ref{sec:method}.}
+  \caption{Mechanism diagnostics for CLASP. The panels summarize group-level failure modes and controller behavior, including all-infeasible-group prevalence, recovery-credit behavior, group-credit evolution, and feasible-quality trends. These diagnostics are retained for auditability and are not used to define the current five-task comparison.}
   \label{fig:mechanism_dashboard}
 \end{figure}
 
 \begin{figure}[p]
   \centering
   \includegraphics[width=0.88\linewidth]{figs/app_train07_clasp_vs_dual_primal_relative.pdf}
-  \caption{Training-dynamics comparison between CLASP and Dual-primal GRPO. The panels track relative trends in feasibility, feasible quality, controller values, and related diagnostics over optimization. This figure is included in the appendix because it is useful for attribution and reviewer inspection, but too dense for the main paper.}
+  \caption{Recorded training-dynamics comparison between CLASP and Dual-primal GRPO. The panels track relative trends in feasibility, feasible quality, controller values, and related diagnostics over optimization. This legacy attribution diagnostic is included for auditability and is not used to define the current CLASP method or current five-task comparison.}
   \label{fig:curves}
 \end{figure}
 
@@ -741,6 +741,35 @@ which is well-defined because every sample exposes at least one active component
 
 \section{Formal Arguments and Proofs}
 \label{app:formal}
+
+\subsection{Formal statements for the current implementation}
+\label{app:current_formal}
+The deployed CLASP implementation uses the BoN-aligned set-credit estimator
+described in Section~\ref{sec:method} and implemented by
+\texttt{compute\_bon\_aligned\_advantages}. For a prompt group
+\(G=\{1,\ldots,K\}\), let \(u_i\) be the set utility obtained from the
+feasibility-first, tie-aware ranking of successful candidates, or from the
+lower-violation recovery ranking when the group is entirely infeasible. The
+training credit is
+\[
+A_i^{\mathrm{CLASP}} = u_i-\frac{1}{K}\sum_{\ell=1}^K u_\ell .
+\]
+Consequently,
+\[
+\sum_{i=1}^K A_i^{\mathrm{CLASP}}=0.
+\]
+This identity is the only centering property required by the current trainer.
+It holds for both the dense-rank success credit and the recovery credit,
+including ties and groups with no feasible candidate. The implementation does
+not select an anchor completion, does not use a logistic feasibility mixture
+parameter, and does not rewrite or repair sampled solutions at inference.
+
+\paragraph{Scope of the remaining historical statements.}
+The propositions below document the centered primal/gap formulation used by
+an earlier research variant. They are retained only to preserve the archived
+derivation and should not be read as claims about the current CLASP path or
+as definitions of the results in this paper. Current algorithmic claims and
+all current plots use the set-credit definition above.
 
 \begin{proposition}[Population constraints align with thresholded feasibility]
 \label{prop:population-feasibility}

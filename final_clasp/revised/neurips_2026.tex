@@ -297,9 +297,9 @@ CLASP+BoN (ours) 250k & \textbf{100\%} & \textbf{1.01\% $\pm$ 0.91} & 98\% & \te
 }
 \end{table*}
 
-\paragraph{Interim current validation status.}
-The table below is the current, auditable development comparison and supersedes
-the legacy aggregate rows above for the present paper revision. It uses the
+\paragraph{Current CLASP--FOARL comparison.}
+The table below is the single current, auditable development comparison and
+supersedes the legacy aggregate rows above for the present paper revision. It uses the
 disjoint \(\mathrm{eval}[100{:}196]\) slice, eight candidates per instance, and
 the task-specific decoder settings selected by the finite CLASP validation
 search. Complete values are reported directly from the source-of-truth
@@ -310,21 +310,21 @@ pending. The JSSP and CVRP FOARL values are likewise pending. These are
 development results, not unbiased test estimates.
 
 \begin{table*}[t]
-\caption{Interim current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Pending jobs are shown as ``--'' and are deliberately not interpreted as results.}
+\caption{Single current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Differences are CLASP minus FOARL, so positive feasibility and negative gap differences favor CLASP. Pending jobs are shown as ``--'' and are deliberately not interpreted as results.}
 \label{tab:current_validation}
 \centering
-\small
-\begin{tabular}{lcccccc}
+\scriptsize
+\begin{tabular}{lcccccccc}
 \toprule
-Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & CLASP setting & Status \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
- & Feasible & Gap (\%) & Feasible & Gap (\%) & \(T,p,k\) & \\
+Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & \multicolumn{2}{c}{CLASP--FOARL} & Setting & Status \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+ & Feasible & Gap (\%) & Feasible & Gap (\%) & Feas. (pp) & Gap (pp) & \(T,p,k\) & \\
 \midrule
-TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & \(0.7,0.9,50\) & complete \\
-OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & \(0.9,0.8,50\) & complete \\
-JSSP & 96/96 & 6.3353 & --    & --     & \(0.5,0.9,50\) & FOARL pending \\
-CVRP & 92/96 & 3.3932 & --    & --     & \(0.9,0.9,50\) & search/FOARL pending \\
-MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & \(0.7,0.8,50\) & CLASP stage 2 pending \\
+TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & +3.1 & -0.4493 & \(0.7,0.9,50\) & complete \\
+OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & +1.0 & -0.1566 & \(0.9,0.8,50\) & complete \\
+JSSP & 96/96 & 6.3353 & --    & --     & -- & -- & \(0.5,0.9,50\) & FOARL pending \\
+CVRP & 92/96 & 3.3932 & --    & --     & -- & -- & \(0.9,0.9,50\) & search/FOARL pending \\
+MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & +2.1 & +1.2202 & \(0.7,0.8,50\) & CLASP stage 2 pending \\
 \bottomrule
 \end{tabular}
 \end{table*}

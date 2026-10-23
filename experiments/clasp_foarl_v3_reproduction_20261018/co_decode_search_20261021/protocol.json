@@ -70,10 +70,10 @@
         "t090_p090_k50": "1457840",
         "t050_p090_k50": "1457881",
         "t070_p090_k50": "1457882",
-        "t070_p080_k50": "1496855_10",
-        "t070_p100_k50": "1496855_11",
-        "t070_p090_k20": "1496855_12",
-        "t070_p090_k100": "1496855_13"
+        "t070_p080_k50": "1497810_10",
+        "t070_p100_k50": "1497810_11",
+        "t070_p090_k20": "1497810_12",
+        "t070_p090_k100": "1497810_13"
       },
       "completed_configurations": [
         "t050_p090_k50",
@@ -85,7 +85,9 @@
         "t070_p100_k50",
         "t070_p090_k20",
         "t070_p090_k100"
-      ]
+      ],
+      "superseded_job_id": "1496855",
+      "submission_note": "Job 1496855 failed before evaluation because the wrapper attempted to create logs under the read-only source directory. It was superseded by corrected array job 1497810 using writable log and output paths."
     },
     "mis": {
       "status": "complete",
@@ -138,7 +140,7 @@
     "submission_error": "QOSMaxSubmitJobPerUserLimit",
     "active_user_job_count": 20,
     "tsp_result": "Relaunched as jobs 1437797-1437807 with writable log/output paths.",
-    "continuation_submission": "All seven JSSP jobs completed successfully. CVRP jobs 1457840, 1457881, and 1457882 completed successfully; the four remaining CVRP configurations were submitted as array job 1496855 (subtasks 10-13) and are pending scheduler capacity. Held MIS job 1457841 was cancelled and replaced by seven fresh submissions 1458812-1458819.",
+    "continuation_submission": "All seven JSSP jobs completed successfully. CVRP jobs 1457840, 1457881, and 1457882 completed successfully. The first continuation array 1496855 failed before evaluation due to a read-only log path; the corrected continuation array 1497810 (subtasks 10-13) is pending. Held MIS job 1457841 was cancelled and replaced by seven fresh submissions 1458812-1458819.",
     "note": "No unrelated jobs were cancelled."
   },
   "selection_rule": {

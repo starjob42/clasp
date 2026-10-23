@@ -309,23 +309,25 @@ among the completed validation configurations; these remain development
 results, not unbiased test estimates.
 
 \begin{table*}[t]
-\caption{Single current CLASP--FOARL comparison on the disjoint tuned validation slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Differences are CLASP minus FOARL, so positive feasibility and negative gap differences favor CLASP. All entries shown here are complete validation runs; this is not an unbiased test estimate.}
+\caption{Current CLASP--FOARL comparison on the disjoint tuned development slice \(\mathrm{eval}[100{:}196]\) (96 instances, BoN=8). Feasibility is the number of instances with at least one feasible candidate; the gap is conditional on those instances. Differences are CLASP minus FOARL, so positive feasibility and negative gap differences favor CLASP. The settings are \(T,p,k=(\text{temperature},\text{top-}p,\text{top-}k)\). CLASP settings were selected by the feasibility-first validation search; FOARL is reported with the recorded matched-slice settings. These are development results, not unbiased test estimates.}
 \label{tab:current_validation}
 \centering
 \scriptsize
-\begin{tabular}{lcccccccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccccccc}
 \toprule
-Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & \multicolumn{2}{c}{CLASP--FOARL} & Setting & Status \\
+Task & \multicolumn{2}{c}{CLASP} & \multicolumn{2}{c}{FOARL} & \multicolumn{2}{c}{CLASP--FOARL} & CLASP setting & FOARL setting & Status \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
- & Feasible & Gap (\%) & Feasible & Gap (\%) & Feas. (pp) & Gap (pp) & \(T,p,k\) & \\
+ & Feasible & Gap (\%) & Feasible & Gap (\%) & Feas. (pp) & Gap (pp) & \(T,p,k\) & \(T,p,k\) & \\
 \midrule
-TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & +3.1 & -0.4493 & \(0.7,0.9,50\) & complete \\
-OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & +1.0 & -0.1566 & \(0.9,0.8,50\) & complete \\
-JSSP & 96/96 & 6.3353 & 96/96 & 6.3012 & 0.0 & +0.0340 & \(0.5,0.9,50\) & complete \\
-CVRP & 92/96 & 3.3932 & 92/96 & 3.1067 & 0.0 & +0.2865 & \(0.9,0.9,50\) & complete \\
-MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & +2.1 & +1.2202 & \(0.9,0.9,50\) & complete \\
+TSP  & 96/96 & 0.7045 & 93/96 & 1.1538 & +3.1 & -0.4493 & \(0.7,0.9,50\) & \(0.7,0.9,50\) & complete \\
+OP   & 96/96 & 1.7656 & 95/96 & 1.9222 & +1.0 & -0.1566 & \(0.9,0.8,50\) & \(0.9,0.8,50\) & complete \\
+JSSP & 96/96 & 6.3353 & 96/96 & 6.3012 & 0.0 & +0.0340 & \(0.5,0.9,50\) & \(0.5,0.9,50\) & complete \\
+CVRP & 92/96 & 3.3932 & 92/96 & 3.1067 & 0.0 & +0.2865 & \(0.9,0.9,50\) & \(0.9,0.9,50\) & complete \\
+MIS  & 91/96 & 3.1103 & 89/96 & 1.8901 & +2.1 & +1.2202 & \(0.9,0.9,50\) & \(0.7,0.8,50\) & complete \\
 \bottomrule
 \end{tabular}
+}
 \end{table*}
 
 \begin{figure}[t]

@@ -1,0 +1,22 @@
+==============================================================
+ CLASP A100 eval
+   label      : foarl_full_tsp650
+   checkpoint : /lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/tsp/foarl/checkpoints/checkpoint-650
+   task       : tsp   (array id none)
+   purpose    : development
+   slice      : eval[0:100]
+   protocol   : float16 BoN=8 T=0.7 top_p=0.9
+                top_k=50 rep=1.0 max_new=3000
+                max_prompt=0 seed=271828
+   inference  : /lustre/fsn1/projects/rech/vas/uag72kz/clasp_fullbudget_foarl_eval_20261118/foarl_full_tsp650/tsp
+   job        : 390458  node jean-zay-iam04
+NVIDIA A100-SXM4-80GB, 81920 MiB
+==============================================================
+[Eval] Resolving checkpoint/model path...
+[Eval] Resolving data root candidates...
+[Eval] Stage: sft (sft_only)
+[Eval] Resolved model path: /lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/tsp/foarl/checkpoints/checkpoint-650
+[Eval] Checkpoint label: foarl-checkpoint-650
+[Eval] Resolved run directory: /lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/tsp/foarl
+[Eval] Data root: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval
+[Eval] Loading model and tokenizer...

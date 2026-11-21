@@ -1,0 +1,294 @@
+{
+  "schema_version": 2,
+  "contract_sha256": "UNRESOLVED_POPULATE_ONLY_AFTER_ALL_APPROVED_FIELDS_ARE_FROZEN",
+  "status": "BLOCKED_UNRESOLVED_DO_NOT_USE",
+  "audit_date": "2026-08-14",
+  "audit_scope": "Identity, license, deterministic parameters, runtime availability, and certification semantics only. No production reference labels were generated.",
+  "approval_rule": "A finalized self-hashed execution contract may use status approved_for_reference_evidence only after every task has a reviewed runner, the runner emits independently checkable raw solver evidence, every accepted_statuses list is deliberately populated, and every task-specific blocker below is closed. Keep that contract immutable during solving. The separate all-five evidence approval receipt, not a contract status mutation, uses status approved_for_confirmation after exactly five complete 1,000-row evidence trees pass revalidation.",
+  "remote_audit_root": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers",
+  "reference_evidence_runner": {
+    "schema_version": 1,
+    "protocol": "clasp-iid-reference-evidence-v1",
+    "expected_instances_per_task": 1000,
+    "runner_code_sha256": "e31a17646b29f02734e742e66617cdb470b21f3c46a716153200118df67c9d22",
+    "strict_verifier_identity_sha256": "UNRESOLVED_POPULATE_FROM_THE_FROZEN_CLASP_SOURCE_SNAPSHOT"
+  },
+  "global_blockers": [
+    "The repository now contains a reviewed fail-closed evidence runner and schema, but this template has not been resolved, self-hashed, or approved and no production evidence directory exists.",
+    "No 1,000-instance task has been solved and independently audited under one frozen resource policy.",
+    "TSP and CVRP can support only gap-to-reference claims. They cannot be described as certified optimum or ground truth. OP is admissible only row-by-row when the exact Gurobi adapter returns OPTIMAL with a complete certificate.",
+    "CVRP upstream serialization uses rounded TSPLIB EUC_2D costs while the benchmark verifier scores raw Euclidean distance. OP no longer uses the defective released serializer; its raw-Euclidean exact Gurobi formulation still requires a frozen production resource policy and a full 1,000-row all-OPTIMAL audit.",
+    "The production contract must remain fail-closed: accepted_statuses is intentionally empty for every task while status is blocked."
+  ],
+  "tasks": {
+    "cvrp": {
+      "readiness": "RUNNER_READY_HEURISTIC_PRODUCTION_AUDIT_PENDING",
+      "accepted_statuses": [],
+      "accepted_statuses_reason": "Intentionally empty until the raw-distance runner parameters and 1,000-row quality/runtime distribution are frozen and reviewed.",
+      "backend": "CLASP deterministic raw-Euclidean Clarke-Wright plus 2-opt",
+      "version": "clasp_raw_cvrp_heuristic version 1",
+      "source": {
+        "implementation": "scripts/run_reference_evidence.py::RawCVRPHeuristicBackend",
+        "implementation_path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+        "implementation_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT",
+        "legacy_lkh_archive_sha256": "b5a82dfad55a380b2784faba85f24606e47bfcbf3d8443adf97b58b053ca3222"
+      },
+      "runtime_artifact": {
+        "path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+        "sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT",
+        "platform": "frozen Python source; no external solver binary"
+      },
+      "license": "Project-local research implementation; no redistribution license is declared, so execution is restricted to the authorized research project.",
+      "parameters": {
+        "max_2opt_passes": 20
+      },
+      "evidence_runner": {
+        "approval": "blocked_pending_frozen_source_identity_and_full_audit",
+        "adapter": "raw_euclidean_cvrp_heuristic_v1",
+        "objective_semantics": "clasp_raw_euclidean_float64",
+        "reference_quality": "best_known_heuristic",
+        "seed_parameter": null,
+        "accepted_native_statuses": [],
+        "solver_identity": {
+          "backend_name": "clasp_raw_cvrp_heuristic",
+          "native_version": "1",
+          "artifact_kind": "python_source",
+          "artifact_path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+          "artifact_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT"
+        }
+      },
+      "candidate_acceptance_condition": "Emit HEURISTIC_COMPLETE only after deterministic Clarke-Wright construction, route-local 2-opt, strict capacity/coverage verification, raw-distance recomputation equal to the recorded incumbent, and retained source/parameter/log identities.",
+      "quality_semantics": "The result is a deterministic heuristic reference. Report gap-to-reference only; a model may legitimately improve it.",
+      "benchmark_semantics": "Search and verification both use the structured instance's raw float64 Euclidean distances, exact demands, and capacity.",
+      "legacy_solver_audit": "The released LKH wrapper is retained only as audit context; its rounded EUC_2D objective and clock-derived SEED=0 are not used.",
+      "blockers": [
+        "Resolve the backend artifact path/hash from the immutable source snapshot.",
+        "Freeze max_2opt_passes before confirmation and run all 1,000 rows.",
+        "Review quality/runtime distributions and retain gap-to-reference wording."
+      ]
+    },
+    "jssp": {
+      "readiness": "RUNNER_READY_CERTIFICATION_RUN_PENDING",
+      "accepted_statuses": [],
+      "accepted_statuses_reason": "Intentionally empty until the 1,000-instance certification run is complete and every row is native OPTIMAL.",
+      "backend": "Google OR-Tools CP-SAT",
+      "version": "ortools==9.15.6755; upstream v9.15 tag commit 551ad10d94835c99e5e1e684500d3db398c0e345",
+      "source": {
+        "official_repository": "https://github.com/google/or-tools",
+        "official_package_page": "https://pypi.org/project/ortools/9.15.6755/",
+        "wheel_filename": "ortools-9.15.6755-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "wheel_sha256": "03424136aa48555e7f4d1bc73edeb99f80ec35a2e5f17700e2072640344980fc"
+      },
+      "runtime_artifact": {
+        "environment": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers/ortools_9.15.6755_audit/venv",
+        "python": "3.10.8",
+        "platform": "Jean Zay x86_64 Linux",
+        "offline_wheel_directory": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers/ortools_9.15.6755_audit/wheels"
+      },
+      "license": "Apache-2.0 (official OR-Tools repository and PyPI metadata).",
+      "parameters": {
+        "max_time_seconds": 300,
+        "num_search_workers": 1,
+        "random_seed": 1,
+        "absolute_gap_limit": 0.0,
+        "relative_gap_limit": 0.0,
+        "log_search_progress": true
+      },
+      "evidence_runner": {
+        "approval": "blocked_pending_bounded_certification_run",
+        "adapter": "ortools_jssp_v1",
+        "objective_semantics": "clasp_integer_jssp_makespan",
+        "reference_quality": "certified_optimum",
+        "seed_parameter": "random_seed",
+        "accepted_native_statuses": [],
+        "solver_identity": {
+          "backend_name": "ortools_cp_sat",
+          "native_version": "9.15.6755",
+          "artifact_kind": "python_wheel",
+          "artifact_path": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers/ortools_9.15.6755_audit/wheels/ortools-9.15.6755-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "artifact_sha256": "03424136aa48555e7f4d1bc73edeb99f80ec35a2e5f17700e2072640344980fc",
+          "distribution_name": "ortools",
+          "module_origin": "UNRESOLVED_ABSOLUTE_OR_TOOLS_MODULE_ORIGIN",
+          "installed_distribution_manifest_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_INSTALLED_DISTRIBUTION"
+        }
+      },
+      "candidate_acceptance_condition": "Accept only native CpSolverStatus.OPTIMAL with a feasible schedule, integral objective equal to best_objective_bound, and retained CpSolverResponseStats. Never map FEASIBLE to OPTIMAL.",
+      "quality_semantics": "OPTIMAL is a solver-certified optimum under the pinned model and solver; FEASIBLE is only a time-limited best-known incumbent.",
+      "benchmark_semantics": "Integer processing times, non-overlap on each machine, within-job precedence, and integer makespan are aligned with the shared verifier.",
+      "blockers": [
+        "Run and retain the bounded 1,000-instance status distribution; any FEASIBLE, UNKNOWN, MODEL_INVALID, or missing-bound row must be rejected or moved to an explicitly best-known lane.",
+        "Review the evidence runner's hash-bound status, bound, response-stats, package, parameter, and strict-verifier receipts before approval."
+      ]
+    },
+    "mis": {
+      "readiness": "RUNNER_READY_CERTIFICATION_RUN_PENDING",
+      "accepted_statuses": [],
+      "accepted_statuses_reason": "Intentionally empty until the audited wheel path is resolved and the 1,000-instance certification run is complete.",
+      "backend": "Gurobi Optimizer / gurobipy",
+      "version": "Gurobi Optimizer 13.0.1 and gurobipy==13.0.1",
+      "source": {
+        "official_documentation": "https://docs.gurobi.com/projects/optimizer/en/current/",
+        "official_package_page": "https://pypi.org/project/gurobipy/13.0.1/",
+        "wheel_filename": "gurobipy-13.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "wheel_sha256": "7fc1b5ff46530aee391ab0f616620a1399abea0778b25e374b37f7ed222d5dfb"
+      },
+      "runtime_artifact": {
+        "module": "gurobi/13.0.1",
+        "environment": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers/gurobi_13.0.1_audit/venv",
+        "python": "3.10.8",
+        "platform": "Jean Zay x86_64 Linux",
+        "license_probe": "A minimal command-line MIP and a minimal gurobipy MIS both solved successfully through the Jean Zay token service on 2026-08-14."
+      },
+      "license": "Proprietary Gurobi academic/site license supplied by Jean Zay; execution requires the authorized token service and is not redistributable as open-source software.",
+      "parameters": {
+        "time_limit_seconds": 300,
+        "threads": 1,
+        "seed": 0,
+        "method": 1,
+        "mip_gap": 0.0,
+        "mip_gap_abs": 0.0,
+        "feasibility_tolerance": 1e-9,
+        "integrality_tolerance": 1e-9,
+        "numeric_focus": 3,
+        "output_flag": 1,
+        "log_to_console": 0
+      },
+      "evidence_runner": {
+        "approval": "blocked_pending_hash_pinned_log_enabled_contract",
+        "adapter": "gurobi_mis_v1",
+        "objective_semantics": "clasp_integer_mis_cardinality",
+        "reference_quality": "certified_optimum",
+        "seed_parameter": "seed",
+        "accepted_native_statuses": [],
+        "solver_identity": {
+          "backend_name": "gurobi",
+          "native_version": "13.0.1",
+          "artifact_kind": "python_wheel",
+          "artifact_path": "UNRESOLVED_ABSOLUTE_PATH_TO_AUDITED_GUROBIPY_WHEEL",
+          "artifact_sha256": "7fc1b5ff46530aee391ab0f616620a1399abea0778b25e374b37f7ed222d5dfb",
+          "distribution_name": "gurobipy",
+          "module_origin": "UNRESOLVED_ABSOLUTE_GUROBIPY_MODULE_ORIGIN",
+          "installed_distribution_manifest_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_INSTALLED_DISTRIBUTION"
+        }
+      },
+      "candidate_acceptance_condition": "Accept only native Status=GRB.OPTIMAL (numeric 2), SolCount>0, integral ObjVal exactly equal to integral ObjBound, MIPGap=0, and a strictly verified independent set. Retain status, incumbent, bound, gap, runtime, node count, version, parameters, and solver log.",
+      "quality_semantics": "Certified optimum means Gurobi OPTIMAL subject to its numerical tolerances plus exact equality of the integral incumbent and bound and independent feasibility verification.",
+      "benchmark_semantics": "The binary maximum-independent-set MIP objective and edge constraints align with the shared verifier.",
+      "blockers": [
+        "Resolve the audited gurobipy wheel's absolute path in the frozen contract.",
+        "Complete and review the bounded 1,000-instance certification run; the legacy wrapper remains inadmissible because it does not check status, solution count, bound, or gap."
+      ]
+    },
+    "op": {
+      "readiness": "RUNNER_READY_EXACT_SMOKE_PASSED_PRODUCTION_CERTIFICATION_PENDING",
+      "accepted_statuses": [],
+      "accepted_statuses_reason": "Intentionally empty until the resource policy and audited wheel path are frozen and every one of the 1,000 rows is independently verified native OPTIMAL.",
+      "backend": "CLASP exact raw-Euclidean open-orienteering MIP on Gurobi Optimizer",
+      "version": "Gurobi Optimizer 13.0.1 and gurobipy==13.0.1",
+      "source": {
+        "official_documentation": "https://docs.gurobi.com/projects/optimizer/en/current/",
+        "official_package_page": "https://pypi.org/project/gurobipy/13.0.1/",
+        "wheel_filename": "gurobipy-13.0.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "wheel_sha256": "7fc1b5ff46530aee391ab0f616620a1399abea0778b25e374b37f7ed222d5dfb"
+      },
+      "runtime_artifact": {
+        "module": "gurobi/13.0.1",
+        "environment": "/lustre/fswork/projects/rech/vas/uag72kz/clasp/reference_solvers/gurobi_13.0.1_audit/venv",
+        "python": "3.10.8",
+        "platform": "Jean Zay x86_64 Linux",
+        "license_probe": "A four-node formulation solved optimally and a 93-node IID instance produced a strictly feasible incumbent under the Jean Zay token license on 2026-08-14."
+      },
+      "license": "Proprietary Gurobi academic/site license supplied by Jean Zay; execution requires the authorized token service and is not redistributable as open-source software.",
+      "parameters": {
+        "time_limit_seconds": 300,
+        "work_limit": 60.0,
+        "node_limit": 10000,
+        "threads": 1,
+        "seed": 0,
+        "method": 1,
+        "mip_gap": 0.0,
+        "mip_gap_abs": 0.0,
+        "feasibility_tolerance": 1e-9,
+        "integrality_tolerance": 1e-9,
+        "numeric_focus": 3,
+        "output_flag": 1,
+        "log_to_console": 0
+      },
+      "evidence_runner": {
+        "approval": "blocked_pending_frozen_resource_policy_and_all_optimal_audit",
+        "adapter": "gurobi_op_exact_v2",
+        "objective_semantics": "clasp_raw_euclidean_float64_integer_prizes",
+        "reference_quality": "certified_optimum",
+        "seed_parameter": "seed",
+        "accepted_native_statuses": [],
+        "solver_identity": {
+          "backend_name": "gurobi",
+          "native_version": "13.0.1",
+          "artifact_kind": "python_wheel",
+          "artifact_path": "UNRESOLVED_ABSOLUTE_PATH_TO_AUDITED_GUROBIPY_WHEEL",
+          "artifact_sha256": "7fc1b5ff46530aee391ab0f616620a1399abea0778b25e374b37f7ed222d5dfb",
+          "distribution_name": "gurobipy",
+          "module_origin": "UNRESOLVED_ABSOLUTE_GUROBIPY_MODULE_ORIGIN",
+          "installed_distribution_manifest_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_INSTALLED_DISTRIBUTION"
+        }
+      },
+      "candidate_acceptance_condition": "Accept only native Status=GRB.OPTIMAL (numeric 2), SolCount>0, an integral prize incumbent exactly equal to the integral best bound, MIPGap=0, a nonempty retained native log, and an independently replayed route whose raw-Euclidean length is within the exact stored budget and whose recomputed prize equals the incumbent. TIME_LIMIT, WORK_LIMIT, NODE_LIMIT, and every other status abort evidence generation atomically.",
+      "quality_semantics": "A retained row is a solver-certified optimum under the pinned integer-prize, raw-Euclidean model and Gurobi tolerances, strengthened by exact incumbent/bound equality and independent strict replay. There is no best-known fallback lane in this adapter.",
+      "benchmark_semantics": "The model consumes the structured coordinates, integer prizes, and one-decimal frozen route budget directly. It creates a depot-rooted open path ending at a zero-cost dummy sink, uses raw float64 Euclidean arc lengths, excludes disconnected cycles with a single-commodity flow, and strengthens the identical integer feasible set with cumulative resource-ordering indicators and pairwise budget-incompatibility cuts.",
+      "legacy_solver_audit": "The released op-solver serializer duplicates the depot, shifts prizes, drops a node, rounds distances/budget, and its audited heuristic build crashes; it is not used by this backend.",
+      "blockers": [
+        "Freeze the production WorkLimit/NodeLimit/TimeLimit policy after a development-only runtime sweep; do not tune it on confirmation outcomes.",
+        "Resolve and hash the audited gurobipy wheel path in the approved contract.",
+        "The audit note for the existing 93-node development probe records feasible prize 438 and bound 504, but its native log, exact termination code, runtime, work, and node count were not retained. Treat it only as evidence of computational non-closure, not as a runtime datum. Run a preregistered scalability audit before production; if any of the 1,000 rows is not OPTIMAL, keep the all-five-task publication contract blocked rather than exporting an incumbent.",
+        "Run and retain all 1,000 OPTIMAL native logs and strict-verifier replays, then review the status and runtime distributions before approval."
+      ]
+    },
+    "tsp": {
+      "readiness": "RUNNER_READY_HEURISTIC_PRODUCTION_AUDIT_PENDING",
+      "accepted_statuses": [],
+      "accepted_statuses_reason": "Intentionally empty until the raw-distance runner parameters and 1,000-row quality/runtime distribution are frozen and reviewed.",
+      "backend": "CLASP deterministic all-start nearest-neighbor plus raw-distance 2-opt",
+      "version": "clasp_raw_tsp_heuristic version 1",
+      "source": {
+        "implementation": "scripts/run_reference_evidence.py::RawTSPHeuristicBackend",
+        "implementation_path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+        "implementation_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT",
+        "legacy_elkai_wheel_sha256": "b71b5b03286288c2cdb27bb3d18fcf1710e8371125affcfdd91495c2bc4d501b"
+      },
+      "runtime_artifact": {
+        "path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+        "sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT",
+        "platform": "frozen Python source; no external solver binary"
+      },
+      "license": "Project-local research implementation; no redistribution license is declared, so execution is restricted to the authorized research project.",
+      "parameters": {
+        "starts": "all",
+        "max_2opt_passes": 20
+      },
+      "evidence_runner": {
+        "approval": "blocked_pending_frozen_source_identity_and_full_audit",
+        "adapter": "raw_euclidean_tsp_heuristic_v1",
+        "objective_semantics": "clasp_raw_euclidean_float64",
+        "reference_quality": "best_known_heuristic",
+        "seed_parameter": null,
+        "accepted_native_statuses": [],
+        "solver_identity": {
+          "backend_name": "clasp_raw_tsp_heuristic",
+          "native_version": "1",
+          "artifact_kind": "python_source",
+          "artifact_path": "UNRESOLVED_PATH_TO_FROZEN_RUN_REFERENCE_EVIDENCE_PY",
+          "artifact_sha256": "UNRESOLVED_POPULATE_FROM_FROZEN_SOURCE_SNAPSHOT"
+        }
+      },
+      "candidate_acceptance_condition": "Emit HEURISTIC_COMPLETE only after all deterministic starts, bounded 2-opt, Hamiltonian-cycle verification, raw-distance recomputation equal to the recorded incumbent, and retained source/parameter/log identities.",
+      "quality_semantics": "The result is a deterministic heuristic reference. Report gap-to-reference only; a model may legitimately improve it.",
+      "benchmark_semantics": "Search and verification both use the structured instance's raw float64 Euclidean distances.",
+      "legacy_solver_audit": "elkai/LKH remains pinned as audit context but is not used by this raw-distance backend.",
+      "blockers": [
+        "Resolve the backend artifact path/hash from the immutable source snapshot.",
+        "Freeze max_2opt_passes before confirmation and run all 1,000 rows.",
+        "Review quality/runtime distributions and retain gap-to-reference wording."
+      ]
+    }
+  }
+}

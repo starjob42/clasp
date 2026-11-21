@@ -1,0 +1,83 @@
+{
+  "benchmark_id": "clasp-llmcosolver-independent-iid-candidate-v1",
+  "benchmark_tasks": [
+    "tsp",
+    "cvrp",
+    "op",
+    "mis",
+    "jssp"
+  ],
+  "distribution_claim": "Deterministic released-code-compatible interpretation; not a claim of byte-identical reconstruction of the undocumented historical invocation.",
+  "instances_per_task": 1000,
+  "official_source": {
+    "commit": "f6388991d243c0aa91d9ee7e2fa18ed1c9e72477",
+    "files_sha256": {
+      "Envs/CVRPEnv/CVRPEnv.py": "36491447ee6ff1bbec1c911a8f9a0e74620778fe566e708ad970c4ac239baac0",
+      "Envs/CVRPEnv/lkh_solve.py": "fc6bb24f46edaae99a1bb9ed04c5afa4c7f30deae0cb22954d3d4a2beb32da24",
+      "Envs/JSSPEnv/JSSPEnv.py": "310a741749ef355e86e61a3eeeb8cc1004555895c31a5084f4f297fa6c7d1e05",
+      "Envs/MISEnv/MISEnv.py": "d91cd63c4d67603fd7cecc68f9e6a07982df9d8781adf2882a171982b0fdade7",
+      "Envs/OPEnv/OPEnv.py": "b9b24145c393aad9d7a63716bc6f96ddf3cb6a74ebe57e6cb6a10a86636d77e2",
+      "Envs/OPEnv/compass_solve.py": "b631bc61f735a6554cb197064eb4ac9456a40353e06a9cf4cd880fa7087a58b5",
+      "Envs/TSPEnv/TSPEnv.py": "7ef914ef627ae731121e2634394d9f1293dbbdbbae46165ba5c2ad201cf0b87b",
+      "LICENSE": "b141a9ad01cc6e3c9316aa6e50d96a06fc227c6dd87df92b1c213b0abe3b07a6",
+      "requirements.txt": "b8c309502184dbb01f01c3d016c70d5d69d04ce03ec770ae7be720424a9a22b6"
+    },
+    "license_spdx": "MIT",
+    "paper": "https://arxiv.org/abs/2509.16865",
+    "repository": "https://github.com/Summer142857/LLMCoSolver"
+  },
+  "prompt_encoding": {
+    "heuristic_features": "two nearest neighbors for routing, two highest-degree neighbors for MIS, two shortest operations per JSSP job",
+    "numeric_coordinate_encoding": "truncate 1000*x to integer",
+    "version": "clasp-iid-prompt-v1"
+  },
+  "required_runtime_versions": {
+    "networkx": "3.5",
+    "numpy": "2.3.2"
+  },
+  "schema_version": 1,
+  "source_ambiguities": [
+    "The paper describes TSP node counts as random samples over 10..100, while released TSPEnv.py samples with probability proportional to node count. This contract follows the released evaluator data behavior and code, not the prose interpretation.",
+    "The paper says CVRP capacity is the average demand; released code uses int(Triangular(3,6,25) * mean demand). This contract follows released code.",
+    "The released OP generator depends on an unpinned pyCombinatorial nearest-neighbor implementation absent from requirements.txt. This contract freezes an explicit start-0 nearest-neighbor cycle with distance/index tie breaking.",
+    "The released MIS generator calls NetworkX without an explicit per-call seed. This contract passes the task-local Python RNG explicitly and pins NetworkX 3.5.",
+    "Historical evaluation invocation commands and JSSP derived seed provenance were not released; new task-local seeds are frozen below."
+  ],
+  "status": "frozen_candidate_distribution_pending_reference_solver_resolution",
+  "task_distributions": {
+    "cvrp": {
+      "capacity": "int(Triangular(3,6,25) * customer_mean_demand)",
+      "coordinate_distribution": "uniform choice of uniform, GM(2,5), GM(3,10)",
+      "customer_count": "DiscreteUniform[10,100], plus one depot",
+      "customer_demand": "DiscreteUniform[1,10], depot demand 0"
+    },
+    "jssp": {
+      "job_count": "DiscreteUniform[5,20]",
+      "machine_count": "DiscreteUniform[5,20]",
+      "machine_order": "independent random permutation per job",
+      "processing_time": "DiscreteUniform[1,99]"
+    },
+    "mis": {
+      "graph_family": "uniform choice of Erdos-Renyi and Barabasi-Albert",
+      "node_count": "DiscreteUniform[10,100]",
+      "parameters": "ER p~Uniform[0.1,0.4]; BA m~DiscreteUniform[1,4]"
+    },
+    "op": {
+      "coordinate_distribution": "uniform choice of uniform, GM(2,5), GM(3,10)",
+      "node_count": "DiscreteUniform[10,100] including depot",
+      "prize": "DiscreteUniform[1,10], depot prize overwritten to 0",
+      "route_limit": "Uniform[0.5*L_NN,0.7*L_NN] for frozen nearest-neighbor TSP cycle"
+    },
+    "tsp": {
+      "coordinate_distribution": "uniform choice of uniform, GM(2,5), GM(3,10)",
+      "node_count": "P(N=n) proportional to n for n in [10,100] (released-code behavior)"
+    }
+  },
+  "task_seeds": {
+    "cvrp": 2026081402,
+    "jssp": 2026081405,
+    "mis": 2026081404,
+    "op": 2026081403,
+    "tsp": 2026081401
+  }
+}

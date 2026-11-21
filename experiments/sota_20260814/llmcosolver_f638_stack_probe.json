@@ -1,0 +1,38 @@
+{
+  "conclusion": {
+    "disable_adapter_reference_is_fixed": false,
+    "disable_adapter_reference_is_foundation_base": false,
+    "lora_only_checkpoint_persists_live_bias": false,
+    "reference_includes_live_trainable_qkv_bias": true
+  },
+  "observations": {
+    "disabled_logits_changed_after_bias_mutation": true,
+    "disabled_logits_max_abs_change": 0.0004789084196090698,
+    "enabled_disabled_max_abs_difference": 0.0,
+    "enabled_equals_disabled_with_zero_initialized_lora_b": true,
+    "mutated_bias_name": "base_model.model.model.layers.0.self_attn.q_proj.base_layer.bias",
+    "saved_bias_tensor_count": 0,
+    "saved_bias_tensor_names": [],
+    "saved_tensor_count": 14,
+    "trainable_bias_count": 3,
+    "trainable_bias_names": [
+      "base_model.model.model.layers.0.self_attn.q_proj.base_layer.bias",
+      "base_model.model.model.layers.0.self_attn.k_proj.base_layer.bias",
+      "base_model.model.model.layers.0.self_attn.v_proj.base_layer.bias"
+    ],
+    "trainable_parameter_count": 17
+  },
+  "probe": "llmcosolver_f638_lora_only_disable_adapter",
+  "receipt_sha256": "a429ee5c1e1ee692d15da7f2b09d867f1322577c85612f2f3ff0d406dc2bbbf6",
+  "runtime": {
+    "packages": {
+      "peft": "0.17.0",
+      "torch": "2.7.1",
+      "transformers": "4.50.3",
+      "trl": "0.15.2"
+    },
+    "platform": "Linux-6.1.0-51-amd64-x86_64-with-glibc2.36",
+    "python": "3.11.2"
+  },
+  "schema_version": 1
+}

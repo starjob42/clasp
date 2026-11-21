@@ -524,6 +524,10 @@ canonical subset enumeration and credit, failure@`K` control, trainer-level
 correctness, and legacy frontier-CDF helpers. These are the primary correctness
 gate for any change to reward or advantage code.
 
+Modules that exercise frozen campaign bundles or private research trees are
+skipped automatically when those artifacts are absent (e.g. in a fresh public
+clone); pass `--run-unpublished-tests` to run them anyway.
+
 ## Checkpoints
 
 `checkpoints/<variant>/` holds the latest checkpoint per variant, with a `MANIFEST.md`

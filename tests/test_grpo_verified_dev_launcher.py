@@ -51,15 +51,41 @@ class VerifiedLauncherTests(unittest.TestCase):
                 self.assertNotEqual(self.run_header(**change).returncode, 0)
         self.assertNotEqual(self.run_header("clasp_grpo_anchor_v3").returncode, 0)
 
+    # Representative runtime values used to resolve the launcher argv arrays.
+    # The verified launcher hard-codes the canonical default profile, so the
+    # environment pins the same profile for both sides.
+    ARRAY_ENV = {
+        "TASK": "cvrp", "SFT_CHECKPOINT": "/tmp/sft", "DATA_ROOT": "/tmp/data",
+        "OUTPUT_DIR": "/tmp/out/run", "TRAIN_SEED": "43", "MAX_STEPS": "100",
+        "ROLLOUT_BATCH_SIZE": "9", "SAVE_STEPS": "50", "SAVE_TOTAL_LIMIT": "1",
+        "PD_COMPONENT_PROFILE": "co_feasibility_lock_all", "METHOD": "grpo_z",
+    }
+
+    def _bash_arrays(self, text, *names):
+        """Evaluate launcher argv arrays in bash and return their resolved elements."""
+        parts = []
+        for name in names:
+            guarded = 'if [[ "${METHOD}" == "grpo_z" ]]; then\n    ' + name + "=(\n"
+            if guarded in text:
+                block = text.split(guarded, 1)[1].split("\n    )", 1)[0]
+            else:
+                block = text.split(name + "=(\n", 1)[1].split("\n)", 1)[0]
+            parts.append(f"{name}=({block})")
+        code = "set -u\n" + "\n".join(parts) + "\n" + " ".join(
+            f'printf "%s\\n" "${{{name}[@]}}"' for name in names)
+        result = subprocess.run(["bash", "-c", code], env={**os.environ, **self.ARRAY_ENV},
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout.split()
+
     def test_common_optimizer_rollout_and_scalarization_arguments_match_baseline(self):
         old, new = OLD.read_text(), NEW.read_text()
         for name in ("COMMON_ARGS", "PD_ARGS"):
-            a = old.split(name + "=(\n", 1)[1].split("\n)", 1)[0]
-            b = new.split(name + "=(\n", 1)[1].split("\n)", 1)[0]
-            self.assertEqual(a, b)
-        a = old.split('if [[ "${METHOD}" == "grpo_z" ]]; then\n    METHOD_ARGS=(\n', 1)[1].split("\n    )", 1)[0]
-        b = new.split("METHOD_ARGS=(\n", 1)[1].split("\n)", 1)[0]
-        self.assertEqual(" ".join(a.split()), " ".join(b.split()))
+            self.assertEqual(self._bash_arrays(old, name), self._bash_arrays(new, name))
+        self.assertEqual(
+            self._bash_arrays(old, "PD_ARGS", "METHOD_ARGS")[len(self._bash_arrays(old, "PD_ARGS")):],
+            self._bash_arrays(new, "PD_ARGS", "METHOD_ARGS")[len(self._bash_arrays(new, "PD_ARGS")):],
+        )
 
     def test_short_distributed_diagnostic_requires_explicit_mode(self):
         self.assertNotEqual(self.run_header(DEV_MAX_STEPS="5", DEV_SAVE_STEPS="5").returncode, 0)

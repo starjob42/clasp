@@ -126,6 +126,7 @@ def test_active_ablations_add_only_declared_credit_and_keep_anchor_tracker(tmp_p
 
 
 def collection_fixture(monkeypatch, *, change=None, rank=0):
+    seal_reward_environment()
     trainer = object.__new__(fq.FeasibleQualityGRPOTrainer)
     trainer.accelerator = SimpleNamespace(num_processes=2, process_index=rank)
     trainer.num_generations = 9

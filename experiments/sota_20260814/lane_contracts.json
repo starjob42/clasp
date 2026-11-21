@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "status": "frozen_policy",
+  "frozen_at_utc": "2026-08-14T00:00:00Z",
+  "native_contract": {
+    "prompting_exact": {
+      "no_reason": true,
+      "prompt_template": "alpaca_no_reason",
+      "prompt_style_stage_default": "alpaca",
+      "prompt_style_requested": "auto",
+      "prompt_style_resolved": "alpaca",
+      "strict_chat_prompt": false,
+      "op_strict_budget_hint": false,
+      "op_prompt_budget_scale": 1.0,
+      "op_prompt_budget_scale_min_size": 0,
+      "op_prompt_budget_scale_max_size": 0,
+      "op_prompt_budget_scale_size_ranges": [],
+      "clasp_tsp_prompt_knn": "0",
+      "clasp_tsp_prompt_knn_distances": "0",
+      "clasp_tsp_input_order": "",
+      "clasp_tsp_relabel_order": "",
+      "clasp_tsp_route_canonicalize": "",
+      "clasp_tsp_route_only_output": "0",
+      "clasp_tsp_label_tta_schedule": "",
+      "clasp_mis_relabel_order": "",
+      "clasp_mis_jiang_response_output": "1",
+      "clasp_mis_prompt_node_degrees": "0",
+      "clasp_mis_prompt_low_degree_k": "32"
+    },
+    "generation_exact": {
+      "seed": 271828,
+      "seed_policy": "per_example_sha256_v1",
+      "dtype": "float16",
+      "max_new_tokens": 3000,
+      "max_prompt_length": 29768,
+      "do_sample": true,
+      "temperature": 0.7,
+      "temperature_schedule": [],
+      "top_p": 0.9,
+      "top_p_schedule": [],
+      "op_size_band_top_p_schedule": [],
+      "op_size_band_top_p_min_size": 0,
+      "op_size_band_top_p_max_size": 0,
+      "top_k": 50,
+      "repetition_penalty": 1.0,
+      "model_context_window": 32768
+    },
+    "confirmation_selection_exact": {
+      "evaluation_purpose": "confirmation",
+      "split": "eval",
+      "max_eval_samples_per_task": 0,
+      "eval_start_index": 0,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false
+    }
+  },
+  "lanes": {
+    "raw_n8": {
+      "artifact_type": "native",
+      "publication_status": "supported",
+      "claim_eligible": true,
+      "required_for_confirmation": true,
+      "source_candidate_budget": 8,
+      "reported_candidate_budget": 8,
+      "postprocessing": "none"
+    },
+    "repair_n8": {
+      "artifact_type": "repair",
+      "publication_status": "supported",
+      "claim_eligible": true,
+      "required_for_confirmation": true,
+      "source_candidate_budget": 8,
+      "reported_candidate_budget": 8,
+      "repair_contract": {
+        "system_lane": "deterministic_repair_and_improve_hybrid",
+        "system_name": "clasp_repair_v1",
+        "schema_version": 1,
+        "algorithm_version": "clasp_deterministic_repair_v1",
+        "repair_config_exact": {
+          "schema_version": 1,
+          "algorithm_version": "clasp_deterministic_repair_v1",
+          "tsp_max_passes": 12,
+          "cvrp_max_passes": 8,
+          "op_max_passes": 8,
+          "jssp_max_passes": 2,
+          "selection_policy": "strict_feasibility_then_task_objective",
+          "ground_truth_access_policy": "verifier_only"
+        },
+        "repair_implementation": {
+          "algorithm_version": "clasp_deterministic_repair_v1",
+          "manifest_sha256": "d8377b9752f70fcf0f2e01d6b0fdc0a38d4abd7b2260c552478c28a8720b51f9",
+          "files": [
+            {
+              "path": "entrypoints/evaluate.py",
+              "size": 275552,
+              "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+            },
+            {
+              "path": "entrypoints/repair.py",
+              "size": 55418,
+              "sha256": "ced35e4f10097fc253655ba8c1126e834174fdf7f9520ea31bd2ee883e1b4bcf"
+            },
+            {
+              "path": "rewards/co_tasks.py",
+              "size": 110448,
+              "sha256": "da72b7826e3cdb70c4092c69fc5af57c46048b38931479f6559988acac454d32"
+            }
+          ]
+        }
+      },
+      "postprocessing": "content-bound deterministic repair"
+    },
+    "repair_adaptive_n8_64": {
+      "artifact_type": "repair",
+      "publication_status": "unsupported_future_no_prespecified_producer",
+      "claim_eligible": false,
+      "required_for_confirmation": false,
+      "producer_contract": null,
+      "source_candidate_budget": {
+        "minimum": 8,
+        "maximum": 64,
+        "generation_batch_size": 8
+      },
+      "reported_candidate_budget": {
+        "minimum": 8,
+        "maximum": 64
+      },
+      "adaptive_policy": "clasp_prespecified_adaptive_repair_n8_64_v1",
+      "repair_contract": {
+        "system_lane": "deterministic_repair_and_improve_hybrid",
+        "system_name": "clasp_repair_v1",
+        "schema_version": 1,
+        "algorithm_version": "clasp_deterministic_repair_v1",
+        "repair_config_exact": {
+          "schema_version": 1,
+          "algorithm_version": "clasp_deterministic_repair_v1",
+          "tsp_max_passes": 12,
+          "cvrp_max_passes": 8,
+          "op_max_passes": 8,
+          "jssp_max_passes": 2,
+          "selection_policy": "strict_feasibility_then_task_objective",
+          "ground_truth_access_policy": "verifier_only"
+        },
+        "repair_implementation": {
+          "algorithm_version": "clasp_deterministic_repair_v1",
+          "manifest_sha256": "d8377b9752f70fcf0f2e01d6b0fdc0a38d4abd7b2260c552478c28a8720b51f9",
+          "files": [
+            {
+              "path": "entrypoints/evaluate.py",
+              "size": 275552,
+              "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+            },
+            {
+              "path": "entrypoints/repair.py",
+              "size": 55418,
+              "sha256": "ced35e4f10097fc253655ba8c1126e834174fdf7f9520ea31bd2ee883e1b4bcf"
+            },
+            {
+              "path": "rewards/co_tasks.py",
+              "size": 110448,
+              "sha256": "da72b7826e3cdb70c4092c69fc5af57c46048b38931479f6559988acac454d32"
+            }
+          ]
+        }
+      },
+      "postprocessing": "future-only: requires a prespecified adaptive producer and per-instance adaptive-compute receipt"
+    }
+  },
+  "registry_sha256": "d1477c982d631c6dd269a4833f24d1b31f7aecdcd580709d893e8d098f541e51"
+}

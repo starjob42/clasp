@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clasp-co"
+version = "1.0.0"
+description = "CLASP: Constrained Lagrangian Anchored Saddle-Point GRPO for mixed combinatorial-optimization LLM training."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "CLASP authors" }]
+keywords = ["grpo", "reinforcement-learning", "combinatorial-optimization", "llm"]
+
+dependencies = [
+  "accelerate>=1.10,<2",
+  "datasets>=4.3,<5",
+  "numpy>=2.0",
+  "peft>=0.18,<0.19",
+  "safetensors>=0.4",
+  "torch>=2.5",
+  # The trainers override TRL internals and are verified against the Jean Zay
+  # stack (Transformers 4.57.x / TRL 0.24.x).  Crossing either minor version
+  # requires an explicit compatibility audit rather than an accidental upgrade.
+  "transformers>=4.57,<4.58",
+  "trl>=0.24,<0.25",
+  "wandb>=0.23",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+clasp-sft = "clasp.entrypoints.train_sft:main"
+clasp-sft-jiang-f638 = "clasp.entrypoints.train_sft_jiang_f638:main"
+clasp-grpo = "clasp.entrypoints.train_grpo:main"
+clasp-grpo-standard = "clasp.entrypoints.train_grpo_standard:main"
+clasp-rloo-sft-anchor = "clasp.entrypoints.train_sft_anchor_pilot:main"
+clasp-foarl-f638-corrected = "clasp.entrypoints.train_foarl_f638_corrected:main"
+clasp-foarl-f638-campaign = "clasp.entrypoints.train_foarl_f638_campaign:main"
+clasp-pipeline = "clasp.entrypoints.train_pipeline:main"
+clasp-eval = "clasp.entrypoints.evaluate:main"
+clasp-rescore = "clasp.entrypoints.rescore:main"
+clasp-repair = "clasp.entrypoints.repair:main"
+clasp-audit-data = "clasp.entrypoints.audit_data:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["clasp*"]
+
+[tool.setuptools.package-data]
+clasp = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Lets `pytest` work straight from a fresh clone, without installing the package first.
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# Matches the upstream research repo: pycodestyle errors + pyflakes, plus import
+# sorting. Broader style rules are deliberately not enabled, because the reward
+# and advantage modules are ported byte-faithful from the experiment tree.
+select = ["E4", "E7", "E9", "F", "I"]

@@ -1,0 +1,66 @@
+==============================================================
+ CLASP A100 eval
+   label      : v12mis_s500
+   checkpoint : /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/train/mis/seg400_500/checkpoints/checkpoint-500
+   task       : mis   (array id none)
+   purpose    : development
+   slice      : eval[0:100]
+   protocol   : float16 BoN=8 T=0.7 top_p=0.9
+                top_k=50 rep=1.0 max_new=3000
+                max_prompt=0 seed=271828
+   inference  : /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis
+   job        : 390588  node jean-zay-iam12
+NVIDIA A100-SXM4-80GB, 81920 MiB
+==============================================================
+[Eval] Resolving checkpoint/model path...
+[Eval] Resolving data root candidates...
+[Eval] Stage: sft (sft_only)
+[Eval] Resolved model path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/train/mis/seg400_500/checkpoints/checkpoint-500
+[Eval] Checkpoint label: seg400_500-checkpoint-500
+[Eval] Resolved run directory: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/train/mis/seg400_500
+[Eval] Data root: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval
+[Eval] Loading model and tokenizer...
+[Eval] Prompt template: jiang_f638_no_reason
+[Eval] Prompt style (stage/default -> requested -> resolved): jiang_f638 -> jiang_f638 -> jiang_f638
+[Eval] Tokenizer source: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/train/mis/seg400_500/checkpoints/checkpoint-500
+[Eval] Model and tokenizer loaded.
+[Eval] Fingerprinting model, data, prompt, decoder, verifier, and code...
+[Eval] Experiment fingerprint: b98c12e1406135aa3d999a29c5fe6744b548eeb8560e493de3df790cddd4c729
+[Eval] Protocol fingerprint: 72fe491dbb32d8ab6afb5153159157f278c61091fcb41e5482dd563fa5ecc9cb
+[Eval] Evaluation purpose: development
+[Eval] Inference root: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis
+[Eval] Results directory: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500
+[Eval] Mutable best-run selection: disabled
+[Eval] Generation config: max_new_tokens=3000, max_prompt_length=29768, num_return_sequences=8, generation_batch_size=8, do_sample=True, temperature=0.7, top_p=0.9, top_k=50
+[Eval] Sampling seed: 271828 (deterministic per-example derivation)
+[Eval] Run config path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_config__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.json
+[Eval] Summary path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_summary__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.json
+[Eval] Details path (streaming): /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_details__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.jsonl
+[Eval] Loading dataset for task=mis, split=eval...
+[Eval] mis: source=/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/mis/eval/test.json, available_examples=500, requested_examples=100, loaded_examples=100
+[Eval] mis: size_bucket=all, bucket_examples_before_cap=500, all_size={'known_examples': 500, 'unknown_examples': 0, 'min': 10, 'median': 57.0, 'mean': 55.972, 'max': 100}, selected_size={'known_examples': 100, 'unknown_examples': 0, 'min': 11, 'median': 64.5, 'mean': 59.68, 'max': 100}
+[Eval] Finished task=mis. Aggregating results...
+[Eval] CSV written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/mis__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.csv
+[Eval][Summary] task=mis available_examples=500 requested_examples=100 loaded_examples=100 candidate_feasibility_rate=0.867500 best_of_n_instance_feasibility_rate=0.960000 mean_best_gap=0.024282 std_best_gap=0.047348 mean_feasible_gap_std_in_batch=0.018502 mean_time_sec=7.451775 std_time_sec=3.751870
+[Eval] Best-run mutation disabled; use the frozen development selector.
+[Eval] Summary written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_summary__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.json
+[Eval] Run config written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_config__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.json
+[Eval] Details written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v13_continuous_budget_seed43_20261117/eval/inference_intermediate_20261118/v12mis_s500/mis/sft/seg400_500-checkpoint-500/run_details__sft_only_seg400_500-checkpoint-500_eval_k8_v12mis_s500_mis_eval0_n100_bon8_fpb98c12e14061.jsonl
+
+================================================================================
+[Eval][FinalSummary]
+
+MIS
+available_examples: 500
+requested_examples: 100
+loaded_examples: 100
+mean_best_gap: 0.024282 +- 0.047348
+median_best_gap: 0.000000
+candidate_feasibility_rate: 0.867500
+best_of_n_instance_feasibility_rate: 0.960000
+mean_feasible_gap_std_in_batch: 0.018502 +- 0.025866
+mean_time_sec: 7.451775 +- 3.751870
+mean_time_sec_per_candidate: 0.931472 +- 0.468984
+================================================================================
+
+EVAL_EXIT=0 label=v12mis_s500 task=mis

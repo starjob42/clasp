@@ -1,0 +1,66 @@
+==============================================================
+ CLASP A100 eval
+   label      : v14op_s125
+   checkpoint : /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/train/op/seg0_125/checkpoints/checkpoint-125
+   task       : op   (array id none)
+   purpose    : development
+   slice      : eval[0:100]
+   protocol   : float16 BoN=8 T=0.7 top_p=0.9
+                top_k=50 rep=1.0 max_new=3000
+                max_prompt=0 seed=271828
+   inference  : /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op
+   job        : 390580  node jean-zay-iam19
+NVIDIA A100-SXM4-80GB, 81920 MiB
+==============================================================
+[Eval] Resolving checkpoint/model path...
+[Eval] Resolving data root candidates...
+[Eval] Stage: sft (sft_only)
+[Eval] Resolved model path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/train/op/seg0_125/checkpoints/checkpoint-125
+[Eval] Checkpoint label: seg0_125-checkpoint-125
+[Eval] Resolved run directory: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/train/op/seg0_125
+[Eval] Data root: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval
+[Eval] Loading model and tokenizer...
+[Eval] Prompt template: jiang_f638_no_reason
+[Eval] Prompt style (stage/default -> requested -> resolved): jiang_f638 -> jiang_f638 -> jiang_f638
+[Eval] Tokenizer source: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/train/op/seg0_125/checkpoints/checkpoint-125
+[Eval] Model and tokenizer loaded.
+[Eval] Fingerprinting model, data, prompt, decoder, verifier, and code...
+[Eval] Experiment fingerprint: 4301cf640bef2332acee5741a30f3026c0a0716cec4ac90332898dd630506d96
+[Eval] Protocol fingerprint: 19fc4a30e370085cc32ac223232d7570fbdf4deb727a7ffb0a6aa734015c84b4
+[Eval] Evaluation purpose: development
+[Eval] Inference root: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op
+[Eval] Results directory: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125
+[Eval] Mutable best-run selection: disabled
+[Eval] Generation config: max_new_tokens=3000, max_prompt_length=29768, num_return_sequences=8, generation_batch_size=8, do_sample=True, temperature=0.7, top_p=0.9, top_k=50
+[Eval] Sampling seed: 271828 (deterministic per-example derivation)
+[Eval] Run config path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_config__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.json
+[Eval] Summary path: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_summary__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.json
+[Eval] Details path (streaming): /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_details__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.jsonl
+[Eval] Loading dataset for task=op, split=eval...
+[Eval] op: source=/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/op/eval/test.json, available_examples=500, requested_examples=100, loaded_examples=100
+[Eval] op: size_bucket=all, bucket_examples_before_cap=500, all_size={'known_examples': 500, 'unknown_examples': 0, 'min': 10, 'median': 55.0, 'mean': 54.558, 'max': 100}, selected_size={'known_examples': 100, 'unknown_examples': 0, 'min': 10, 'median': 54.0, 'mean': 54.97, 'max': 100}
+[Eval] Finished task=op. Aggregating results...
+[Eval] CSV written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/op__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.csv
+[Eval][Summary] task=op available_examples=500 requested_examples=100 loaded_examples=100 candidate_feasibility_rate=0.421250 best_of_n_instance_feasibility_rate=0.870000 mean_best_gap=0.013010 std_best_gap=0.024111 mean_feasible_gap_std_in_batch=0.018708 mean_time_sec=11.659064 std_time_sec=5.964439
+[Eval] Best-run mutation disabled; use the frozen development selector.
+[Eval] Summary written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_summary__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.json
+[Eval] Run config written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_config__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.json
+[Eval] Details written to: /lustre/fsn1/projects/rech/vas/uag72kz/clasp_v14_op_margin_seed43_20261118/eval/inference_intermediate_20261118/v14op_s125/op/sft/seg0_125-checkpoint-125/run_details__sft_only_seg0_125-checkpoint-125_eval_k8_v14op_s125_op_eval0_n100_bon8_fp4301cf640bef.jsonl
+
+================================================================================
+[Eval][FinalSummary]
+
+OP
+available_examples: 500
+requested_examples: 100
+loaded_examples: 100
+mean_best_gap: 0.013010 +- 0.024111
+median_best_gap: 0.000000
+candidate_feasibility_rate: 0.421250
+best_of_n_instance_feasibility_rate: 0.870000
+mean_feasible_gap_std_in_batch: 0.018708 +- 0.020968
+mean_time_sec: 11.659064 +- 5.964439
+mean_time_sec_per_candidate: 1.457383 +- 0.745555
+================================================================================
+
+EVAL_EXIT=0 label=v14op_s125 task=op

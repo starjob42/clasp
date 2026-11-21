@@ -1,0 +1,13 @@
+[console_scripts]
+clasp-audit-data = clasp.entrypoints.audit_data:main
+clasp-eval = clasp.entrypoints.evaluate:main
+clasp-foarl-f638-campaign = clasp.entrypoints.train_foarl_f638_campaign:main
+clasp-foarl-f638-corrected = clasp.entrypoints.train_foarl_f638_corrected:main
+clasp-grpo = clasp.entrypoints.train_grpo:main
+clasp-grpo-standard = clasp.entrypoints.train_grpo_standard:main
+clasp-pipeline = clasp.entrypoints.train_pipeline:main
+clasp-repair = clasp.entrypoints.repair:main
+clasp-rescore = clasp.entrypoints.rescore:main
+clasp-rloo-sft-anchor = clasp.entrypoints.train_sft_anchor_pilot:main
+clasp-sft = clasp.entrypoints.train_sft:main
+clasp-sft-jiang-f638 = clasp.entrypoints.train_sft_jiang_f638:main

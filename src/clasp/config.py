@@ -606,12 +606,14 @@ def build_grpo_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--clasp_bon_success_credit",
         type=str,
-        choices=("dense_rank", "exact_loo"),
+        choices=("dense_rank", "exact_loo", "max_loo", "best8_from9"),
         default="dense_rank",
         help=(
             "Successful-group BoN credit estimator. dense_rank is the tie-safe, "
             "variance-reduced lexicographic default; exact_loo preserves the exact "
-            "best-of-K leave-one-out estimator as an ablation."
+            "best-of-K leave-one-out estimator; max_loo uses the best-other-sample "
+            "baseline aligned with fixed best-of-K deployment; best8_from9 targets "
+            "the expected best-of-eight deployment metric from nine on-policy draws."
         ),
     )
     parser.add_argument(

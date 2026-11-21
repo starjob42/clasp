@@ -11,11 +11,14 @@
 # Required environment:
 #   DEV_TASK, DEV_SFT_CHECKPOINT, DEV_OUTPUT_DIR, DEV_PROJECT_ROOT,
 #   DEV_SEALED_ENV, DEV_DATA_ROOT
-# Optional: DEV_SEED (42), DEV_MAX_STEPS (2), DEV_SAVE_STEPS (1),
-#   DEV_SAVE_TOTAL_LIMIT (DEV_MAX_STEPS), DEV_METHOD (clasp), DEV_ESTIMATOR_ARM
-#   DEV_RESUME_CHECKPOINT (unset).  When set, it must be the same certified
-#   checkpoint as DEV_SFT_CHECKPOINT and carries complete optimizer/controller
-#   state from an earlier, shorter development horizon.
+# Optional: DEV_SEED (42), DEV_MAX_STEPS/DEV_FINAL_MAX_STEPS (2; the final
+#   scheduler horizon), DEV_STOP_STEP (DEV_MAX_STEPS; the clean chunk stop),
+#   DEV_SAVE_STEPS (1), DEV_SAVE_TOTAL_LIMIT (DEV_MAX_STEPS), DEV_METHOD
+#   (clasp), DEV_ESTIMATOR_ARM, DEV_RESUME_CHECKPOINT (unset).  When set, resume
+#   must be the same certified checkpoint as DEV_SFT_CHECKPOINT and carries
+#   complete optimizer/controller state from an earlier, shorter horizon.
+#   Chained runs keep max_steps at the final horizon and set GRPO_STOP_AT_GLOBAL_STEP
+#   to the chunk boundary, so the linear LR schedule never resets at a segment.
 #   token_a0_control (default), sequence_a0, sequence_a05, sequence_a1,
 #   sequence_a0_dualrec1, sequence_a05_dualrec1, sequence_a1_dualrec1
 # Showdown method aliases: grpo_z, clasp_sequence_a05, clasp_strong_v1,
@@ -48,7 +51,9 @@ PROJECT_ROOT="$(readlink -f "${DEV_PROJECT_ROOT:?DEV_PROJECT_ROOT is required}")
 SEALED_ENV="$(readlink -f "${DEV_SEALED_ENV:?DEV_SEALED_ENV is required}")"
 DATA_ROOT="$(readlink -f "${DEV_DATA_ROOT:?DEV_DATA_ROOT is required}")"
 TRAIN_SEED="${DEV_SEED:-42}"
-MAX_STEPS="${DEV_MAX_STEPS:-2}"
+FINAL_MAX_STEPS="${DEV_FINAL_MAX_STEPS:-${DEV_MAX_STEPS:-2}}"
+MAX_STEPS="${FINAL_MAX_STEPS}"
+STOP_STEP="${DEV_STOP_STEP:-${FINAL_MAX_STEPS}}"
 SAVE_STEPS="${DEV_SAVE_STEPS:-1}"
 SAVE_TOTAL_LIMIT="${DEV_SAVE_TOTAL_LIMIT:-${MAX_STEPS}}"
 ESTIMATOR_ARM="${DEV_ESTIMATOR_ARM:-token_a0_control}"
@@ -62,10 +67,52 @@ case "${GROUP_STD_CORRECTION}" in
     *) echo "[CLASPDevError] DEV_GROUP_STD_CORRECTION must be 0 or 1" >&2; exit 2 ;;
 esac
 CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+OBJECTIVE_QUALITY_MODE="exp"
+OBJECTIVE_QUALITY_MAX="${OBJECTIVE_QUALITY_MAX:-4.0}"
+FEASIBLE_ONLY_ANCHOR="0"
 RESUME_CHECKPOINT=""
 if [[ -n "${DEV_RESUME_CHECKPOINT:-}" ]]; then
     RESUME_CHECKPOINT="$(readlink -f "${DEV_RESUME_CHECKPOINT}")"
 fi
+
+# Default-off quality auxiliaries. Arms that do not override these preserve the
+# historical v5 behavior exactly.
+BON_TARGET_FAILURE_RATE="0.005"
+BON_DUAL_EMA_BETA="0.9"
+BON_LAMBDA_INIT="0.0"
+BON_LAMBDA_MAX="100.0"
+PAIRWISE_LOSS_WEIGHT="0.0"
+MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+MULTI_ELITE_IMITATION_FRACTION="0.25"
+MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.0"
+MULTI_ELITE_IMITATION_TEMPERATURE="1.0"
+MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+HARD_GROUP_WEIGHT_SCALE="0.0"
+MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.0"
+MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="512"
+MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+MIS_SWAP_DISTILL_LOSS_WEIGHT="0.0"
+MIS_SWAP_DISTILL_MAX_TOKENS="1024"
+MIS_SWAP_DISTILL_MAX_PASSES="2"
+MIS_SWAP_DISTILL_MIN_GAIN="0.0"
+CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="0.0"
+CVRP_LOCAL_SEARCH_DISTILL_MAX_TOKENS="768"
+CVRP_LOCAL_SEARCH_DISTILL_MAX_PASSES="2"
+CVRP_LOCAL_SEARCH_DISTILL_MIN_GAIN="0.0"
+# Dense/BON estimator scales.  The exact-canonical arms keep the historical
+# values by default; the non-exact v8 arm tunes these directly.
+BON_DENSE_QUALITY_SCALE="1.0"
+BON_DENSE_FEASIBILITY_SCALE="1.0"
+BON_DENSE_VIOLATION_MIX="0.5"
+BON_RECOVERY_SCALE="0.0"
+BON_SUCCESS_CREDIT="dense_rank"
+# The lock profile keeps the historical training feasibility gate identical to
+# evaluation. OP margin arms opt into a stricter training-only profile so a
+# route that is merely close to the budget is not credited as safely feasible.
+PD_COMPONENT_PROFILE="co_feasibility_lock_all"
+OP_LENGTH_MARGIN_RATIO="0.0"
 
 case "${METHOD}" in
 grpo_z)
@@ -202,6 +249,504 @@ clasp_grpo_anchor_v4)
     FEASIBILITY_GATED="1"
     POLICY_CREDIT_FORMULA="group_z_feasible_objective_plus_normmatched05_k8_quality_raw_constraint_candidate_feas05_v4"
     ;;
+clasp_v5)
+    ESTIMATOR_ARM="grpo_anchor1_expcont_feasibleonly_denseq05_b9_k8_v5"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="1"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.05"
+    CANONICAL_RECOVERY_SCALE="1.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="1.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.5"
+    DENSE_QUALITY_SCALE="0.5"
+    DENSE_FEASIBILITY_SCALE="0.5"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="exp_continuation"
+    FEASIBLE_ONLY_ANCHOR="1"
+    POLICY_CREDIT_FORMULA="feasible_only_quality_anchor_expcontinuation_reward_denseq05_k8_v5"
+    ;;
+clasp_v6)
+    # v6: keep v5's feasible-only exact/anchor credit, remove the dense
+    # feasibility term that rewards any feasible addition, raise dense quality,
+    # and add two feasible-by-construction quality teachers:
+    #   * MIS maximalization distillation (primary): greedily extend a feasible
+    #     independent set to maximality, which is always feasible and >= size.
+    #   * multi-elite self-imitation (secondary): top-feasible completions.
+    ESTIMATOR_ARM="grpo_anchor1_expcont_feasibleonly_denseq15_maxdistill10_elite05_b9_k8_v6"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="1"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.05"
+    CANONICAL_RECOVERY_SCALE="1.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="1.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="1.0"
+    DENSE_QUALITY_SCALE="1.5"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="exp_continuation"
+    FEASIBLE_ONLY_ANCHOR="1"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.05"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    POLICY_CREDIT_FORMULA="feasible_only_quality_anchor_expcontinuation_denseq15_maxdistill10_elite05_k8_v6"
+    ;;
+clasp_v7)
+    # v7: exact-CLASP-compatible reward shaping only.  The exact set-credit
+    # guard forbids auxiliary losses, so the v6 maximalization/multi-elite
+    # teachers are disabled.  Instead, use the FOARL-inverse quality curve
+    # (more credit at large gaps) and restore a dense feasibility pressure
+    # halfway between v5 (0.5) and v6 (0.0).
+    ESTIMATOR_ARM="grpo_anchor1_foarlinv_feasibleonly_denseq15_feas25_b9_k8_v7"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="1"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.05"
+    CANONICAL_RECOVERY_SCALE="1.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="1.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="1.0"
+    DENSE_QUALITY_SCALE="1.5"
+    DENSE_FEASIBILITY_SCALE="0.25"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="1"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="feasible_only_quality_anchor_foarlinverse_denseq15_feas25_k8_v7"
+    ;;
+clasp_v8)
+    # v8 (recipe B): leave exact set credit off so the feasible-by-construction
+    # quality teachers are permitted.  The estimator is the dense/BON path
+    # (CANONICAL_SET=0), with a stronger feasible-quality rank credit, a
+    # reduced feasibility term, and a nonzero all-infeasible recovery signal.
+    # The teacher is MIS maximalization distillation (greedily extend a
+    # feasible independent set, always feasible and larger).  This targets the
+    # v7 failure mode: v7 matched FOARL on all shared data_eval instances but
+    # did not improve any best feasible objective.
+    #
+    # Multi-elite self-imitation is intentionally OFF in this arm.  Its
+    # group-complete-microbatch guard requires
+    # `per_device_train_batch_size % K == 0` and `steps_per_generation == 1`;
+    # the pinned contract (per_device=3, grad_accum=3, generation_batch=36,
+    # K=9) resolves to steps_per_generation=3, so enabling it fails at trainer
+    # init (Slurm 134195).  Dropping it preserves the contract exactly and
+    # avoids a 3x per-device micro-batch that would risk OOM.  A follow-up arm
+    # can test the multi-elite teacher under per_device=9/grad_accum=1.
+    ESTIMATOR_ARM="bon_dense_foarlinv_maxdistill10_b9_k8_v8"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.05"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_foarlinverse_maxdistill10_k8_v8"
+    ;;
+clasp_v9)
+    # v9 (recipe C): isolate the feasibility-controller fix. v8's OP gap was
+    # better but not significantly so, while BoN feasibility fell from 96% to
+    # 80%; OP-v8 ended at lambda 0.71 with failure EMA 0.075. Keep v8's dense
+    # rank quality credit unchanged, but tighten the EMA/lr and set a realistic
+    # 2% failure target. This is the control arm for the credit change.
+    ESTIMATOR_ARM="bon_dense_foarlinv_maxdistill10_b9_k8_v9"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.02"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_foarlinverse_maxdistill10_k8_v9_controller"
+    ;;
+clasp_v10)
+    # v10 (recipe D): v9 controller plus deployment-aligned success credit.
+    # Training draws nine responses but evaluation uses best-of-eight; the
+    # best8_from9 estimator credits the unique top feasible candidate by
+    # 8*margin and every other response by -margin instead of rewarding every
+    # merely-feasible completion. Use this where top-quality ties are rare
+    # (CVRP/OP), or as the follow-up to v9 where the controller preserves
+    # feasibility but the dense-rank gap remains too large. MIS training is
+    # often saturated (best-quality tie rate 1.0), so best8 alone is not a MIS
+    # fix; MIS needs a stronger teacher or harder training data.
+    ESTIMATOR_ARM="bon_best8_foarlinv_maxdistill10_b9_k8_v10"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.02"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="best8_from9"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_best8_from9_foarlinverse_maxdistill10_k8_v10"
+    ;;
+clasp_v11_cvrp)
+    # v11-CVRP: v9's stronger controller plus a feasible-by-construction CVRP
+    # local-search teacher. The teacher applies capacity-preserving 2-opt,
+    # relocation, and exchange moves to the policy's own feasible completions
+    # and distills the strictly shorter route. It is training-only: evaluation
+    # inference is unchanged. Keep dense_rank here so the teacher's effect is
+    # isolated from the best8 credit change.
+    ESTIMATOR_ARM="bon_cvrpls_foarlinv_maxdistill10_b9_k8_v11_cvrp"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.02"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="0.1"
+    CVRP_LOCAL_SEARCH_DISTILL_MAX_TOKENS="768"
+    CVRP_LOCAL_SEARCH_DISTILL_MAX_PASSES="4"
+    CVRP_LOCAL_SEARCH_DISTILL_MIN_GAIN="0.0"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_cvrplocal_foarlinverse_maxdistill10_k8_v11_cvrp"
+    ;;
+clasp_v12_mis)
+    # v12-MIS: v9's stronger controller plus a MIS swap teacher. The existing
+    # maximalization teacher can only add vertices that are not adjacent to the
+    # current set; once training sets are maximal, best-quality ties dominate
+    # and dense-rank/best8 both get zero quality signal. The swap teacher first
+    # maximalizes, then applies greedy 1-for-2 exchanges that remove one
+    # selected vertex and add two mutually non-adjacent unblocked vertices.
+    # Training-only; evaluation inference is unchanged.
+    ESTIMATOR_ARM="bon_mis_swap_foarlinv_maxdistill10_b9_k8_v12_mis"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.02"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MIS_SWAP_DISTILL_LOSS_WEIGHT="0.1"
+    MIS_SWAP_DISTILL_MAX_TOKENS="1024"
+    MIS_SWAP_DISTILL_MAX_PASSES="2"
+    MIS_SWAP_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_misswap_foarlinverse_maxdistill10_k8_v12_mis"
+    ;;
+clasp_v14_op_margin)
+    # v14-OP: v9's controller plus a training-only OP budget safety margin.
+    # v8/v9 losses are dominated by near-budget length overflow: the evaluator
+    # rejects any positive overflow, but without a margin the trainer credits a
+    # route at 99.9% of budget as safely feasible and the controller sees almost
+    # no group failures. The co_op_strict_length_margin profile promotes
+    # length_margin_overflow into the feasibility gate, so routes above
+    # (1 - margin) * budget are treated as infeasible during training while
+    # evaluation still accepts every route within the true budget. This arm is
+    # OP-only; every other task keeps the lock profile.
+    ESTIMATOR_ARM="bon_dense_opmargin_foarlinv_maxdistill10_b9_k8_v14_op"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.01"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="1.5"
+    BON_DENSE_FEASIBILITY_SCALE="1.0"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    PD_COMPONENT_PROFILE="co_op_strict_length_margin"
+    OP_LENGTH_MARGIN_RATIO="0.985"
+    CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MIS_SWAP_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_SWAP_DISTILL_MAX_TOKENS="1024"
+    MIS_SWAP_DISTILL_MAX_PASSES="2"
+    MIS_SWAP_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_opmargin_foarlinverse_maxdistill10_k8_v14_op"
+    ;;
+clasp_v15_mis_quality)
+    # v15-MIS: quality-focused follow-up to v12.  The v12-MIS log shows the
+    # feasibility controller saturating near lambda=7.7, so feasibility credit
+    # dominates the dense rank-quality signal and the best-feasible gap drifts
+    # upward after step 400.  This arm keeps v12's swap teacher but caps and
+    # initializes the controller at a quality-permitting level, raises the
+    # dense quality scale, lowers the dense feasibility scale, and doubles the
+    # teacher weight/passes.  MIS-only; evaluation inference is unchanged.
+    ESTIMATOR_ARM="bon_mis_swap_quality_foarlinv_maxdistill10_b9_k8_v15_mis"
+    POLICY_LENGTH_ALPHA="0.0"
+    IMPORTANCE_SAMPLING_LEVEL="token"
+    ALLOW_TOKEN_IMPORTANCE_ABLATION="1"
+    DUAL_RECOVERY_COUPLING="0.0"
+    CANONICAL_SET="0"
+    USE_CLASP="1"
+    BON_DUAL_LR="0.5"
+    BON_DUAL_EMA_BETA="0.5"
+    BON_TARGET_FAILURE_RATE="0.02"
+    BON_LAMBDA_INIT="1.0"
+    BON_LAMBDA_MAX="2.0"
+    CANONICAL_RECOVERY_SCALE="0.0"
+    ROLLOUT_BATCH_SIZE="9"
+    CANONICAL_MAX_SUBSETS="9"
+    CANONICAL_EXACT_SCALE="1.0"
+    CANONICAL_GRPO_ANCHOR_SCALE="0.0"
+    CANONICAL_QUALITY_ANCHOR_RATIO="0.0"
+    DENSE_QUALITY_SCALE="0.0"
+    DENSE_FEASIBILITY_SCALE="0.0"
+    DENSE_VIOLATION_SCALE="0.0"
+    DENSE_RECOVERY_SCALE="0.0"
+    COMPONENT_DUAL_RECOVERY_SCALE="0.0"
+    FEASIBILITY_GATED="1"
+    OBJECTIVE_QUALITY_MODE="foarl_inverse"
+    FEASIBLE_ONLY_ANCHOR="0"
+    BON_DENSE_QUALITY_SCALE="2.5"
+    BON_DENSE_FEASIBILITY_SCALE="0.5"
+    BON_DENSE_VIOLATION_MIX="0.5"
+    BON_RECOVERY_SCALE="0.5"
+    BON_SUCCESS_CREDIT="dense_rank"
+    CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="0.0"
+    MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="1024"
+    MIS_MAXIMALIZE_DISTILL_MIN_GAIN="0.0"
+    MIS_SWAP_DISTILL_LOSS_WEIGHT="0.2"
+    MIS_SWAP_DISTILL_MAX_TOKENS="1024"
+    MIS_SWAP_DISTILL_MAX_PASSES="4"
+    MIS_SWAP_DISTILL_MIN_GAIN="0.0"
+    MULTI_ELITE_IMITATION_LOSS_WEIGHT="0.0"
+    MULTI_ELITE_IMITATION_FRACTION="0.25"
+    MULTI_ELITE_IMITATION_MAX_RAW_GAP="0.0"
+    MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="0.05"
+    MULTI_ELITE_IMITATION_TEMPERATURE="0.5"
+    MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="1"
+    MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="1"
+    HARD_GROUP_WEIGHT_SCALE="0.0"
+    PAIRWISE_LOSS_WEIGHT="0.0"
+    FEASIBILITY_WARMUP_STEPS="0"
+    POLICY_CREDIT_FORMULA="bon_dense_misswap_foarlinverse_maxdistill10_k8_v15_mis_quality"
+    ;;
 clasp)
 case "${ESTIMATOR_ARM}" in
 token_a0_control)
@@ -273,6 +818,15 @@ esac
     ;;
 esac
 
+if [[ "${METHOD}" == "clasp_v14_op_margin" && "${TASK}" != "op" ]]; then
+    echo "[CLASPDevError] clasp_v14_op_margin is OP-only (got DEV_TASK=${TASK})" >&2
+    exit 2
+fi
+if [[ "${METHOD}" == "clasp_v15_mis_quality" && "${TASK}" != "mis" ]]; then
+    echo "[CLASPDevError] clasp_v15_mis_quality is MIS-only (got DEV_TASK=${TASK})" >&2
+    exit 2
+fi
+
 if [[ -n "${DEV_ROLLOUT_BATCH_SIZE:-}" ]]; then
     # The B=18 follow-up keeps 36 total rollouts and K=8, with a matched
     # GRPO comparator. Other named experiments retain their fixed recipes.
@@ -289,10 +843,15 @@ fi
 case "${TASK}" in tsp|cvrp|op|mis|jssp) ;; *) echo "[CLASPDevError] invalid task=${TASK}" >&2; exit 2 ;; esac
 [[ "${TRAIN_SEED}" =~ ^(0|[1-9][0-9]*)$ ]] || { echo "[CLASPDevError] invalid seed" >&2; exit 2; }
 [[ "${MAX_STEPS}" =~ ^[1-9][0-9]*$ ]] || { echo "[CLASPDevError] invalid max steps" >&2; exit 2; }
+[[ "${STOP_STEP}" =~ ^[1-9][0-9]*$ ]] || { echo "[CLASPDevError] invalid stop step" >&2; exit 2; }
 [[ "${SAVE_STEPS}" =~ ^[1-9][0-9]*$ ]] || { echo "[CLASPDevError] invalid save steps" >&2; exit 2; }
 [[ "${SAVE_TOTAL_LIMIT}" =~ ^[1-9][0-9]*$ ]] || { echo "[CLASPDevError] invalid save limit" >&2; exit 2; }
-(( MAX_STEPS % SAVE_STEPS == 0 )) || {
-    echo "[CLASPDevError] DEV_MAX_STEPS must be divisible by DEV_SAVE_STEPS" >&2
+(( STOP_STEP <= MAX_STEPS )) || {
+    echo "[CLASPDevError] DEV_STOP_STEP must not exceed the final max_steps horizon" >&2
+    exit 2
+}
+(( MAX_STEPS % SAVE_STEPS == 0 && STOP_STEP % SAVE_STEPS == 0 )) || {
+    echo "[CLASPDevError] final horizon and stop step must be divisible by DEV_SAVE_STEPS" >&2
     exit 2
 }
 [[ -d "${SFT_CHECKPOINT}" && -f "${SFT_CHECKPOINT}/adapter_model.safetensors" \
@@ -311,8 +870,8 @@ if [[ -n "${RESUME_CHECKPOINT}" ]]; then
         echo "[CLASPDevError] DEV_RESUME_CHECKPOINT must end in checkpoint-<positive-step>" >&2
         exit 2
     }
-    (( RESUME_STEP < MAX_STEPS )) || {
-        echo "[CLASPDevError] resume step must be below DEV_MAX_STEPS" >&2
+    (( RESUME_STEP < STOP_STEP )) || {
+        echo "[CLASPDevError] resume step must be below DEV_STOP_STEP" >&2
         exit 2
     }
     for resume_file in optimizer.pt scheduler.pt trainer_state.json \
@@ -484,7 +1043,8 @@ export CLASP_TSP_ROUTE_CANONICALIZE=""
 export CLASP_TSP_LABEL_TTA_SCHEDULE=""
 export CLASP_TSP_ROUTE_ONLY_OUTPUT=0
 
-export CLASP_OBJECTIVE_QUALITY_MODE=exp
+export CLASP_OBJECTIVE_QUALITY_MODE="${OBJECTIVE_QUALITY_MODE}"
+export CLASP_OBJECTIVE_QUALITY_MAX="${OBJECTIVE_QUALITY_MAX}"
 export CLASP_OBJECTIVE_GAP_SLOPE=3.0
 export CLASP_DECLARED_OBJECTIVE_MATCH_WEIGHT=0.0
 export CLASP_CANONICAL_SET="${CANONICAL_SET}"
@@ -496,37 +1056,55 @@ export CLASP_CANONICAL_MAX_SUBSETS="${CANONICAL_MAX_SUBSETS}"
 export CLASP_CANONICAL_EXACT_SCALE="${CANONICAL_EXACT_SCALE}"
 export CLASP_CANONICAL_GRPO_ANCHOR_SCALE="${CANONICAL_GRPO_ANCHOR_SCALE}"
 export CLASP_CANONICAL_QUALITY_ANCHOR_RATIO="${CANONICAL_QUALITY_ANCHOR_RATIO}"
+export CLASP_CANONICAL_FEASIBLE_ONLY_ANCHOR="${FEASIBLE_ONLY_ANCHOR}"
 export CLASP_CANONICAL_DENSE_QUALITY_SCALE="${DENSE_QUALITY_SCALE}"
 export CLASP_CANONICAL_DENSE_FEASIBILITY_SCALE="${DENSE_FEASIBILITY_SCALE}"
 export CLASP_CANONICAL_DENSE_VIOLATION_SCALE="${DENSE_VIOLATION_SCALE}"
 export CLASP_CANONICAL_DENSE_RECOVERY_SCALE="${DENSE_RECOVERY_SCALE}"
 export CLASP_POLICY_LENGTH_ALPHA="${POLICY_LENGTH_ALPHA}"
+export CLASP_OP_LENGTH_MARGIN_RATIO="${OP_LENGTH_MARGIN_RATIO}"
 export CLASP_BON_ALIGNED="${USE_CLASP}"
 export CLASP_FRONTIER_CDF=0
-export CLASP_BON_TARGET_FAILURE_RATE=0.005
-export CLASP_BON_TARGET_FAILURE_RATES="${TASK}:0.005"
+export CLASP_BON_TARGET_FAILURE_RATE="${BON_TARGET_FAILURE_RATE}"
+export CLASP_BON_TARGET_FAILURE_RATES="${TASK}:${BON_TARGET_FAILURE_RATE}"
 export CLASP_BON_DUAL_LR="${BON_DUAL_LR}"
-export CLASP_BON_DUAL_EMA_BETA=0.9
-export CLASP_BON_LAMBDA_INIT=0.0
-export CLASP_BON_LAMBDA_MAX=100.0
+export CLASP_BON_DUAL_EMA_BETA="${BON_DUAL_EMA_BETA}"
+export CLASP_BON_LAMBDA_INIT="${BON_LAMBDA_INIT}"
+export CLASP_BON_LAMBDA_MAX="${BON_LAMBDA_MAX}"
 export CLASP_BON_QUALITY_TEMPERATURE=0.0
-export CLASP_BON_DENSE_QUALITY_SCALE=1.0
-export CLASP_BON_DENSE_FEASIBILITY_SCALE=1.0
-export CLASP_BON_DENSE_VIOLATION_MIX=0.5
-export CLASP_BON_RECOVERY_SCALE=0.0
+export CLASP_BON_SUCCESS_CREDIT="${BON_SUCCESS_CREDIT}"
+export CLASP_BON_DENSE_QUALITY_SCALE="${BON_DENSE_QUALITY_SCALE}"
+export CLASP_BON_DENSE_FEASIBILITY_SCALE="${BON_DENSE_FEASIBILITY_SCALE}"
+export CLASP_BON_DENSE_VIOLATION_MIX="${BON_DENSE_VIOLATION_MIX}"
+export CLASP_BON_RECOVERY_SCALE="${BON_RECOVERY_SCALE}"
 export CLASP_COMPONENT_DUAL_RECOVERY_SCALE="${COMPONENT_DUAL_RECOVERY_SCALE}"
 export CLASP_MIXED_ADAPTIVE_LENGTH_MODE=error
 export CLASP_AUX_GROUPING_STRICT=1
-export CLASP_PAIRWISE_LOSS_WEIGHT=0.0
+export CLASP_PAIRWISE_LOSS_WEIGHT="${PAIRWISE_LOSS_WEIGHT}"
 export CLASP_ELITE_IMITATION_LOSS_WEIGHT=0.0
-export CLASP_MULTI_ELITE_IMITATION_LOSS_WEIGHT=0.0
+export CLASP_MULTI_ELITE_IMITATION_LOSS_WEIGHT="${MULTI_ELITE_IMITATION_LOSS_WEIGHT}"
+export CLASP_MULTI_ELITE_IMITATION_FRACTION="${MULTI_ELITE_IMITATION_FRACTION}"
+export CLASP_MULTI_ELITE_IMITATION_MAX_RAW_GAP="${MULTI_ELITE_IMITATION_MAX_RAW_GAP}"
+export CLASP_MULTI_ELITE_IMITATION_ADVANTAGE_DELTA="${MULTI_ELITE_IMITATION_ADVANTAGE_DELTA}"
+export CLASP_MULTI_ELITE_IMITATION_TEMPERATURE="${MULTI_ELITE_IMITATION_TEMPERATURE}"
+export CLASP_MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE="${MULTI_ELITE_IMITATION_REQUIRE_FEASIBLE}"
+export CLASP_MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE="${MULTI_ELITE_IMITATION_FALLBACK_TO_BEST_FEASIBLE}"
 export CLASP_REFERENCE_IMITATION_LOSS_WEIGHT=0.0
 export CLASP_REFERENCE_CONTRASTIVE_LOSS_WEIGHT=0.0
 export CLASP_TSP_TWO_OPT_DISTILL_LOSS_WEIGHT=0.0
-export CLASP_CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT=0.0
+export CLASP_CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT="${CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT}"
+export CLASP_CVRP_LOCAL_SEARCH_DISTILL_MAX_TOKENS="${CVRP_LOCAL_SEARCH_DISTILL_MAX_TOKENS}"
+export CLASP_CVRP_LOCAL_SEARCH_DISTILL_MAX_PASSES="${CVRP_LOCAL_SEARCH_DISTILL_MAX_PASSES}"
+export CLASP_CVRP_LOCAL_SEARCH_DISTILL_MIN_GAIN="${CVRP_LOCAL_SEARCH_DISTILL_MIN_GAIN}"
 export CLASP_JSSP_ACTIVE_SCHEDULE_DISTILL_LOSS_WEIGHT=0.0
-export CLASP_MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT=0.0
-export CLASP_HARD_GROUP_WEIGHT_SCALE=0.0
+export CLASP_MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT="${MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT}"
+export CLASP_MIS_MAXIMALIZE_DISTILL_MAX_TOKENS="${MIS_MAXIMALIZE_DISTILL_MAX_TOKENS}"
+export CLASP_MIS_MAXIMALIZE_DISTILL_MIN_GAIN="${MIS_MAXIMALIZE_DISTILL_MIN_GAIN}"
+export CLASP_MIS_SWAP_DISTILL_LOSS_WEIGHT="${MIS_SWAP_DISTILL_LOSS_WEIGHT}"
+export CLASP_MIS_SWAP_DISTILL_MAX_TOKENS="${MIS_SWAP_DISTILL_MAX_TOKENS}"
+export CLASP_MIS_SWAP_DISTILL_MAX_PASSES="${MIS_SWAP_DISTILL_MAX_PASSES}"
+export CLASP_MIS_SWAP_DISTILL_MIN_GAIN="${MIS_SWAP_DISTILL_MIN_GAIN}"
+export CLASP_HARD_GROUP_WEIGHT_SCALE="${HARD_GROUP_WEIGHT_SCALE}"
 export CLASP_FEASIBILITY_GATED="${FEASIBILITY_GATED}"
 export CLASP_LEXICOGRAPHIC_GATE=0
 export CLASP_FEASIBILITY_WARMUP_STEPS=0
@@ -541,6 +1119,7 @@ export PD_ALLOW_TOKEN_IMPORTANCE_ABLATION="${ALLOW_TOKEN_IMPORTANCE_ABLATION}"
 export PD_GROUP_STD_CORRECTION="${GROUP_STD_CORRECTION}"
 export GRPO_DATA_SEED="${TRAIN_SEED}"
 export GRPO_STRICT_OPTIMIZER_RESUME=1
+export GRPO_STOP_AT_GLOBAL_STEP="${STOP_STEP}"
 
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_DATASETS_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false PYTHONUNBUFFERED=1
@@ -555,7 +1134,7 @@ export WANDB_MODE=offline WANDB_DIR="${CACHE_ROOT}/wandb"
 
 # The fidelity verifier only requires stage and the exact fixed horizon, but the
 # remainder documents every deliberate development-only departure and input.
-"${SEALED_PYTHON}" - "${OUTPUT_DIR}" "${TASK}" "${TRAIN_SEED}" "${MAX_STEPS}" \
+"${SEALED_PYTHON}" - "${OUTPUT_DIR}" "${TASK}" "${TRAIN_SEED}" "${MAX_STEPS}" "${STOP_STEP}" \
     "${SFT_CHECKPOINT}" "${BASE_MODEL_PATH}" "${PROJECT_ROOT}" "${DATA_ROOT}" \
     "$(readlink -f "${BASH_SOURCE[0]}")" "${SEALED_ENV}" "${ESTIMATOR_ARM}" \
     "${POLICY_LENGTH_ALPHA}" "${IMPORTANCE_SAMPLING_LEVEL}" "${SAVE_STEPS}" \
@@ -581,6 +1160,7 @@ import sys
     task,
     seed,
     steps,
+    stop_step,
     checkpoint,
     base,
     source,
@@ -707,6 +1287,7 @@ payload = {
     },
     "development_differences": {
         "max_steps": int(steps),
+        "stop_step": int(stop_step),
         "save_steps": int(save_steps),
         "save_total_limit": int(save_total_limit),
         "internal_evaluation": False,
@@ -725,14 +1306,14 @@ PY
 
 echo "=============================================================="
 echo " Matched GRPO/CLASP checkpoint screen (development only)"
-echo " task=${TASK} method=${METHOD} seed=${TRAIN_SEED} steps=${MAX_STEPS}"
+echo " task=${TASK} method=${METHOD} seed=${TRAIN_SEED} final_max_steps=${MAX_STEPS} stop_step=${STOP_STEP}"
 echo " save_steps=${SAVE_STEPS} save_total_limit=${SAVE_TOTAL_LIMIT}"
 echo " estimator_arm=${ESTIMATOR_ARM} importance=${IMPORTANCE_SAMPLING_LEVEL} alpha=${POLICY_LENGTH_ALPHA} dual_recovery_coupling=${DUAL_RECOVERY_COUPLING}"
 echo " initialization=${SFT_CHECKPOINT}"
-echo " resume_checkpoint=${RESUME_CHECKPOINT:-none} resume_step=${RESUME_STEP} additional_steps=$((MAX_STEPS - RESUME_STEP))"
+echo " resume_checkpoint=${RESUME_CHECKPOINT:-none} resume_step=${RESUME_STEP} additional_steps=$((STOP_STEP - RESUME_STEP))"
 echo " output=${OUTPUT_DIR}"
 echo " rollout_B=${ROLLOUT_BATCH_SIZE} deployment_K=8 generation_batch=36 effective_batch=36 subsets=${CANONICAL_MAX_SUBSETS}"
-echo " canonical_set=${CANONICAL_SET} use_clasp=${USE_CLASP} canonical_recovery=${CANONICAL_RECOVERY_SCALE} exact_scale=${CANONICAL_EXACT_SCALE} grpo_anchor_scale=${CANONICAL_GRPO_ANCHOR_SCALE} quality_anchor_ratio=${CANONICAL_QUALITY_ANCHOR_RATIO} dense_q/f/v/r=${DENSE_QUALITY_SCALE}/${DENSE_FEASIBILITY_SCALE}/${DENSE_VIOLATION_SCALE}/${DENSE_RECOVERY_SCALE} target_failure@8=0.005 dual_lr=${BON_DUAL_LR} beta=0"
+echo " canonical_set=${CANONICAL_SET} use_clasp=${USE_CLASP} canonical_recovery=${CANONICAL_RECOVERY_SCALE} exact_scale=${CANONICAL_EXACT_SCALE} grpo_anchor_scale=${CANONICAL_GRPO_ANCHOR_SCALE} quality_anchor_ratio=${CANONICAL_QUALITY_ANCHOR_RATIO} feasible_only_anchor=${FEASIBLE_ONLY_ANCHOR} objective_quality_mode=${OBJECTIVE_QUALITY_MODE} pd_profile=${PD_COMPONENT_PROFILE} op_margin=${OP_LENGTH_MARGIN_RATIO} dense_q/f/v/r=${DENSE_QUALITY_SCALE}/${DENSE_FEASIBILITY_SCALE}/${DENSE_VIOLATION_SCALE}/${DENSE_RECOVERY_SCALE} target_failure@8=${BON_TARGET_FAILURE_RATE} maxdistill=${MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT}/${MIS_MAXIMALIZE_DISTILL_MAX_TOKENS} cvrpls=${CVRP_LOCAL_SEARCH_DISTILL_LOSS_WEIGHT}/${CVRP_LOCAL_SEARCH_DISTILL_MAX_TOKENS}/${CVRP_LOCAL_SEARCH_DISTILL_MAX_PASSES} misswap=${MIS_SWAP_DISTILL_LOSS_WEIGHT}/${MIS_SWAP_DISTILL_MAX_TOKENS}/${MIS_SWAP_DISTILL_MAX_PASSES} multi_elite=${MULTI_ELITE_IMITATION_LOSS_WEIGHT} hard_group=${HARD_GROUP_WEIGHT_SCALE} dual_lr=${BON_DUAL_LR} beta=${BON_DUAL_EMA_BETA} success_credit=${BON_SUCCESS_CREDIT}"
 printf ' gpu=%s\n' "${GPU_NAMES[@]}"
 echo "=============================================================="
 
@@ -765,7 +1346,7 @@ PD_ARGS=(
     --pd_force_scale_rewards_none --no-pd_soft_objective_for_infeasible
     --no-pd_normalize_primal_advantage --pd_primal_advantage_scale 1.0
     --pd_penalty_scale 1.0 --pd_positive_constraint_penalty
-    --no-pd_lexicographic_advantage --pd_component_profile co_feasibility_lock_all
+    --no-pd_lexicographic_advantage --pd_component_profile "${PD_COMPONENT_PROFILE}"
     --no-pd_enable_schedule
 )
 CLASP_ARGS=(
@@ -791,6 +1372,12 @@ CLASP_ARGS=(
     --clasp_adaptive_length_floor 128 --clasp_adaptive_length_window 1000
     --clasp_adaptive_length_refresh_steps 50 --clasp_adaptive_length_margin 32
 )
+if [[ "${CANONICAL_SET}" == "1" ]]; then
+    CANONICAL_SET_ARGS=(--clasp_canonical_set)
+else
+    CANONICAL_SET_ARGS=(--no-clasp_canonical_set)
+fi
+
 if [[ "${METHOD}" == "grpo_z" ]]; then
     METHOD_ARGS=(
         --use_primal_dual --no-use_clasp --no-clasp_canonical_set
@@ -804,7 +1391,7 @@ if [[ "${METHOD}" == "grpo_z" ]]; then
 else
     METHOD_ARGS=(
         --use_primal_dual --no-pd_group_scalarization --no-pd_separate_z
-        --clasp_canonical_set "${PD_ARGS[@]}" "${CLASP_ARGS[@]}"
+        "${CANONICAL_SET_ARGS[@]}" "${PD_ARGS[@]}" "${CLASP_ARGS[@]}"
     )
 fi
 
@@ -812,9 +1399,13 @@ srun --ntasks=1 --ntasks-per-node=1 \
     "${SEALED_PYTHON}" -m torch.distributed.run --standalone --nproc_per_node=4 \
     -m clasp.entrypoints.train_grpo "${COMMON_ARGS[@]}" "${METHOD_ARGS[@]}"
 
-[[ -f "${OUTPUT_DIR}/checkpoints/checkpoint-${MAX_STEPS}/adapter_model.safetensors" \
-    && -f "${OUTPUT_DIR}/checkpoints/checkpoint-${MAX_STEPS}/checkpoint_fidelity.json" ]] || {
-    echo "[CLASPDevError] terminal certified checkpoint was not produced" >&2
+[[ -f "${OUTPUT_DIR}/checkpoints/checkpoint-${STOP_STEP}/adapter_model.safetensors" \
+    && -f "${OUTPUT_DIR}/checkpoints/checkpoint-${STOP_STEP}/checkpoint_fidelity.json" ]] || {
+    echo "[CLASPDevError] certified chunk checkpoint was not produced" >&2
     exit 2
 }
-echo "CLASP_DEV_COMPLETE task=${TASK} method=${METHOD} checkpoint=${OUTPUT_DIR}/checkpoints/checkpoint-${MAX_STEPS}"
+if (( STOP_STEP == MAX_STEPS )); then
+    echo "CLASP_DEV_COMPLETE task=${TASK} method=${METHOD} checkpoint=${OUTPUT_DIR}/checkpoints/checkpoint-${STOP_STEP}"
+else
+    echo "CLASP_DEV_CHUNK_COMPLETE task=${TASK} method=${METHOD} stop_step=${STOP_STEP} final_max_steps=${MAX_STEPS} checkpoint=${OUTPUT_DIR}/checkpoints/checkpoint-${STOP_STEP}"
+fi

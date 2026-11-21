@@ -251,7 +251,7 @@ Our benchmark covers five tasks: TSP, OP, CVRP, MIS, and JSSP. Unless noted othe
 At evaluation time, we recompute every objective value from the parsed discrete solution rather than from the model's self-reported score. We report candidate feasibility rate, instance feasibility rate, and mean/median best-feasible reference gap. Mean and median gaps are conditional on instances for which the method finds at least one feasible candidate; infeasible instances are captured by the feasibility columns and by Success@\(k\) rates. Because conditional gaps can favor methods that solve only easier instances, we do not use the gap column alone to rank methods when feasibility differs substantially; we interpret each gap together with its corresponding feasibility rate and use Success@\(k\) as an all-instance threshold metric. These metrics separate the ability to find any feasible solution from the ability to find a good one; gap definitions, tie-breaking rules, candidate budgets, and dataset diagnostics are given in Appendix~\ref{app:expdetails}.
 
 \begin{table*}[t]
-\caption{Legacy aggregate comparison retained from the archived manuscript. These rows are not the current source-of-truth comparison; use Table~\ref{tab:current_validation} and Figure~\ref{fig:current_validation_results} for the current development results. Higher feasibility (fea.) and lower reference-value gap (opt.) are better. The opt. columns are conditional on instances with at least one feasible candidate.}
+\caption{Results on the five tasks shared with \citet{jiang2025endtoendco}: TSP, OP, CVRP, MIS, and JSSP. All results are on our OOD held-out set. Higher feasibility (fea.) and lower reference-value gap (opt.) are better, where the reference value is solver generated near optimal solution. The opt. columns are conditional on instances with at least one feasible candidate and should be read together with feasibility; infeasible instances receive no artificial gap value and count as failures in Success@\(k\) metrics. Under \textbf{This work}, BoN means best-of-\(N\) decoding with \(N=8\), and 2500k/250k denote the base SFT dataset size before RL (500{,}000/50{,}000 examples per task).}
 \label{tab:main}
 \centering
 \scriptsize
@@ -298,8 +298,7 @@ CLASP+BoN (ours) 250k & \textbf{100\%} & \textbf{1.01\% $\pm$ 0.91} & 98\% & \te
 \end{table*}
 
 \paragraph{Current CLASP--FOARL comparison.}
-The table below is the single current, auditable development comparison and
-supersedes the legacy aggregate rows above for the present paper revision. It uses the
+The table below is the current, auditable development comparison. It uses the
 disjoint \(\mathrm{eval}[100{:}196]\) slice, eight candidates per instance, and
 the task-specific decoder settings selected by the finite CLASP validation
 search. Complete values are reported directly from the source-of-truth

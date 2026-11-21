@@ -1,0 +1,253 @@
+{
+  "schema_version": 2,
+  "status": "DRAFT_DO_NOT_USE",
+  "frozen_at_utc": "REPLACE_WITH_PRE_CONFIRMATION_UTC_TIMESTAMP",
+  "campaign_id": "REPLACE_WITH_FROZEN_CAMPAIGN_ID",
+  "lane": "raw_n8",
+  "decode_seed": 271828,
+  "confirmation_attempt_ledger": {
+    "protocol": "posix-create-once-lock-v1",
+    "canonical_root": "/REPLACE/WITH/ONE/SHARED/CREATE_ONCE_CONFIRMATION_LEDGER"
+  },
+  "baseline": "REPLACE_WITH_SELECTED_BASELINE",
+  "challenger": "clasp_canonical",
+  "methods": [
+    "REPLACE_WITH_SELECTED_BASELINE",
+    "clasp_canonical"
+  ],
+  "training_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "tasks": [
+    "cvrp",
+    "jssp",
+    "mis",
+    "op",
+    "tsp"
+  ],
+  "lane_contract_registry_sha256": "d1477c982d631c6dd269a4833f24d1b31f7aecdcd580709d893e8d098f541e51",
+  "target_registry_sha256": "b0753d8befe3beb87ae983e8b4b82b41b2c8511b056356109a4f2b0955cae706",
+  "benchmark_manifest_sha256": "REPLACE_WITH_FROZEN_BENCHMARK_MANIFEST_SHA256",
+  "forbidden_source_registry_sha256": "REPLACE_WITH_FROZEN_FORBIDDEN_SOURCE_REGISTRY_SHA256",
+  "forbidden_source_tree_manifest_sha256": "REPLACE_WITH_FROZEN_FORBIDDEN_SOURCE_TREE_MANIFEST_SHA256",
+  "approved_fixed_null_receipt_sha256_by_task": {
+    "cvrp": "d4c7f8e4924bee2bf54b3f85c5eb39f69293d858dda855685d2bacff703df217",
+    "jssp": "f67cc9befc71086ab1e5bcf419af731ba6e9a62647fc268684b83b997954fac5",
+    "mis": "ab9b34ec5d97854489a3a7bf10d2875c918565ff1d6e486a542d35304cd256d2",
+    "op": "e5bc6baa29ba685fd4806599d9221fe81a3c5b68e63b7dbf11a8bc7d6002aeb4",
+    "tsp": "26d59b60957f7cc866947bdb99baaf0c5aaddeaf68720465e76e352213b30dbf"
+  },
+  "analysis": {
+    "bootstrap_repetitions": 10000,
+    "bootstrap_seed": 20260814,
+    "alpha": 0.05,
+    "primary_outcome": {
+      "metric": "normalized_feasible_gap_success_curve_auc",
+      "gap_range": [
+        0.0,
+        0.1
+      ],
+      "infeasible_score": 0.0,
+      "estimand": "paired_seed_mean_challenger_minus_baseline",
+      "inference_unit": "paired_training_seed",
+      "test": "exact_two_sided_paired_seed_sign_flip",
+      "multiplicity": "holm_across_five_tasks",
+      "direction": "higher_is_better",
+      "decision_rule": "holm_adjusted_p <= alpha and effect_mean > 0",
+      "negative_direction_label": "difference_detected_against_clasp",
+      "family": "normalized_feasible_gap_auc_seed_randomization"
+    },
+    "pass_at_k_noninferiority_gate": {
+      "metric": "strict_shared_verifier_pass_at_8",
+      "margin": 0.01,
+      "null_hypothesis": "challenger_minus_baseline <= -0.01",
+      "test": "exact_one_sided_paired_seed_sign_flip_at_margin_boundary",
+      "multiplicity": "holm_across_five_tasks",
+      "observed_mean_requirement": "challenger_minus_baseline >= -0.01",
+      "overall_rule": "all_five_tasks_pass",
+      "family": "pass_at_k_noninferiority_seed_randomization"
+    },
+    "secondary_metrics": [
+      "candidate_feasibility",
+      "conditional_verified_gap",
+      "lexicographic_win_score",
+      "success_at_external_target_gap_when_eligible",
+      "generation_and_repair_compute"
+    ]
+  },
+  "training_design": {
+    "schema_version": 1,
+    "fixed_horizon": {
+      "max_steps": 3200,
+      "world_size": 4
+    },
+    "method_specific_allowlist": [
+      "training_config.entrypoint",
+      "training_config.policy_credit_formula",
+      "training_config.component_controller",
+      "training_config.set_controller",
+      "training_config.use_primal_dual",
+      "training_config.use_clasp",
+      "training_config.clasp_canonical_set",
+      "training_config.clasp_fixed_null_set",
+      "training_config.pd_group_scalarization",
+      "training_config.pd_separate_z",
+      "training_config.pd_dual_lr",
+      "training_config.pd_dual_lr_up",
+      "training_config.pd_dual_lr_down",
+      "training_config.clasp_bon_dual_lr",
+      "training_config.clasp_bon_lambda_init",
+      "training_config.clasp_canonical_recovery_scale",
+      "tracked_environment.CLASP_BON_ALIGNED",
+      "tracked_environment.CLASP_FEASIBILITY_GATED",
+      "tracked_environment.CLASP_CANONICAL_SET",
+      "tracked_environment.CLASP_FIXED_NULL_SET",
+      "tracked_environment.CLASP_BON_DUAL_LR",
+      "tracked_environment.CLASP_BON_LAMBDA_INIT",
+      "tracked_environment.CLASP_CANONICAL_RECOVERY_SCALE"
+    ],
+    "shared_design_sha256_by_task_seed": {},
+    "fixed_null_receipt_sha256_by_task": {}
+  },
+  "training_authorization": {
+    "campaign_id": "REPLACE_WITH_FROZEN_CAMPAIGN_ID",
+    "advancement_policy_sha256": "REPLACE_WITH_FROZEN_3200_STEP_ADVANCEMENT_POLICY_SHA256",
+    "advancement_stage_id": "REPLACE_WITH_FROZEN_3200_STEP_STAGE_ID",
+    "advancement_stage_index": "REPLACE_WITH_NONNEGATIVE_STAGE_INDEX",
+    "prior_stage_receipt_chain": [],
+    "prior_stage_receipt_chain_sha256": "REPLACE_WITH_SHA256_OF_COMPLETE_ORDERED_PRIOR_PASS_RECEIPT_CHAIN"
+  },
+  "model_initialization_registry": {
+    "schema_version": 2,
+    "protocol": "clasp-model-initialization-registry-v2",
+    "status": "frozen_before_training",
+    "registry_sha256": "REPLACE_WITH_FROZEN_MODEL_INITIALIZATION_REGISTRY_SHA256",
+    "model_family": "Qwen2.5-7B",
+    "base_model_tree_sha256": "REPLACE_WITH_APPROVED_BASE_MODEL_TREE_SHA256",
+    "forbidden_source_registry_sha256": "REPLACE_WITH_FROZEN_FORBIDDEN_SOURCE_REGISTRY_SHA256",
+    "forbidden_source_tree_manifest_sha256": "REPLACE_WITH_FROZEN_FORBIDDEN_SOURCE_TREE_MANIFEST_SHA256",
+    "specialist_sft_by_task": {
+      "cvrp": {
+        "initial_model_tree_sha256": "REPLACE_WITH_APPROVED_CVRP_SFT_TREE_SHA256",
+        "sft_train_source_identity_sha256": "REPLACE_WITH_REGISTERED_CVRP_SFT_SOURCE_IDENTITY_SHA256",
+        "sft_seed": 42,
+        "matched_sft_contract_sha256": "dd294083e1643d08e833bca35be1ad275544b1bc59e4c0ddac44deb874f5bf48",
+        "checkpoint_fidelity": {
+          "schema_version": 1,
+          "protocol": "clasp-checkpoint-fidelity-identity-v1",
+          "status": "publication_exact",
+          "receipt_sha256": "REPLACE_WITH_APPROVED_CVRP_CHECKPOINT_FIDELITY_RECEIPT_SHA256",
+          "receipt_file_sha256": "REPLACE_WITH_APPROVED_CVRP_CHECKPOINT_FIDELITY_RECEIPT_FILE_SHA256",
+          "adapter_config_sha256": "REPLACE_WITH_APPROVED_CVRP_ADAPTER_CONFIG_SHA256",
+          "adapter_weights_sha256": "REPLACE_WITH_APPROVED_CVRP_ADAPTER_WEIGHTS_SHA256",
+          "trainable_tensor_inventory_sha256": "REPLACE_WITH_APPROVED_CVRP_TRAINABLE_TENSOR_INVENTORY_SHA256",
+          "publication_invariant_sha256": "REPLACE_WITH_APPROVED_CVRP_PUBLICATION_INVARIANT_SHA256",
+          "identity_sha256": "REPLACE_WITH_APPROVED_CVRP_CHECKPOINT_FIDELITY_IDENTITY_SHA256"
+        }
+      },
+      "jssp": {
+        "initial_model_tree_sha256": "REPLACE_WITH_APPROVED_JSSP_SFT_TREE_SHA256",
+        "sft_train_source_identity_sha256": "REPLACE_WITH_REGISTERED_JSSP_SFT_SOURCE_IDENTITY_SHA256",
+        "sft_seed": 42,
+        "matched_sft_contract_sha256": "dd294083e1643d08e833bca35be1ad275544b1bc59e4c0ddac44deb874f5bf48",
+        "checkpoint_fidelity": {
+          "schema_version": 1,
+          "protocol": "clasp-checkpoint-fidelity-identity-v1",
+          "status": "publication_exact",
+          "receipt_sha256": "REPLACE_WITH_APPROVED_JSSP_CHECKPOINT_FIDELITY_RECEIPT_SHA256",
+          "receipt_file_sha256": "REPLACE_WITH_APPROVED_JSSP_CHECKPOINT_FIDELITY_RECEIPT_FILE_SHA256",
+          "adapter_config_sha256": "REPLACE_WITH_APPROVED_JSSP_ADAPTER_CONFIG_SHA256",
+          "adapter_weights_sha256": "REPLACE_WITH_APPROVED_JSSP_ADAPTER_WEIGHTS_SHA256",
+          "trainable_tensor_inventory_sha256": "REPLACE_WITH_APPROVED_JSSP_TRAINABLE_TENSOR_INVENTORY_SHA256",
+          "publication_invariant_sha256": "REPLACE_WITH_APPROVED_JSSP_PUBLICATION_INVARIANT_SHA256",
+          "identity_sha256": "REPLACE_WITH_APPROVED_JSSP_CHECKPOINT_FIDELITY_IDENTITY_SHA256"
+        }
+      },
+      "mis": {
+        "initial_model_tree_sha256": "REPLACE_WITH_APPROVED_MIS_SFT_TREE_SHA256",
+        "sft_train_source_identity_sha256": "REPLACE_WITH_REGISTERED_MIS_SFT_SOURCE_IDENTITY_SHA256",
+        "sft_seed": 42,
+        "matched_sft_contract_sha256": "dd294083e1643d08e833bca35be1ad275544b1bc59e4c0ddac44deb874f5bf48",
+        "checkpoint_fidelity": {
+          "schema_version": 1,
+          "protocol": "clasp-checkpoint-fidelity-identity-v1",
+          "status": "publication_exact",
+          "receipt_sha256": "REPLACE_WITH_APPROVED_MIS_CHECKPOINT_FIDELITY_RECEIPT_SHA256",
+          "receipt_file_sha256": "REPLACE_WITH_APPROVED_MIS_CHECKPOINT_FIDELITY_RECEIPT_FILE_SHA256",
+          "adapter_config_sha256": "REPLACE_WITH_APPROVED_MIS_ADAPTER_CONFIG_SHA256",
+          "adapter_weights_sha256": "REPLACE_WITH_APPROVED_MIS_ADAPTER_WEIGHTS_SHA256",
+          "trainable_tensor_inventory_sha256": "REPLACE_WITH_APPROVED_MIS_TRAINABLE_TENSOR_INVENTORY_SHA256",
+          "publication_invariant_sha256": "REPLACE_WITH_APPROVED_MIS_PUBLICATION_INVARIANT_SHA256",
+          "identity_sha256": "REPLACE_WITH_APPROVED_MIS_CHECKPOINT_FIDELITY_IDENTITY_SHA256"
+        }
+      },
+      "op": {
+        "initial_model_tree_sha256": "REPLACE_WITH_APPROVED_OP_SFT_TREE_SHA256",
+        "sft_train_source_identity_sha256": "REPLACE_WITH_REGISTERED_OP_SFT_SOURCE_IDENTITY_SHA256",
+        "sft_seed": 42,
+        "matched_sft_contract_sha256": "dd294083e1643d08e833bca35be1ad275544b1bc59e4c0ddac44deb874f5bf48",
+        "checkpoint_fidelity": {
+          "schema_version": 1,
+          "protocol": "clasp-checkpoint-fidelity-identity-v1",
+          "status": "publication_exact",
+          "receipt_sha256": "REPLACE_WITH_APPROVED_OP_CHECKPOINT_FIDELITY_RECEIPT_SHA256",
+          "receipt_file_sha256": "REPLACE_WITH_APPROVED_OP_CHECKPOINT_FIDELITY_RECEIPT_FILE_SHA256",
+          "adapter_config_sha256": "REPLACE_WITH_APPROVED_OP_ADAPTER_CONFIG_SHA256",
+          "adapter_weights_sha256": "REPLACE_WITH_APPROVED_OP_ADAPTER_WEIGHTS_SHA256",
+          "trainable_tensor_inventory_sha256": "REPLACE_WITH_APPROVED_OP_TRAINABLE_TENSOR_INVENTORY_SHA256",
+          "publication_invariant_sha256": "REPLACE_WITH_APPROVED_OP_PUBLICATION_INVARIANT_SHA256",
+          "identity_sha256": "REPLACE_WITH_APPROVED_OP_CHECKPOINT_FIDELITY_IDENTITY_SHA256"
+        }
+      },
+      "tsp": {
+        "initial_model_tree_sha256": "REPLACE_WITH_APPROVED_TSP_SFT_TREE_SHA256",
+        "sft_train_source_identity_sha256": "REPLACE_WITH_REGISTERED_TSP_SFT_SOURCE_IDENTITY_SHA256",
+        "sft_seed": 42,
+        "matched_sft_contract_sha256": "dd294083e1643d08e833bca35be1ad275544b1bc59e4c0ddac44deb874f5bf48",
+        "checkpoint_fidelity": {
+          "schema_version": 1,
+          "protocol": "clasp-checkpoint-fidelity-identity-v1",
+          "status": "publication_exact",
+          "receipt_sha256": "REPLACE_WITH_APPROVED_TSP_CHECKPOINT_FIDELITY_RECEIPT_SHA256",
+          "receipt_file_sha256": "REPLACE_WITH_APPROVED_TSP_CHECKPOINT_FIDELITY_RECEIPT_FILE_SHA256",
+          "adapter_config_sha256": "REPLACE_WITH_APPROVED_TSP_ADAPTER_CONFIG_SHA256",
+          "adapter_weights_sha256": "REPLACE_WITH_APPROVED_TSP_ADAPTER_WEIGHTS_SHA256",
+          "trainable_tensor_inventory_sha256": "REPLACE_WITH_APPROVED_TSP_TRAINABLE_TENSOR_INVENTORY_SHA256",
+          "publication_invariant_sha256": "REPLACE_WITH_APPROVED_TSP_PUBLICATION_INVARIANT_SHA256",
+          "identity_sha256": "REPLACE_WITH_APPROVED_TSP_CHECKPOINT_FIDELITY_IDENTITY_SHA256"
+        }
+      }
+    }
+  },
+  "checkpoint_selection_receipt": {
+    "identity": {
+      "basename": "REPLACE_WITH_SELECTION_RECEIPT_BASENAME",
+      "file_sha256": "REPLACE_WITH_SELECTION_RECEIPT_FILE_SHA256",
+      "size_bytes": 0,
+      "receipt_sha256": "REPLACE_WITH_SELECTION_RECEIPT_SHA256",
+      "campaign_id": "REPLACE_WITH_FROZEN_CAMPAIGN_ID",
+      "stage_id": "REPLACE_WITH_DEVELOPMENT_STAGE_ID"
+    },
+    "payload": {}
+  },
+  "runs": [],
+  "instructions": [
+    "Freeze the ordered baseline/challenger roles after development checkpoint selection and before confirmation inference; methods must equal that exact pair, use canonical IDs, and never use a legacy alias. foarl_f638_native is descriptive-only. A corrected-FOARL confirmation must use exactly baseline=foarl_f638_matched_b9 and challenger=clasp_canonical_foarl_matched_b9, replace method_specific_allowlist with the source-defined FOARL_MATCHED_B9_METHOD_SPECIFIC_ALLOWLIST, and preregister the exact shared-design projection hash for every task/seed.",
+    "Populate runs with the exact Cartesian product of methods, training_seeds, and tasks.",
+    "Bind the exact publication-mode forbidden-source registry and tree-manifest digests returned by the validated benchmark manifest.",
+    "Embed the one self-hashed development checkpoint-selection receipt covering the full method x seed x task grid; every run must bind to this same receipt.",
+    "Populate one shared training-design digest for every task/seed and reject any baseline/challenger difference outside the frozen method-specific allowlist or any unequal horizon/world size. If set_null is selected, preregister exactly one fixed-null receipt_sha256 per task and require it unchanged across all eight seeds; otherwise keep fixed_null_receipt_sha256_by_task empty.",
+    "Freeze the exact advancement campaign/stage/policy, complete ordered prior-stage ADVANCE receipt chain, and approved Qwen2.5-7B base plus per-task specialist SFT artifact lineage before training; every embedded run contract must match them.",
+    "Keep the CLI bootstrap repetitions and seed identical to analysis; confirmation requires at least 10000 prespecified repetitions. The sole primary is normalized feasible-gap AUC on [0,0.10] with infeasible=0, exact two-sided paired eight-seed sign-flips, and Holm across five tasks. The separate secondary pass@8 noninferiority gate uses margin 0.01, exact one-sided boundary-shifted sign-flips, Holm across five tasks, and requires all five adjusted tests plus observed means to pass.",
+    "Each run needs method, training_seed, task, training_run_contract_sha256, checkpoint_step, checkpoint_artifact_sha256, all three checkpoint-fidelity identity/semantic-receipt/receipt-file SHA-256 values, grpo_beta, the exact path-free prelaunch fixed_kl_reference, post-Trainer exact_peft_kl_runtime, and post-optimization exact_peft_kl_post_step identities (all three null exactly when beta is zero), checkpoint_selection_receipt_sha256, and deterministic confirmation_attempt_id derived from clasp-confirmation-attempt-v2 canonical material. For beta>0, evidence construction must live-reopen the byte-identical root/selected step-zero receipts plus root and selected step-one/post-step receipts, bind their semantic/file hashes and fixed-horizon policy closure, and require selected-checkpoint trainable change before this manifest can be frozen.",
+    "Set status to frozen_before_confirmation and recompute campaign_manifest_sha256 before any confirmation inference."
+  ],
+  "campaign_manifest_sha256": "57b0fbb318c44c75ff0825bf478b3557865b19783fbef125dbb07da833f773a2"
+}

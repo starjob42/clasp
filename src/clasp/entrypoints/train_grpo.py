@@ -1769,6 +1769,22 @@ def run_grpo(args, *, runtime_profile=None) -> str:
                     "CLASP_MIS_MAXIMALIZE_DISTILL_MIN_GAIN",
                     "0.0",
                 ),
+                "clasp_mis_swap_distill_loss_weight": os.environ.get(
+                    "CLASP_MIS_SWAP_DISTILL_LOSS_WEIGHT",
+                    "0.0",
+                ),
+                "clasp_mis_swap_distill_max_tokens": os.environ.get(
+                    "CLASP_MIS_SWAP_DISTILL_MAX_TOKENS",
+                    "1024",
+                ),
+                "clasp_mis_swap_distill_max_passes": os.environ.get(
+                    "CLASP_MIS_SWAP_DISTILL_MAX_PASSES",
+                    "2",
+                ),
+                "clasp_mis_swap_distill_min_gain": os.environ.get(
+                    "CLASP_MIS_SWAP_DISTILL_MIN_GAIN",
+                    "0.0",
+                ),
                 "clasp_primal_score_gap_penalty": os.environ.get(
                     "CLASP_PRIMAL_SCORE_GAP_PENALTY",
                     "0.0",

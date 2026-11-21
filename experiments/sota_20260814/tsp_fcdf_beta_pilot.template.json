@@ -1,0 +1,32 @@
+{
+  "campaign_id": "tsp_fcdf_beta_20260815_v3",
+  "notes": [
+    "HOLD template: copying or editing this file is not a frozen preregistration and cannot authorize a run.",
+    "The exact no-merge 7B source is frozen at the path below. Its relocation receipt semantic SHA-256 is 2030fd314dae6857999f24de8103f2051a28a6ed908779ac2c21218ebec8d000 and file SHA-256 is 3b03875fcb2729c75b147d2fa6ef66a4dc747d48e38614ca51e4a0b8ca1ab52e.",
+    "All 12 arms directly continue this same relocated bias=all adapter in bfloat16. No merge and no fresh RL LoRA are permitted; the nonzero SFT LoRA A/B tensors and saved base-layer biases remain the optimization geometry.",
+    "Beta=.05 independently loads the exact same immutable base+adapter as a frozen reference. Both policy and reference explicitly use PEFT autocast_adapter_dtype=true, yielding bitwise-equal FP32 LoRA state and bitwise-equal probe logits under the contracted bfloat16 runtime autocast; asymmetric adapter dtype loading is forbidden. The reference also replays the policy's bound-tokenizer BOS/EOS/PAD transform, and both model.config and generation_config must then match exactly with valid in-vocabulary IDs. The Qwen tokenizer deliberately binds BOS=null, EOS=151645, PAD=151643. Beta=0 must have no KL-reference environment. The tokenizer path is the immutable frozen base/tokenizer, never the adapter directory.",
+    "The filled spec preregisters the unique post-v2 20260815 v3 contract/output pair below. V2 is an immutable terminal pre-update failure caused by asymmetric PEFT adapter dtype loading and is never retried. Freeze --output must equal frozen_contract_path exactly. The gate points CLASP_TRAINING_RUN_CONTRACT_PATH at that file; scientific cells later point it at one immutable pre-outcome 12-cell ledger.",
+    "The post-step exact-reference implementation and training source hashes are frozen and bound in all five pilot files. This checked-in file deliberately remains HOLD_TEMPLATE_NOT_FROZEN; only a separately reviewed READY_TO_FREEZE copy can create the absent contract, and the one-update beta=.05 gate still must pass before any matrix ledger can exist.",
+    "The relocation proof is float32 and training loads policy/reference in bfloat16. This common runtime transformation is not an exact FP32 source-policy, historical terminal-SFT, publication, or SOTA claim.",
+    "Every gate/cell/audit/evaluation command uses env -i, binds the local A6000 identity and pinned Python/package/CUDA runtime, resolves the legitimate /usr/bin/nvidia-smi alternatives chain to immutable /usr/lib/nvidia/current/nvidia-smi bytes (SHA-256 d2ce2e23e90b1044e8cbf9e60c93baefc7abbc2faa43275528916d652e983db3) while rejecting broken/nonregular/current-user-writable/retargeted probes, normalizes host root:root and managed-namespace 65534:65534 to one trusted owner identity, sets PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True, and confines HOME/TMP/TEMP and every named cache beneath a workspace-local per-attempt TMPDIR with >=100 GiB statfs free space and no /tmp fallback.",
+    "The one-update gate alone runs under an audited supervisor: its immutable claim binds a precreated combined-stream transcript inode and one mutually exclusive outcome inode. A tiny Linux parent-death wrapper owns a new session/process group, records PID/start-time/PGID before payload output, kills the whole group if its supervisor dies, and every normal or operator-finalized outcome requires exact payload/process-group and target-GPU process absence. Only the exact zero-exit receipt can authorize PASS; nonzero, signal, spawn error, or exit-unknown is terminal, recursively sealed, non-retryable, and matrix-ineligible.",
+    "After gate PASS, a create-once closure reserves all 12 training and all 12 evaluation slots plus every single-use attempt-claim inode before outcomes. Exact live env/argv are checked before claim and again immediately before exec. Evaluation never retries; training may only set RESUME_FROM_CHECKPOINT to its newest surviving exact claimed checkpoint; deleted/recreated claim anchors fail by frozen directory/inode identity; missing/failed trajectories remain in the denominator.",
+    "All paths must be absolute and local; evidence/data/model paths must be non-symlinks (a virtualenv Python entry point may be a symlink). The output root must not exist when a future contract is frozen."
+  ],
+  "paths": {
+    "development_source_file": "/home/lamsade/habgaryan/phd_project/hybrid_gnn_llm/data_rl/tsp/eval/test.json",
+    "frozen_contract_path": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/tsp_fcdf_beta_pilot_20260815_v3.contract.json",
+    "output_root": "/home/lamsade/habgaryan/phd_project/correct_clasp/outputs/tsp_fcdf_beta_pilot_20260815_v3",
+    "project_root": "/home/lamsade/habgaryan/phd_project/correct_clasp",
+    "python_executable": "/home/lamsade/habgaryan/phd_project/my_idea_grpo/.venv/bin/python",
+    "relocated_development_adapter": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/tsp_sft_saved_policy_bias_all_frozen_base_v1",
+    "relocation_receipt": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/tsp_sft_saved_policy_bias_all_frozen_base_v1/adapter_base_relocation_receipt.json",
+    "rl_train_file": "/home/lamsade/habgaryan/phd_project/correct_clasp/data/data_rl/tsp/train/train_rl.json",
+    "sealed_sft_details": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/tsp_dense40_posttrain_k8_seed271828_v1/raw/sft/sft/local_tsp_sft500k_seed42_instruct/run_details__sft_only_local_tsp_sft500k_seed42_instruct_eval_k8_contracted_eval200_k8_seed271828_v1_fp81c9e70b005a.jsonl",
+    "sealed_sft_summary": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/tsp_dense40_posttrain_k8_seed271828_v1/raw/sft/sft/local_tsp_sft500k_seed42_instruct/inference_summary.json",
+    "tokenizer_path": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/sota_20260814/local_development/Qwen2.5-7B-Instruct_frozen_v1"
+  },
+  "protocol": "clasp-tsp-fcdf-beta-development-pilot-spec-v4",
+  "schema_version": 4,
+  "status": "HOLD_TEMPLATE_NOT_FROZEN"
+}

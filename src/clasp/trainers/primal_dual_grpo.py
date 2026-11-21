@@ -367,6 +367,87 @@ def compute_scalarized_group_advantages(
     return (centered / (scale + float(eps))).reshape(-1)
 
 
+def compute_feasible_only_group_advantages(
+    primal_scores: torch.Tensor,
+    feasibility_flags: torch.Tensor,
+    num_generations: int,
+    *,
+    eps: float = 1e-4,
+    std_correction: int = 0,
+) -> tuple[torch.Tensor, dict[str, float]]:
+    """Return group-z quality advantages standardized among feasible candidates only.
+
+    The reward head hard-gates ``objective_scores`` to zero on infeasible
+    candidates. Standardizing over all ``B`` entries therefore mixes two
+    signals: every infeasible zero inflates the denominator and compresses the
+    quality ordering among feasible candidates. This variant computes the mean
+    and scale over feasible entries only, and assigns exactly zero quality
+    advantage to infeasible candidates because feasibility is carried by the
+    separate canonical recovery/dual terms.
+
+    Groups with fewer than two feasible candidates have no within-group quality
+    contrast and return zero. A zero feasible-scale group also returns zero,
+    matching the canonical tie-to-zero convention.
+    """
+
+    if primal_scores.dim() != 1 or feasibility_flags.dim() != 1:
+        raise ValueError("feasible-only group advantages require 1-D tensors")
+    if primal_scores.numel() != feasibility_flags.numel():
+        raise ValueError("primal/feasibility tensor size mismatch")
+    if num_generations <= 1 or primal_scores.numel() % num_generations != 0:
+        raise ValueError(
+            f"sample count {primal_scores.numel()} must be divisible by "
+            f"num_generations={num_generations}, with num_generations > 1"
+        )
+    if not math.isfinite(eps) or eps <= 0.0:
+        raise ValueError("eps must be finite and > 0")
+    if type(std_correction) is not int or std_correction not in (0, 1):
+        raise ValueError("std_correction must be the integer 0 or 1")
+
+    rewards = primal_scores.to(dtype=torch.float32).view(-1, int(num_generations))
+    feasible = (
+        feasibility_flags.to(device=rewards.device).view(-1, int(num_generations))
+        > 0.5
+    )
+    advantages = torch.zeros_like(rewards)
+    feasible_scales: list[float] = []
+    single_feasible_groups = 0
+    for group_idx in range(rewards.size(0)):
+        feasible_indices = torch.nonzero(
+            feasible[group_idx], as_tuple=False
+        ).squeeze(1)
+        if feasible_indices.numel() < 2:
+            if feasible_indices.numel() == 1:
+                single_feasible_groups += 1
+            continue
+        values = rewards[group_idx, feasible_indices]
+        scale = values.std(unbiased=bool(std_correction))
+        scale_value = float(scale.item())
+        feasible_scales.append(scale_value)
+        if scale_value <= float(eps):
+            continue
+        advantages[group_idx, feasible_indices] = (
+            values - values.mean()
+        ) / (scale + float(eps))
+    stats = {
+        "clasp/canonical_feasible_only_anchor_active": 1.0,
+        "clasp/canonical_feasible_only_anchor_group_count": float(
+            rewards.size(0)
+        ),
+        "clasp/canonical_feasible_only_anchor_scale_mean": (
+            float(sum(feasible_scales) / len(feasible_scales))
+            if feasible_scales
+            else 0.0
+        ),
+        "clasp/canonical_feasible_only_anchor_single_feasible_group_fraction": (
+            float(single_feasible_groups) / float(rewards.size(0))
+            if rewards.size(0)
+            else 0.0
+        ),
+    }
+    return advantages.reshape(-1), stats
+
+
 def compute_separate_z_group_advantages(
     primal_scores: torch.Tensor,
     positive_component_penalties: torch.Tensor,
@@ -643,6 +724,10 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
             "CLASP_CANONICAL_QUALITY_ANCHOR_RATIO",
             float(clasp_canonical_quality_anchor_ratio),
         )
+        self.clasp_canonical_feasible_only_anchor = _strict_env_flag(
+            "CLASP_CANONICAL_FEASIBLE_ONLY_ANCHOR",
+            False,
+        )
         self.clasp_canonical_dense_quality_scale = _finite_float_env(
             "CLASP_CANONICAL_DENSE_QUALITY_SCALE",
             float(clasp_canonical_dense_quality_scale),
@@ -724,7 +809,7 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
         self.clasp_bon_success_credit = _strict_env_choice(
             "CLASP_BON_SUCCESS_CREDIT",
             "dense_rank",
-            {"dense_rank", "exact_loo"},
+            {"dense_rank", "exact_loo", "max_loo", "best8_from9"},
         )
         self.clasp_bon_dense_quality_scale = _nonnegative_float_env(
             "CLASP_BON_DENSE_QUALITY_SCALE",
@@ -939,6 +1024,22 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
         )
         self.clasp_mis_maximalize_distill_min_gain = _nonnegative_float_env(
             "CLASP_MIS_MAXIMALIZE_DISTILL_MIN_GAIN",
+            0.0,
+        )
+        self.clasp_mis_swap_distill_loss_weight = _nonnegative_float_env(
+            "CLASP_MIS_SWAP_DISTILL_LOSS_WEIGHT",
+            0.0,
+        )
+        self.clasp_mis_swap_distill_max_tokens = _nonnegative_int_env(
+            "CLASP_MIS_SWAP_DISTILL_MAX_TOKENS",
+            1024,
+        )
+        self.clasp_mis_swap_distill_max_passes = _nonnegative_int_env(
+            "CLASP_MIS_SWAP_DISTILL_MAX_PASSES",
+            2,
+        )
+        self.clasp_mis_swap_distill_min_gain = _nonnegative_float_env(
+            "CLASP_MIS_SWAP_DISTILL_MIN_GAIN",
             0.0,
         )
         self.grpo_verified_improvement = _strict_env_flag("GRPO_VERIFIED_IMPROVEMENT", False)
@@ -1456,6 +1557,9 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
             ),
             "CLASP_MIS_MAXIMALIZE_DISTILL_LOSS_WEIGHT": (
                 self.clasp_mis_maximalize_distill_loss_weight
+            ),
+            "CLASP_MIS_SWAP_DISTILL_LOSS_WEIGHT": getattr(
+                self, "clasp_mis_swap_distill_loss_weight", 0.0
             ),
             "CLASP_SELF_REPLAY_IMITATION_LOSS_WEIGHT": (
                 self.clasp_self_replay_imitation_loss_weight
@@ -2102,13 +2206,31 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
         grpo_anchor_coefficients = torch.zeros_like(
             result.mean_reduced_policy_coefficients
         )
+        feasible_only_anchor_stats: dict[str, float] = {}
         if grpo_anchor_scale > 0.0:
-            grpo_anchor_coefficients = grpo_anchor_scale * compute_scalarized_group_advantages(
-                objective_scores,
-                torch.zeros_like(objective_scores),
-                B,
-                std_correction=int(getattr(self, "group_std_correction", 0)),
-            )
+            if bool(getattr(self, "clasp_canonical_feasible_only_anchor", False)):
+                # Feasibility and quality are separate objectives. Standardize
+                # quality among feasible candidates only so infeasible zeros
+                # cannot dominate the denominator; feasibility keeps its own
+                # canonical recovery/dual credit below.
+                anchor_advantages, feasible_only_anchor_stats = (
+                    compute_feasible_only_group_advantages(
+                        objective_scores,
+                        feasibility_flags,
+                        B,
+                        std_correction=int(
+                            getattr(self, "group_std_correction", 0)
+                        ),
+                    )
+                )
+                grpo_anchor_coefficients = grpo_anchor_scale * anchor_advantages
+            else:
+                grpo_anchor_coefficients = grpo_anchor_scale * compute_scalarized_group_advantages(
+                    objective_scores,
+                    torch.zeros_like(objective_scores),
+                    B,
+                    std_correction=int(getattr(self, "group_std_correction", 0)),
+                )
 
         grouped_quality = result.quality_advantages.view(-1, B)
         grouped_recovery = result.recovery_advantages.view(-1, B)
@@ -2359,6 +2481,10 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
             f"clasp/{credit_name}_grpo_anchor_signal_group_fraction": float(
                 grpo_anchor_signal_groups.to(dtype=torch.float32).mean().item()
             ),
+            f"clasp/{credit_name}_feasible_only_anchor": float(
+                bool(getattr(self, "clasp_canonical_feasible_only_anchor", False))
+            ),
+            **feasible_only_anchor_stats,
             f"clasp/{credit_name}_dense_quality_scale": dense_quality_scale,
             f"clasp/{credit_name}_dense_feasibility_scale": dense_feasibility_scale,
             f"clasp/{credit_name}_dense_violation_scale": dense_violation_scale,
@@ -2794,10 +2920,17 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
                 False,
             )
         )
+        success_credit_mode = str(
+            getattr(self, "clasp_bon_success_credit", "dense_rank")
+        ).strip().lower()
         if frontier_cdf_enabled and relative_failed_recovery_enabled:
             pressure_relevant = (group_lambdas > 1e-8) & (
                 (group_failure_flags.bool() & failed_group_has_recovery_signal)
-                | (feasibility_counts == 1)
+                | (
+                    (feasibility_counts == 1)
+                    if success_credit_mode == "exact_loo"
+                    else (feasibility_counts > 0)
+                )
             )
         elif frontier_cdf_enabled:
             # In failed groups the exact lambda term cancels between the full
@@ -2805,9 +2938,6 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
             # the policy until a sole feasible completion appears.
             pressure_relevant = (group_lambdas > 1e-8) & (feasibility_counts == 1)
         else:
-            success_credit_mode = str(
-                getattr(self, "clasp_bon_success_credit", "dense_rank")
-            ).strip().lower()
             if success_credit_mode == "dense_rank":
                 mixed_success = (feasibility_counts > 0) & (
                     feasibility_counts < int(self.num_generations)
@@ -2816,10 +2946,16 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
                     (group_failure_flags.bool() & failed_group_has_recovery_signal)
                     | mixed_success
                 )
-            else:
+            elif success_credit_mode == "exact_loo":
                 pressure_relevant = (group_lambdas > 1e-8) & (
                     (group_failure_flags.bool() & failed_group_has_recovery_signal)
                     | (feasibility_counts == 1)
+                )
+            else:
+                # max_loo and best8_from9 use lambda only in failed groups;
+                # successful-group credit is quality-only.
+                pressure_relevant = (group_lambdas > 1e-8) & (
+                    group_failure_flags.bool() & failed_group_has_recovery_signal
                 )
         pressure_delta = 0.0
         if bool(pressure_relevant.any().item()):
@@ -4979,6 +5115,21 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
                     "improve": self._improve_mis_completion,
                 }
             )
+        if (
+            self.clasp_mis_swap_distill_loss_weight > 0.0
+            and self.clasp_mis_swap_distill_max_tokens > 0
+            and self.clasp_mis_swap_distill_max_passes > 0
+        ):
+            specs.append(
+                {
+                    "prefix": "mis_swap_distill",
+                    "task": "mis",
+                    "weight": float(self.clasp_mis_swap_distill_loss_weight),
+                    "max_tokens": int(self.clasp_mis_swap_distill_max_tokens),
+                    "min_gain": float(self.clasp_mis_swap_distill_min_gain),
+                    "improve": self._improve_mis_swap_completion,
+                }
+            )
         return specs
 
     def _verified_improvement_target(self, task, completion_text, instance, input_text):
@@ -5434,6 +5585,53 @@ class PrimalDualGRPOTrainer(GRPOTrainer):
             float(added_fraction),
             int(added_count),
         )
+
+    def _improve_mis_swap_completion(
+        self,
+        completion_text: str,
+        instance,
+        input_text: str,
+    ) -> tuple[str, float, int] | None:
+        from clasp.rewards.co_tasks import (
+            _check_mis_constraints,
+            _format_mis_distillation_target,
+            _mis_maximalized_set,
+            _mis_meta,
+            _mis_swap_improved_set,
+            _parse_mis_solution,
+        )
+
+        num_nodes, edges = _mis_meta(instance, input_text)
+        node_set = _parse_mis_solution(str(completion_text))["node_set"]
+        if not node_set:
+            return None
+        _, _, feasible = _check_mis_constraints(node_set, num_nodes, edges)
+        if not feasible:
+            return None
+
+        maximalized = _mis_maximalized_set(node_set, num_nodes, edges)
+        base_set = maximalized[0] if maximalized is not None else node_set
+        swapped = _mis_swap_improved_set(
+            base_set,
+            num_nodes,
+            edges,
+            max_passes=int(self.clasp_mis_swap_distill_max_passes),
+        )
+        if swapped is not None:
+            improved_set, _, _, gain_fraction, passes = swapped
+            return (
+                _format_mis_distillation_target(improved_set),
+                float(gain_fraction),
+                int(passes),
+            )
+        if maximalized is not None:
+            improved_set, _, _, added_fraction, added_count = maximalized
+            return (
+                _format_mis_distillation_target(improved_set),
+                float(added_fraction),
+                int(added_count),
+            )
+        return None
 
     def _attach_improvement_distillation_tensors(
         self,

@@ -523,6 +523,54 @@ def _smooth_max(values: torch.Tensor, temperature: float) -> torch.Tensor:
     )
 
 
+def _best8_from9_quality_credit(
+    quality: torch.Tensor,
+    feasible: torch.Tensor,
+    *,
+    eps: float,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Return prospective best-of-eight-from-nine quality coefficients.
+
+    The deployment metric is the best feasible member of eight IID responses,
+    while training draws nine.  For utilities ``u`` and ``n=9`` this helper
+    uses the exact expected-best-of-eight set utility
+
+    ``H = ((n - 1) * max(u) + second_max(u)) / n``
+
+    and the focal-independent maximum baseline ``b_i = max_{j != i} u_j``.
+    A mean-of-nine score loss then receives coefficients ``n * (H - b_i)``.
+    For a unique top value with margin ``d`` this is ``(n - 1) * d`` for the
+    winner and ``-d`` for every other response; exact top ties receive zero.
+
+    Infeasible responses are assigned utility zero, matching the hard-gated
+    quality head.  This is quality-only credit: the all-infeasible recovery
+    surrogate and the learned feasibility controller remain separate.
+    """
+
+    if quality.size(1) != 9:
+        raise ValueError("best8_from9 credit requires exactly 9 responses per group.")
+    utilities = torch.where(
+        feasible,
+        quality.clamp(min=0.0),
+        torch.zeros_like(quality),
+    )
+    top_two = torch.topk(utilities, k=2, dim=1).values
+    top = top_two[:, 0]
+    second = top_two[:, 1]
+    margin = top - second
+    credit = torch.where(
+        utilities == top.unsqueeze(1),
+        8.0 * margin.unsqueeze(1),
+        -margin.unsqueeze(1),
+    )
+    credit = torch.where(
+        margin.unsqueeze(1) > float(eps),
+        credit,
+        torch.zeros_like(credit),
+    )
+    return credit, margin
+
+
 def compute_bon_aligned_advantages(
     primal_scores: torch.Tensor,
     violation_scores: torch.Tensor,
@@ -556,6 +604,19 @@ def compute_bon_aligned_advantages(
     equal credit, so discrete objective ties never create an arbitrary winner.
     The surrogate is centered within each group and supplies dense signed
     credit whenever feasibility or feasible quality differs.
+
+    ``success_credit_mode="max_loo"`` uses the requested leave-one-out maximum
+    baseline: each response receives its lexicographic quality minus the best
+    quality among the other responses.  This is the direct fixed-cardinality
+    best-of-K policy-gradient surrogate.
+
+    ``success_credit_mode="best8_from9"`` targets the deployment objective
+    directly: nine on-policy responses are scored by the expected best feasible
+    utility of every eight-response subset.  The winner of a uniquely top group
+    receives ``8 * margin`` and every other response ``-margin``, so the
+    estimator concentrates credit on the top feasible candidate instead of
+    reinforcing every merely-feasible completion.  It requires exactly nine
+    responses per group.
 
     ``success_credit_mode="exact_loo"`` preserves the exact leave-one-out
     set-Lagrangian estimator as a publication ablation.  It assigns completion
@@ -597,10 +658,15 @@ def compute_bon_aligned_advantages(
     if not math.isfinite(quality_temperature) or quality_temperature < 0.0:
         raise ValueError("quality_temperature must be finite and >= 0.")
     normalized_success_credit_mode = str(success_credit_mode).strip().lower()
-    if normalized_success_credit_mode not in {"dense_rank", "exact_loo"}:
+    if normalized_success_credit_mode not in {
+        "dense_rank",
+        "exact_loo",
+        "max_loo",
+        "best8_from9",
+    }:
         raise ValueError(
-            "success_credit_mode must be 'dense_rank' or 'exact_loo', got "
-            f"{success_credit_mode!r}."
+            "success_credit_mode must be 'dense_rank', 'exact_loo', 'max_loo', "
+            f"or 'best8_from9', got {success_credit_mode!r}."
         )
     if not math.isfinite(dense_quality_scale) or dense_quality_scale < 0.0:
         raise ValueError("dense_quality_scale must be finite and >= 0.")
@@ -655,6 +721,7 @@ def compute_bon_aligned_advantages(
     all_feasible = feasible_count == float(K)
 
     marginal_credit = torch.zeros_like(quality)
+    max_loo_credit = torch.zeros_like(quality)
     full_utilities = torch.zeros(num_groups, dtype=torch.float32, device=device)
     critical_marginals: list[torch.Tensor] = []
 
@@ -669,6 +736,26 @@ def compute_bon_aligned_advantages(
         full_utilities[group_idx] = full_utility
 
         feasible_indices = torch.nonzero(row_feasible, as_tuple=False).squeeze(1)
+        lexicographic_quality = quality[group_idx].clone()
+        if bool(row_feasible.any().item()):
+            feasible_min = feasible_quality.min()
+            feasible_max = feasible_quality.max()
+            infeasible_floor = feasible_min - torch.maximum(
+                torch.tensor(1.0, device=device),
+                (feasible_max - feasible_min).abs() + 1.0,
+            )
+            lexicographic_quality = torch.where(
+                row_feasible,
+                lexicographic_quality,
+                infeasible_floor.expand_as(lexicographic_quality),
+            )
+        for sample_idx in range(K):
+            without_mask = torch.ones(K, dtype=torch.bool, device=device)
+            without_mask[sample_idx] = False
+            max_loo_credit[group_idx, sample_idx] = (
+                lexicographic_quality[sample_idx]
+                - lexicographic_quality[without_mask].max()
+            )
         for sample_idx_tensor in feasible_indices:
             sample_idx = int(sample_idx_tensor.item())
             without = row_feasible.clone()
@@ -727,11 +814,29 @@ def compute_bon_aligned_advantages(
         dense_success_credit,
     )
 
-    if normalized_success_credit_mode == "exact_loo":
+    best8_credit: torch.Tensor | None = None
+    best8_margin: torch.Tensor | None = None
+    if normalized_success_credit_mode == "best8_from9":
+        best8_credit, best8_margin = _best8_from9_quality_credit(
+            quality,
+            feasible,
+            eps=float(eps),
+        )
+        best8_credit = torch.where(
+            all_infeasible.unsqueeze(1),
+            torch.zeros_like(best8_credit),
+            best8_credit,
+        )
+
+    if normalized_success_credit_mode == "max_loo":
+        successful_credit = max_loo_credit
+    elif normalized_success_credit_mode == "exact_loo":
         # Do not group-center exact successful-group marginals. Centering would
         # turn zero-credit, non-critical infeasible candidates negative and
         # change the exact leave-one-out estimator.
         successful_credit = marginal_credit
+    elif normalized_success_credit_mode == "best8_from9":
+        successful_credit = best8_credit
     else:
         successful_credit = dense_success_credit
 
@@ -784,7 +889,11 @@ def compute_bon_aligned_advantages(
                 | (
                     singleton_feasible
                     if normalized_success_credit_mode == "exact_loo"
-                    else (successful_groups & ~all_feasible)
+                    else (
+                        (successful_groups & ~all_feasible)
+                        if normalized_success_credit_mode == "dense_rank"
+                        else torch.zeros_like(all_infeasible)
+                    )
                 )
             ).float().mean().item()
         ),
@@ -793,6 +902,22 @@ def compute_bon_aligned_advantages(
         ),
         "clasp/bon_success_credit_exact_loo": float(
             normalized_success_credit_mode == "exact_loo"
+        ),
+        "clasp/bon_success_credit_max_loo": float(
+            normalized_success_credit_mode == "max_loo"
+        ),
+        "clasp/bon_success_credit_best8_from9": float(
+            normalized_success_credit_mode == "best8_from9"
+        ),
+        "clasp/bon_best8_margin_mean": (
+            float(best8_margin.mean().item()) if best8_margin is not None else 0.0
+        ),
+        "clasp/bon_best8_nonzero_rate": (
+            float(
+                (best8_credit.abs() > float(eps)).float().mean().item()
+            )
+            if best8_credit is not None
+            else 0.0
         ),
         "clasp/bon_dense_quality_scale": float(dense_quality_scale),
         "clasp/bon_dense_feasibility_scale": float(dense_feasibility_scale),

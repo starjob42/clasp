@@ -24,6 +24,7 @@ import os
 import stat
 import struct
 import tempfile
+import time
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -635,7 +636,42 @@ def assert_qwen25_7b_publication_invariant(
     return _qwen_publication_invariant(adapter_config, validated["tensors"])
 
 
+class _AdapterWeightsChangedWhileRead(CheckpointFidelityError):
+    """Transient metadata race while reading a freshly written adapter."""
+
+
+def _read_safetensors_retry_settings() -> tuple[int, float]:
+    attempts = int(os.environ.get("CLASP_SAFETENSORS_READ_ATTEMPTS", "6"))
+    delay = float(os.environ.get("CLASP_SAFETENSORS_READ_RETRY_DELAY_SECONDS", "2.0"))
+    return max(1, attempts), max(0.0, delay)
+
+
 def _read_safetensors(path: Path) -> dict[str, Any]:
+    """Read an adapter, retrying while a network filesystem settles its metadata.
+
+    ``trainer.save_model`` can return before NFS publishes the final metadata of
+    the adapter it just wrote, which makes the identity check below trip even
+    though the bytes are stable.  Retrying the whole read preserves the
+    fail-closed guarantee (a file that keeps changing still raises) while
+    tolerating a bounded settle window.  Set ``CLASP_SAFETENSORS_READ_ATTEMPTS``
+    to ``1`` to disable retries.
+    """
+
+    attempts, delay = _read_safetensors_retry_settings()
+    last_error: _AdapterWeightsChangedWhileRead | None = None
+    for attempt in range(attempts):
+        try:
+            return _read_safetensors_once(path)
+        except _AdapterWeightsChangedWhileRead as exc:
+            last_error = exc
+            if attempt + 1 < attempts and delay:
+                time.sleep(delay)
+    if last_error is None:  # pragma: no cover - attempts is always >= 1
+        raise CheckpointFidelityError(f"cannot read adapter weights {path}")
+    raise last_error
+
+
+def _read_safetensors_once(path: Path) -> dict[str, Any]:
     try:
         before = path.lstat()
     except OSError as exc:
@@ -742,7 +778,7 @@ def _read_safetensors(path: Path) -> dict[str, Any]:
         raise CheckpointFidelityError(f"cannot read adapter weights {path}: {exc}") from exc
     identity = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")
     if any(getattr(before, field) != getattr(after, field) for field in identity):
-        raise CheckpointFidelityError(f"adapter weights changed while read: {path}")
+        raise _AdapterWeightsChangedWhileRead(f"adapter weights changed while read: {path}")
     records = [
         {**entry, "value_sha256": value_digests[entry["key"]]}
         for entry in sorted(entries, key=lambda item: item["key"])

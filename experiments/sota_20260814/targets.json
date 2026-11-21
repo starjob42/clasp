@@ -1,0 +1,300 @@
+{
+  "schema_version": 3,
+  "status": "frozen_external_context_registry",
+  "frozen_at_utc": "2026-08-14T00:00:00Z",
+  "metric_units": {
+    "feasibility": "fraction of instances with at least one strictly feasible candidate",
+    "conditional_gap": "mean conditional gap-to-reference over instances with a feasible candidate; optimality-gap wording is reserved for certified references",
+    "external_reported_gap": "author-reported aggregate table value, retained verbatim as a fraction and not reinterpreted as sharing CLASP's denominator or certification semantics"
+  },
+  "tasks": [
+    "cvrp",
+    "jssp",
+    "mis",
+    "op",
+    "tsp"
+  ],
+  "new_iid_reference_contract": {
+    "status": "separate_blocked_reference_contract",
+    "contract_path": "experiments/sota_20260814/reference_solver_contract.template.json",
+    "separation_rule": "New-IID reference quality is established only by the frozen benchmark reference-solver contract and per-row native evidence; it is never inherited from an external paper's terminology or point estimate.",
+    "tasks": {
+      "cvrp": {
+        "intended_reference_kind": "best_known_heuristic",
+        "permitted_gap_label_if_approved": "conditional_gap_to_reference",
+        "certification_requirement": "No optimality claim; freeze and audit the deterministic raw-Euclidean heuristic on every row."
+      },
+      "jssp": {
+        "intended_reference_kind": "certified_optimum_required",
+        "permitted_gap_label_if_approved": "conditional_optimality_gap",
+        "certification_requirement": "Every retained row must be native CP-SAT OPTIMAL with integral objective equal to best bound and strict schedule replay."
+      },
+      "mis": {
+        "intended_reference_kind": "certified_optimum_required",
+        "permitted_gap_label_if_approved": "conditional_optimality_gap",
+        "certification_requirement": "Every retained row must be native Gurobi OPTIMAL with integral incumbent equal to bound, zero reported gap, and strict independent-set replay."
+      },
+      "op": {
+        "intended_reference_kind": "certified_optimum_required",
+        "permitted_gap_label_if_approved": "conditional_optimality_gap",
+        "certification_requirement": "Every retained row must be native Gurobi OPTIMAL for the raw-Euclidean open-path model with integral incumbent equal to bound, zero reported gap, and strict route replay."
+      },
+      "tsp": {
+        "intended_reference_kind": "best_known_heuristic",
+        "permitted_gap_label_if_approved": "conditional_gap_to_reference",
+        "certification_requirement": "No optimality claim; freeze and audit the deterministic raw-Euclidean heuristic on every row."
+      }
+    }
+  },
+  "lanes": {
+    "raw_n8": {
+      "candidate_budget": 8,
+      "postprocessing": "none",
+      "local_lane_policy_projection": {
+        "publication_status": "supported",
+        "claim_eligible": true,
+        "required_for_confirmation": true
+      },
+      "external_context": {
+        "context_id": "llmcosolver_neurips2025_table1_n8",
+        "name": "LLMCoSolver SFT+FOARL best-of-8",
+        "status": "NeurIPS 2025 publication; aggregate Table 1 point estimates only",
+        "sources": [
+          {
+            "kind": "official_peer_reviewed_proceedings",
+            "url": "https://papers.neurips.cc/paper_files/paper/2025/hash/f0c6c93e1dbff84daf6082fef7e1a094-Abstract-Conference.html"
+          },
+          {
+            "kind": "author_manuscript_with_appendices",
+            "url": "https://arxiv.org/abs/2509.16865"
+          },
+          {
+            "kind": "official_author_code",
+            "url": "https://github.com/Summer142857/LLMCoSolver/tree/f6388991d243c0aa91d9ee7e2fa18ed1c9e72477"
+          }
+        ],
+        "evidence_kind": "author_reported_aggregate_point_estimates_without_per_instance_outputs",
+        "comparison_scope": "historical_first_100_author_protocol_only",
+        "aggregate_point_comparison_eligible": false,
+        "strict_beat_claim_eligible": false,
+        "reason_not_claim_eligible": "These values belong only to the released historical first-100 author protocol. The aggregator has no author-protocol replication receipt or paired outputs and must not apply them to a new IID benchmark.",
+        "scope": {
+          "dataset": "released_historical_evaluation",
+          "row_interval": [
+            0,
+            100
+          ],
+          "instances_per_task": 100,
+          "candidate_budget": 8,
+          "decoding": "author_protocol_paper_top_p_0.7",
+          "reference_values": "author_supplied_task_solver_outputs"
+        },
+        "reported_point_estimates": {
+          "cvrp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0453,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The paper describes CVRP supervision as near-optimal LKH-3 output, not a certified optimum; retain this only as an author-protocol gap-to-heuristic context."
+          },
+          "jssp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.082,
+            "reference_semantics": "time_limited_near_optimal_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The paper explicitly calls the OR-Tools CP-SAT reference near-optimal and imposes a 300-second limit; no per-row optimality certificates are supplied."
+          },
+          "mis": {
+            "feasibility": 0.94,
+            "reported_gap": 0.0104,
+            "reference_semantics": "author_reported_gurobi_uncertified",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The paper says MIS references are obtained by Gurobi, but provides no per-row native status, incumbent, bound, gap, or retained certificate."
+          },
+          "op": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0185,
+            "reference_semantics": "cross_protocol_invalid",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The released OP serializer duplicates the depot, shifts prizes, omits a node, and uses rounded distance/budget semantics; its table denominator is not the raw-Euclidean CLASP OP protocol."
+          },
+          "tsp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0107,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The paper calculates this value against task-solver output based on LKH rather than a retained certified optimum; retain it only as author-protocol gap-to-heuristic context."
+          }
+        }
+      }
+    },
+    "repair_n8": {
+      "candidate_budget": 8,
+      "postprocessing": "grammar-constrained decoding plus task-specific deterministic repair",
+      "local_lane_policy_projection": {
+        "publication_status": "supported",
+        "claim_eligible": true,
+        "required_for_confirmation": true
+      },
+      "external_context": {
+        "context_id": "falcon_arxiv_v1_fixed_n8",
+        "name": "FALCON fixed-N=8",
+        "status": "arXiv:2602.01090v1 preprint; not independently reproduced",
+        "sources": [
+          {
+            "kind": "author_preprint_v1",
+            "url": "https://arxiv.org/abs/2602.01090v1"
+          }
+        ],
+        "evidence_kind": "preprint_aggregate_point_estimates_without_released_matched_per_instance_outputs",
+        "comparison_scope": "context_only_unreproduced_cross_system_preprint",
+        "aggregate_point_comparison_eligible": false,
+        "strict_beat_claim_eligible": false,
+        "reason_not_claim_eligible": "FALCON combines BOPO, grammar constraints, and task-specific repair under an unmatched preprint protocol. It is systems context, not a claim-authorizing target for CLASP repair outputs.",
+        "scope": {
+          "dataset": "author_generated_following_llmcosolver",
+          "candidate_budget": 8,
+          "system": "bopo_plus_grammar_constrained_generation_plus_task_specific_repair",
+          "per_instance_outputs_available_here": false,
+          "matched_local_reproduction": false
+        },
+        "reported_point_estimates": {
+          "cvrp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0368,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "Preprint aggregate against an author-protocol heuristic reference; no matched per-instance reproduction is available."
+          },
+          "jssp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0715,
+            "reference_semantics": "time_limited_near_optimal_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited JSSP denominator is a time-limited near-optimal CP-SAT reference, not retained per-row certified optima."
+          },
+          "mis": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0087,
+            "reference_semantics": "author_reported_gurobi_uncertified",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited MIS denominator is described as Gurobi output without per-row native certificate evidence."
+          },
+          "op": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0142,
+            "reference_semantics": "cross_protocol_invalid",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited OP setup is not objective- and instance-equivalent to the raw-Euclidean CLASP OP protocol."
+          },
+          "tsp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0095,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "Preprint aggregate against an author-protocol heuristic reference; no matched per-instance reproduction is available."
+          }
+        }
+      }
+    },
+    "repair_adaptive_n8_64": {
+      "candidate_budget": {
+        "minimum": 8,
+        "maximum": 64
+      },
+      "postprocessing": "adaptive sampling plus grammar-constrained decoding and task-specific deterministic repair",
+      "local_lane_policy_projection": {
+        "publication_status": "unsupported_future_no_prespecified_producer",
+        "claim_eligible": false,
+        "required_for_confirmation": false
+      },
+      "external_context": {
+        "context_id": "falcon_arxiv_v1_adaptive_n8_64",
+        "name": "FALCON adaptive N=8..64",
+        "status": "arXiv:2602.01090v1 preprint; not independently reproduced",
+        "sources": [
+          {
+            "kind": "author_preprint_v1",
+            "url": "https://arxiv.org/abs/2602.01090v1"
+          }
+        ],
+        "evidence_kind": "preprint_aggregate_point_estimates_without_released_matched_per_instance_outputs",
+        "comparison_scope": "context_only_unreproduced_cross_system_preprint",
+        "aggregate_point_comparison_eligible": false,
+        "strict_beat_claim_eligible": false,
+        "reason_not_claim_eligible": "FALCON adaptive inference uses a learned confidence stopping rule and an unmatched repair stack. CLASP has no frozen adaptive producer, so these values are context only.",
+        "scope": {
+          "dataset": "author_generated_following_llmcosolver",
+          "minimum_candidate_budget": 8,
+          "maximum_candidate_budget": 64,
+          "confidence_threshold": 0.85,
+          "system": "adaptive_bopo_plus_grammar_constrained_generation_plus_task_specific_repair",
+          "per_instance_outputs_available_here": false,
+          "matched_local_reproduction": false
+        },
+        "reported_point_estimates": {
+          "cvrp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0352,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "Preprint aggregate against an author-protocol heuristic reference under unmatched adaptive compute."
+          },
+          "jssp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0698,
+            "reference_semantics": "time_limited_near_optimal_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited JSSP denominator is time-limited and near-optimal, and adaptive compute is unmatched."
+          },
+          "mis": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0084,
+            "reference_semantics": "author_reported_gurobi_uncertified",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited MIS denominator lacks per-row Gurobi certificates, and adaptive compute is unmatched."
+          },
+          "op": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0138,
+            "reference_semantics": "cross_protocol_invalid",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "The inherited OP setup is cross-protocol invalid for raw-Euclidean CLASP, and adaptive compute is unmatched."
+          },
+          "tsp": {
+            "feasibility": 1.0,
+            "reported_gap": 0.0092,
+            "reference_semantics": "heuristic_reference",
+            "comparison_status": "context_only",
+            "strict_beat_claim_eligible": false,
+            "reason_not_claim_eligible": "Preprint aggregate against an author-protocol heuristic reference under unmatched adaptive compute."
+          }
+        }
+      }
+    }
+  },
+  "context_only": [
+    {
+      "name": "ACCORD",
+      "source": "https://openreview.net/forum?id=o9SL5Um8Yv",
+      "code": "https://github.com/starjob42/ACCORD",
+      "status": "DiffCoAlg 2025 poster",
+      "reason_not_in_numeric_table": "Different datasets, representation, task suite, model family, and inference budget; useful as a representation baseline, not a matched leaderboard row."
+    }
+  ],
+  "registry_sha256": "b0753d8befe3beb87ae983e8b4b82b41b2c8511b056356109a4f2b0955cae706"
+}

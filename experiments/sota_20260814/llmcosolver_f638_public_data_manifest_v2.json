@@ -1,0 +1,2665 @@
+{
+  "classification_guards": {
+    "author_eval_is_held_out": false,
+    "author_eval_is_leakage_free": false,
+    "authorizes_training_or_evaluation": false,
+    "current_clasp_method_grpo": "three-head dr_grpo; non-FOARL and unmatched",
+    "exact_paper_data_is_valid_publication_denominator": false,
+    "fresh_iid_is_exact_paper_data_reproduction": false,
+    "fresh_preregistered_disjoint_iid_required_for_claims": true,
+    "per_task_sft_checkpoint_identity_proven": false,
+    "sft_drive_byte_identity_proven": false
+  },
+  "contamination": {
+    "author_pipeline_train_sources_to_rl_eval": {
+      "cvrp": {
+        "eval_row_count": 300,
+        "exact_duplicate_unique_eval_row_count": 0,
+        "exact_union_shared_instance_count": 299
+      },
+      "jssp": {
+        "eval_row_count": 300,
+        "exact_duplicate_unique_eval_row_count": 0,
+        "exact_union_shared_instance_count": 0
+      },
+      "mis": {
+        "eval_row_count": 300,
+        "exact_duplicate_unique_eval_row_count": 300,
+        "exact_union_shared_instance_count": 300
+      },
+      "op": {
+        "eval_row_count": 300,
+        "exact_duplicate_unique_eval_row_count": 0,
+        "exact_union_shared_instance_count": 299
+      },
+      "tsp": {
+        "eval_row_count": 300,
+        "exact_duplicate_unique_eval_row_count": 0,
+        "exact_union_shared_instance_count": 0
+      }
+    },
+    "claim": "The linked author evaluation files are not globally held-out or leakage-free. They are context-reproduction artifacts only. A publication comparison requires a preregistered fresh disjoint IID split, which is no longer exact-paper-data reproduction.",
+    "rl_train_to_rl_eval_shared_instances": {
+      "cvrp": 0,
+      "jssp": 0,
+      "mis": 300,
+      "op": 0,
+      "tsp": 0
+    },
+    "sft_train_to_sft_eval_shared_instances": {
+      "cvrp": 300,
+      "jssp": 0,
+      "mis": 0,
+      "op": 299,
+      "tsp": 0
+    }
+  },
+  "contract_type": "llmcosolver_f638_public_data_manifest",
+  "filesystem_seal": {
+    "external_sft_tree": "not chmod-mutated; it is neighboring probable-lineage evidence, not vendored or claimed immutable; non-symlink regular files are stable-checked during parse",
+    "rl_tree": {
+      "directories": {
+        "third_party/llmcosolver_f6388991/data_rl": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/cvrp": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/cvrp/eval": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/cvrp/train": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/jssp": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/jssp/eval": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/jssp/train": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/mis": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/mis/eval": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/mis/train": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/op": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/op/eval": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/op/train": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/tsp": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/tsp/eval": "0o555",
+        "third_party/llmcosolver_f6388991/data_rl/tsp/train": "0o555"
+      },
+      "directory_mode": "0o555",
+      "file_mode": "0o444",
+      "files_verified": 10,
+      "regular_file_stable_hash_required": true,
+      "symlinks_allowed": false
+    },
+    "v1_manifest_mode": "0o444",
+    "v2_manifest_required_mode": "0o444"
+  },
+  "identity_algorithm": {
+    "cross_split_and_stage": "task-prefixed rendered input after Unicode NFC normalization and collapse of every Unicode whitespace run to one ASCII space",
+    "exact_row": "sha256 of the schema-v1 canonical JSON full row",
+    "reference": "sha256 of the schema-v1 canonical JSON output string",
+    "scope": "same algorithm for RL/SFT train/eval; every JSON row parsed"
+  },
+  "manifest_sha256": "4b4896ae9d627f8306ca505bb245075d2af784dbe1b420c66cf5cf9fab5af06c",
+  "rl": {
+    "acquisition_policy": "temporary file plus atomic hard-link create; existing targets validated; no overwrite path exists",
+    "classification": "DIRECT_OFFICIAL_LINK_ACQUISITION_LOCALLY_FROZEN",
+    "file_count": 10,
+    "files": {
+      "cvrp/eval/test.json": {
+        "acquisition_outcome": "created",
+        "content_length": 3490120,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "11y_mH0dcKjwOwNjGAc9B5madaSgp9Y71",
+        "filename": "test.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 3490120,
+        "local_sha256": "09d37d3becd158f38ea4fdbf70075a157f2721ce8d4d60cf7d36e714cd34ef8b",
+        "relative_path": "cvrp/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "cvrp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/cvrp/eval/test.json"
+      },
+      "cvrp/train/train_rl.json": {
+        "acquisition_outcome": "created",
+        "content_length": 23563607,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1l_tnARZRVIzJrWOZ7QyupSXrHBGkUP_r",
+        "filename": "train_rl.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 23563607,
+        "local_sha256": "4a1c3e97ce4408e722348d893b88ee58a0c1ca65ff0c6db66739901b8a540ff6",
+        "relative_path": "cvrp/train/train_rl.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "cvrp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/cvrp/train/train_rl.json"
+      },
+      "jssp/eval/test.json": {
+        "acquisition_outcome": "created",
+        "content_length": 3358206,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "19hCmNa0WQL_k_FOUyh09dIZKUjXd-NIr",
+        "filename": "test.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 3358206,
+        "local_sha256": "bff60bcf176b0ae43fa5cc899eb6bdc4f0c895874e325b5fcb8d08be0b257b31",
+        "relative_path": "jssp/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "jssp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/jssp/eval/test.json"
+      },
+      "jssp/train/train_rl.json": {
+        "acquisition_outcome": "created",
+        "content_length": 35695814,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1ZTPJCnJWqJ0HCKOmX0BqO8L1vaP-ZTAG",
+        "filename": "train_rl.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 35695814,
+        "local_sha256": "35c2aeed27e885491a234787855012b9f890e2a970c86ee910a639fc72d0c27a",
+        "relative_path": "jssp/train/train_rl.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "jssp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/jssp/train/train_rl.json"
+      },
+      "mis/eval/test.json": {
+        "acquisition_outcome": "created",
+        "content_length": 8118895,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1u6FA8rFkFkVUD0rTLQzFGAui-p8M1nVv",
+        "filename": "test.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 8118895,
+        "local_sha256": "6c0e8ded09acc0e7cadd42f88f96caff562ae3d8d62445756679f5ce4bdcd933",
+        "relative_path": "mis/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "mis",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/mis/eval/test.json"
+      },
+      "mis/train/train_rl.json": {
+        "acquisition_outcome": "created",
+        "content_length": 95368471,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1InVqKB9QIj4D9SQarkKLLyYdQotPnN3m",
+        "filename": "train_rl.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 95368471,
+        "local_sha256": "65cc0ea9bad6a0d3a4a5b5d8a37c2b49cc56227bf696bfd79388e6f935308c39",
+        "relative_path": "mis/train/train_rl.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "mis",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/mis/train/train_rl.json"
+      },
+      "op/eval/test.json": {
+        "acquisition_outcome": "created",
+        "content_length": 3428819,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1LFz_o5rO9QS5O8PXM1SYA933-n2In01R",
+        "filename": "test.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 3428819,
+        "local_sha256": "b4d5093760e70ceaa9e0b05501057fc1496cfa46c9eb0ea458094a441d341e3f",
+        "relative_path": "op/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "op",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/op/eval/test.json"
+      },
+      "op/train/train_rl.json": {
+        "acquisition_outcome": "created",
+        "content_length": 57061566,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1WaPxOg1a4lyPk7eZ_7Ldf2E3NtvXK7CB",
+        "filename": "train_rl.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 57061566,
+        "local_sha256": "bf5319112b68fba04ed41dd96b268d8e22d98620b9266aa9aab69fba2de0b1b4",
+        "relative_path": "op/train/train_rl.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "op",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/op/train/train_rl.json"
+      },
+      "tsp/eval/test.json": {
+        "acquisition_outcome": "created",
+        "content_length": 3140444,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1RlYdsvSSSKDBEj_q98ONL2TXTmB055w5",
+        "filename": "test.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 3140444,
+        "local_sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+        "relative_path": "tsp/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "tsp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/tsp/eval/test.json"
+      },
+      "tsp/train/train_rl.json": {
+        "acquisition_outcome": "created",
+        "content_length": 33377010,
+        "drive_byte_identity": "DIRECT_OFFICIAL_ITEM_ACQUISITION_LOCALLY_HASHED",
+        "file_id": "1SgpbRP8iBgOmfcd_nZrvGoChKkiXS_M8",
+        "filename": "train_rl.json",
+        "last_modified": null,
+        "local_availability": "PRESENT",
+        "local_bytes": 33377010,
+        "local_sha256": "90c5a48909ac9df191c727237474ec262db4a9c654f3555a19b744304dc0a288",
+        "relative_path": "tsp/train/train_rl.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "tsp",
+        "workspace_path": "third_party/llmcosolver_f6388991/data_rl/tsp/train/train_rl.json"
+      }
+    },
+    "live_header_observations": {
+      "cvrp/eval/test.json": {
+        "content_disposition": "attachment; filename=\"test.json\"",
+        "content_length": 3490120,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:56 GMT"
+      },
+      "cvrp/train/train_rl.json": {
+        "content_disposition": "attachment; filename=\"train_rl.json\"",
+        "content_length": 23563607,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:10:03 GMT"
+      },
+      "jssp/eval/test.json": {
+        "content_disposition": "attachment; filename=\"test.json\"",
+        "content_length": 3358206,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:48 GMT"
+      },
+      "jssp/train/train_rl.json": {
+        "content_disposition": "attachment; filename=\"train_rl.json\"",
+        "content_length": 35695814,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:53 GMT"
+      },
+      "mis/eval/test.json": {
+        "content_disposition": "attachment; filename=\"test.json\"",
+        "content_length": 8118895,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:59 GMT"
+      },
+      "mis/train/train_rl.json": {
+        "content_disposition": "attachment; filename=\"train_rl.json\"",
+        "content_length": 95368471,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:10:13 GMT"
+      },
+      "op/eval/test.json": {
+        "content_disposition": "attachment; filename=\"test.json\"",
+        "content_length": 3428819,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:11 GMT"
+      },
+      "op/train/train_rl.json": {
+        "content_disposition": "attachment; filename=\"train_rl.json\"",
+        "content_length": 57061566,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:32 GMT"
+      },
+      "tsp/eval/test.json": {
+        "content_disposition": "attachment; filename=\"test.json\"",
+        "content_length": 3140444,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:37 GMT"
+      },
+      "tsp/train/train_rl.json": {
+        "content_disposition": "attachment; filename=\"train_rl.json\"",
+        "content_length": 33377010,
+        "http_status": 200,
+        "last_modified": "Sun, 28 Sep 2025 07:09:42 GMT"
+      }
+    },
+    "official_drive_folder_id": "1VN9crftdW7DTsMQupbc06u6PzRT-Bwnx",
+    "total_bytes": 266602952,
+    "workspace_root": "third_party/llmcosolver_f6388991/data_rl"
+  },
+  "schema_and_reference_evidence": {
+    "rl": {
+      "cvrp": {
+        "eval": {
+          "bytes": 3490120,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "array": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            },
+            "vehicle_capacity": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "e02f4e7b12ad1cc03ef4ef1d394babcfefee46c8bc352b9b32b3a22a665f6cea",
+            "ordered_sha256": "156f0160bd629e82d97e2802520f3a37aa11840bfd1fcf1915b1d50bc777b3bc",
+            "parsed_decimal_max": "28982.98",
+            "parsed_decimal_min": "3219.72",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "b60d8a6add70b392cfe020a7acc5622acd910b50c8e0a2da4fb6769a3ad3b05e",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "d862d4967b36cec6a4bb5c20fe1810bdfaa99b270948c8e58c05bc149e57b82d",
+            "ordered_sha256": "576c1e75081c5d29d628ef448870b0f4cf7c28c3be4ee5738e5acf2c4e58d8a9",
+            "unique_count": 300,
+            "unique_set_sha256": "d862d4967b36cec6a4bb5c20fe1810bdfaa99b270948c8e58c05bc149e57b82d"
+          },
+          "sha256": "09d37d3becd158f38ea4fdbf70075a157f2721ce8d4d60cf7d36e714cd34ef8b",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ]
+        },
+        "train": {
+          "bytes": 23563607,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 2000
+            },
+            "instance": {
+              "array": 2000
+            },
+            "instruction": {
+              "string": 2000
+            },
+            "num_nodes": {
+              "string": 2000
+            },
+            "output": {
+              "string": 2000
+            },
+            "vehicle_capacity": {
+              "string": 2000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "1fa6c5f9e4a22f21ee1bc28bb12a9b9efe997219fa712ad61b7d9c4512b65cbd",
+            "ordered_sha256": "f8903679a9c71ef9036ff95973403352906f3b8ed9d63d9a4434f4987c45a8c9",
+            "parsed_decimal_max": "43097.63",
+            "parsed_decimal_min": "2563.02",
+            "parsed_labels": {
+              "objective": 2000
+            },
+            "parsed_lexeme_ordered_sha256": "670ee453c6fa09548c82f1ce221fb8a6529a0615727f94f52c647aa5ef4eeff8",
+            "parsed_terminal_objective_count": 2000,
+            "present_count": 2000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 2000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "96b05efef3cfef31dd373357c67a4648be805c27eeeff2a9cc7534e750d6e7cb",
+            "ordered_sha256": "715d7e6b673acf1d03818761e729c67bfb8cb7a13c13a65d2fb0605d00528020",
+            "unique_count": 2000,
+            "unique_set_sha256": "96b05efef3cfef31dd373357c67a4648be805c27eeeff2a9cc7534e750d6e7cb"
+          },
+          "sha256": "4a1c3e97ce4408e722348d893b88ee58a0c1ca65ff0c6db66739901b8a540ff6",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ]
+        }
+      },
+      "jssp": {
+        "eval": {
+          "bytes": 3358206,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "array": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "m": {
+              "string": 300
+            },
+            "n": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "33bbef21ac558f8de703a071de7de336581e3eb31ed6c8a7d6c4bf8b1ee8bb55",
+            "ordered_sha256": "cc78e6958ed5df1606a33a78fcef1efa9ce1466f199cc04395f5118bfb031e98",
+            "parsed_decimal_max": "1648",
+            "parsed_decimal_min": "424",
+            "parsed_labels": {
+              "makespan": 300
+            },
+            "parsed_lexeme_ordered_sha256": "3d9e56c1f983f3d5a5aac93d78845f993cc965b16036685b80658f82bb699020",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "f2aade1624c768c10d4ca9733f7a93be390fa730b4d178b223cb367f0c613833",
+            "ordered_sha256": "862f1bd558f44add97efb89628d7c9fc66850d0c38f3b0cdeaef2cadd98a50ae",
+            "unique_count": 300,
+            "unique_set_sha256": "f2aade1624c768c10d4ca9733f7a93be390fa730b4d178b223cb367f0c613833"
+          },
+          "sha256": "bff60bcf176b0ae43fa5cc899eb6bdc4f0c895874e325b5fcb8d08be0b257b31",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 35695814,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 3200
+            },
+            "instance": {
+              "array": 3200
+            },
+            "instruction": {
+              "string": 3200
+            },
+            "m": {
+              "string": 3200
+            },
+            "n": {
+              "string": 3200
+            },
+            "output": {
+              "string": 3200
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "15d7b7c08842b9fec51e20ec4a07cfde8b109096270fb966ac784c20cae72642",
+            "ordered_sha256": "725f78380f408d6127bb7d75a0a8ea2da79c62ca44b8c8ec68cb7e92dc4803a3",
+            "parsed_decimal_max": "1679",
+            "parsed_decimal_min": "353",
+            "parsed_labels": {
+              "makespan": 3200
+            },
+            "parsed_lexeme_ordered_sha256": "19c070009aca611cec43fa2935b9e36d76705072690320f900c2d7b38f4cbc68",
+            "parsed_terminal_objective_count": 3200,
+            "present_count": 3200,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 3200,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "3001d70e2be865fbfad6d6c7dd0eb288a62cfd7acb0ed95f0a93d2eee8d1ceff",
+            "ordered_sha256": "d0b865be74cb2274036e1d1586dea9bdf47a669e9a2903724c7fd8c52c007aca",
+            "unique_count": 3200,
+            "unique_set_sha256": "3001d70e2be865fbfad6d6c7dd0eb288a62cfd7acb0ed95f0a93d2eee8d1ceff"
+          },
+          "sha256": "35c2aeed27e885491a234787855012b9f890e2a970c86ee910a639fc72d0c27a",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ]
+        }
+      },
+      "mis": {
+        "eval": {
+          "bytes": 8118895,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "object": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "b69085944451c4c6605c48453bab128c0c1c41a22b1092fa6c504db6403a4bdb",
+            "ordered_sha256": "915c56f84455f8b08c6282b339d6ae76db66e34d2556eff07f394b3ae4960b3e",
+            "parsed_decimal_max": "73",
+            "parsed_decimal_min": "4",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "c8edb0275facca4d209796fdf37f0cdff0b21d633bc22a18247774fc8b1df5b9",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "99eafe42d4ff6d0e0ce2c421f8f412a0af3467d0a75c93e367194a3a4323adad",
+            "ordered_sha256": "21e388d80684df24e9fb1d71461c63a28150bedf860843d86bc021e5914d4750",
+            "unique_count": 300,
+            "unique_set_sha256": "99eafe42d4ff6d0e0ce2c421f8f412a0af3467d0a75c93e367194a3a4323adad"
+          },
+          "sha256": "6c0e8ded09acc0e7cadd42f88f96caff562ae3d8d62445756679f5ce4bdcd933",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 95368471,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 3200
+            },
+            "instance": {
+              "object": 3200
+            },
+            "instruction": {
+              "string": 3200
+            },
+            "num_nodes": {
+              "string": 3200
+            },
+            "output": {
+              "string": 3200
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "e72087f59b503d0ba3f606282490df5325e92ec8234dbb1cd822288a6b28ab70",
+            "ordered_sha256": "9bdc4e8e0482e2092def128619a728e1c4cd67fd50a1186e90050dfb0bca7eff",
+            "parsed_decimal_max": "76",
+            "parsed_decimal_min": "4",
+            "parsed_labels": {
+              "objective": 3200
+            },
+            "parsed_lexeme_ordered_sha256": "4387ddcae0565ced2d602ac6615493c46117d5e6b61419244aec66328665253c",
+            "parsed_terminal_objective_count": 3200,
+            "present_count": 3200,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 3200,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "842262e04d1253f80fd9ee562ae92e7a7540fdb4af772b2ed0ce85be6db55754",
+            "ordered_sha256": "1a52a987d0584c3fa413f34482b8975d8c4061b4f994e1b3b3784a1b57f3c4ee",
+            "unique_count": 3200,
+            "unique_set_sha256": "842262e04d1253f80fd9ee562ae92e7a7540fdb4af772b2ed0ce85be6db55754"
+          },
+          "sha256": "65cc0ea9bad6a0d3a4a5b5d8a37c2b49cc56227bf696bfd79388e6f935308c39",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        }
+      },
+      "op": {
+        "eval": {
+          "bytes": 3428819,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "array": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "max_route_length": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            },
+            "start_node": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "4385919480a9dd653ac43be08c778abadbbc0fb6d8862096c39991cae91f0f23",
+            "ordered_sha256": "5cca73298d16f135c84f5299229baa66f3d84fcc46eb910b4ba397056b3341d4",
+            "parsed_decimal_max": "543.00",
+            "parsed_decimal_min": "38.00",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "13c7b3b7d8c829fc61de2a1cee9bc40d0b47a492095802ddd785efd3e7187fff",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "98b8c0d398a7dee1d702130ae0acbe4570b55783a2be36798e4da34b1dbf7d4a",
+            "ordered_sha256": "a0b1949235a24c89f0e5d838f1fb02b1d9dc4b138b119d2a249df54ea62e3d07",
+            "unique_count": 300,
+            "unique_set_sha256": "98b8c0d398a7dee1d702130ae0acbe4570b55783a2be36798e4da34b1dbf7d4a"
+          },
+          "sha256": "b4d5093760e70ceaa9e0b05501057fc1496cfa46c9eb0ea458094a441d341e3f",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ]
+        },
+        "train": {
+          "bytes": 57061566,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 5000
+            },
+            "instance": {
+              "array": 5000
+            },
+            "instruction": {
+              "string": 5000
+            },
+            "max_route_length": {
+              "string": 5000
+            },
+            "num_nodes": {
+              "string": 5000
+            },
+            "output": {
+              "string": 5000
+            },
+            "start_node": {
+              "string": 5000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "41643c4050bbd92e7a9d9620ef09ca79e785b6833622d00522193ca0d7b7eeb7",
+            "ordered_sha256": "43999d4c9d3b78b906ab2e672e37215812597d98741028958addddeb7ccb3a6f",
+            "parsed_decimal_max": "586.00",
+            "parsed_decimal_min": "28.00",
+            "parsed_labels": {
+              "objective": 5000
+            },
+            "parsed_lexeme_ordered_sha256": "9de213742893bc9fc49f141bb581e32b99e34690520465c292257232ae0b0cb5",
+            "parsed_terminal_objective_count": 5000,
+            "present_count": 5000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 5000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "dca0523400a2f19be11a3e93498539847f74b1cc83a2daf5682b39a958fa2ba9",
+            "ordered_sha256": "af5995b1e6d9443abb89640060e074352b9b0934616c3dd87a9d10d2b89ef5fa",
+            "unique_count": 5000,
+            "unique_set_sha256": "dca0523400a2f19be11a3e93498539847f74b1cc83a2daf5682b39a958fa2ba9"
+          },
+          "sha256": "bf5319112b68fba04ed41dd96b268d8e22d98620b9266aa9aab69fba2de0b1b4",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ]
+        }
+      },
+      "tsp": {
+        "eval": {
+          "bytes": 3140444,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "array": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "1103cd50b2245128b375365d66d3092ec3d9fe3876f4b7de212bfbbc54ea8ef5",
+            "ordered_sha256": "6d24d3f533ca19bca77e106e90e1807bc02074611f8052a737b20c42bc38ef05",
+            "parsed_decimal_max": "8029.387",
+            "parsed_decimal_min": "2727.313",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "7aa772b9bcf32f24878a122199ab51c4679975612bc9f00805fcbb47e77f474e",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce",
+            "ordered_sha256": "25f9b29d3253921f4f91961445ceaf89eadb898c0434053380e230f4218ddd81",
+            "unique_count": 300,
+            "unique_set_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce"
+          },
+          "sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 33377010,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 3200
+            },
+            "instance": {
+              "array": 3200
+            },
+            "instruction": {
+              "string": 3200
+            },
+            "num_nodes": {
+              "string": 3200
+            },
+            "output": {
+              "string": 3200
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "2028d9702899ddf00ec54305cca8da9159352a018286988e8356473627fc5839",
+            "ordered_sha256": "dfc557d8ad660ccdd9dec04a4327589d18e47ffd71f499ac2a8949ef55c01011",
+            "parsed_decimal_max": "8204.317",
+            "parsed_decimal_min": "2564.406",
+            "parsed_labels": {
+              "objective": 3200
+            },
+            "parsed_lexeme_ordered_sha256": "70ccd1c16b74fcc6def152a431e79724ed6d83542e7851505b0b8f3a0a5f0e10",
+            "parsed_terminal_objective_count": 3200,
+            "present_count": 3200,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 3200,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "d015643b71e846bc54effea7b4ad9e3c13e7b699abb41ee73e0b20050eaec5a2",
+            "ordered_sha256": "9b2f2312ed9185d76d7efe09c8fb1fc891cfb957d1e0aaea73013a435d168db4",
+            "unique_count": 3200,
+            "unique_set_sha256": "d015643b71e846bc54effea7b4ad9e3c13e7b699abb41ee73e0b20050eaec5a2"
+          },
+          "sha256": "90c5a48909ac9df191c727237474ec262db4a9c654f3555a19b744304dc0a288",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        }
+      }
+    },
+    "sft": {
+      "cvrp": {
+        "eval": {
+          "bytes": 1615617,
+          "common_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            },
+            "vehicle_capacity": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "303c1d424b3e1f689a791003feb8709eacb9ab6c3f7911f6dc0b9c1c6eeb4745",
+            "ordered_sha256": "29d5adb1424956d1adfed74207651f34ce4a2e3d70b6c96616f8775ba5016698",
+            "parsed_decimal_max": "28986.46",
+            "parsed_decimal_min": "3219.72",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "7000e3a638fdf9ac390985cccaa320e5af3f2f00ef2ff06448e4c0c7fb667027",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "feb8d66606b3f82ed0297393e55e8b01da65c4eed404506c0a79b8a3f562f364",
+            "ordered_sha256": "ebd779aca737a3cb9d500429605044d73bd6ab695bd82c0857b2348264dfcd37",
+            "unique_count": 300,
+            "unique_set_sha256": "feb8d66606b3f82ed0297393e55e8b01da65c4eed404506c0a79b8a3f562f364"
+          },
+          "sha256": "bdc5cab2f6b6c6f7b8efa51b9b90dbdb505f5d4a08dfc756c54e3e0aa1fc4f62",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ]
+        },
+        "train": {
+          "bytes": 2709936196,
+          "common_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 500000
+            },
+            "instruction": {
+              "string": 500000
+            },
+            "num_nodes": {
+              "string": 500000
+            },
+            "output": {
+              "string": 500000
+            },
+            "vehicle_capacity": {
+              "string": 500000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "82366655d58938319d84b8a986b8591ce2e93c89172cc4d5e884ba8b7e9b1d2c",
+            "ordered_sha256": "435aea5655f8ae646adaa9147d63bdec0db805b9aeb64734d394d533ebd8ed39",
+            "parsed_decimal_max": "50838.73",
+            "parsed_decimal_min": "2124.12",
+            "parsed_labels": {
+              "objective": 500000
+            },
+            "parsed_lexeme_ordered_sha256": "a4362597924cec1a2189f7fe938ab2dd7ef2a4b4bf133eabc4cdacdb687f701b",
+            "parsed_terminal_objective_count": 500000,
+            "present_count": 500000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 500000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 2220,
+            "multiset_sha256": "dbf711d99ca60f6584ac241c5435a2bde28ce55c0db7fa0c5a02c6a28b81e292",
+            "ordered_sha256": "d51b9c0cff2c131fe8eadcc172d8cbc7cc7e97eb2173225e0576e37a0f23aef8",
+            "unique_count": 497780,
+            "unique_set_sha256": "dc007314e5dd96a63990327f9b96417c1b413809b5e70f6357eb3d59aca4701f"
+          },
+          "sha256": "9981b841c42376275d8950faa600d1a0710fd27c4e902ed655617f3d0620d0ac",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output",
+            "vehicle_capacity"
+          ]
+        }
+      },
+      "jssp": {
+        "eval": {
+          "bytes": 1302790,
+          "common_keys": [
+            "input",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "m": {
+              "string": 300
+            },
+            "n": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "33bbef21ac558f8de703a071de7de336581e3eb31ed6c8a7d6c4bf8b1ee8bb55",
+            "ordered_sha256": "cc78e6958ed5df1606a33a78fcef1efa9ce1466f199cc04395f5118bfb031e98",
+            "parsed_decimal_max": "1648",
+            "parsed_decimal_min": "424",
+            "parsed_labels": {
+              "makespan": 300
+            },
+            "parsed_lexeme_ordered_sha256": "3d9e56c1f983f3d5a5aac93d78845f993cc965b16036685b80658f82bb699020",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "c84d1a3b625d143b2d3e012b0c7a45e3e8e58607196b6af0fca16cc49b1e215c",
+            "ordered_sha256": "586366dc9d491a01a1f434999205a8c02e62d9087fead5b2468fb05f9cd46087",
+            "unique_count": 300,
+            "unique_set_sha256": "c84d1a3b625d143b2d3e012b0c7a45e3e8e58607196b6af0fca16cc49b1e215c"
+          },
+          "sha256": "0ba359f157e362728ba0b76b633ecfd61359eb55f97a9b1b07a39b715996e5e4",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 2180079958,
+          "common_keys": [
+            "input",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 500000
+            },
+            "instruction": {
+              "string": 500000
+            },
+            "m": {
+              "string": 500000
+            },
+            "n": {
+              "string": 500000
+            },
+            "output": {
+              "string": 500000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "b4fc0f3cc6bccb7d9868b01c7cd802a1a05902dea4d44d507478789b563bc86f",
+            "ordered_sha256": "c2e55f6566f14a09106206ed3b7d6f1f7c60c5ee95bab3daff5444522a4c4ac2",
+            "parsed_decimal_max": "1870",
+            "parsed_decimal_min": "254",
+            "parsed_labels": {
+              "makespan": 500000
+            },
+            "parsed_lexeme_ordered_sha256": "4cb087e6562d0e91295fa7fb49faa38498d35360913446d7577b28029e93faee",
+            "parsed_terminal_objective_count": 500000,
+            "present_count": 500000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 500000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "a580e435ec374b8b8dca6c2670d66ded766694b29235659de0a0e676253a94be",
+            "ordered_sha256": "601a5b794959cb59b9188fddee345d587989ca833c1e8dce335052192b02c4fc",
+            "unique_count": 500000,
+            "unique_set_sha256": "a580e435ec374b8b8dca6c2670d66ded766694b29235659de0a0e676253a94be"
+          },
+          "sha256": "f21e82f01f07fdff960fda6a003f0f3a7c1eefbeeae7f00db8198195133ccd6a",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "m",
+            "n",
+            "output"
+          ]
+        }
+      },
+      "mis": {
+        "eval": {
+          "bytes": 1108331,
+          "common_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "b69085944451c4c6605c48453bab128c0c1c41a22b1092fa6c504db6403a4bdb",
+            "ordered_sha256": "915c56f84455f8b08c6282b339d6ae76db66e34d2556eff07f394b3ae4960b3e",
+            "parsed_decimal_max": "73",
+            "parsed_decimal_min": "4",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "c8edb0275facca4d209796fdf37f0cdff0b21d633bc22a18247774fc8b1df5b9",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "4bef547d8cc23ad1574f5e98970a7e97accd8de58981f4e2aea313afee1fcb14",
+            "ordered_sha256": "5c5fff09fe426e908389c3622bd323bd6dcab5d1732ff804aef3cb3beed06e7a",
+            "unique_count": 300,
+            "unique_set_sha256": "4bef547d8cc23ad1574f5e98970a7e97accd8de58981f4e2aea313afee1fcb14"
+          },
+          "sha256": "b213698f1c84ee0937158c969e7118b1da69f2332b215ab7f7966022455153dd",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 1975922309,
+          "common_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 500000
+            },
+            "instruction": {
+              "string": 500000
+            },
+            "num_nodes": {
+              "string": 500000
+            },
+            "output": {
+              "string": 500000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "de5892e9f82667280facfc1e339ff8d4b686ab5fce837b5e103d7cbed4d043fd",
+            "ordered_sha256": "231823ab8aa6024d4007ad2aa87afcf57ee463d9308a4437f6987c8a50fe3ae2",
+            "parsed_decimal_max": "78",
+            "parsed_decimal_min": "3",
+            "parsed_labels": {
+              "objective": 500000
+            },
+            "parsed_lexeme_ordered_sha256": "c8dba9a7afa0b2c81268b220b1496042b7616208e85c7363b3dcf1cec9b7391c",
+            "parsed_terminal_objective_count": 500000,
+            "present_count": 500000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 500000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 30,
+            "multiset_sha256": "4a0cc07e55d6c677c63c9fc3ebe977914f84eeddaa828a8d2934bb8931dbf62e",
+            "ordered_sha256": "2729329391388bd8cd3447a73ef64c0c5cc0f0faecb977025c2dee261bf8849c",
+            "unique_count": 499970,
+            "unique_set_sha256": "a744d9cefa46d33607e55cf0a02a2af0294e6372e02f334b510f7d0c8a2a2553"
+          },
+          "sha256": "b5c873c3803a0b99d4aba99b9bcc5f34ecf28f345c029810f172362c309fcb31",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        }
+      },
+      "op": {
+        "eval": {
+          "bytes": 1588436,
+          "common_keys": [
+            "input",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "max_route_length": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            },
+            "start_node": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "4385919480a9dd653ac43be08c778abadbbc0fb6d8862096c39991cae91f0f23",
+            "ordered_sha256": "5cca73298d16f135c84f5299229baa66f3d84fcc46eb910b4ba397056b3341d4",
+            "parsed_decimal_max": "543.00",
+            "parsed_decimal_min": "38.00",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "13c7b3b7d8c829fc61de2a1cee9bc40d0b47a492095802ddd785efd3e7187fff",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "2b9d8f876a1c83431f67a6593f376977f612ac4189883b1aab461eb6eaa15953",
+            "ordered_sha256": "7ffabf3dacb0e14de62af9b2e7552168d0c8609938b556b5bf3352d241c9fc13",
+            "unique_count": 300,
+            "unique_set_sha256": "2b9d8f876a1c83431f67a6593f376977f612ac4189883b1aab461eb6eaa15953"
+          },
+          "sha256": "0c116e5655b64ccdb7c27e13e0ca579c3e9f8fd931e227369b7e81ff767a54f9",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ]
+        },
+        "train": {
+          "bytes": 2618731138,
+          "common_keys": [
+            "input",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 500000
+            },
+            "instruction": {
+              "string": 500000
+            },
+            "max_route_length": {
+              "string": 500000
+            },
+            "num_nodes": {
+              "string": 500000
+            },
+            "output": {
+              "string": 500000
+            },
+            "start_node": {
+              "string": 500000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "b781dbaa63731a7152f428bcb5a8b68e53da038cde4b3ea9debdf2928b32bb66",
+            "ordered_sha256": "1fff43745ca1e5a69e93ee4721cf21cfbd996e44cc855aa730d1717057134db0",
+            "parsed_decimal_max": "623.00",
+            "parsed_decimal_min": "7.00",
+            "parsed_labels": {
+              "objective": 500000
+            },
+            "parsed_lexeme_ordered_sha256": "ad31318aee2b3f182f59f301f796969bb5379bc46ad36361a2ef295de5899df0",
+            "parsed_terminal_objective_count": 500000,
+            "present_count": 500000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 500000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "c8c7bd9c7150b8715306888b73855755fba70adf423acc8e60ca2bba5a671553",
+            "ordered_sha256": "ed3711d9b0b402d27f842cb5b42626ac591c4c1a129245d9638075d81c669b20",
+            "unique_count": 500000,
+            "unique_set_sha256": "c8c7bd9c7150b8715306888b73855755fba70adf423acc8e60ca2bba5a671553"
+          },
+          "sha256": "01e7f08cbea12cff92b2533f39c5cc9f73caf3ddb2c578ef2da34544f853959b",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "max_route_length",
+            "num_nodes",
+            "output",
+            "start_node"
+          ]
+        }
+      },
+      "tsp": {
+        "eval": {
+          "bytes": 3140444,
+          "common_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 300
+            },
+            "instance": {
+              "array": 300
+            },
+            "instruction": {
+              "string": 300
+            },
+            "num_nodes": {
+              "string": 300
+            },
+            "output": {
+              "string": 300
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "1103cd50b2245128b375365d66d3092ec3d9fe3876f4b7de212bfbbc54ea8ef5",
+            "ordered_sha256": "6d24d3f533ca19bca77e106e90e1807bc02074611f8052a737b20c42bc38ef05",
+            "parsed_decimal_max": "8029.387",
+            "parsed_decimal_min": "2727.313",
+            "parsed_labels": {
+              "objective": 300
+            },
+            "parsed_lexeme_ordered_sha256": "7aa772b9bcf32f24878a122199ab51c4679975612bc9f00805fcbb47e77f474e",
+            "parsed_terminal_objective_count": 300,
+            "present_count": 300,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 300,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce",
+            "ordered_sha256": "25f9b29d3253921f4f91961445ceaf89eadb898c0434053380e230f4218ddd81",
+            "unique_count": 300,
+            "unique_set_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce"
+          },
+          "sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instance",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        },
+        "train": {
+          "bytes": 3451489028,
+          "common_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ],
+          "field_type_counts": {
+            "input": {
+              "string": 500000
+            },
+            "instruction": {
+              "string": 500000
+            },
+            "num_nodes": {
+              "string": 500000
+            },
+            "output": {
+              "string": 500000
+            }
+          },
+          "reference_fields": {
+            "field": "output",
+            "identity_definition": "sha256(canonical_json(row['output']))",
+            "multiset_sha256": "902fc1438277544426b73c9c4a1329d4ef1e1533f6f1faf3a213ebfdd99f954c",
+            "ordered_sha256": "962fa5a09143968178bc292db383916f0b621bba0ebd30bff637b0c0761b23f7",
+            "parsed_decimal_max": "8505.533",
+            "parsed_decimal_min": "1919.281",
+            "parsed_labels": {
+              "objective": 500000
+            },
+            "parsed_lexeme_ordered_sha256": "d4c1127e4114b938030e8b8efbdb4bdb66e1393cd5bbe2bb70c82997fd8333f5",
+            "parsed_terminal_objective_count": 500000,
+            "present_count": 500000,
+            "unparsed_terminal_objective_count": 0
+          },
+          "row_count": 500000,
+          "row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "ddc0a55b2fd558afba46aaa8e801faf5fc5429b9c5129c82a94aa81fd1d68f6f",
+            "ordered_sha256": "5b576b51ac229b128d646a0862abe7b2aac1f03dce4b258b56f0fe7af98541d6",
+            "unique_count": 500000,
+            "unique_set_sha256": "ddc0a55b2fd558afba46aaa8e801faf5fc5429b9c5129c82a94aa81fd1d68f6f"
+          },
+          "sha256": "e7f1936c0f641112f43b36dcb25d79d361cb2c43a183cecbf7c2cc93a8e07c1a",
+          "top_level": "array",
+          "union_keys": [
+            "input",
+            "instruction",
+            "num_nodes",
+            "output"
+          ]
+        }
+      }
+    }
+  },
+  "schema_version": 2,
+  "sft": {
+    "classification": "PROBABLE_RELEASED_BYTES_SIZE_AND_FILENAME_MATCH_ONLY",
+    "download_policy": "INSPECTION_ONLY_NO_SFT_DOWNLOADS_PERFORMED",
+    "drive_header_observation": {
+      "checksum_header_available": false,
+      "content_length_and_last_modified_embedded_per_file": true,
+      "method": "direct HEAD to each official Drive item ID",
+      "observed_on": "2026-08-15"
+    },
+    "files": {
+      "cvrp/eval/test.json": {
+        "content_length": 1615617,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1u4JW7RopnbBq3w_hUFtl6aezt7irENcA",
+        "filename": "test.json",
+        "last_modified": "Fri, 26 Sep 2025 18:36:07 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 1615617,
+        "local_sha256": "bdc5cab2f6b6c6f7b8efa51b9b90dbdb505f5d4a08dfc756c54e3e0aa1fc4f62",
+        "relative_path": "cvrp/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "cvrp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/cvrp/eval/test.json"
+      },
+      "cvrp/instances.pkl": {
+        "content_length": 296004,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1Bc6YeI32WOQA15hqP4urwefzAj9Ld_-F",
+        "filename": "instances.pkl",
+        "last_modified": "Fri, 26 Sep 2025 18:25:09 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 296004,
+        "local_sha256": "ff89614753051025bd020d160f1f4ee8e3ceac957e7daf8f4988b9c6157d7ae3",
+        "relative_path": "cvrp/instances.pkl",
+        "size_matches_drive_header": true,
+        "split": "instances",
+        "task": "cvrp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/cvrp/instances.pkl"
+      },
+      "cvrp/train/train_cvrp.json": {
+        "content_length": 2709936196,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1GY8xT6swZlBN3_FKBTD2tGqjtg0goaCw",
+        "filename": "train_cvrp.json",
+        "last_modified": "Fri, 26 Sep 2025 18:29:07 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 2709936196,
+        "local_sha256": "9981b841c42376275d8950faa600d1a0710fd27c4e902ed655617f3d0620d0ac",
+        "relative_path": "cvrp/train/train_cvrp.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "cvrp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/cvrp/train/train_cvrp.json"
+      },
+      "jssp/eval/eval.json": {
+        "content_length": 1302790,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1iErXNi3J0MklMhB9TAq2BcS1zKVORN55",
+        "filename": "eval.json",
+        "last_modified": "Fri, 26 Sep 2025 18:36:15 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 1302790,
+        "local_sha256": "0ba359f157e362728ba0b76b633ecfd61359eb55f97a9b1b07a39b715996e5e4",
+        "relative_path": "jssp/eval/eval.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "jssp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/jssp/eval/eval.json"
+      },
+      "jssp/instances.pkl": {
+        "content_length": 383458,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1jdRhdVXYcgqNq6a0ukqYYRIi56D1gBGK",
+        "filename": "instances.pkl",
+        "last_modified": "Fri, 26 Sep 2025 18:25:10 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 383458,
+        "local_sha256": "6ffc3eaeed881565fec02bcbcbdf8176dcf6732abe7fa21bed28ab43a822ca1c",
+        "relative_path": "jssp/instances.pkl",
+        "size_matches_drive_header": true,
+        "split": "instances",
+        "task": "jssp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/jssp/instances.pkl"
+      },
+      "jssp/train/training_jssp.json": {
+        "content_length": 2180079958,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1r2Wfet7fzOoY21s0te4braPUtQRhTNB4",
+        "filename": "training_jssp.json",
+        "last_modified": "Fri, 26 Sep 2025 18:50:01 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 2180079958,
+        "local_sha256": "f21e82f01f07fdff960fda6a003f0f3a7c1eefbeeae7f00db8198195133ccd6a",
+        "relative_path": "jssp/train/training_jssp.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "jssp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/jssp/train/training_jssp.json"
+      },
+      "mis/eval/test.json": {
+        "content_length": 1108331,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1HTNn131St-DPWZ-xROGXuoLLs1SEz9Cl",
+        "filename": "test.json",
+        "last_modified": "Fri, 26 Sep 2025 18:36:09 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 1108331,
+        "local_sha256": "b213698f1c84ee0937158c969e7118b1da69f2332b215ab7f7966022455153dd",
+        "relative_path": "mis/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "mis",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/mis/eval/test.json"
+      },
+      "mis/instances.pkl": {
+        "content_length": 493573,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "19JV27w-QHJEGqDA0raG0aFO5kSbkMobM",
+        "filename": "instances.pkl",
+        "last_modified": "Fri, 26 Sep 2025 18:25:09 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 493573,
+        "local_sha256": "935e64cb516c263656efe2aba27dc0664412e01c9e807f1a7777bc1d3bdd4051",
+        "relative_path": "mis/instances.pkl",
+        "size_matches_drive_header": true,
+        "split": "instances",
+        "task": "mis",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/mis/instances.pkl"
+      },
+      "mis/train/mis_train.json": {
+        "content_length": 1975922309,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "10r_OZ22iSxsWnTwzabN6JKVtg_HXzwq9",
+        "filename": "mis_train.json",
+        "last_modified": "Fri, 26 Sep 2025 18:32:02 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 1975922309,
+        "local_sha256": "b5c873c3803a0b99d4aba99b9bcc5f34ecf28f345c029810f172362c309fcb31",
+        "relative_path": "mis/train/mis_train.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "mis",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/mis/train/mis_train.json"
+      },
+      "op/eval/eval.json": {
+        "content_length": 1588436,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1U3WvITyPHIzb8JaBi99hEBgQRz-aA5iA",
+        "filename": "eval.json",
+        "last_modified": "Fri, 26 Sep 2025 18:36:05 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 1588436,
+        "local_sha256": "0c116e5655b64ccdb7c27e13e0ca579c3e9f8fd931e227369b7e81ff767a54f9",
+        "relative_path": "op/eval/eval.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "op",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/op/eval/eval.json"
+      },
+      "op/instances.pkl": {
+        "content_length": 368689,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1wl707BypmY06DWPjZsc5aGexGdms1OyL",
+        "filename": "instances.pkl",
+        "last_modified": "Fri, 26 Sep 2025 18:25:09 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 368689,
+        "local_sha256": "b2ef55c0f6c344ce6878563fdec0a4edf56fd17ea5081f7cfb952fc7a87c92f8",
+        "relative_path": "op/instances.pkl",
+        "size_matches_drive_header": true,
+        "split": "instances",
+        "task": "op",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/op/instances.pkl"
+      },
+      "op/train/train_op.json": {
+        "content_length": 2618731138,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "102bWCorXDUbtEaxcqY0MCpA9DbQf43na",
+        "filename": "train_op.json",
+        "last_modified": "Fri, 26 Sep 2025 18:53:58 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 2618731138,
+        "local_sha256": "01e7f08cbea12cff92b2533f39c5cc9f73caf3ddb2c578ef2da34544f853959b",
+        "relative_path": "op/train/train_op.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "op",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/op/train/train_op.json"
+      },
+      "tsp/eval/test.json": {
+        "content_length": 3140444,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "11W8x-x3Nf2dxdcAFXaIx8cZVFbFOpdvh",
+        "filename": "test.json",
+        "last_modified": "Fri, 26 Sep 2025 18:36:13 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 3140444,
+        "local_sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+        "relative_path": "tsp/eval/test.json",
+        "size_matches_drive_header": true,
+        "split": "eval",
+        "task": "tsp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/tsp/eval/test.json"
+      },
+      "tsp/instances.pkl": {
+        "content_length": 249598,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_APPLICABLE_LOCAL_FILE_MISSING",
+        "file_id": "1QnCBzH2dsyS0-mVIEtwBGx49CSvuOW2L",
+        "filename": "instances.pkl",
+        "last_modified": "Fri, 26 Sep 2025 18:25:09 GMT",
+        "local_availability": "MISSING",
+        "local_bytes": null,
+        "local_sha256": null,
+        "relative_path": "tsp/instances.pkl",
+        "size_matches_drive_header": false,
+        "split": "instances",
+        "task": "tsp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/tsp/instances.pkl"
+      },
+      "tsp/train/train_tsp.json": {
+        "content_length": 3451489028,
+        "downloaded_by_this_workflow": false,
+        "drive_byte_identity": "NOT_PROVEN_NO_OFFICIAL_CHECKSUM",
+        "file_id": "1QaM1aV10wXXtTFFUXeoody1DmAaWGqPP",
+        "filename": "train_tsp.json",
+        "last_modified": "Fri, 26 Sep 2025 18:46:48 GMT",
+        "local_availability": "PRESENT",
+        "local_bytes": 3451489028,
+        "local_sha256": "e7f1936c0f641112f43b36dcb25d79d361cb2c43a183cecbf7c2cc93a8e07c1a",
+        "relative_path": "tsp/train/train_tsp.json",
+        "size_matches_drive_header": true,
+        "split": "train",
+        "task": "tsp",
+        "workspace_path": "../hybrid_gnn_llm/data_sft/tsp/train/train_tsp.json"
+      }
+    },
+    "lineage_evidence": "Files are untracked under a local clone whose origin is the official repository and whose HEAD is the pinned commit. Names and byte lengths match Drive HEAD metadata. No local acquisition receipt or official checksum was found, so byte equality to Drive is not proven.",
+    "official_drive_folder_id": "1bE1coGUa00gfuMkPXnfvldi1-WHGNnEb",
+    "official_total_bytes": 12946705569,
+    "official_train_bytes": 12936158629,
+    "pickle_policy": "raw bytes hashed only; pickle is not deserialized because it can execute code and official main_train.py leaves instances=None",
+    "workspace_root": "../hybrid_gnn_llm/data_sft"
+  },
+  "status": "SEALED_DATA_EVIDENCE_NON_EXECUTABLE_SUPERSEDES_V1",
+  "supersedes": {
+    "file_sha256": "e9c99490abf0f27d2ef0b2d6941b3053116dfa080876a3eded28fe06be5eb713",
+    "manifest_sha256": "e5a0edefcc07a8ab8760c724274dd02a15af15267388e59542de8b2a90b25442",
+    "path": "experiments/sota_20260814/llmcosolver_f638_public_data_manifest.json",
+    "preserved_read_only": true,
+    "reason": "schema v1 used source-specific whole input-side objects for SFT identity; TSP eval alone carries an extra `instance` field, so its cross-split overlap was not comparable. Raw hashes, schemas, row identities, and reference-field evidence remain valid; all overlap claims are superseded by schema v2."
+  },
+  "task_identity_matrices": {
+    "cvrp": {
+      "author_training_union_to_evaluation": {
+        "sft_train_union_rl_train__rl_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 14,
+          "shared_instance_with_disjoint_reference_sets_count": 285,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "fac96798d537baec5441c3df19d8c997140c4e01bd1fc2e89dbbb194f328fbcb"
+        },
+        "sft_train_union_rl_train__sft_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 10,
+          "shared_instance_with_disjoint_reference_sets_count": 290,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "855fabd790f218e0704b52a0668f68dd1eed8b54b84373deb211a8d76fb96ce8"
+        }
+      },
+      "cross_stage": {
+        "sft_eval__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 9,
+          "shared_instance_with_disjoint_reference_sets_count": 290,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "fac96798d537baec5441c3df19d8c997140c4e01bd1fc2e89dbbb194f328fbcb"
+        },
+        "sft_eval__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 14,
+          "shared_instance_with_disjoint_reference_sets_count": 285,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "fac96798d537baec5441c3df19d8c997140c4e01bd1fc2e89dbbb194f328fbcb"
+        },
+        "sft_train__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raw_file_equality": {
+        "rl_eval_equals_sft_eval": false,
+        "rl_train_equals_sft_train": false
+      },
+      "splits": {
+        "rl_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "d862d4967b36cec6a4bb5c20fe1810bdfaa99b270948c8e58c05bc149e57b82d",
+            "ordered_sha256": "576c1e75081c5d29d628ef448870b0f4cf7c28c3be4ee5738e5acf2c4e58d8a9",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "6dc599311a638c519c7a8ded3eaf413487b8864cf250bf62774696e9c2115a9c",
+            "ordered_sha256": "9d50f20defad3899e828fa0ccf2aa276fbbcf049c17247f2e9884fa9a7a2148b",
+            "unique_count": 300,
+            "unique_set_sha256": "6dc599311a638c519c7a8ded3eaf413487b8864cf250bf62774696e9c2115a9c"
+          },
+          "raw_sha256": "09d37d3becd158f38ea4fdbf70075a157f2721ce8d4d60cf7d36e714cd34ef8b",
+          "row_count": 300
+        },
+        "rl_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "96b05efef3cfef31dd373357c67a4648be805c27eeeff2a9cc7534e750d6e7cb",
+            "ordered_sha256": "715d7e6b673acf1d03818761e729c67bfb8cb7a13c13a65d2fb0605d00528020",
+            "unique_count": 2000
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "60deeefa04cd28b04102e376660f8d35749ef076b7f0551ec1c2e06babec97b9",
+            "ordered_sha256": "667ce14dd8576e163f9dde09d9c82c1720219efcb51b931351a1a7cc73178225",
+            "unique_count": 2000,
+            "unique_set_sha256": "60deeefa04cd28b04102e376660f8d35749ef076b7f0551ec1c2e06babec97b9"
+          },
+          "raw_sha256": "4a1c3e97ce4408e722348d893b88ee58a0c1ca65ff0c6db66739901b8a540ff6",
+          "row_count": 2000
+        },
+        "sft_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "feb8d66606b3f82ed0297393e55e8b01da65c4eed404506c0a79b8a3f562f364",
+            "ordered_sha256": "ebd779aca737a3cb9d500429605044d73bd6ab695bd82c0857b2348264dfcd37",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "855fabd790f218e0704b52a0668f68dd1eed8b54b84373deb211a8d76fb96ce8",
+            "ordered_sha256": "acecb71288b489c02b0076fa3411e1038844bd538b6e999b21907f14c54a5629",
+            "unique_count": 300,
+            "unique_set_sha256": "855fabd790f218e0704b52a0668f68dd1eed8b54b84373deb211a8d76fb96ce8"
+          },
+          "raw_sha256": "bdc5cab2f6b6c6f7b8efa51b9b90dbdb505f5d4a08dfc756c54e3e0aa1fc4f62",
+          "row_count": 300
+        },
+        "sft_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 2220,
+            "multiset_sha256": "dbf711d99ca60f6584ac241c5435a2bde28ce55c0db7fa0c5a02c6a28b81e292",
+            "ordered_sha256": "d51b9c0cff2c131fe8eadcc172d8cbc7cc7e97eb2173225e0576e37a0f23aef8",
+            "unique_count": 497780
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 49884,
+            "multiset_sha256": "761f41094acb23290c5ccbf0393eae964097930f646c749c85a3b4299f83ade9",
+            "ordered_sha256": "e7451702ca6a321d478901b253abe6998d8bd18cab9514a704c788f1d7c4fc22",
+            "unique_count": 450116,
+            "unique_set_sha256": "6603ae265b367a3a0002795f67553557820b681325a722fae2e878622ab4ce23"
+          },
+          "raw_sha256": "9981b841c42376275d8950faa600d1a0710fd27c4e902ed655617f3d0620d0ac",
+          "row_count": 500000
+        }
+      },
+      "within_stage": {
+        "rl_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__sft_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 10,
+          "shared_instance_with_disjoint_reference_sets_count": 290,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "855fabd790f218e0704b52a0668f68dd1eed8b54b84373deb211a8d76fb96ce8"
+        }
+      }
+    },
+    "jssp": {
+      "author_training_union_to_evaluation": {
+        "sft_train_union_rl_train__rl_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train_union_rl_train__sft_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "cross_stage": {
+        "sft_eval__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "aefb55c7b19277691ef0b88a1f2a3a0649a4bda4f4b7ab24aa324a0057f1d81e"
+        },
+        "sft_eval__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raw_file_equality": {
+        "rl_eval_equals_sft_eval": false,
+        "rl_train_equals_sft_train": false
+      },
+      "splits": {
+        "rl_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "f2aade1624c768c10d4ca9733f7a93be390fa730b4d178b223cb367f0c613833",
+            "ordered_sha256": "862f1bd558f44add97efb89628d7c9fc66850d0c38f3b0cdeaef2cadd98a50ae",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "aefb55c7b19277691ef0b88a1f2a3a0649a4bda4f4b7ab24aa324a0057f1d81e",
+            "ordered_sha256": "4c35bb9fe336e001143bd8ca6e2f0d40644ad428b9dc8ac5803d04fcaf7e53c2",
+            "unique_count": 300,
+            "unique_set_sha256": "aefb55c7b19277691ef0b88a1f2a3a0649a4bda4f4b7ab24aa324a0057f1d81e"
+          },
+          "raw_sha256": "bff60bcf176b0ae43fa5cc899eb6bdc4f0c895874e325b5fcb8d08be0b257b31",
+          "row_count": 300
+        },
+        "rl_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "3001d70e2be865fbfad6d6c7dd0eb288a62cfd7acb0ed95f0a93d2eee8d1ceff",
+            "ordered_sha256": "d0b865be74cb2274036e1d1586dea9bdf47a669e9a2903724c7fd8c52c007aca",
+            "unique_count": 3200
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "f81a17f9eb5462c647cd678a71ad9b267370d36fb1e3b6b81facce21e1d31db7",
+            "ordered_sha256": "95911d6dbc71d321def8c31a417c37505f9dda86e4f982c2c425942502e5db3c",
+            "unique_count": 3200,
+            "unique_set_sha256": "f81a17f9eb5462c647cd678a71ad9b267370d36fb1e3b6b81facce21e1d31db7"
+          },
+          "raw_sha256": "35c2aeed27e885491a234787855012b9f890e2a970c86ee910a639fc72d0c27a",
+          "row_count": 3200
+        },
+        "sft_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "c84d1a3b625d143b2d3e012b0c7a45e3e8e58607196b6af0fca16cc49b1e215c",
+            "ordered_sha256": "586366dc9d491a01a1f434999205a8c02e62d9087fead5b2468fb05f9cd46087",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "aefb55c7b19277691ef0b88a1f2a3a0649a4bda4f4b7ab24aa324a0057f1d81e",
+            "ordered_sha256": "4c35bb9fe336e001143bd8ca6e2f0d40644ad428b9dc8ac5803d04fcaf7e53c2",
+            "unique_count": 300,
+            "unique_set_sha256": "aefb55c7b19277691ef0b88a1f2a3a0649a4bda4f4b7ab24aa324a0057f1d81e"
+          },
+          "raw_sha256": "0ba359f157e362728ba0b76b633ecfd61359eb55f97a9b1b07a39b715996e5e4",
+          "row_count": 300
+        },
+        "sft_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "a580e435ec374b8b8dca6c2670d66ded766694b29235659de0a0e676253a94be",
+            "ordered_sha256": "601a5b794959cb59b9188fddee345d587989ca833c1e8dce335052192b02c4fc",
+            "unique_count": 500000
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "db75950477c23d0faf0be2f0a96217651c4267d3a62703582edaf69c85254b9b",
+            "ordered_sha256": "6e6f9a563ef0a77ea277fb25673467929f7cf992b2a9f82c92dbbeaaf14d172b",
+            "unique_count": 500000,
+            "unique_set_sha256": "db75950477c23d0faf0be2f0a96217651c4267d3a62703582edaf69c85254b9b"
+          },
+          "raw_sha256": "f21e82f01f07fdff960fda6a003f0f3a7c1eefbeeae7f00db8198195133ccd6a",
+          "row_count": 500000
+        }
+      },
+      "within_stage": {
+        "rl_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__sft_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "mis": {
+      "author_training_union_to_evaluation": {
+        "sft_train_union_rl_train__rl_eval": {
+          "exact_duplicate_unique_eval_row_count": 300,
+          "exact_duplicate_unique_eval_row_sha256": "99eafe42d4ff6d0e0ce2c421f8f412a0af3467d0a75c93e367194a3a4323adad",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+        },
+        "sft_train_union_rl_train__sft_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+        }
+      },
+      "cross_stage": {
+        "sft_eval__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+        },
+        "sft_eval__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+        },
+        "sft_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raw_file_equality": {
+        "rl_eval_equals_sft_eval": false,
+        "rl_train_equals_sft_train": false
+      },
+      "splits": {
+        "rl_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "99eafe42d4ff6d0e0ce2c421f8f412a0af3467d0a75c93e367194a3a4323adad",
+            "ordered_sha256": "21e388d80684df24e9fb1d71461c63a28150bedf860843d86bc021e5914d4750",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8",
+            "ordered_sha256": "3a3c3fbe31599e07fb4c37204d7868d39e3201bf88b5c10cc568535ae7ac86c6",
+            "unique_count": 300,
+            "unique_set_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+          },
+          "raw_sha256": "6c0e8ded09acc0e7cadd42f88f96caff562ae3d8d62445756679f5ce4bdcd933",
+          "row_count": 300
+        },
+        "rl_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "842262e04d1253f80fd9ee562ae92e7a7540fdb4af772b2ed0ce85be6db55754",
+            "ordered_sha256": "1a52a987d0584c3fa413f34482b8975d8c4061b4f994e1b3b3784a1b57f3c4ee",
+            "unique_count": 3200
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "9bd1d0e2a42a52b632484fc55f9dc79ada290526822fd18ad5821114a75f025b",
+            "ordered_sha256": "340936ac4269a3d6d0825ba3a82ef61834b5cd3e6ae02a6d1a581f65b4da2fea",
+            "unique_count": 3200,
+            "unique_set_sha256": "9bd1d0e2a42a52b632484fc55f9dc79ada290526822fd18ad5821114a75f025b"
+          },
+          "raw_sha256": "65cc0ea9bad6a0d3a4a5b5d8a37c2b49cc56227bf696bfd79388e6f935308c39",
+          "row_count": 3200
+        },
+        "sft_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "4bef547d8cc23ad1574f5e98970a7e97accd8de58981f4e2aea313afee1fcb14",
+            "ordered_sha256": "5c5fff09fe426e908389c3622bd323bd6dcab5d1732ff804aef3cb3beed06e7a",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8",
+            "ordered_sha256": "3a3c3fbe31599e07fb4c37204d7868d39e3201bf88b5c10cc568535ae7ac86c6",
+            "unique_count": 300,
+            "unique_set_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+          },
+          "raw_sha256": "b213698f1c84ee0937158c969e7118b1da69f2332b215ab7f7966022455153dd",
+          "row_count": 300
+        },
+        "sft_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 30,
+            "multiset_sha256": "4a0cc07e55d6c677c63c9fc3ebe977914f84eeddaa828a8d2934bb8931dbf62e",
+            "ordered_sha256": "2729329391388bd8cd3447a73ef64c0c5cc0f0faecb977025c2dee261bf8849c",
+            "unique_count": 499970
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 30,
+            "multiset_sha256": "c89535eda2327f703a94f690687b38e82db445586577f5ec72178f7cf82adb3a",
+            "ordered_sha256": "2b43796003ffe7262af371739212ff9e95fea6d3afe3a8dece59e883eeb9330e",
+            "unique_count": 499970,
+            "unique_set_sha256": "b89ea32269a0624301ba07a34204f39788d2d3d7029c38dc6f11cf110c679aad"
+          },
+          "raw_sha256": "b5c873c3803a0b99d4aba99b9bcc5f34ecf28f345c029810f172362c309fcb31",
+          "row_count": 500000
+        }
+      },
+      "within_stage": {
+        "rl_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 300,
+          "exact_duplicate_unique_row_count": 300,
+          "exact_duplicate_unique_row_sha256": "99eafe42d4ff6d0e0ce2c421f8f412a0af3467d0a75c93e367194a3a4323adad",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "57145fdd9b739c7a4c44b3fb28f6d84651360b1e21287e40dc606247afe3ada8"
+        },
+        "sft_train__sft_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "op": {
+      "author_training_union_to_evaluation": {
+        "sft_train_union_rl_train__rl_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 41,
+          "shared_instance_with_disjoint_reference_sets_count": 258,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "60226acb8e0292a3b0696864b66ea9577696a134409cfd7d2d3b4ac274651b72"
+        },
+        "sft_train_union_rl_train__sft_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 41,
+          "shared_instance_with_disjoint_reference_sets_count": 258,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "60226acb8e0292a3b0696864b66ea9577696a134409cfd7d2d3b4ac274651b72"
+        }
+      },
+      "cross_stage": {
+        "sft_eval__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "b33e241459e691e6c719d55662e97cebc6c6510cefd5f9a4847e201c81a31f01"
+        },
+        "sft_eval__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 41,
+          "shared_instance_with_disjoint_reference_sets_count": 258,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "60226acb8e0292a3b0696864b66ea9577696a134409cfd7d2d3b4ac274651b72"
+        },
+        "sft_train__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raw_file_equality": {
+        "rl_eval_equals_sft_eval": false,
+        "rl_train_equals_sft_train": false
+      },
+      "splits": {
+        "rl_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "98b8c0d398a7dee1d702130ae0acbe4570b55783a2be36798e4da34b1dbf7d4a",
+            "ordered_sha256": "a0b1949235a24c89f0e5d838f1fb02b1d9dc4b138b119d2a249df54ea62e3d07",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "b33e241459e691e6c719d55662e97cebc6c6510cefd5f9a4847e201c81a31f01",
+            "ordered_sha256": "772bd55e46978c5ac008b4e3ae12f83950c99e6c61a2242a4b3a783cc5b8992e",
+            "unique_count": 300,
+            "unique_set_sha256": "b33e241459e691e6c719d55662e97cebc6c6510cefd5f9a4847e201c81a31f01"
+          },
+          "raw_sha256": "b4d5093760e70ceaa9e0b05501057fc1496cfa46c9eb0ea458094a441d341e3f",
+          "row_count": 300
+        },
+        "rl_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "dca0523400a2f19be11a3e93498539847f74b1cc83a2daf5682b39a958fa2ba9",
+            "ordered_sha256": "af5995b1e6d9443abb89640060e074352b9b0934616c3dd87a9d10d2b89ef5fa",
+            "unique_count": 5000
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "933fdb19d37f33e822a597b15610292f9b4b164f196110170a7161a85cb72182",
+            "ordered_sha256": "304e0653beb10e2c3eb54cd62175237d9047d447c26aa138244471a85b3fcc35",
+            "unique_count": 5000,
+            "unique_set_sha256": "933fdb19d37f33e822a597b15610292f9b4b164f196110170a7161a85cb72182"
+          },
+          "raw_sha256": "bf5319112b68fba04ed41dd96b268d8e22d98620b9266aa9aab69fba2de0b1b4",
+          "row_count": 5000
+        },
+        "sft_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "2b9d8f876a1c83431f67a6593f376977f612ac4189883b1aab461eb6eaa15953",
+            "ordered_sha256": "7ffabf3dacb0e14de62af9b2e7552168d0c8609938b556b5bf3352d241c9fc13",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "b33e241459e691e6c719d55662e97cebc6c6510cefd5f9a4847e201c81a31f01",
+            "ordered_sha256": "772bd55e46978c5ac008b4e3ae12f83950c99e6c61a2242a4b3a783cc5b8992e",
+            "unique_count": 300,
+            "unique_set_sha256": "b33e241459e691e6c719d55662e97cebc6c6510cefd5f9a4847e201c81a31f01"
+          },
+          "raw_sha256": "0c116e5655b64ccdb7c27e13e0ca579c3e9f8fd931e227369b7e81ff767a54f9",
+          "row_count": 300
+        },
+        "sft_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "c8c7bd9c7150b8715306888b73855755fba70adf423acc8e60ca2bba5a671553",
+            "ordered_sha256": "ed3711d9b0b402d27f842cb5b42626ac591c4c1a129245d9638075d81c669b20",
+            "unique_count": 500000
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "8750321eceed2301ac0f22f2ca88eca4927b451c042ac004a982ba6e32acd0fc",
+            "ordered_sha256": "f990b733b877a27bc4f1af945a5c51a2663c7f9b3764d3ff9083bc06974cdf06",
+            "unique_count": 500000,
+            "unique_set_sha256": "8750321eceed2301ac0f22f2ca88eca4927b451c042ac004a982ba6e32acd0fc"
+          },
+          "raw_sha256": "01e7f08cbea12cff92b2533f39c5cc9f73caf3ddb2c578ef2da34544f853959b",
+          "row_count": 500000
+        }
+      },
+      "within_stage": {
+        "rl_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__sft_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 41,
+          "shared_instance_with_disjoint_reference_sets_count": 258,
+          "shared_unique_instance_count": 299,
+          "shared_unique_instance_sha256": "60226acb8e0292a3b0696864b66ea9577696a134409cfd7d2d3b4ac274651b72"
+        }
+      }
+    },
+    "tsp": {
+      "author_training_union_to_evaluation": {
+        "sft_train_union_rl_train__rl_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train_union_rl_train__sft_eval": {
+          "exact_duplicate_unique_eval_row_count": 0,
+          "exact_duplicate_unique_eval_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "cross_stage": {
+        "sft_eval__rl_eval": {
+          "exact_duplicate_row_multiset_count": 300,
+          "exact_duplicate_unique_row_count": 300,
+          "exact_duplicate_unique_row_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce",
+          "shared_instance_with_any_identical_reference_count": 300,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 300,
+          "shared_unique_instance_sha256": "b22efafc776ba1d69b6f93429019e5b80c36be0d50c1d783c76c2565a654b2eb"
+        },
+        "sft_eval__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__rl_train": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "raw_file_equality": {
+        "rl_eval_equals_sft_eval": true,
+        "rl_train_equals_sft_train": false
+      },
+      "splits": {
+        "rl_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce",
+            "ordered_sha256": "25f9b29d3253921f4f91961445ceaf89eadb898c0434053380e230f4218ddd81",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "b22efafc776ba1d69b6f93429019e5b80c36be0d50c1d783c76c2565a654b2eb",
+            "ordered_sha256": "d36d2d6028859c0b2bae3d6ac3ef7bde88076d8e8d36b61a951af75626b22444",
+            "unique_count": 300,
+            "unique_set_sha256": "b22efafc776ba1d69b6f93429019e5b80c36be0d50c1d783c76c2565a654b2eb"
+          },
+          "raw_sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+          "row_count": 300
+        },
+        "rl_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "d015643b71e846bc54effea7b4ad9e3c13e7b699abb41ee73e0b20050eaec5a2",
+            "ordered_sha256": "9b2f2312ed9185d76d7efe09c8fb1fc891cfb957d1e0aaea73013a435d168db4",
+            "unique_count": 3200
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "4f63c44e8756295fe0e175088e4b17a53cc9e7b7aba2b7a17c08c0885e08ec3f",
+            "ordered_sha256": "fe2e8a39a9bf06ce138832bb5bce54d551d89247c90a35b24df0f97a070d005a",
+            "unique_count": 3200,
+            "unique_set_sha256": "4f63c44e8756295fe0e175088e4b17a53cc9e7b7aba2b7a17c08c0885e08ec3f"
+          },
+          "raw_sha256": "90c5a48909ac9df191c727237474ec262db4a9c654f3555a19b744304dc0a288",
+          "row_count": 3200
+        },
+        "sft_eval": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "93534c67b8bc438a5757a22d55d5d36fce9feeec100cb4a78708d4ed68ea96ce",
+            "ordered_sha256": "25f9b29d3253921f4f91961445ceaf89eadb898c0434053380e230f4218ddd81",
+            "unique_count": 300
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "b22efafc776ba1d69b6f93429019e5b80c36be0d50c1d783c76c2565a654b2eb",
+            "ordered_sha256": "d36d2d6028859c0b2bae3d6ac3ef7bde88076d8e8d36b61a951af75626b22444",
+            "unique_count": 300,
+            "unique_set_sha256": "b22efafc776ba1d69b6f93429019e5b80c36be0d50c1d783c76c2565a654b2eb"
+          },
+          "raw_sha256": "f169771f0ccfe0e74cf247067edcea8f89a357ab4823352e3ff55201cf8b9597",
+          "row_count": 300
+        },
+        "sft_train": {
+          "exact_row_identity": {
+            "definition": "sha256(canonical_json(full_row))",
+            "duplicate_count": 0,
+            "multiset_sha256": "ddc0a55b2fd558afba46aaa8e801faf5fc5429b9c5129c82a94aa81fd1d68f6f",
+            "ordered_sha256": "5b576b51ac229b128d646a0862abe7b2aac1f03dce4b258b56f0fe7af98541d6",
+            "unique_count": 500000
+          },
+          "instance_identity": {
+            "definition": "sha256(canonical_json({'task': task, 'rendered_input': NFC(input) with every Unicode whitespace run collapsed to one space}))",
+            "duplicate_count": 0,
+            "multiset_sha256": "6c62339658c61958521c9cf8519999002b12bbeea73f9d7d40e928140b5df118",
+            "ordered_sha256": "558b4dac431d9e898bacf3b33eca5b14d4e1a33490259d75b6992640280414f6",
+            "unique_count": 500000,
+            "unique_set_sha256": "6c62339658c61958521c9cf8519999002b12bbeea73f9d7d40e928140b5df118"
+          },
+          "raw_sha256": "e7f1936c0f641112f43b36dcb25d79d361cb2c43a183cecbf7c2cc93a8e07c1a",
+          "row_count": 500000
+        }
+      },
+      "within_stage": {
+        "rl_train__rl_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sft_train__sft_eval": {
+          "exact_duplicate_row_multiset_count": 0,
+          "exact_duplicate_unique_row_count": 0,
+          "exact_duplicate_unique_row_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "shared_instance_with_any_identical_reference_count": 0,
+          "shared_instance_with_disjoint_reference_sets_count": 0,
+          "shared_unique_instance_count": 0,
+          "shared_unique_instance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "upstream": {
+    "commit": "f6388991d243c0aa91d9ee7e2fa18ed1c9e72477",
+    "data_license_scope": "NO_SEPARATE_LICENSE_OBSERVED_FOR_GOOGLE_DRIVE_DATA; do not infer that the repository MIT license governs externally hosted bytes",
+    "readme_data_claim": "data generated in the original paper",
+    "readme_sha256": "09b2bfea2a6af3d56457d72d4d34c8039d61319fa5ff5d0e17436fe34eda4050",
+    "repository": "https://github.com/Summer142857/LLMCoSolver",
+    "root_repository_license": "MIT"
+  }
+}

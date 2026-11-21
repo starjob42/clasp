@@ -375,3 +375,53 @@ def test_tiny_qwen_bias_all_round_trips_and_lora_only_fails(tmp_path: Path) -> N
         match="missing_from_peft",
     ):
         fidelity.audit_trainable_state_closure(unsafe_model)
+
+
+def test_read_safetensors_retries_while_adapter_metadata_settles(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    checkpoint, _closure = _small_checkpoint(tmp_path)
+    weights = checkpoint / fidelity.ADAPTER_WEIGHTS_FILENAME
+    calls = {"count": 0}
+    real_once = fidelity._read_safetensors_once
+
+    def flaky(path: Path) -> dict[str, object]:
+        calls["count"] += 1
+        if calls["count"] < 3:
+            raise fidelity._AdapterWeightsChangedWhileRead(
+                f"adapter weights changed while read: {path}"
+            )
+        return real_once(path)
+
+    monkeypatch.setattr(fidelity, "_read_safetensors_once", flaky)
+    monkeypatch.setenv("CLASP_SAFETENSORS_READ_ATTEMPTS", "4")
+    monkeypatch.setenv("CLASP_SAFETENSORS_READ_RETRY_DELAY_SECONDS", "0")
+
+    inspected = fidelity._read_safetensors(weights)
+
+    assert calls["count"] == 3
+    assert inspected["filename"] == fidelity.ADAPTER_WEIGHTS_FILENAME
+    assert inspected["tensor_count"] == 2
+
+
+def test_read_safetensors_fails_closed_when_adapter_keeps_changing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    checkpoint, _closure = _small_checkpoint(tmp_path)
+    weights = checkpoint / fidelity.ADAPTER_WEIGHTS_FILENAME
+    calls = {"count": 0}
+
+    def always_changing(path: Path) -> dict[str, object]:
+        calls["count"] += 1
+        raise fidelity._AdapterWeightsChangedWhileRead(
+            f"adapter weights changed while read: {path}"
+        )
+
+    monkeypatch.setattr(fidelity, "_read_safetensors_once", always_changing)
+    monkeypatch.setenv("CLASP_SAFETENSORS_READ_ATTEMPTS", "3")
+    monkeypatch.setenv("CLASP_SAFETENSORS_READ_RETRY_DELAY_SECONDS", "0")
+
+    with pytest.raises(fidelity.CheckpointFidelityError, match="changed while read"):
+        fidelity._read_safetensors(weights)
+
+    assert calls["count"] == 3

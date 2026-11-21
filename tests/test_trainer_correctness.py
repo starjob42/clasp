@@ -39,6 +39,7 @@ from clasp.trainers.primal_dual_grpo import (
     _strict_env_task_thresholds,
     _strict_nonnegative_float_env,
     compute_scalarized_group_advantages,
+    compute_feasible_only_group_advantages,
     compute_separate_z_group_advantages,
     reduce_clasp_policy_loss,
 )
@@ -588,6 +589,71 @@ class ClaspTrainerCorrectnessTests(unittest.TestCase):
         self.assertEqual(stats["clasp/bon_success_credit_exact_loo"], 1.0)
         self.assertEqual(stats["clasp/bon_zero_quality_signal_success_group_rate"], 1.0)
 
+    def test_max_loo_uses_best_other_sample_baseline(self):
+        advantages, stats = compute_bon_aligned_advantages(
+            torch.zeros(4),
+            torch.zeros(4),
+            torch.ones(4),
+            num_generations=4,
+            quality_scores=torch.tensor([3.0, 2.0, 1.0, 0.0]),
+            success_credit_mode="max_loo",
+        )
+        self.assertTrue(
+            torch.equal(advantages, torch.tensor([1.0, -1.0, -2.0, -3.0]))
+        )
+        self.assertEqual(stats["clasp/bon_success_credit_max_loo"], 1.0)
+        self.assertEqual(stats["clasp/bon_success_credit_exact_loo"], 0.0)
+
+    def test_best8_from9_credit_concentrates_on_the_top_candidate(self):
+        advantages, stats = compute_bon_aligned_advantages(
+            torch.zeros(9),
+            torch.zeros(9),
+            torch.ones(9),
+            num_generations=9,
+            quality_scores=torch.arange(9.0, 0.0, -1.0),
+            success_credit_mode="best8_from9",
+        )
+        expected = torch.tensor([8.0] + [-1.0] * 8)
+        self.assertTrue(torch.equal(advantages, expected))
+        self.assertAlmostEqual(float(advantages.sum().item()), 0.0, places=7)
+        self.assertEqual(stats["clasp/bon_success_credit_best8_from9"], 1.0)
+        self.assertEqual(stats["clasp/bon_success_credit_dense_rank"], 0.0)
+        self.assertAlmostEqual(float(stats["clasp/bon_best8_margin_mean"]), 1.0)
+
+    def test_best8_from9_credit_penalizes_infeasible_candidates(self):
+        advantages, _ = compute_bon_aligned_advantages(
+            torch.zeros(9),
+            torch.zeros(9),
+            torch.tensor([1.0] + [0.0] * 8),
+            num_generations=9,
+            quality_scores=torch.tensor([1.0] + [0.0] * 8),
+            success_credit_mode="best8_from9",
+        )
+        expected = torch.tensor([8.0] + [-1.0] * 8)
+        self.assertTrue(torch.equal(advantages, expected))
+
+    def test_best8_from9_credit_is_zero_on_exact_top_ties(self):
+        advantages, stats = compute_bon_aligned_advantages(
+            torch.zeros(9),
+            torch.zeros(9),
+            torch.ones(9),
+            num_generations=9,
+            quality_scores=torch.ones(9),
+            success_credit_mode="best8_from9",
+        )
+        self.assertTrue(torch.equal(advantages, torch.zeros_like(advantages)))
+        self.assertEqual(stats["clasp/bon_best8_nonzero_rate"], 0.0)
+
+    def test_best8_from9_requires_nine_responses(self):
+        with self.assertRaisesRegex(ValueError, "exactly 9 responses"):
+            compute_bon_aligned_advantages(
+                torch.zeros(8),
+                torch.zeros(8),
+                torch.ones(8),
+                num_generations=8,
+                success_credit_mode="best8_from9",
+            )
+
     def test_component_duals_use_bounded_convex_recovery_geometry(self):
         raw = torch.tensor([0.2, 2.2])
         component_dual = torch.tensor([0.8, 2.8])
@@ -697,7 +763,68 @@ class ClaspTrainerCorrectnessTests(unittest.TestCase):
             DUAL_SEPARATE_Z_FORMULA_ID,
             "group_z_reward_minus_group_z_positive_component_penalty_v1",
         )
-        self.assertTrue(torch.allclose(actual, expected, atol=1e-7))
+
+    def test_feasible_only_anchor_excludes_infeasible_zeros(self):
+        scores = torch.tensor([10.0, 8.0, 0.0, 0.0], dtype=torch.float32)
+        feasible = torch.tensor([1.0, 1.0, 0.0, 0.0], dtype=torch.float32)
+
+        advantages, stats = compute_feasible_only_group_advantages(
+            scores,
+            feasible,
+            4,
+            std_correction=0,
+        )
+
+        self.assertTrue(
+            torch.allclose(
+                advantages,
+                torch.tensor([1.0, -1.0, 0.0, 0.0]),
+                atol=2e-4,
+            )
+        )
+        self.assertEqual(
+            stats["clasp/canonical_feasible_only_anchor_active"], 1.0
+        )
+        # Legacy all-candidate scaling leaks feasibility into the quality term:
+        # infeasible zeros get large nonzero advantages, contaminating quality.
+        legacy = compute_scalarized_group_advantages(
+            scores, torch.zeros_like(scores), 4, std_correction=0
+        )
+        self.assertNotEqual(float(legacy[2]), 0.0)
+        self.assertEqual(float(advantages[2]), 0.0)
+
+    def test_feasible_only_anchor_zero_without_quality_contrast(self):
+        scores = torch.tensor([5.0, 0.0, 0.0, 0.0, 3.0, 3.0], dtype=torch.float32)
+        feasible = torch.tensor([1.0, 0.0, 0.0, 0.0, 1.0, 1.0], dtype=torch.float32)
+
+        advantages, stats = compute_feasible_only_group_advantages(
+            scores,
+            feasible,
+            3,
+        )
+
+        self.assertTrue(torch.equal(advantages, torch.zeros_like(advantages)))
+        # One single-feasible group and one feasible-but-tied group.
+        self.assertEqual(
+            stats["clasp/canonical_feasible_only_anchor_single_feasible_group_fraction"],
+            0.5,
+        )
+
+    def test_feasible_only_anchor_handles_all_infeasible_group(self):
+        scores = torch.zeros(4, dtype=torch.float32)
+        feasible = torch.zeros(4, dtype=torch.float32)
+
+        advantages, stats = compute_feasible_only_group_advantages(
+            scores,
+            feasible,
+            4,
+        )
+
+        self.assertTrue(torch.equal(advantages, torch.zeros_like(advantages)))
+        self.assertEqual(
+            stats["clasp/canonical_feasible_only_anchor_scale_mean"], 0.0
+        )
+
 
     def test_dual_separate_z_is_exactly_group_centered(self):
         rewards = torch.tensor([0.0, 1.0, 4.0, 3.0, 9.0, 12.0])

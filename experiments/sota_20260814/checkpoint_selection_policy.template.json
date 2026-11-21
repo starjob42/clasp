@@ -1,0 +1,170 @@
+{
+  "campaign_id": "clasp_sota_20260814",
+  "candidate_budget": 8,
+  "checkpoint_steps": [
+    "UNRESOLVED_AFTER_400_STEP_PILOT"
+  ],
+  "evidence_scope": "development_only",
+  "expected_methods": [
+    "UNRESOLVED_STRONGEST_MATCHED_BASELINE",
+    "clasp_dense"
+  ],
+  "expected_tasks": [
+    "cvrp",
+    "jssp",
+    "mis",
+    "op",
+    "tsp"
+  ],
+  "forbidden_source_registry": "REPLACE_WITH_COMPLETE_SELF_HASHED_REGISTRY_FROZEN_BEFORE_DEVELOPMENT_EVALUATION",
+  "development_evaluation_by_task": {
+    "cvrp": {
+      "data_manifest_sha256": "REPLACE_WITH_APPROVED_DEVELOPMENT_DATA_MANIFEST_SHA256",
+      "evaluation_data_files": [
+        {
+          "task": "cvrp",
+          "split": "eval",
+          "path": "REPLACE_WITH_REGISTERED_RELATIVE_PATH",
+          "size": 0,
+          "sha256": "REPLACE_WITH_REGISTERED_BINARY_SHA256"
+        }
+      ],
+      "forbidden_source_label": "historical-eval",
+      "forbidden_source_identity_sha256": "REPLACE_WITH_FROZEN_HISTORICAL_EVAL_SOURCE_IDENTITY_SHA256",
+      "protocol_fingerprint": "REPLACE_WITH_FROZEN_DEVELOPMENT_PROTOCOL_FINGERPRINT",
+      "strict_verifier_manifest_sha256": "REPLACE_WITH_FROZEN_STRICT_VERIFIER_MANIFEST_SHA256",
+      "split": "eval",
+      "eval_start_index": 0,
+      "max_eval_samples_per_task": 200,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false,
+      "expected_instances": 200,
+      "development_evaluation_sha256": "RECOMPUTE_AFTER_FREEZING_THIS_TASK_CONTRACT"
+    },
+    "jssp": {
+      "data_manifest_sha256": "REPLACE_WITH_APPROVED_DEVELOPMENT_DATA_MANIFEST_SHA256",
+      "evaluation_data_files": [
+        {
+          "task": "jssp",
+          "split": "eval",
+          "path": "REPLACE_WITH_REGISTERED_RELATIVE_PATH",
+          "size": 0,
+          "sha256": "REPLACE_WITH_REGISTERED_BINARY_SHA256"
+        }
+      ],
+      "forbidden_source_label": "historical-eval",
+      "forbidden_source_identity_sha256": "REPLACE_WITH_FROZEN_HISTORICAL_EVAL_SOURCE_IDENTITY_SHA256",
+      "protocol_fingerprint": "REPLACE_WITH_FROZEN_DEVELOPMENT_PROTOCOL_FINGERPRINT",
+      "strict_verifier_manifest_sha256": "REPLACE_WITH_FROZEN_STRICT_VERIFIER_MANIFEST_SHA256",
+      "split": "eval",
+      "eval_start_index": 0,
+      "max_eval_samples_per_task": 200,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false,
+      "expected_instances": 200,
+      "development_evaluation_sha256": "RECOMPUTE_AFTER_FREEZING_THIS_TASK_CONTRACT"
+    },
+    "mis": {
+      "data_manifest_sha256": "REPLACE_WITH_APPROVED_DEVELOPMENT_DATA_MANIFEST_SHA256",
+      "evaluation_data_files": [
+        {
+          "task": "mis",
+          "split": "eval",
+          "path": "REPLACE_WITH_REGISTERED_RELATIVE_PATH",
+          "size": 0,
+          "sha256": "REPLACE_WITH_REGISTERED_BINARY_SHA256"
+        }
+      ],
+      "forbidden_source_label": "historical-eval",
+      "forbidden_source_identity_sha256": "REPLACE_WITH_FROZEN_HISTORICAL_EVAL_SOURCE_IDENTITY_SHA256",
+      "protocol_fingerprint": "REPLACE_WITH_FROZEN_DEVELOPMENT_PROTOCOL_FINGERPRINT",
+      "strict_verifier_manifest_sha256": "REPLACE_WITH_FROZEN_STRICT_VERIFIER_MANIFEST_SHA256",
+      "split": "eval",
+      "eval_start_index": 0,
+      "max_eval_samples_per_task": 200,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false,
+      "expected_instances": 200,
+      "development_evaluation_sha256": "RECOMPUTE_AFTER_FREEZING_THIS_TASK_CONTRACT"
+    },
+    "op": {
+      "data_manifest_sha256": "REPLACE_WITH_APPROVED_DEVELOPMENT_DATA_MANIFEST_SHA256",
+      "evaluation_data_files": [
+        {
+          "task": "op",
+          "split": "eval",
+          "path": "REPLACE_WITH_REGISTERED_RELATIVE_PATH",
+          "size": 0,
+          "sha256": "REPLACE_WITH_REGISTERED_BINARY_SHA256"
+        }
+      ],
+      "forbidden_source_label": "historical-eval",
+      "forbidden_source_identity_sha256": "REPLACE_WITH_FROZEN_HISTORICAL_EVAL_SOURCE_IDENTITY_SHA256",
+      "protocol_fingerprint": "REPLACE_WITH_FROZEN_DEVELOPMENT_PROTOCOL_FINGERPRINT",
+      "strict_verifier_manifest_sha256": "REPLACE_WITH_FROZEN_STRICT_VERIFIER_MANIFEST_SHA256",
+      "split": "eval",
+      "eval_start_index": 0,
+      "max_eval_samples_per_task": 200,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false,
+      "expected_instances": 200,
+      "development_evaluation_sha256": "RECOMPUTE_AFTER_FREEZING_THIS_TASK_CONTRACT"
+    },
+    "tsp": {
+      "data_manifest_sha256": "REPLACE_WITH_APPROVED_DEVELOPMENT_DATA_MANIFEST_SHA256",
+      "evaluation_data_files": [
+        {
+          "task": "tsp",
+          "split": "eval",
+          "path": "REPLACE_WITH_REGISTERED_RELATIVE_PATH",
+          "size": 0,
+          "sha256": "REPLACE_WITH_REGISTERED_BINARY_SHA256"
+        }
+      ],
+      "forbidden_source_label": "historical-eval",
+      "forbidden_source_identity_sha256": "REPLACE_WITH_FROZEN_HISTORICAL_EVAL_SOURCE_IDENTITY_SHA256",
+      "protocol_fingerprint": "REPLACE_WITH_FROZEN_DEVELOPMENT_PROTOCOL_FINGERPRINT",
+      "strict_verifier_manifest_sha256": "REPLACE_WITH_FROZEN_STRICT_VERIFIER_MANIFEST_SHA256",
+      "split": "eval",
+      "eval_start_index": 0,
+      "max_eval_samples_per_task": 200,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false,
+      "expected_instances": 200,
+      "development_evaluation_sha256": "RECOMPUTE_AFTER_FREEZING_THIS_TASK_CONTRACT"
+    }
+  },
+  "frozen_at_utc": "UNRESOLVED",
+  "pass_at_k_absolute_band": 0.01,
+  "policy_sha256": "UNRESOLVED_AFTER_ALL_PLACEHOLDERS_ARE_FIXED",
+  "require_complete_checkpoint_grid": true,
+  "schema_version": 1,
+  "selection_rule": [
+    "maximize_pass_at_k",
+    "retain_within_0.01_absolute_of_best_pass_at_k",
+    "minimize_conditional_verified_gap",
+    "tie_break_earlier_checkpoint_step"
+  ],
+  "stage_id": "3200_step_development_checkpoint_selection",
+  "status": "DRAFT_DO_NOT_USE",
+  "train_seeds": [
+    42,
+    43,
+    44
+  ]
+}

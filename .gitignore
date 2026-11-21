@@ -27,3 +27,32 @@ checkpoints/**/*.safetensors
 checkpoints/**/*.bin
 checkpoints/**/*.pt
 checkpoints/**/optimizer.pt
+.aider*
+
+# Large local artefact trees: never part of the published source snapshot.
+experiments/**
+analysis_outputs/
+artifacts/
+audit_ledgers_iclr/
+checkpoints/
+data/
+logs/
+models/
+outputs/
+paper/
+research/
+results/
+third_party/**/data_rl/
+final_clasp/work/
+.opencode/
+opencode.json
+pytest-of-habgaryan/
+checkpoint-*.zip
+*.zip
+
+# Local-only analysis helpers kept outside the packaged source tree.
+/aggregate_baseline.py
+/analyze_sft_failures.py
+/audit_reference_solutions.py
+/compare_sft_checkpoints.py
+/prompt_lengths.py

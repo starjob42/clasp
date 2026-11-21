@@ -338,9 +338,24 @@ def _objective_quality_mode() -> str:
     raw_value = str(os.environ.get("CLASP_OBJECTIVE_QUALITY_MODE", "") or "").strip().lower()
     if raw_value in {"", "exp", "exponential", "default"}:
         return "exp"
+    if raw_value in {"exp_continuation", "continuation", "exp_cont"}:
+        return "exp_continuation"
     if raw_value in {"foarl", "foarl_inverse", "inverse", "jiang"}:
         return "foarl_inverse"
     return "exp"
+
+
+def _objective_quality_cap() -> float:
+    """Upper cap for continuation-mode quality, avoiding unbounded rewards."""
+
+    raw_value = os.environ.get("CLASP_OBJECTIVE_QUALITY_MAX", "")
+    try:
+        value = float(raw_value) if raw_value else 4.0
+    except ValueError:
+        value = 4.0
+    if not math.isfinite(value) or value <= 1.0:
+        return 4.0
+    return float(value)
 
 
 def _declared_objective_match_weight() -> float:
@@ -805,11 +820,22 @@ def _tsp_edge_overlap_fraction(pred_route: list[int], ref_route: list[int]) -> f
 def _objective_quality_from_signed_gap(signed_gap: float) -> float:
     if not math.isfinite(signed_gap):
         return 0.0
-    if _objective_quality_mode() == "foarl_inverse":
+    mode = _objective_quality_mode()
+    if mode == "foarl_inverse":
         if signed_gap >= 0.0:
             return 1.0 / (1.0 + signed_gap)
         improvement = -signed_gap
         return 1.0 + (0.5 * math.tanh(2.0 * improvement))
+    if mode == "exp_continuation":
+        # Do not saturate on the improvement side. The historical `exp` mode
+        # caps negative gaps (improvements) at 1.5, which removes gradient
+        # exactly where best-of-K credit should keep rewarding better solutions
+        # than the training reference. Continue the exponential through zero and
+        # cap only to keep the reward bounded.
+        return min(
+            _objective_quality_cap(),
+            math.exp(-_objective_gap_slope() * signed_gap),
+        )
     if signed_gap >= 0.0:
         return math.exp(-_objective_gap_slope() * signed_gap)
     improvement = -signed_gap
@@ -1765,6 +1791,82 @@ def _mis_maximalized_set(
     improved_size = len(selected)
     added_fraction = float((improved_size - original_size) / improved_size)
     return sorted(selected), float(original_size), float(improved_size), added_fraction, added
+
+
+def _mis_swap_improved_set(
+    node_set: list[int],
+    num_nodes: int | None,
+    edges: set[tuple[int, int]],
+    max_passes: int = 2,
+) -> tuple[list[int], float, float, float, int] | None:
+    """Improve a feasible independent set with greedy 1-for-2 exchanges.
+
+    Maximalization can only add vertices that are not adjacent to the current
+    set. A maximal set can still be suboptimal when removing one selected
+    vertex unblocks two mutually non-adjacent vertices. This routine applies
+    the first such exchange per pass, increasing the set size by one. Returns
+    (sorted_set, original_size, improved_size, gain_fraction, passes) or None
+    when the input is invalid or no exchange improves the set.
+    """
+    max_passes = max(0, int(max_passes))
+    if max_passes <= 0 or num_nodes is None or num_nodes <= 0 or not node_set:
+        return None
+    selected = {int(v) for v in node_set}
+    if len(selected) != len(node_set):
+        return None
+    if any(v < 0 or v >= num_nodes for v in selected):
+        return None
+
+    neighbors: dict[int, set[int]] = {}
+    for a, b in edges:
+        neighbors.setdefault(a, set()).add(b)
+        neighbors.setdefault(b, set()).add(a)
+    if any(neighbors.get(v, set()) & selected for v in selected):
+        return None
+
+    original_size = len(selected)
+    passes = 0
+    for _ in range(max_passes):
+        swap: tuple[int, int, int] | None = None
+        for u in sorted(selected):
+            unblocked = [
+                v
+                for v in range(num_nodes)
+                if v not in selected
+                and u in neighbors.get(v, set())
+                and not (neighbors.get(v, set()) & (selected - {u}))
+            ]
+            if len(unblocked) < 2:
+                continue
+            unblocked.sort(key=lambda v: (-len(neighbors.get(v, set())), v))
+            for i, v in enumerate(unblocked):
+                for w in unblocked[i + 1 :]:
+                    if w not in neighbors.get(v, set()):
+                        swap = (u, v, w)
+                        break
+                if swap is not None:
+                    break
+            if swap is not None:
+                break
+        if swap is None:
+            break
+        u, v, w = swap
+        selected.remove(u)
+        selected.add(v)
+        selected.add(w)
+        passes += 1
+
+    improved_size = len(selected)
+    if improved_size <= original_size:
+        return None
+    gain_fraction = float((improved_size - original_size) / improved_size)
+    return (
+        sorted(selected),
+        float(original_size),
+        float(improved_size),
+        gain_fraction,
+        passes,
+    )
 
 
 def _format_mis_distillation_target(node_set: list[int]) -> str:

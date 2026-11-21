@@ -38,6 +38,8 @@ from clasp.rewards.co_tasks import (
     _format_mis_distillation_target,
     _jssp_order_descent_improved_schedule,
     _mis_maximalized_set,
+    _mis_swap_improved_set,
+    _objective_quality_from_signed_gap,
     _parse_cvrp_solution,
     _parse_jssp_solution,
     _parse_mis_solution,
@@ -585,6 +587,48 @@ def test_op_length_margin_cost_component_is_opt_in(monkeypatch):
         0.015,
         rel_tol=1e-6,
     )
+
+
+def test_op_margin_profile_turns_near_budget_route_into_training_infeasible(
+    monkeypatch,
+):
+    monkeypatch.setenv("CLASP_OP_LENGTH_MARGIN_RATIO", "0.985")
+    prompts = [""]
+    completion = "Route: [0, 1]\nObjective: 10"
+    kwargs = {
+        "input": [""],
+        # Route length 10 on a budget of 10.1: eval-feasible, but inside the
+        # 1.5% training margin.
+        "instance": [[[[0.0, 0.0], [10.0, 0.0]], [0.0, 10.0], 10.1]],
+    }
+
+    def build_reward(profile: str) -> PrimalDualConstrainedReward:
+        limits, weights = build_component_profile("op", profile)
+        return PrimalDualConstrainedReward(
+            structure_fn=lambda p, c, **k: [0.0] * len(c),
+            constraint_fn=None,
+            objective_fn=lambda p, c, **k: [1.0] * len(c),
+            cost_components_fn=op_cost_components,
+            cost_limit=0.0,
+            lambda_init=0.0,
+            dual_lr=0.0,
+            lambda_max=10.0,
+            log_every=0,
+            component_cost_limit_map=limits,
+            component_weight_map=weights,
+        )
+
+    locked = build_reward("co_feasibility_lock_all")
+    locked(prompts, [completion], **kwargs)
+    locked_components = locked.get_last_components()
+    assert "length_margin_overflow" in locked.cost_names
+    assert locked_components["feasibility_flags"] == [1.0]
+
+    margin = build_reward("co_op_strict_length_margin")
+    margin(prompts, [completion], **kwargs)
+    margin_components = margin.get_last_components()
+    assert "length_margin_overflow" in margin.cost_names
+    assert margin_components["feasibility_flags"] == [0.0]
 
 
 def test_op_singleton_depot_route_has_hard_length_violation():
@@ -2765,8 +2809,76 @@ def test_mis_maximalized_set_rejects_infeasible_input():
     assert _mis_maximalized_set([0, 1], 5, edges) is None
 
 
+def test_mis_swap_improves_a_maximal_but_suboptimal_set():
+    # {0, 3} is maximal: 1 and 2 are blocked by 0. Removing 0 unblocks the
+    # mutually non-adjacent pair {1, 2}, giving the larger set {1, 2, 3}.
+    edges = {(0, 1), (0, 2)}
+    improved = _mis_swap_improved_set([0, 3], 4, edges, max_passes=1)
+    assert improved is not None
+    node_set, original_size, improved_size, gain, passes = improved
+    assert node_set == [1, 2, 3]
+    assert original_size == 2.0
+    assert improved_size == 3.0
+    assert gain == pytest.approx(1.0 / 3.0)
+    assert passes == 1
+
+
+def test_mis_swap_rejects_no_improving_exchange():
+    # The two vertices unblocked by removing 0 are adjacent, so no 1-for-2 swap.
+    edges = {(0, 1), (0, 2), (1, 2)}
+    assert _mis_swap_improved_set([0], 3, edges, max_passes=2) is None
+
+
+def test_mis_swap_rejects_infeasible_input():
+    edges = {(0, 1)}
+    assert _mis_swap_improved_set([0, 1], 3, edges, max_passes=1) is None
+
+
 def test_mis_distillation_target_parses_back():
     text = _format_mis_distillation_target([4, 0, 2])
     parsed = _parse_mis_solution(text)
     assert parsed["node_set"] == [0, 2, 4]
     assert parsed["declared_objective"] == pytest.approx(3.0)
+
+
+def test_exp_continuation_keeps_rewarding_improvements(monkeypatch):
+    monkeypatch.setenv("CLASP_OBJECTIVE_QUALITY_MODE", "exp_continuation")
+    monkeypatch.setenv("CLASP_OBJECTIVE_GAP_SLOPE", "3.0")
+    monkeypatch.setenv("CLASP_OBJECTIVE_QUALITY_MAX", "4.0")
+
+    reference = _objective_quality_from_signed_gap(0.0)
+    mild = _objective_quality_from_signed_gap(-0.1)
+    strong = _objective_quality_from_signed_gap(-0.3)
+    capped = _objective_quality_from_signed_gap(-5.0)
+
+    assert reference == pytest.approx(1.0)
+    assert mild == pytest.approx(math.exp(0.3))
+    assert strong == pytest.approx(math.exp(0.9))
+    # No 1.5 plateau: a better-than-reference solution keeps a larger reward.
+    assert mild > 1.0
+    assert strong > mild
+    assert capped == pytest.approx(4.0)
+
+
+def test_exp_mode_retains_historical_improvement_plateau(monkeypatch):
+    monkeypatch.setenv("CLASP_OBJECTIVE_QUALITY_MODE", "exp")
+    monkeypatch.setenv("CLASP_OBJECTIVE_GAP_SLOPE", "3.0")
+
+    mild = _objective_quality_from_signed_gap(-0.1)
+    huge = _objective_quality_from_signed_gap(-50.0)
+
+    assert mild < 1.5
+    assert huge <= 1.5 + 1e-9
+    assert huge > mild
+
+
+def test_exp_continuation_worse_than_reference_matches_exp(monkeypatch):
+    monkeypatch.setenv("CLASP_OBJECTIVE_GAP_SLOPE", "2.5")
+    monkeypatch.setenv("CLASP_OBJECTIVE_QUALITY_MODE", "exp")
+    historical = _objective_quality_from_signed_gap(0.4)
+    monkeypatch.setenv("CLASP_OBJECTIVE_QUALITY_MODE", "exp_continuation")
+    continuation = _objective_quality_from_signed_gap(0.4)
+
+    assert continuation == pytest.approx(historical)
+    assert continuation == pytest.approx(math.exp(-1.0))
+

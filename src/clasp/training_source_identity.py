@@ -28,8 +28,16 @@ FOARL_F638_CORRECTED_TRAINER_SHA256 = (
     "bf999a76a33a30f11386e1ea1b0e21f3da99bf6e74b32e850dc057350a8c77c6"
 )
 
-FOARL_TEACHER_DEV_TRAINER_VERSION = "foarl-teacher-matched-development-20260909-v1"
+FOARL_TEACHER_DEV_TRAINER_VERSION = "foarl-teacher-matched-development-20261121-v2"
 FOARL_TEACHER_DEV_TRAINER_SHA256 = (
+    "55ec9f52b4f3cab426c5327779ed806d8f1cf0c920d08ff1d241b8adc054c77e"
+)
+
+# Historical 20260909-v1 teacher-dev trainer; superseded by the v2 entry above.
+# Retained so frozen evidence receipts still resolve, but it must never be
+# reissued for successor trainer code and is no longer executable from this tree.
+FOARL_TEACHER_DEV_TRAINER_VERSION_V1_HISTORICAL = "foarl-teacher-matched-development-20260909-v1"
+FOARL_TEACHER_DEV_TRAINER_SHA256_V1_HISTORICAL = (
     "61a9e00b8dbd4cf40ef36c402d696e2f3be814318a22ea702f530dfda5b9b3fa"
 )
 
@@ -71,12 +79,19 @@ FOARL_TEACHER_DEV_TRAINER_SOURCE = TrainGrpoSourceVersion(
     claim_scope="foarl_teacher_fixed_horizon_development",
     executable_from_current_tree=True,
 )
+FOARL_TEACHER_DEV_TRAINER_SOURCE_V1_HISTORICAL = TrainGrpoSourceVersion(
+    version=FOARL_TEACHER_DEV_TRAINER_VERSION_V1_HISTORICAL,
+    sha256=FOARL_TEACHER_DEV_TRAINER_SHA256_V1_HISTORICAL,
+    claim_scope="foarl_teacher_fixed_horizon_development",
+    executable_from_current_tree=False,
+)
 
 TRAIN_GRPO_SOURCE_VERSIONS: Mapping[str, TrainGrpoSourceVersion] = MappingProxyType(
     {
         TSP_FCDF_BETA_PILOT_TRAINER_VERSION: TSP_FCDF_BETA_PILOT_TRAINER_SOURCE,
         FOARL_F638_CORRECTED_TRAINER_VERSION: FOARL_F638_CORRECTED_TRAINER_SOURCE,
         FOARL_TEACHER_DEV_TRAINER_VERSION: FOARL_TEACHER_DEV_TRAINER_SOURCE,
+        FOARL_TEACHER_DEV_TRAINER_VERSION_V1_HISTORICAL: FOARL_TEACHER_DEV_TRAINER_SOURCE_V1_HISTORICAL,
     }
 )
 
@@ -148,8 +163,11 @@ def require_train_grpo_source(
 
 __all__ = [
     "FOARL_TEACHER_DEV_TRAINER_SHA256",
+    "FOARL_TEACHER_DEV_TRAINER_SHA256_V1_HISTORICAL",
     "FOARL_TEACHER_DEV_TRAINER_SOURCE",
+    "FOARL_TEACHER_DEV_TRAINER_SOURCE_V1_HISTORICAL",
     "FOARL_TEACHER_DEV_TRAINER_VERSION",
+    "FOARL_TEACHER_DEV_TRAINER_VERSION_V1_HISTORICAL",
     "FOARL_F638_CORRECTED_TRAINER_SHA256",
     "FOARL_F638_CORRECTED_TRAINER_SOURCE",
     "FOARL_F638_CORRECTED_TRAINER_VERSION",

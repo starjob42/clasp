@@ -68,7 +68,6 @@ test_formal_source_layer_v2.py
 test_greedy_op96_layout_v2.py
 test_greedy_op96_paper_v1.py
 test_grpo_incumbent_heldout300_campaign.py
-test_grpo_verified_dev_launcher.py
 test_grpo_verified_evaluation_v2.py
 test_llmcosolver_f638_contract_v2.py
 test_llmcosolver_f638_public_data_manifest_v2.py
@@ -150,7 +149,6 @@ test_teacher_operational_runtime_v3c.py
 test_teacher_paper_publisher_v2.py
 test_teacher_paper_update_watch_v2.py
 test_teacher_reconciliation_v3.py
-test_train_foarl_f638_corrected.py
 test_training_collection_admission_v1.py
 test_training_launcher.py
 test_training_telemetry_audit.py

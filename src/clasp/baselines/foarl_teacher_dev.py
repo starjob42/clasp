@@ -11,7 +11,7 @@ from .foarl_f638_dev_20260907 import COMMON_PROMPT_SHA256, DEV_DEFAULTS
 from .llmcosolver_f638_training import FOARL_F638_SEMANTICS, FoarlF638CorrectedRuntimeProfile
 
 COMMON_DEFAULTS = {**DEV_DEFAULTS, "max_steps": 400, "save_steps": 100, "save_total_limit": 4}
-PROFILE_ID = "foarl-teacher-matched-development-20260909-v1"
+PROFILE_ID = "foarl-teacher-matched-development-20261121-v2"
 
 
 @dataclass(frozen=True)

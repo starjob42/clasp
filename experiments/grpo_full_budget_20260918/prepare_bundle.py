@@ -25,6 +25,11 @@ def main():
                         help='Comma-separated continuation scope; empty means the full campaign')
     parser.add_argument('--initialization-attestation', default=None,
                         help='Required when a declared initializer lacks trainer_state.json')
+    parser.add_argument('--evaluation-override', action='append', default=[],
+                        metavar='TASK=PATH',
+                        help='Bind a task\'s declared DEV100 evaluation file to a surviving copy')
+    parser.add_argument('--evaluation-override-reason', default='',
+                        help='Recorded next to every evaluation override')
     args = parser.parse_args()
     repo = Path(__file__).resolve().parents[2]
     local = Path(__file__).resolve().parent
@@ -35,6 +40,8 @@ def main():
         parser.error('--tsp-hyperparameters is required for a full campaign')
     if continuation and args.initialization_attestation is None:
         parser.error('--initialization-attestation is required for a continuation')
+    if args.evaluation_override and not args.evaluation_override_reason:
+        parser.error('--evaluation-override-reason is required with --evaluation-override')
     source = local / f'source_v{args.version}'
     native = Path('/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918')
     native_source = native / source.name
@@ -99,6 +106,14 @@ def main():
         claim_scope = 'prospective_single_seed_inspected_development_cohorts'
         protocol = PROTOCOL
         jobs = graph()
+    if args.evaluation_override:
+        notes = {}
+        for spec in args.evaluation_override:
+            task, path = spec.split('=', 1)
+            binding = identity(Path(path))
+            tasks[task]['evaluation']['data_files'] = [binding]
+            notes[task] = {'bound_file': binding['path'], 'reason': args.evaluation_override_reason}
+        extra['evaluation_binding_notes'] = notes
     declaration = {'protocol': protocol, 'schema_version': 1,
         'claim_scope': claim_scope,
         'policy_improvement_established': False, 'root': str(native / f'campaign_v{args.version}'),

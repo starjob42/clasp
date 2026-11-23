@@ -1,0 +1,19 @@
+{
+  "archive": {
+    "path": "/lustre/fshomisc/home/rech/genlam01/uag72kz/clasp_campaigns/stage_v2/experiments/grpo_full_budget_20260918/source_v2.tar.gz",
+    "sha256": "c8b3971579b024dae45e8840ce57c6e74c5f3b83f15242b7cf32511bb58bfdec",
+    "size_bytes": 662873
+  },
+  "draft_declaration": {
+    "native_path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/draft_declaration_v2.json",
+    "path": "/lustre/fshomisc/home/rech/genlam01/uag72kz/clasp_campaigns/stage_v2/experiments/grpo_full_budget_20260918/draft_declaration_v2.json",
+    "sha256": "d82099c8ed0912adcf64b4bbefbe9f4ce4d1f00f3680d6ef54021595618f9f79",
+    "size_bytes": 31754
+  },
+  "numerical_changes_to_prior_campaigns": false,
+  "source": {
+    "manifest_sha256": "ccc422fbc5b4f159a4eb24312b3843c5e3cad00bd2b18b939c2aa37c3e0a0811",
+    "root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v2"
+  },
+  "source_file_count": 126
+}

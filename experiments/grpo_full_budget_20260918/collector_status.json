@@ -1,0 +1,32 @@
+{
+  "campaign_status": "stopped_for_diagnosis",
+  "controller": {
+    "alive_matching_command": false,
+    "expected": {
+      "command": [
+        "/lustre/fswork/projects/rech/vas/uag72kz/.conda/envs/new_unsloth_env/bin/python",
+        "-B",
+        "/lustre/fsn1/projects/rech/vas/uag72kz/rloo_epoch_continuation_20260926/management_v1/epoch_controller.py",
+        "--addendum",
+        "/lustre/fsn1/projects/rech/vas/uag72kz/rloo_epoch_continuation_20260926/addendum_v1.json",
+        "--sha",
+        "9ac7dd2e330f59deb5db10ca2506f87ffd1404633358b36d73c1711b0fab9034",
+        "--inherited-lock-fd",
+        "6"
+      ],
+      "host": "jean-zay3",
+      "log": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/management_20260926_v1/controller.log",
+      "management_addendum": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo_epoch_continuation_20260926/addendum_v1.json",
+        "sha256": "9ac7dd2e330f59deb5db10ca2506f87ffd1404633358b36d73c1711b0fab9034",
+        "size_bytes": 3185
+      },
+      "pid": 2797862,
+      "started_at_unix": 1790461260.8860726
+    }
+  },
+  "observed_at_unix": 1790465545.4756746,
+  "remote_scheduler_mutations": false,
+  "reports": [],
+  "status": "observed"
+}

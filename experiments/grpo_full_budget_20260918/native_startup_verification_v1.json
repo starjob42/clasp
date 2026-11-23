@@ -1,0 +1,1359 @@
+{
+  "captured_at_utc": "2026-09-18T22:05:57.832886+00:00",
+  "state": {
+    "deadline_unix": 1794952956.1444485,
+    "declaration": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json",
+      "sha256": "f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd",
+      "size_bytes": 137410
+    },
+    "eligible": [
+      "op_rloo_legacy_diagnostic_5",
+      "op_rloo_quality_diagnostic_5",
+      "jssp_classic_grpo_diagnostic_5",
+      "jssp_foarl_diagnostic_5",
+      "jssp_rloo_legacy_diagnostic_5",
+      "jssp_rloo_quality_diagnostic_5",
+      "cvrp_classic_grpo_diagnostic_5",
+      "cvrp_foarl_diagnostic_5",
+      "cvrp_rloo_legacy_diagnostic_5",
+      "cvrp_rloo_quality_diagnostic_5",
+      "mis_classic_grpo_diagnostic_5",
+      "mis_foarl_diagnostic_5",
+      "mis_rloo_legacy_diagnostic_5",
+      "mis_rloo_quality_diagnostic_5"
+    ],
+    "jobs": {
+      "cvrp_classic_grpo_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_eval_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_eval_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_eval_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_150": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_200": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_250": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_300": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_350": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_450": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_50": {
+        "status": "not_submitted"
+      },
+      "cvrp_classic_grpo_train_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_eval_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_eval_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_eval_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_150": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_200": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_250": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_300": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_350": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_450": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_50": {
+        "status": "not_submitted"
+      },
+      "cvrp_foarl_train_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_eval_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_eval_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_eval_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_150": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_200": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_250": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_300": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_350": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_450": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_50": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_legacy_train_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_eval_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_eval_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_eval_500": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_100": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_150": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_200": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_250": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_300": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_350": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_400": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_450": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_50": {
+        "status": "not_submitted"
+      },
+      "cvrp_rloo_quality_train_500": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_eval_100": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_eval_400": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_eval_800": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_100": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_150": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_200": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_250": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_300": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_350": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_400": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_450": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_50": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_500": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_550": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_600": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_650": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_700": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_750": {
+        "status": "not_submitted"
+      },
+      "jssp_classic_grpo_train_800": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_eval_100": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_eval_400": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_eval_800": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_100": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_150": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_200": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_250": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_300": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_350": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_400": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_450": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_50": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_500": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_550": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_600": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_650": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_700": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_750": {
+        "status": "not_submitted"
+      },
+      "jssp_foarl_train_800": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_eval_100": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_eval_400": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_eval_800": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_100": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_150": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_200": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_250": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_300": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_350": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_400": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_450": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_50": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_500": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_550": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_600": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_650": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_700": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_750": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_legacy_train_800": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_eval_100": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_eval_400": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_eval_800": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_100": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_150": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_200": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_250": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_300": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_350": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_400": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_450": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_50": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_500": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_550": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_600": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_650": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_700": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_750": {
+        "status": "not_submitted"
+      },
+      "jssp_rloo_quality_train_800": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_eval_100": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_eval_400": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_eval_800": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_100": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_150": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_200": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_250": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_300": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_350": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_400": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_450": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_50": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_500": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_550": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_600": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_650": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_700": {
+        "status": "not_submitted"
+      },
+      "mis_classic_grpo_train_800": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_eval_100": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_eval_400": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_eval_800": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_100": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_150": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_200": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_250": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_300": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_350": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_400": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_450": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_50": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_500": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_550": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_600": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_650": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_700": {
+        "status": "not_submitted"
+      },
+      "mis_foarl_train_800": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_eval_100": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_eval_400": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_eval_800": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_100": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_150": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_200": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_250": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_300": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_350": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_400": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_450": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_50": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_500": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_550": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_600": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_650": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_700": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_legacy_train_800": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_eval_100": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_eval_400": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_eval_800": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_100": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_150": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_200": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_250": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_300": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_350": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_400": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_450": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_50": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_500": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_550": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_600": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_650": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_700": {
+        "status": "not_submitted"
+      },
+      "mis_rloo_quality_train_800": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_diagnostic_5": {
+        "evaluation_contract": null,
+        "intent": {
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_classic_grpo_diagnostic_5.json",
+          "sha256": "81db458610229c815f3454916246fb9c60ae7063f36c0bac0beda128371bc3d9",
+          "size_bytes": 1864
+        },
+        "job_id": "2164644",
+        "observed_state": "PENDING",
+        "status": "submitted"
+      },
+      "op_classic_grpo_eval_100": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_eval_1250": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_eval_400": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_100": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1000": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1050": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1100": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1150": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1200": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_1250": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_150": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_200": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_250": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_300": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_350": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_400": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_450": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_50": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_500": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_550": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_600": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_650": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_700": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_750": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_800": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_850": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_900": {
+        "status": "not_submitted"
+      },
+      "op_classic_grpo_train_950": {
+        "status": "not_submitted"
+      },
+      "op_foarl_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "op_foarl_diagnostic_5": {
+        "evaluation_contract": null,
+        "intent": {
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_foarl_diagnostic_5.json",
+          "sha256": "a657655c24bc865b324c5e5585e624c6ee2bce1f466ec0683848b6855dadb048",
+          "size_bytes": 1815
+        },
+        "job_id": "2164645",
+        "observed_state": "PENDING",
+        "status": "submitted"
+      },
+      "op_foarl_eval_100": {
+        "status": "not_submitted"
+      },
+      "op_foarl_eval_1250": {
+        "status": "not_submitted"
+      },
+      "op_foarl_eval_400": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_100": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1000": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1050": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1100": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1150": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1200": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_1250": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_150": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_200": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_250": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_300": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_350": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_400": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_450": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_50": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_500": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_550": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_600": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_650": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_700": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_750": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_800": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_850": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_900": {
+        "status": "not_submitted"
+      },
+      "op_foarl_train_950": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_eval_100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_eval_1250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_eval_400": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1000": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1050": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1150": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1200": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_1250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_150": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_200": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_300": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_350": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_400": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_450": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_50": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_500": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_550": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_600": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_650": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_700": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_750": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_800": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_850": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_900": {
+        "status": "not_submitted"
+      },
+      "op_rloo_legacy_train_950": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_eval_100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_eval_1250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_eval_400": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1000": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1050": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1100": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1150": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1200": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_1250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_150": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_200": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_250": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_300": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_350": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_400": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_450": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_50": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_500": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_550": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_600": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_650": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_700": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_750": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_800": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_850": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_900": {
+        "status": "not_submitted"
+      },
+      "op_rloo_quality_train_950": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_eval_100": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_eval_400": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_eval_800": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_100": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_150": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_200": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_250": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_300": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_350": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_400": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_450": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_50": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_500": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_550": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_600": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_650": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_700": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_750": {
+        "status": "not_submitted"
+      },
+      "tsp_classic_grpo_train_800": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_eval_100": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_eval_400": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_eval_800": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_100": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_150": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_200": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_250": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_300": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_350": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_400": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_450": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_50": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_500": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_550": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_600": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_650": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_700": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_750": {
+        "status": "not_submitted"
+      },
+      "tsp_foarl_train_800": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_eval_100": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_eval_400": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_eval_800": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_100": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_150": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_200": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_250": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_300": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_350": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_400": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_450": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_50": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_500": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_550": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_600": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_650": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_700": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_750": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_legacy_train_800": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_diagnostic_10": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_diagnostic_5": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_eval_100": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_eval_400": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_eval_800": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_100": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_150": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_200": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_250": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_300": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_350": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_400": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_450": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_50": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_500": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_550": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_600": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_650": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_700": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_750": {
+        "status": "not_submitted"
+      },
+      "tsp_rloo_quality_train_800": {
+        "status": "not_submitted"
+      }
+    },
+    "observed_at_unix": 1789769148.5736864,
+    "outstanding": 2,
+    "protocol": "budget-matched-grpo-development-20260918-v1",
+    "queue_size": 96,
+    "receipt_sha256": "b5bc5968b1db803bea5b21bac904b12a053982651b1d11d930acaada57349ca6",
+    "started_at_unix": 1789768956.144448,
+    "status": "monitoring",
+    "updated_at_unix": 1789769148.5737162
+  },
+  "controller_process": {
+    "command": [
+      "/lustre/fswork/projects/rech/vas/uag72kz/.conda/envs/new_unsloth_env/bin/python",
+      "-B",
+      "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1/experiments/grpo_full_budget_20260918/campaign.py",
+      "--declaration",
+      "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json",
+      "--sha",
+      "f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd",
+      "--execute"
+    ],
+    "host": "jean-zay3",
+    "log": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/controller.log",
+    "pid": 1015764
+  },
+  "controller_log": "{\"submitted\": \"op_classic_grpo_diagnostic_5\", \"job_id\": \"2164644\", \"reserved_a100_hours\": 4.0}\n{\"submitted\": \"op_foarl_diagnostic_5\", \"job_id\": \"2164645\", \"reserved_a100_hours\": 8.0}\n",
+  "allocations": {
+    "2164644": "JobId=2164644 JobName=fb-op_classic_grpo_diagnostic_5 UserId=uag72kz(304433) GroupId=genlam01(300401) MCS_label=N/A Priority=250662 Nice=0 Account=vas@a100 QOS=qos_gpu_a100-dev JobState=PENDING Reason=Resources Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=01:00:00 TimeMin=N/A SubmitTime=2026-09-19T00:03:38 EligibleTime=2026-09-19T00:03:38 AccrueTime=2026-09-19T00:03:38 StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-19T00:05:19 Scheduler=Main Partition=gpu_p5 AllocNode:Sid=10.148.0.22:1015764 ReqNodeList=(null) ExcNodeList=(null) NodeList= NumNodes=1-1 NumCPUs=40 NumTasks=1 CPUs/Task=40 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=40,mem=300000M,node=1,billing=4,gres/gpu=4 AllocTRES=(null) Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=* MinCPUsNode=40 MinMemoryCPU=7500M MinTmpDiskNode=0 Features=a100 DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null) Command=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1/experiments/grpo_full_budget_20260918/train_a100.slurm SubmitLine=sbatch --parsable --account=vas@a100 --partition=gpu_p5 --constraint=a100 --nodes=1 --gres=gpu:4 --ntasks-per-node=1 --cpus-per-task=40 --hint=nomultithread --time=01:00:00 --qos=qos_gpu_a100-dev --no-requeue --job-name=fb-op_classic_grpo_diagnostic_5 --comment=fb-f8c9a06d80fdacdc-op_classic_grpo_diagnostic_5 --output=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_classic_grpo_diagnostic_5-%j.out --error=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_classic_grpo_diagnostic_5-%j.err --export=ALL,FB_DECLARATION=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json,FB_DECLARATION_SHA=f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd,FB_JOB=op_classic_grpo_diagnostic_5,FB_SOURCE=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1 /lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1/experiments/grpo_full_budget_20260918/train_a100.slurm WorkDir=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1 Comment=fb-f8c9a06d80fdacdc-op_classic_grpo_diagnostic_5 StdErr=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_classic_grpo_diagnostic_5-2164644.err StdIn=/dev/null StdOut=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_classic_grpo_diagnostic_5-2164644.out TresPerNode=gres/gpu:4 TresPerTask=cpu=40\n",
+    "2164645": "JobId=2164645 JobName=fb-op_foarl_diagnostic_5 UserId=uag72kz(304433) GroupId=genlam01(300401) MCS_label=N/A Priority=250662 Nice=0 Account=vas@a100 QOS=qos_gpu_a100-dev JobState=PENDING Reason=Priority Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=01:00:00 TimeMin=N/A SubmitTime=2026-09-19T00:03:39 EligibleTime=2026-09-19T00:03:39 AccrueTime=2026-09-19T00:03:39 StartTime=Unknown EndTime=Unknown Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-19T00:05:19 Scheduler=Main Partition=gpu_p5 AllocNode:Sid=10.148.0.22:1015764 ReqNodeList=(null) ExcNodeList=(null) NodeList= NumNodes=1-1 NumCPUs=40 NumTasks=1 CPUs/Task=40 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=40,mem=300000M,node=1,billing=4,gres/gpu=4 AllocTRES=(null) Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=* MinCPUsNode=40 MinMemoryCPU=7500M MinTmpDiskNode=0 Features=a100 DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null) Command=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1/experiments/grpo_full_budget_20260918/train_a100.slurm SubmitLine=sbatch --parsable --account=vas@a100 --partition=gpu_p5 --constraint=a100 --nodes=1 --gres=gpu:4 --ntasks-per-node=1 --cpus-per-task=40 --hint=nomultithread --time=01:00:00 --qos=qos_gpu_a100-dev --no-requeue --job-name=fb-op_foarl_diagnostic_5 --comment=fb-f8c9a06d80fdacdc-op_foarl_diagnostic_5 --output=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_foarl_diagnostic_5-%j.out --error=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_foarl_diagnostic_5-%j.err --export=ALL,FB_DECLARATION=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json,FB_DECLARATION_SHA=f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd,FB_JOB=op_foarl_diagnostic_5,FB_SOURCE=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1 /lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1/experiments/grpo_full_budget_20260918/train_a100.slurm WorkDir=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1 Comment=fb-f8c9a06d80fdacdc-op_foarl_diagnostic_5 StdErr=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_foarl_diagnostic_5-2164645.err StdIn=/dev/null StdOut=/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/logs/op_foarl_diagnostic_5-2164645.out TresPerNode=gres/gpu:4 TresPerTask=cpu=40\n"
+  },
+  "requested_scope_verified": true,
+  "allocated_gpu_validation_deferred_until_job_runs": true
+}

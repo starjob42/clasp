@@ -56,3 +56,12 @@ checkpoint-*.zip
 /audit_reference_solutions.py
 /compare_sft_checkpoints.py
 /prompt_lengths.py
+
+# The budget-matched FOARL campaign is published: it is small, auditable source
+# plus immutable evaluation evidence, not a local artifact tree.
+!experiments/grpo_full_budget_20260918/
+!experiments/grpo_full_budget_20260918/**
+experiments/grpo_full_budget_20260918/**/__pycache__/
+experiments/grpo_full_budget_20260918/**/*.pyc
+experiments/grpo_full_budget_20260918/**/*.log
+experiments/grpo_full_budget_20260918/.*.lock

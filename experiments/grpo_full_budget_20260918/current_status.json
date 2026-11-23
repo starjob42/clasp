@@ -1,0 +1,2198 @@
+{
+  "deadline_unix": 1794952956.1444485,
+  "declaration": {
+    "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json",
+    "sha256": "f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd",
+    "size_bytes": 137410
+  },
+  "eligible": [
+    "cvrp_classic_grpo_train_50",
+    "cvrp_foarl_train_50",
+    "cvrp_rloo_legacy_train_50",
+    "cvrp_rloo_quality_train_50",
+    "mis_classic_grpo_train_50",
+    "mis_foarl_train_50",
+    "mis_rloo_quality_train_50",
+    "op_classic_grpo_train_100",
+    "op_foarl_train_100",
+    "op_rloo_quality_train_100",
+    "jssp_classic_grpo_train_100",
+    "jssp_foarl_train_100"
+  ],
+  "failed_jobs": [
+    "op_rloo_legacy_eval_100"
+  ],
+  "jobs": {
+    "cvrp_classic_grpo_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 378,
+        "exit_code": "0:0",
+        "job_id": "2167848",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/classic_grpo/chunk-10-complete.json",
+        "sha256": "9beb5ff98d1b6d9fcfeac6f25c741d282e3cb264b56c237e3383fc0e270de3cd",
+        "size_bytes": 22821
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_classic_grpo_diagnostic_10.json",
+        "sha256": "1dbb5a1de1f79dd423631709f6644005bfccb40d92e117ae3e021c92c905e485",
+        "size_bytes": 1928
+      },
+      "job_id": "2167848",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_classic_grpo_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 425,
+        "exit_code": "0:0",
+        "job_id": "2167421",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/classic_grpo/chunk-5-complete.json",
+        "sha256": "d5688226bb6a274b7cf83ab7027fd3773aca5dd5c2942508f593e9860c4cbb06",
+        "size_bytes": 17946
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_classic_grpo_diagnostic_5.json",
+        "sha256": "bbfa645fe30ae5d87ea99fe3b0a4632ba930d90f933ac832de16cfadedf765a2",
+        "size_bytes": 1878
+      },
+      "job_id": "2167421",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_classic_grpo_eval_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_eval_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_eval_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_150": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_200": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_250": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_300": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_350": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_450": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_50": {
+      "status": "not_submitted"
+    },
+    "cvrp_classic_grpo_train_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 990,
+        "exit_code": "0:0",
+        "job_id": "2167871",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/foarl/chunk-10-complete.json",
+        "sha256": "419e0a2de37af0d1a1fb7422d1f8a00119b0a0f50f28dcdfeeb5c442c798bd13",
+        "size_bytes": 23531
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_foarl_diagnostic_10.json",
+        "sha256": "ed498bfdc630ce1423d1f1f5d1bcece4f65d2867729150e9edfe1d652c8d8926",
+        "size_bytes": 1873
+      },
+      "job_id": "2167871",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_foarl_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 996,
+        "exit_code": "0:0",
+        "job_id": "2167442",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/foarl/chunk-5-complete.json",
+        "sha256": "5c1373440b02ec95064b280e0dd4b4b75e860a2a57b0d9ecadf7a35c3aa8a6be",
+        "size_bytes": 18709
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_foarl_diagnostic_5.json",
+        "sha256": "64a687c15713efca17568d7a170db0d6d5a8c4059e449e4dde8a95667935e0f6",
+        "size_bytes": 1829
+      },
+      "job_id": "2167442",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_foarl_eval_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_eval_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_eval_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_150": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_200": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_250": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_300": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_350": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_450": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_50": {
+      "status": "not_submitted"
+    },
+    "cvrp_foarl_train_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 396,
+        "exit_code": "0:0",
+        "job_id": "2167877",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/rloo_legacy/chunk-10-complete.json",
+        "sha256": "88379a06e078114b1d4720130e31f0635d790d0b7f56c37aa0c493899ea70c6a",
+        "size_bytes": 23114
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_rloo_legacy_diagnostic_10.json",
+        "sha256": "8415c9c42c0fa0589d8507671fc69bb22b9d27746ef1d09a4bfc84f54aa04f27",
+        "size_bytes": 1920
+      },
+      "job_id": "2167877",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_rloo_legacy_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 396,
+        "exit_code": "0:0",
+        "job_id": "2167483",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/rloo_legacy/chunk-5-complete.json",
+        "sha256": "4b4f3ef2d9f11ec4012951d87963bba0932ffd55700feb8f5098146fa790fb46",
+        "size_bytes": 18246
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_rloo_legacy_diagnostic_5.json",
+        "sha256": "19bf27c8f15c1a56b719fad7e325c44f51f6f6f167db64e4da7be2dd0f88cf31",
+        "size_bytes": 1871
+      },
+      "job_id": "2167483",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_rloo_legacy_eval_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_eval_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_eval_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_150": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_200": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_250": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_300": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_350": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_450": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_50": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_legacy_train_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 372,
+        "exit_code": "0:0",
+        "job_id": "2167906",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/rloo_quality/chunk-10-complete.json",
+        "sha256": "145148036bea2924030bcda32c3b3334b1484b158f8e5bed7b853255ac0fb945",
+        "size_bytes": 23164
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_rloo_quality_diagnostic_10.json",
+        "sha256": "e3c27918ceb4f8940e5265b576f418822c0f9643ec92e1fc396a5897c8db437c",
+        "size_bytes": 1929
+      },
+      "job_id": "2167906",
+      "observed_state": "COMPLETING",
+      "status": "completed"
+    },
+    "cvrp_rloo_quality_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 408,
+        "exit_code": "0:0",
+        "job_id": "2167513",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/cvrp/rloo_quality/chunk-5-complete.json",
+        "sha256": "604952974c93f02acde2bf86d25089fef484c8856e710b41a1dd9eeb4dc3bc12",
+        "size_bytes": 18288
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/cvrp_rloo_quality_diagnostic_5.json",
+        "sha256": "d65db609d1e1ff051d5ed1577431102a00c5ae6ba1486c26424ef422675b4fb4",
+        "size_bytes": 1878
+      },
+      "job_id": "2167513",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "cvrp_rloo_quality_eval_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_eval_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_eval_500": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_100": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_150": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_200": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_250": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_300": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_350": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_400": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_450": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_50": {
+      "status": "not_submitted"
+    },
+    "cvrp_rloo_quality_train_500": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 589,
+        "exit_code": "0:0",
+        "job_id": "2167745",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/classic_grpo/chunk-10-complete.json",
+        "sha256": "43d2fbb0c89ec9bf88b42275d202e5730566ef7f96da0dfa66cbd51a6b22a699",
+        "size_bytes": 22821
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_classic_grpo_diagnostic_10.json",
+        "sha256": "8127dadf25a7e68fc6bef4e9109bb97bd85d5dfe05c0b79df994a5e50f2df079",
+        "size_bytes": 1928
+      },
+      "job_id": "2167745",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_classic_grpo_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 465,
+        "exit_code": "0:0",
+        "job_id": "2167239",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/classic_grpo/chunk-5-complete.json",
+        "sha256": "636ddf58ab0cd6f295b16ccf8b3735c38d7e8279b2df8acce71a36f827084741",
+        "size_bytes": 17946
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_classic_grpo_diagnostic_5.json",
+        "sha256": "ae851655c10087e93703a4382e90627526bfb000c3cc2ff59861fd1b78280098",
+        "size_bytes": 1878
+      },
+      "job_id": "2167239",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_classic_grpo_eval_100": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_eval_400": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_eval_800": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_100": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_150": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_200": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_250": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_300": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_350": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_400": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_450": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 4283,
+        "exit_code": "0:0",
+        "job_id": "2168521",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/jssp/classic_grpo/chunk-50-complete.json",
+        "sha256": "507a5bd70b7b659cc332f0babb3b3c0485d00b77e1935eff5d0720097c5cf26d",
+        "size_bytes": 17761
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_classic_grpo_train_50.json",
+        "sha256": "c2b014d19c37b552f0ab6e8e250bd20a9be15240480a31912e580eb8deee8c66",
+        "size_bytes": 2010
+      },
+      "job_id": "2168521",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_classic_grpo_train_500": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_550": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_600": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_650": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_700": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_750": {
+      "status": "not_submitted"
+    },
+    "jssp_classic_grpo_train_800": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 1124,
+        "exit_code": "0:0",
+        "job_id": "2167750",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/foarl/chunk-10-complete.json",
+        "sha256": "08adaadb20941d8b52a2cf41e62a82f6d519966f9666cc12a1e358c3388a07dd",
+        "size_bytes": 23531
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_foarl_diagnostic_10.json",
+        "sha256": "4dfae7d372dffae17ebf80f81680b335fa86ad8be1b704afb6ae3aa0e24efcf5",
+        "size_bytes": 1873
+      },
+      "job_id": "2167750",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_foarl_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 918,
+        "exit_code": "0:0",
+        "job_id": "2167255",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/foarl/chunk-5-complete.json",
+        "sha256": "7479f444285096134447bc65398000eab877f8d3a82f127dd4ccfee29a6cd0b1",
+        "size_bytes": 18709
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_foarl_diagnostic_5.json",
+        "sha256": "4aad674f2bb845750a8f414ea4808e7b5e6c0ac2dc3d9d6bc223afb416ead829",
+        "size_bytes": 1828
+      },
+      "job_id": "2167255",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_foarl_eval_100": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_eval_400": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_eval_800": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_100": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_150": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_200": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_250": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_300": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_350": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_400": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_450": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 4760,
+        "exit_code": "0:0",
+        "job_id": "2168720",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/jssp/foarl/chunk-50-complete.json",
+        "sha256": "3ad234de6eb679e722241057dfda002bde0a4c31e23f02d671dd24a6cc4c25af",
+        "size_bytes": 18509
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_foarl_train_50.json",
+        "sha256": "8f6d44b2b3e172d92309fa01d71773c5852fbcc3d80f22215f7737875cf597eb",
+        "size_bytes": 1961
+      },
+      "job_id": "2168720",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_foarl_train_500": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_550": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_600": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_650": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_700": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_750": {
+      "status": "not_submitted"
+    },
+    "jssp_foarl_train_800": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 564,
+        "exit_code": "0:0",
+        "job_id": "2167807",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/rloo_legacy/chunk-10-complete.json",
+        "sha256": "80961cadf9788c9f220539364b58f53c6cec189a13120fa2f6299b7223b27555",
+        "size_bytes": 23114
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_legacy_diagnostic_10.json",
+        "sha256": "a71e3089f03646f94e18f0d77884421ddd87228606ddb4161d77e8945550d984",
+        "size_bytes": 1921
+      },
+      "job_id": "2167807",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_rloo_legacy_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 483,
+        "exit_code": "0:0",
+        "job_id": "2167316",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/rloo_legacy/chunk-5-complete.json",
+        "sha256": "62fb51339344fc99e8032d21221a7078813630b3c4192a4ad373c837f7a7ab7c",
+        "size_bytes": 18246
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_legacy_diagnostic_5.json",
+        "sha256": "ba9e7016621f1961da337b3461b69ce5290e709382697bf5414263a9d21e17a9",
+        "size_bytes": 1870
+      },
+      "job_id": "2167316",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_rloo_legacy_eval_100": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_eval_400": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_eval_800": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_100": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_150": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_200": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_250": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_300": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_350": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_400": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_450": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_50": {
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_legacy_train_50.json",
+        "sha256": "6cb4cd09e7e58f148fb0552439c3b8846ed881f839ded40c72777e21d38c3c8b",
+        "size_bytes": 2003
+      },
+      "job_id": "202710",
+      "observed_state": "PENDING",
+      "status": "submitted"
+    },
+    "jssp_rloo_legacy_train_500": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_550": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_600": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_650": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_700": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_750": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_legacy_train_800": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 594,
+        "exit_code": "0:0",
+        "job_id": "2167847",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/rloo_quality/chunk-10-complete.json",
+        "sha256": "c0546ccf245d71816be6ad64a4e8b2efd0b1970ea46555a03ecb9323d3c2c1fb",
+        "size_bytes": 23164
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_quality_diagnostic_10.json",
+        "sha256": "1e5d50fdff5b632f9ec558b09bf202c9b0f9ad614d5506f34986ce43aa88a3af",
+        "size_bytes": 1929
+      },
+      "job_id": "2167847",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_rloo_quality_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 442,
+        "exit_code": "0:0",
+        "job_id": "2167400",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/jssp/rloo_quality/chunk-5-complete.json",
+        "sha256": "c8ccfe4ee3d480669528dde40a30f7f264373a127c6eef12f3277f69ceaee7bb",
+        "size_bytes": 18288
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_quality_diagnostic_5.json",
+        "sha256": "ab0352a3338b2b506d7ceb2e07573c87f224daf1916571ab9ba4e3d24258bd79",
+        "size_bytes": 1878
+      },
+      "job_id": "2167400",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "jssp_rloo_quality_eval_100": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_eval_400": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_eval_800": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_100": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_150": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_200": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_250": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_300": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_350": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_400": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_450": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_50": {
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/jssp_rloo_quality_train_50.json",
+        "sha256": "2f55da7080e616e3c763210a33a5f2949b7cbf9b6e2ea66ef7d18d475018458f",
+        "size_bytes": 2010
+      },
+      "job_id": "202888",
+      "observed_state": "PENDING",
+      "status": "submitted"
+    },
+    "jssp_rloo_quality_train_500": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_550": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_600": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_650": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_700": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_750": {
+      "status": "not_submitted"
+    },
+    "jssp_rloo_quality_train_800": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 297,
+        "exit_code": "0:0",
+        "job_id": "2167950",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/classic_grpo/chunk-10-complete.json",
+        "sha256": "cc001aa9fcab3fda696da1e3e2a3ab7aa2bee3652daf42d0de3ee24c00a66238",
+        "size_bytes": 22769
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_classic_grpo_diagnostic_10.json",
+        "sha256": "986cb5ac5ceb784adcaad3a0770c062c84dd989036b1c04f7cd7706e1738b762",
+        "size_bytes": 1920
+      },
+      "job_id": "2167950",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_classic_grpo_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 371,
+        "exit_code": "0:0",
+        "job_id": "2167548",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/classic_grpo/chunk-5-complete.json",
+        "sha256": "0cc5760fece3881116faf96c45fa49980866d6b8e1c340829b4eaa83817f568f",
+        "size_bytes": 17902
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_classic_grpo_diagnostic_5.json",
+        "sha256": "25444940f1b8abac2f9ea7d6986ca256dee0c71bafff9634bfd14e4208ebd02d",
+        "size_bytes": 1871
+      },
+      "job_id": "2167548",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_classic_grpo_eval_100": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_eval_400": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_eval_800": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_100": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_150": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_200": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_250": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_300": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_350": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_400": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_450": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_50": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_500": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_550": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_600": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_650": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_700": {
+      "status": "not_submitted"
+    },
+    "mis_classic_grpo_train_800": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 861,
+        "exit_code": "0:0",
+        "job_id": "2167951",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/foarl/chunk-10-complete.json",
+        "sha256": "9985a004bc5dec21846e486f6a0bef36b4c282f8890de44c3297c2fdbf7ea7a4",
+        "size_bytes": 23476
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_foarl_diagnostic_10.json",
+        "sha256": "10311802ee5345d73151e159e8977f49abcd73b1d8104fd290cc1ccd03e31e97",
+        "size_bytes": 1864
+      },
+      "job_id": "2167951",
+      "observed_state": "COMPLETING",
+      "status": "completed"
+    },
+    "mis_foarl_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 830,
+        "exit_code": "0:0",
+        "job_id": "2167588",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/foarl/chunk-5-complete.json",
+        "sha256": "f06025fc047cd7c29d383eda873b405a4f602275ea3935822062f5eda7d04149",
+        "size_bytes": 18662
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_foarl_diagnostic_5.json",
+        "sha256": "6c7b8c91cb94515d303c423ef0b0bd8b36de150af6c044853209a20d024b08f6",
+        "size_bytes": 1821
+      },
+      "job_id": "2167588",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_foarl_eval_100": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_eval_400": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_eval_800": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_100": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_150": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_200": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_250": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_300": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_350": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_400": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_450": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_50": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_500": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_550": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_600": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_650": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_700": {
+      "status": "not_submitted"
+    },
+    "mis_foarl_train_800": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 282,
+        "exit_code": "0:0",
+        "job_id": "2167990",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/rloo_legacy/chunk-10-complete.json",
+        "sha256": "d0e78ad5f38cd50712e3ec2433f9da6e1ffe18839ed99d662162367f7f08bb45",
+        "size_bytes": 23061
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_legacy_diagnostic_10.json",
+        "sha256": "081e882d007e78abf5078c533bb465aa5e4793c7ebf79c1af3e1f8f40522cbfd",
+        "size_bytes": 1913
+      },
+      "job_id": "2167990",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_rloo_legacy_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 413,
+        "exit_code": "0:0",
+        "job_id": "2167615",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/rloo_legacy/chunk-5-complete.json",
+        "sha256": "bfdaa69ee5de142f98c82bfa4ceb3b4fa7deaf71a532bfdc64bfc3c33156d9c8",
+        "size_bytes": 18201
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_legacy_diagnostic_5.json",
+        "sha256": "db4f576f7b198573aaa423bb2f1218266026171a46445fa9907a260bb058de2d",
+        "size_bytes": 1864
+      },
+      "job_id": "2167615",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_rloo_legacy_eval_100": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_eval_400": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_eval_800": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_100": {
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_legacy_train_100.json",
+        "sha256": "cc3f740606731cda98ad8312aa275f00ef18fb6d633a5dbc7fa2e30c8e84e6a2",
+        "size_bytes": 2123
+      },
+      "job_id": "234014",
+      "observed_state": "RUNNING",
+      "status": "submitted"
+    },
+    "mis_rloo_legacy_train_150": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_200": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_250": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_300": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_350": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_400": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_450": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2323,
+        "exit_code": "0:0",
+        "job_id": "232466",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/mis/rloo_legacy/chunk-50-complete.json",
+        "sha256": "8ee8c5b89bae7f18b393ecdf38f4c41e6c3e40a2a9acf94260753af868e9becc",
+        "size_bytes": 18010
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_legacy_train_50.json",
+        "sha256": "ee1ae11423751cc628e5b75c6af740523e6fe0017028a36eb2e28fcfb18c3b7b",
+        "size_bytes": 2232
+      },
+      "job_id": "232466",
+      "observed_state": "COMPLETING",
+      "status": "completed"
+    },
+    "mis_rloo_legacy_train_500": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_550": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_600": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_650": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_700": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_legacy_train_800": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 291,
+        "exit_code": "0:0",
+        "job_id": "2168052",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/rloo_quality/chunk-10-complete.json",
+        "sha256": "3a0b6eb9aa7d0ce1df0010b1a7395f9376ce659c27e2c4401828411b58cd18c9",
+        "size_bytes": 23111
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_quality_diagnostic_10.json",
+        "sha256": "e29910eb0cd88f4df1d359030532abacec1fa3f8429f5a136fee7cbafa688f97",
+        "size_bytes": 1921
+      },
+      "job_id": "2168052",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_rloo_quality_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 404,
+        "exit_code": "0:0",
+        "job_id": "2167643",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/mis/rloo_quality/chunk-5-complete.json",
+        "sha256": "f532918f5da78b05434980736cc3e76f632ec0177b6dc151d43cc9a810592ec2",
+        "size_bytes": 18243
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/mis_rloo_quality_diagnostic_5.json",
+        "sha256": "b3db8e787fffd65bd3fd6cfa5d038d91d19dad28bf470e1f16ca9f98e2b97b4c",
+        "size_bytes": 1871
+      },
+      "job_id": "2167643",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "mis_rloo_quality_eval_100": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_eval_400": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_eval_800": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_100": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_150": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_200": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_250": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_300": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_350": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_400": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_450": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_50": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_500": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_550": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_600": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_650": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_700": {
+      "status": "not_submitted"
+    },
+    "mis_rloo_quality_train_800": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 344,
+        "exit_code": "0:0",
+        "job_id": "2167650",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/classic_grpo/chunk-10-complete.json",
+        "sha256": "28c7fd47c3496e7448c13aa226081da00d7097f300519911084cdd80b31e43a5",
+        "size_bytes": 22719
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_classic_grpo_diagnostic_10.json",
+        "sha256": "c0ec485bf27a0b8fbfa9ae4df97cb89d7360c7549e8871abf0992f02bc962d9e",
+        "size_bytes": 1913
+      },
+      "job_id": "2167650",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_classic_grpo_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 761,
+        "exit_code": "0:0",
+        "job_id": "2164644",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/classic_grpo/chunk-5-complete.json",
+        "sha256": "8d3764bbe7daf6a200e5519327eb89b3768d9ac817d3ed9809d57ed38c87df08",
+        "size_bytes": 17860
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_classic_grpo_diagnostic_5.json",
+        "sha256": "81db458610229c815f3454916246fb9c60ae7063f36c0bac0beda128371bc3d9",
+        "size_bytes": 1864
+      },
+      "job_id": "2164644",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_classic_grpo_eval_100": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_eval_1250": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_eval_400": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_100": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1000": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1050": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1100": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1150": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1200": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_1250": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_150": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_200": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_250": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_300": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_350": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_400": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_450": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2150,
+        "exit_code": "0:0",
+        "job_id": "2168063",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/op/classic_grpo/chunk-50-complete.json",
+        "sha256": "e3acdeb0f4ae4916343296216493af3c51724a4c248a66f8a4cf8fdd4191b059",
+        "size_bytes": 17675
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_classic_grpo_train_50.json",
+        "sha256": "e0bae29ef9b13609309cc04d802a87f87736c77a82280359dd2a5eb4893ef380",
+        "size_bytes": 1988
+      },
+      "job_id": "2168063",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_classic_grpo_train_500": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_550": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_600": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_650": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_700": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_750": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_800": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_850": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_900": {
+      "status": "not_submitted"
+    },
+    "op_classic_grpo_train_950": {
+      "status": "not_submitted"
+    },
+    "op_foarl_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 909,
+        "exit_code": "0:0",
+        "job_id": "2167692",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/foarl/chunk-10-complete.json",
+        "sha256": "d56e23db5645681d746fbfea8dbe2ad7c1707cc91fad07fe742742a495c68a17",
+        "size_bytes": 23423
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_foarl_diagnostic_10.json",
+        "sha256": "ad922d89841b364a180a1ff2ff8f6932e62620ac71de65307b2d16d2feb7dfba",
+        "size_bytes": 1857
+      },
+      "job_id": "2167692",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_foarl_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 986,
+        "exit_code": "0:0",
+        "job_id": "2164645",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/foarl/chunk-5-complete.json",
+        "sha256": "6e476e4965a2a2a193c03e0922fa03635a7f9c1c46825ff2b4f9c6f159e392d8",
+        "size_bytes": 18617
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_foarl_diagnostic_5.json",
+        "sha256": "a657655c24bc865b324c5e5585e624c6ee2bce1f466ec0683848b6855dadb048",
+        "size_bytes": 1815
+      },
+      "job_id": "2164645",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_foarl_eval_100": {
+      "status": "not_submitted"
+    },
+    "op_foarl_eval_1250": {
+      "status": "not_submitted"
+    },
+    "op_foarl_eval_400": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_100": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1000": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1050": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1100": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1150": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1200": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_1250": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_150": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_200": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_250": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_300": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_350": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_400": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_450": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2770,
+        "exit_code": "0:0",
+        "job_id": "2168074",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/op/foarl/chunk-50-complete.json",
+        "sha256": "60be9927bd98c3ee7a21e2ba91c5b0d70c0e1d6b15c6433344e27ffc63b80356",
+        "size_bytes": 18417
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_foarl_train_50.json",
+        "sha256": "dd2b5bea14989b9578e49435678c684c61e9e5b4f4b99c97dc2e4eb9cf42e042",
+        "size_bytes": 1938
+      },
+      "job_id": "2168074",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_foarl_train_500": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_550": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_600": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_650": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_700": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_750": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_800": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_850": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_900": {
+      "status": "not_submitted"
+    },
+    "op_foarl_train_950": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 324,
+        "exit_code": "0:0",
+        "job_id": "2167707",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/rloo_legacy/chunk-10-complete.json",
+        "sha256": "54000fdd57c6a9cf3047f80551505c6fdb6b6d812dc54adbd8297ecf38e9e197",
+        "size_bytes": 23010
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_legacy_diagnostic_10.json",
+        "sha256": "20ec8db1e624cdf234f48479a9fe3af12e0fe4f9c027a53717eb8c36e5d973eb",
+        "size_bytes": 1905
+      },
+      "job_id": "2167707",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_rloo_legacy_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 308,
+        "exit_code": "0:0",
+        "job_id": "2167131",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/rloo_legacy/chunk-5-complete.json",
+        "sha256": "2590277d84b783c7fddb8bacf393ac2a7ae537227cdc7ba2e659fbcfeeccef17",
+        "size_bytes": 18158
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_legacy_diagnostic_5.json",
+        "sha256": "e444371bf1838af55b6e37724ea5e6c4f6c296741251f3dd7cbafb0a468d128e",
+        "size_bytes": 1857
+      },
+      "job_id": "2167131",
+      "observed_state": "COMPLETING",
+      "status": "completed"
+    },
+    "op_rloo_legacy_eval_100": {
+      "accounting": {
+        "allocated_tres": "billing=1,cpu=16,gres/gpu=1,mem=60000M,node=1",
+        "elapsed_seconds": 1232,
+        "exit_code": "1:0",
+        "job_id": "234056",
+        "state": "FAILED"
+      },
+      "evaluation_contract": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluation_contracts/op_rloo_legacy_eval_100.json",
+        "sha256": "a410248accebd339c2e31a23cb42f1a0db3b31c1bdedccd2bd9af98c82f2abf6",
+        "size_bytes": 1649
+      },
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_legacy_eval_100.json",
+        "sha256": "4c2de58464d2bbcd06dc29a8c22a36b71e26a777719dde3efa25bf87e98fd2be",
+        "size_bytes": 2669
+      },
+      "job_id": "234056",
+      "observed_state": "RUNNING",
+      "status": "failed"
+    },
+    "op_rloo_legacy_eval_1250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_eval_400": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_100": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2547,
+        "exit_code": "0:0",
+        "job_id": "232465",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/op/rloo_legacy/chunk-100-complete.json",
+        "sha256": "5adf1c1e176127bc20e497e5442c759ae6a8d9fa1212fe4d3cb88d0d09a2572d",
+        "size_bytes": 22783
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_legacy_train_100.json",
+        "sha256": "faf5dd2ee1b81f5fa083d71e296e3f5c7deed26677d2c17d996eac3a4a84a140",
+        "size_bytes": 2115
+      },
+      "job_id": "232465",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_rloo_legacy_train_1000": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_1050": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_1100": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_1150": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_1200": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_1250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_150": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_200": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_300": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_350": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_400": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_450": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2240,
+        "exit_code": "0:0",
+        "job_id": "2168258",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/op/rloo_legacy/chunk-50-complete.json",
+        "sha256": "11d871e3b91c3d0bb2432b7fbde125a509f18778379b052736f63bf8da1a6cbd",
+        "size_bytes": 17968
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_legacy_train_50.json",
+        "sha256": "4424228a17bfcb664c39691c8398b8411e534010a98bb4aa3c8620a2fe108300",
+        "size_bytes": 1981
+      },
+      "job_id": "2168258",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_rloo_legacy_train_500": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_550": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_600": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_650": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_700": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_750": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_800": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_850": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_900": {
+      "status": "not_submitted"
+    },
+    "op_rloo_legacy_train_950": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_diagnostic_10": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 412,
+        "exit_code": "0:0",
+        "job_id": "2167727",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/rloo_quality/chunk-10-complete.json",
+        "sha256": "68e3d81ff8330e9cbab4c2ac687e02e01d90892eb3d2c0a8cc44b3cb8eb56d04",
+        "size_bytes": 23060
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_quality_diagnostic_10.json",
+        "sha256": "cecb542f70faec0e2ed6d2b5972d0bceed754d11f4c0b9480f89e20fe6cb5806",
+        "size_bytes": 1912
+      },
+      "job_id": "2167727",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_rloo_quality_diagnostic_5": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 293,
+        "exit_code": "0:0",
+        "job_id": "2167193",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/diagnostics/op/rloo_quality/chunk-5-complete.json",
+        "sha256": "4df096ca92c5c46b86c4abff928e5db29219c5cecea59b730490fe3c8cbc5f86",
+        "size_bytes": 18200
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_quality_diagnostic_5.json",
+        "sha256": "1cc15d1845d5adeac61f6b278b24c9d3cde4134a9d145c6a01121a117088e2bc",
+        "size_bytes": 1864
+      },
+      "job_id": "2167193",
+      "observed_state": "COMPLETING",
+      "status": "completed"
+    },
+    "op_rloo_quality_eval_100": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_eval_1250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_eval_400": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_100": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1000": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1050": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1100": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1150": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1200": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_1250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_150": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_200": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_250": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_300": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_350": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_400": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_450": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_50": {
+      "accounting": {
+        "allocated_tres": "billing=5,cpu=80,gres/gpu=4,mem=300000M,node=1",
+        "elapsed_seconds": 2233,
+        "exit_code": "0:0",
+        "job_id": "2168504",
+        "state": "COMPLETED"
+      },
+      "completion": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/train/op/rloo_quality/chunk-50-complete.json",
+        "sha256": "b259d28a2f2d8c3e9effd5995d15d508e4dc6386c570dc8f4d9e0baf10b32312",
+        "size_bytes": 18010
+      },
+      "evaluation_contract": null,
+      "intent": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/intents/op_rloo_quality_train_50.json",
+        "sha256": "b4cdb6392afd40050d1e8c134d8c663e9228876f59cb43135e4d285e0836a732",
+        "size_bytes": 1988
+      },
+      "job_id": "2168504",
+      "observed_state": "RUNNING",
+      "status": "completed"
+    },
+    "op_rloo_quality_train_500": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_550": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_600": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_650": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_700": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_750": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_800": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_850": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_900": {
+      "status": "not_submitted"
+    },
+    "op_rloo_quality_train_950": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_diagnostic_10": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_diagnostic_5": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_eval_100": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_eval_400": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_eval_800": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_100": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_150": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_200": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_250": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_300": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_350": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_400": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_450": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_50": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_500": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_550": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_600": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_650": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_700": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_750": {
+      "status": "not_submitted"
+    },
+    "tsp_classic_grpo_train_800": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_diagnostic_10": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_diagnostic_5": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_eval_100": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_eval_400": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_eval_800": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_100": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_150": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_200": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_250": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_300": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_350": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_400": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_450": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_50": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_500": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_550": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_600": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_650": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_700": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_750": {
+      "status": "not_submitted"
+    },
+    "tsp_foarl_train_800": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_diagnostic_10": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_diagnostic_5": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_eval_100": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_eval_400": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_eval_800": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_100": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_150": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_200": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_250": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_300": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_350": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_400": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_450": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_50": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_500": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_550": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_600": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_650": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_700": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_750": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_legacy_train_800": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_diagnostic_10": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_diagnostic_5": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_eval_100": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_eval_400": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_eval_800": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_100": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_150": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_200": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_250": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_300": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_350": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_400": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_450": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_50": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_500": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_550": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_600": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_650": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_700": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_750": {
+      "status": "not_submitted"
+    },
+    "tsp_rloo_quality_train_800": {
+      "status": "not_submitted"
+    }
+  },
+  "management": {
+    "addendum": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo_epoch_continuation_20260926/addendum_v1.json",
+      "sha256": "9ac7dd2e330f59deb5db10ca2506f87ffd1404633358b36d73c1711b0fab9034",
+      "size_bytes": 3185
+    },
+    "controller_process": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/management_20260926_v1/controller_process.json",
+      "sha256": "7ec22d365f9c15ba807142ad755e33d9f2d5204d6f3e568851d318c735b8da5d",
+      "size_bytes": 917
+    },
+    "development_submissions_observed": 7,
+    "effective_maximum_outstanding": 4,
+    "observed_at_unix": 1790465271.4561026,
+    "prioritized_eligible": [
+      "cvrp_rloo_legacy_train_50",
+      "cvrp_classic_grpo_train_50",
+      "cvrp_foarl_train_50",
+      "cvrp_rloo_quality_train_50",
+      "mis_classic_grpo_train_50",
+      "mis_foarl_train_50",
+      "mis_rloo_quality_train_50",
+      "op_classic_grpo_train_100",
+      "op_foarl_train_100",
+      "op_rloo_quality_train_100",
+      "jssp_classic_grpo_train_100",
+      "jssp_foarl_train_100"
+    ],
+    "protocol": "rloo-epoch-management-20260926-v1",
+    "related_outstanding_observed": 6,
+    "rloo_terminal_evaluations_complete": false,
+    "source": {
+      "manifest_sha256": "90503d6df25b64022da65c7344b5fab9e3fe555f714fbac53aa89ef17358549a",
+      "root": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo_epoch_continuation_20260926/management_v1"
+    }
+  },
+  "observed_at_unix": 1790465271.3140616,
+  "outstanding": 4,
+  "protocol": "budget-matched-grpo-development-20260918-v1",
+  "queue_size": 93,
+  "receipt_sha256": "ad1ef7085a24b854a5cadf93bf0dfafd90688d397747e504362d386e29fbf838",
+  "started_at_unix": 1789768956.144448,
+  "status": "stopped_for_diagnosis",
+  "updated_at_unix": 1790465333.6875694
+}

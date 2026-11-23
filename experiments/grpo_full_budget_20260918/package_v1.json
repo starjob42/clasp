@@ -1,0 +1,19 @@
+{
+  "archive": {
+    "path": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/grpo_full_budget_20260918/source_v1.tar.gz",
+    "sha256": "49e257a6e8d268bed77ed20f264b0d14e49c8393a6771a7f4803737ed43cdfdd",
+    "size_bytes": 556824
+  },
+  "draft_declaration": {
+    "native_path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/draft_declaration_v1.json",
+    "path": "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/grpo_full_budget_20260918/draft_declaration_v1.json",
+    "sha256": "564d90b7de302b4607e8c8c247c997051641f1075cec696f8974d9e4b87945f7",
+    "size_bytes": 137168
+  },
+  "numerical_changes_to_prior_campaigns": false,
+  "source": {
+    "manifest_sha256": "52633632e3151ea95f46adfb2c2fd353c5c08bdccc6298e7e017c93768f543f6",
+    "root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1"
+  },
+  "source_file_count": 102
+}

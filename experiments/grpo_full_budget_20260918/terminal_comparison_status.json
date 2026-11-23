@@ -1,0 +1,22 @@
+{
+  "available_tasks": [],
+  "candidate_comparisons": {
+    "rloo_legacy": {
+      "all_five_tasks_available": false,
+      "contrasts": [],
+      "improves_paired_gap_without_lower_f8_against_both_baselines_on_all_five_tasks": false
+    },
+    "rloo_quality": {
+      "all_five_tasks_available": false,
+      "contrasts": [],
+      "improves_paired_gap_without_lower_f8_against_both_baselines_on_all_five_tasks": false
+    }
+  },
+  "confirmation_established": false,
+  "guaranteed_superiority": false,
+  "interpretation": "Candidate minus baseline; lower signed gap is better. This is a descriptive one-seed development comparison, not a significance or generalization claim.",
+  "status": "incomplete",
+  "training_seeds": [
+    43
+  ]
+}

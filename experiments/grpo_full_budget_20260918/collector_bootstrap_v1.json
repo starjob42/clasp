@@ -1,0 +1,20 @@
+{
+  "pid": 2971688,
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/grpo_full_budget_20260918/collect_status.py",
+    "--declaration",
+    "/home/lamsade/habgaryan/phd_project/correct_clasp/experiments/grpo_full_budget_20260918/launch_declaration_v1.json",
+    "--watch"
+  ],
+  "started_at_unix": 1789769206.0486763,
+  "remote_scheduler_mutations": false,
+  "poll_seconds": 300,
+  "maximum_days": 61,
+  "implementation_files": {
+    "collect_status.py": "bfdf5fac15070c25f87d837f8450f034222ba65e8e737db899fe6b896b0bd041",
+    "common.py": "bae3f576e3f1a54df31e5a7cf9c25646c5dccc29441bab8ef1d474e49fb9a788",
+    "stage_native.py": "8b6426fe0eb37ed411d2b5d5b3f0704a52ab8bdf286a3a5ea85d9ad349938377"
+  }
+}

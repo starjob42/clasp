@@ -1,0 +1,137 @@
+{
+  "observed_at_utc": "2026-09-19T10:39:08.192170+00:00",
+  "full_budget": {
+    "status": "monitoring",
+    "updated_at_unix": 1789814335.341055,
+    "counts": {
+      "completed": 36,
+      "not_submitted": 390,
+      "submitted": 2
+    },
+    "rows": {
+      "cvrp/classic_grpo": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "cvrp/foarl": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "cvrp/rloo_legacy": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "cvrp/rloo_quality": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "jssp/classic_grpo": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": [],
+        "active": [
+          {
+            "name": "jssp_classic_grpo_train_50",
+            "kind": "train",
+            "step": 50,
+            "status": "submitted",
+            "job_id": "2168521",
+            "state": "PENDING"
+          }
+        ]
+      },
+      "jssp/foarl": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": [],
+        "active": [
+          {
+            "name": "jssp_foarl_train_50",
+            "kind": "train",
+            "step": 50,
+            "status": "submitted",
+            "job_id": "2168720",
+            "state": "PENDING"
+          }
+        ]
+      },
+      "jssp/rloo_legacy": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "jssp/rloo_quality": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "mis/classic_grpo": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "mis/foarl": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "mis/rloo_legacy": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "mis/rloo_quality": {
+        "diagnostic_completed": 10,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "op/classic_grpo": {
+        "diagnostic_completed": 10,
+        "main_completed": 50,
+        "evaluations_completed": []
+      },
+      "op/foarl": {
+        "diagnostic_completed": 10,
+        "main_completed": 50,
+        "evaluations_completed": []
+      },
+      "op/rloo_legacy": {
+        "diagnostic_completed": 10,
+        "main_completed": 50,
+        "evaluations_completed": []
+      },
+      "op/rloo_quality": {
+        "diagnostic_completed": 10,
+        "main_completed": 50,
+        "evaluations_completed": []
+      },
+      "tsp/classic_grpo": {
+        "diagnostic_completed": 0,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "tsp/foarl": {
+        "diagnostic_completed": 0,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "tsp/rloo_legacy": {
+        "diagnostic_completed": 0,
+        "main_completed": 0,
+        "evaluations_completed": []
+      },
+      "tsp/rloo_quality": {
+        "diagnostic_completed": 0,
+        "main_completed": 0,
+        "evaluations_completed": []
+      }
+    },
+    "reports": {}
+  },
+  "queue": "2118552|PENDING|(Priority)|0:00|10:00:00\n2119941|PENDING|(Priority)|0:00|10:00:00\n2168521|PENDING|(Priority)|0:00|3:00:00\n2168720|PENDING|(Priority)|0:00|3:00:00\n1703800|PENDING|(Priority)|0:00|20:00:00\n1703803|PENDING|(Dependency)|0:00|20:00:00\n1703802|PENDING|(Dependency)|0:00|20:00:00\n1703801|PENDING|(Dependency)|0:00|20:00:00\n",
+  "historical_reports": []
+}

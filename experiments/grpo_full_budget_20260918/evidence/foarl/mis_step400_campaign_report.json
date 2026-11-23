@@ -1,0 +1,3654 @@
+{
+  "all_four_joint_success": {
+    "count": 90,
+    "mean_signed_gap": {
+      "classic_grpo": 0.023361955222980332,
+      "foarl": 0.024563890542562715,
+      "rloo_legacy": 0.02389105575208086,
+      "rloo_quality": 0.021060367921393035
+    }
+  },
+  "arm_indexes": {
+    "classic_grpo": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/result_index.json",
+      "sha256": "2a4c3f8a03e1307d26863d40be47f772fc0f4d3ec7a9dac2e1d0a100f93a1871",
+      "size_bytes": 73997
+    },
+    "foarl": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/result_index.json",
+      "sha256": "21463a31440f7faa9a299f01b2da44b88268e06a58cbc13221b4ed48cde4f099",
+      "size_bytes": 73086
+    },
+    "rloo_legacy": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/result_index.json",
+      "sha256": "169c479a45b7eb5030e3e54606de0c658db998854bd413b6f8be865784b238cd",
+      "size_bytes": 72791
+    },
+    "rloo_quality": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/result_index.json",
+      "sha256": "1e776a5796b8c41792976c68614cc9690802534583661c29401528d90a0e0828",
+      "size_bytes": 72863
+    }
+  },
+  "campaign_declaration": {
+    "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/launch_declaration_v1.json",
+    "sha256": "f8c9a06d80fdacdc3b326e30c78b2d8ce85c10f4fe2e853b548b1160001daacd",
+    "size_bytes": 137410
+  },
+  "cohort_declaration": {
+    "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_quality_signal_20260916/launch_declaration_v3.json",
+    "sha256": "ba256066362b43eefbc90bb692a46890261dd822357ff52674a5c0dc27043ca3",
+    "size_bytes": 23712
+  },
+  "dataset": {
+    "files": [
+      {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/mis/eval/test.json",
+        "sha256": "74242473abf4067eddd1898cfeb91f03147bb4a7f90ce3a46c575be6c9faf9f8",
+        "size_bytes": 1895648
+      }
+    ],
+    "ordered_rows": [
+      {
+        "benchmark_row_sha256": "a217ed642673815d7bd9c5f24c066cfe97c2fa38a815f341833f89cc01a0afde",
+        "example_index": 0,
+        "reference_output_sha256": "91674ba694e1233ba6c237541441f5ea09573e15b179889ee8b5338d114856d3",
+        "semantic_instance_sha256": "a9f558723f8972dcd0e892b40b6e6a94ecf028749487b9f71c50496e45da32ca"
+      },
+      {
+        "benchmark_row_sha256": "0e3aae9d47f77ce440af87402515eb912fc2054629a93bb8a4ef7befee40105f",
+        "example_index": 1,
+        "reference_output_sha256": "e450670241f235d75ca0d94bdb95c6bab4ed5b007b21116a7c089731c20a53e0",
+        "semantic_instance_sha256": "276e889da328b7305128b7bbecce6ad7a24444361aff859b770a77de3fb692f1"
+      },
+      {
+        "benchmark_row_sha256": "fcefb124a4869dc24681048562d215d230d9473d49fac3383eac7447e6c77f56",
+        "example_index": 2,
+        "reference_output_sha256": "ab87302af7374e54c8df6b6e301f769b5fb9ce54b8a4b7a8948cf40a6ccd20b6",
+        "semantic_instance_sha256": "13f89a6566effd8af3b9f6329486bd7982fd3d94b2650814a28e8f30bc783dab"
+      },
+      {
+        "benchmark_row_sha256": "e469eb5d88896b1eee75388f07d88402461bf3fd71c6f930cbd41ff67d6e5c66",
+        "example_index": 3,
+        "reference_output_sha256": "364235c5d723233636f434d6d27eb5e086855d943e4e7706e968c5fe7c58adc3",
+        "semantic_instance_sha256": "a2867c9567513885aa05a56f74575a53da1147ff7a6dc559b23d5733488140e1"
+      },
+      {
+        "benchmark_row_sha256": "ad1710ce780882b4184a008890ae3d485777d0fc61c6382eef625a3033299b81",
+        "example_index": 4,
+        "reference_output_sha256": "654cef27cd5c62d17ccb32662747ae44ddefaee3bbfab7b940554655a9fc514e",
+        "semantic_instance_sha256": "512c5293cd2b2dcf8eca1ca94d00ec930cde85b2c27d2d258910a642929a85f2"
+      },
+      {
+        "benchmark_row_sha256": "dda5611f7ecbb55570cbe9be130e8e8619fe57b5792da5e4869e46306d8e790e",
+        "example_index": 5,
+        "reference_output_sha256": "9b291e61254bdfaf8df3d6ef8de55c42aea654c6625b15bbad06e83fc4f15ee5",
+        "semantic_instance_sha256": "8bc222c4d0f63849641d3091be21f0f2345875cca82b2a2e148c80d535f581b2"
+      },
+      {
+        "benchmark_row_sha256": "aaa6254f1796ae96a2fe5ccb99b2e36112bb3c658e9faeab7b185bdd4f4aa930",
+        "example_index": 6,
+        "reference_output_sha256": "731028535b202e085daabdbd9fb75f11316c05c65d52639a432794046243304c",
+        "semantic_instance_sha256": "92a93768872513992ce008f2ea0fac1ce8ca72ac9dc6ad65cdca17706b68bbde"
+      },
+      {
+        "benchmark_row_sha256": "9c93ab41b450b801e9036aad6f4ae25d67f71bd7f2563b401bbc647593faf6d2",
+        "example_index": 7,
+        "reference_output_sha256": "5950f06ddf336c1bcea4baca0cba7ecf5d5b041ef5ac297fc281b837b6b57c41",
+        "semantic_instance_sha256": "9d8bfdb86f51a71def097959fa085c6b7d8473aa908027f15db570a62436d1dd"
+      },
+      {
+        "benchmark_row_sha256": "71fc5145c29b98f75656b717e8c0e6a18b8e0895a35e626fe627d010ad16d6d2",
+        "example_index": 8,
+        "reference_output_sha256": "fd8afe0b908745acd761793ca5a4671d13a52baec74557db3db895f7deceb95c",
+        "semantic_instance_sha256": "d8f0dc00d0dd8912eb13f0f8416d1eeeabd6e6683aec3005e82d4c612601786a"
+      },
+      {
+        "benchmark_row_sha256": "3df0c02b9373445a215758eb734096b3c4b1f9dbdbe1367b5a6d0605dcc27235",
+        "example_index": 9,
+        "reference_output_sha256": "0334d170c37aa650207e4f2497f8770d69f233f160320a46aa5d96d0164ac9d9",
+        "semantic_instance_sha256": "635bfdb8f56255eb2ac10a2bfb3e56b43a625478b38e783e780957c26dd5dceb"
+      },
+      {
+        "benchmark_row_sha256": "75c7289bb71271fb81774c17c5334354f9d73016812f803bf502e1fcb27bd7ad",
+        "example_index": 10,
+        "reference_output_sha256": "c3efad672080b0b1ae2e4a1fed7d0215f38fecdda030a01014cb7287acae4398",
+        "semantic_instance_sha256": "fa55a4b99a6e0facba0414f8ba21b71d224d6285c43f1cad7a323cac2cf9799f"
+      },
+      {
+        "benchmark_row_sha256": "55a2cacb6119c73bbd4d9b3bd7b86270ebf10e3bc7b0b0fd5e4b46236f1393c0",
+        "example_index": 11,
+        "reference_output_sha256": "49e836242f7df2bca493331a6da4fbe3107a0539ecbd1c0bf727f5c05ff98b7e",
+        "semantic_instance_sha256": "9ffb92e95476db9ef2d30a3266f0d371b6f2f23be08f9037cd35033d4aa0d47c"
+      },
+      {
+        "benchmark_row_sha256": "31c75a72989aab882f4db71545a0bf9f9afd2afb625f8fbab06e62192a6ac961",
+        "example_index": 12,
+        "reference_output_sha256": "955d1fc4a9b92df83b3323e584ea6327116090d1f268ebcb263c5a9e012815a4",
+        "semantic_instance_sha256": "ba56531e94f5c8f7ccba9f7df43645b4878d92c050346666c5cb06211367c4e0"
+      },
+      {
+        "benchmark_row_sha256": "2017ef6e1eec2d87c0a2001df4dc061013efe5e578884ec63615216fbf7e519d",
+        "example_index": 13,
+        "reference_output_sha256": "a9d2ab33f51df314d36f8c60a7fc354f494fb9909fbfdfd08af9ec25d3d6480f",
+        "semantic_instance_sha256": "ccd5a7a33c779eb4de1e31758c39a8b6fa84089964d2e032b7b7a571a749df94"
+      },
+      {
+        "benchmark_row_sha256": "cd8b9915ba8aef13772ad008d15da110af2a16051a9d22ea2da0b7836df246e6",
+        "example_index": 14,
+        "reference_output_sha256": "44e9f94514d4533da5f639962b6afd3fe0b960d10ae898c79d20a5d76a0c3f15",
+        "semantic_instance_sha256": "8c527599fb237e12c103c6f28b2ca528b009abf6bf7b1febc024249d75a67542"
+      },
+      {
+        "benchmark_row_sha256": "8f8eab1a9db98906e54d7d8eb53a7ac87fe1ae6c5c961291615056eee2fbca28",
+        "example_index": 15,
+        "reference_output_sha256": "15401e40003b67e1806fd79b850df77406f54097170ef6a83f72e015422b31e6",
+        "semantic_instance_sha256": "aed240f0fa02307c0ca9ec48150ff6a20214392de649e977af28140c75502435"
+      },
+      {
+        "benchmark_row_sha256": "4a5fbd79ca21e6b63a23384e7e54405430c5813be69c3c94661406c885134cf1",
+        "example_index": 16,
+        "reference_output_sha256": "ba75fdaa0b7c09d9b975c13dc9584f673cf54caf4a5cb3841ac3a8c87bf32635",
+        "semantic_instance_sha256": "5cbf8fe9cca2cb2ca7e6a240383966f1d44cc0ac5f937e684704aaa7c2969f0d"
+      },
+      {
+        "benchmark_row_sha256": "9574736db98ded9b6b563543ea56684deacc0c51b735c1cf6cf4711d938082ab",
+        "example_index": 17,
+        "reference_output_sha256": "b4ab9336d2d018880027dcfb710b74d3bd0903a5c4247c6262253cc3c30bda84",
+        "semantic_instance_sha256": "d13310f52efe569b9bac90573856b43901116ebd7417f8e23ba53074b541b6a0"
+      },
+      {
+        "benchmark_row_sha256": "2bcbe020a62f46d9de69c14f23159ef767c433af5c630e7e5372acd5659d1844",
+        "example_index": 18,
+        "reference_output_sha256": "8587d4cf7f3840cdc117262bfdfa67de91e3c2855a95668e3f482869fdecfa33",
+        "semantic_instance_sha256": "bfea672d226e37a70cf47ad9788c636edae5cc7c3ef37d2bbe341a7113738aea"
+      },
+      {
+        "benchmark_row_sha256": "ed4d9d343014dbf246dbafde5d0799f356a0678847d6a57ee62cabdbf033e93c",
+        "example_index": 19,
+        "reference_output_sha256": "05d89668cb34fe1dd9451ec5b7f7c417e2b42605c6df0c8c85589e720a01cfa0",
+        "semantic_instance_sha256": "5abccef6fb154738474adbd5cfd154e5f3709dd6c64a1b5f09b06790233daf63"
+      },
+      {
+        "benchmark_row_sha256": "18379cd4fe7082496f60cb7f9d2dfd68b97081ed247c7c79ae6fd5d05b363e76",
+        "example_index": 20,
+        "reference_output_sha256": "6578a9aec58d546700cc5c1499807f76216be540ff15e94f7cf3e3758e1e1055",
+        "semantic_instance_sha256": "4a09e07fc37755c8b6516c20a4a2024542761ac37e479dce90967db5875131e9"
+      },
+      {
+        "benchmark_row_sha256": "dbc4113b1e5d0c4087c15679d6b2ec05a2ea546692c6b567bd0cb897989df077",
+        "example_index": 21,
+        "reference_output_sha256": "e72e54e1d443ccdc12f5fc65b552d5d1afe6750287895a84fc7d64d2ee0b3425",
+        "semantic_instance_sha256": "85fff6eab73211a833ce40abec1c6e0b9e7048a7b83e04b0606064db4dc2ff87"
+      },
+      {
+        "benchmark_row_sha256": "cf828e07809dbb08813a121be22117e1590b81588178dcd8a82d5dbc545b302d",
+        "example_index": 22,
+        "reference_output_sha256": "9e25d0c8aa3f94cff3b1da1b92d5ea48862d7bc32f35351b3a62049a87ffc217",
+        "semantic_instance_sha256": "6fc94300e45fbfa50f5e4f229f152a381aa687e3058a8c29c2be9c5d42d6f379"
+      },
+      {
+        "benchmark_row_sha256": "05187ffbe3291c26adf8383e9cab4b4cf4e7c9b48c1f6bd3469454ef05383d2c",
+        "example_index": 23,
+        "reference_output_sha256": "b0fdd6cabc6d9b74245660e71727ad6a9d74a6cd40799372f456dcb9d81b21c4",
+        "semantic_instance_sha256": "054e5059f9359a3334cb903d6f9f250c95d9fd365379534d1d45c266773a779e"
+      },
+      {
+        "benchmark_row_sha256": "739d67abe4d74df56e35cfda2da515538c6235ea84b834e23f057c0bb9ee8203",
+        "example_index": 24,
+        "reference_output_sha256": "e802a6f49941f045aec3eafaacc4862ed36dcf7453a9b7997ad14b3c5682dcfa",
+        "semantic_instance_sha256": "0d5c8837da05a7612b644c97e958d33f40dd0d43609f3562537453f4aab93edb"
+      },
+      {
+        "benchmark_row_sha256": "6dc8bffdb290237953e7af5e8bb4bb0a5344adae6e23129a6e723f06e6c8c5cf",
+        "example_index": 25,
+        "reference_output_sha256": "c11de027432020ea347124b75493fcb77aac3806d82f3aff5f94af5a0c27350e",
+        "semantic_instance_sha256": "b7341199d5ea0461797eb13f21b2fc534ee95e55f3aebf4322156ac7cdaec5be"
+      },
+      {
+        "benchmark_row_sha256": "43f3a633b4113d3f44453ce13228cfc3f85ebd251d2e90c98893d81348bff2a6",
+        "example_index": 26,
+        "reference_output_sha256": "fc91f7518fd1e11bc318cb5263deaac13f1da0dbeb1bf6281973bbdc3a5c0716",
+        "semantic_instance_sha256": "87076313dcc093b0594a1ca4c47797375908113f3f283b3291c4104f6e638985"
+      },
+      {
+        "benchmark_row_sha256": "49cc18cb761f0a27729e6cb22117e1938035dd3c7cbae7a7241c12fd5846b7de",
+        "example_index": 27,
+        "reference_output_sha256": "54c5221d0d039a02f2392856d46efb184395c8329d5e3015fb92132be1743c14",
+        "semantic_instance_sha256": "ffa4317c3e0db94cfe3e5c395eab431141a442c438a835f49dda6d60ce986c58"
+      },
+      {
+        "benchmark_row_sha256": "f7b3c3fda91889d134b6a70667c91c81091568a5628def236db62c2ef541e698",
+        "example_index": 28,
+        "reference_output_sha256": "262e9219fedee44e2340c00f6204a9f40a23981114b1151e12c76096190c9536",
+        "semantic_instance_sha256": "2a11aed782600688a8e45a428314b691b032402b9b7e792f6d791dd19ff6a3ba"
+      },
+      {
+        "benchmark_row_sha256": "9e26602a079b2b391da7448f7906af52f1da8a358c973fded1f1757329f1fe43",
+        "example_index": 29,
+        "reference_output_sha256": "1d53080c3f0cc6840b0888a6ffd4670ce70f8127f4ef0b41f0939c97167a1814",
+        "semantic_instance_sha256": "90e45bebfa613ba4c0964ae0f6f9258800e84b7be534e98208204ff26e234ffc"
+      },
+      {
+        "benchmark_row_sha256": "c7dc6eb5254ec3094dc587cfa23c8b77178309feff168e2a6c6515d5c0d30182",
+        "example_index": 30,
+        "reference_output_sha256": "13477da0040d4c24aeca427a62698ba90b4e000ca16be848c818b205531229b9",
+        "semantic_instance_sha256": "6ccc488ca7d8355532beb053ead9b13787c3dac64c8cd0dc82781a91c76aeb7a"
+      },
+      {
+        "benchmark_row_sha256": "bb3d8670068da2bb5579996e4cb220d3ba0f6ac0c7aa7c722ceface01cf6b7bf",
+        "example_index": 31,
+        "reference_output_sha256": "4339ff1dcc81f908eac758e05fb31706a447a49c071b8f34a3f28271bf8af62e",
+        "semantic_instance_sha256": "0c091bef2398baeb4a124fc36e4f227a011ac08ef88bae596562f9bc2b432ae1"
+      },
+      {
+        "benchmark_row_sha256": "13e66c5756448bde5023ca365e04aaa460a1ae639582d7b25439561c05d11c45",
+        "example_index": 32,
+        "reference_output_sha256": "ea16775a3a2edf20667a0af9e4c76e691a5395699f5dd4faafac015219199983",
+        "semantic_instance_sha256": "ad990678d7a0ad91c41d7e1200decf0681b03f5148c14cf14ace34bad4d029c3"
+      },
+      {
+        "benchmark_row_sha256": "23e2ac6cd39e54fa3d0d5578643d6e1208f57815bb7881d7d70d97ec6818638a",
+        "example_index": 33,
+        "reference_output_sha256": "3fcd8af69985961c9c2504b5aa07f9806b9e58cf0d218c533907bc8234cdded9",
+        "semantic_instance_sha256": "ad24e77932c499bfd073da04dadff7bae3f373f7288534206610a535d722009f"
+      },
+      {
+        "benchmark_row_sha256": "ac5fcbfc7495c559c150cd6b026259ccd518b86e98f2055430e6038b70f33f54",
+        "example_index": 34,
+        "reference_output_sha256": "313665a1ee30306313cdd9318147699cab66b01b100354b1f7f8206ed4dd9ad7",
+        "semantic_instance_sha256": "80aed781a58349b740cae7d2596594316832ab08f13c4b093aa93786f44210af"
+      },
+      {
+        "benchmark_row_sha256": "4397cf87e5ad3797df9f0a2a6d1a20dcabd9a77466295838814238bbac55e3fb",
+        "example_index": 35,
+        "reference_output_sha256": "19b29e9fef0387decbb808508d4b2e74a03f889501b90430565222ba96f0edba",
+        "semantic_instance_sha256": "cc399dcb178d9e0fecc65f5570c66901c6961b49ad940d7d4e1edcb4c68095df"
+      },
+      {
+        "benchmark_row_sha256": "ab2e21a444608ff160c0ee9892238d3488bf229433ef315330e6f16d4e219c04",
+        "example_index": 36,
+        "reference_output_sha256": "3c17d18718a5d33577b85fcd50667ca7026e3a280c70e7362cc6964130ea7fee",
+        "semantic_instance_sha256": "a3c7ec526062722100dc615475fb038bbfb270fad0f257e30e0cdf2d3d5704a8"
+      },
+      {
+        "benchmark_row_sha256": "075e5b1ed46e9069ec3e4592f82b609f64fd8ff18eca1625a50eb90dd571dd63",
+        "example_index": 37,
+        "reference_output_sha256": "80e94befb0d0645654eb82f3a5664ee547bdc0beef9ff7407aba7cea1fa7a62f",
+        "semantic_instance_sha256": "9e8f017753305995bcd073c0506a55885bab59b5bce2045c00b41264c59c2586"
+      },
+      {
+        "benchmark_row_sha256": "25a267b8fb509362c8c4cc97d1632b40d44db534042cfd51e50c7b9fb7743f54",
+        "example_index": 38,
+        "reference_output_sha256": "546bf69e0e3167601ce6cdb7563cff9579808990a784be4826b6009756d044c9",
+        "semantic_instance_sha256": "3fb5fb1048cdda178caf4e9551c063dc07110cec5340ac775a395de82147c5e1"
+      },
+      {
+        "benchmark_row_sha256": "04f9a4cb6df5f3521442d66bc27aa132fc0f9eda8a66a00c19166188853d1c26",
+        "example_index": 39,
+        "reference_output_sha256": "1a1ec3f1414ae4ab427a4d306e2e35f715aabf0bcdef8f59c4a054c76523e651",
+        "semantic_instance_sha256": "67123b6744778091bf4f9d61dc045c63054a89fb62edd8cea08b317bf9a291ca"
+      },
+      {
+        "benchmark_row_sha256": "6d6f0ec81f0714e15f2f5751021485ebed136f804aa2d519b5239a320b77cb0e",
+        "example_index": 40,
+        "reference_output_sha256": "f6fe618a0909f3911630e2c714cf7a44cf2ee33a387475b332a01a54dc414eb2",
+        "semantic_instance_sha256": "cb14f0c7b93995dfba97e2cc146d00daccaa3a723cb90a3614bbca84245c37a2"
+      },
+      {
+        "benchmark_row_sha256": "e147a11bdc1a08f43d959fa5c22bc5a0779d29d74f113dd96472590791d546a5",
+        "example_index": 41,
+        "reference_output_sha256": "58b8e30e741ae164e760e141da17a4854ecf23c7a936a35bf1cc211a0b7b5b1a",
+        "semantic_instance_sha256": "4f4af7c28a818aaeea3a7ada2d60e0400b3a028c13643e055836dcef1547c565"
+      },
+      {
+        "benchmark_row_sha256": "3ef9eb001bf309b016245aa4f70b66a9aae819fb7e483bc1c47d470b95d42abc",
+        "example_index": 42,
+        "reference_output_sha256": "6f819c467020d900f5b0799cf071191594fe0ac35b0472728207ddbced187151",
+        "semantic_instance_sha256": "09e3237db2a759744310c34e303ac22e1ab881f5f62b631cf2736dcea9bb32c4"
+      },
+      {
+        "benchmark_row_sha256": "43b89f4de57decb58228295dd7a07d46c59dc6719aac3527cfcef7194f2eda58",
+        "example_index": 43,
+        "reference_output_sha256": "9d588c7638d5ed23f682c911236e824d4dd36854578f2c237c0c79072e6dca5c",
+        "semantic_instance_sha256": "53750870fbc6acab5af86a85c893ce22672dbe7deaa2e596e87bb076f672ced0"
+      },
+      {
+        "benchmark_row_sha256": "63fdf8d21e4ea89fed9d3e49427d0d8fde05d74e6fe309a5332283090cf5592b",
+        "example_index": 44,
+        "reference_output_sha256": "b23ff0bf3d7994c9ab2a7ea258bf5afdb1e2bec303bb5cf08b444eb045b16f78",
+        "semantic_instance_sha256": "a7fe9110f504d315e3f0b80ff758a86748676a612e3496f60cd804c67570824d"
+      },
+      {
+        "benchmark_row_sha256": "e5a45a7771aeb2f746b97b70348f018395a5d9a4b1f7a8b5e39cb14802c626cd",
+        "example_index": 45,
+        "reference_output_sha256": "9ac133bf93fedaaa003352304f1ebac7be2eb3b765af72e3714f332625ebdb35",
+        "semantic_instance_sha256": "0648720c5050e4d62c5a2d5e93b5c14bf5384db7889f046d745c0cbd43401406"
+      },
+      {
+        "benchmark_row_sha256": "11f65aaa5ce172996a2e7d61b30bce66bd20f52ebb6d587fb2f0cbf612239f59",
+        "example_index": 46,
+        "reference_output_sha256": "8b57364e72ad56c163a80fe20c01ff3cc7a2c19793d32e1de1800b9cadea8a2a",
+        "semantic_instance_sha256": "05b42e02e4de6f5882506ddbf410760eaea1dfbf70793c6d68219c187610a21c"
+      },
+      {
+        "benchmark_row_sha256": "7f8b6876813581ed7299ad654ab1caefe2567d7fda3ab2cdc602890a81d0365a",
+        "example_index": 47,
+        "reference_output_sha256": "f4aebbc45c3a0fb9d7092c219034442b040019e489a2824dbcb3c5979feecb0f",
+        "semantic_instance_sha256": "7695a72ed68920dd460ae5ed76ff61ea7243438ab6c4054c2ff32cc36badb24c"
+      },
+      {
+        "benchmark_row_sha256": "e63c6486cca302e6197da2e573b1f094e536c69d0c8421cf832870ac91df19c5",
+        "example_index": 48,
+        "reference_output_sha256": "2e15839ff902e4b8a1608667b4eba0e87e8b698558c3c148a8c73e65180aba7d",
+        "semantic_instance_sha256": "00709fa34654bd98976e6c5be6c43d08333db5cda2a7f987679c13e3d3465df4"
+      },
+      {
+        "benchmark_row_sha256": "69b55c53f9fd942b58681c7f753896a6f946a4e6cdf5e84c62eaee7e3668b039",
+        "example_index": 49,
+        "reference_output_sha256": "5aafd0270409bc0222f9e5e3fd28f957ff94363aa79e4eda2f3c1ad44bdee122",
+        "semantic_instance_sha256": "448b4e11f936f19130c2fbdc881d768d394342269112e8389a1e9abefb13ff4e"
+      },
+      {
+        "benchmark_row_sha256": "1ef79fa666bdcc3451118eaf43898adb1794ad7373e94b183b5a8901998bc0fa",
+        "example_index": 50,
+        "reference_output_sha256": "bb1fa59403f52fdd7c0db4b71aa5b9698a3f2f14cafa5689283384be3a3241f2",
+        "semantic_instance_sha256": "352d430a6e25e6cd4672a160c333230560ad362ceeda69f815ecfa5279c2634a"
+      },
+      {
+        "benchmark_row_sha256": "6c7e4456bfc08f7fefc9e86e5e9618398f8d95f46583ac0cb5f2238c688ee760",
+        "example_index": 51,
+        "reference_output_sha256": "8bd9b6ff9d6d8d55128ff45efc1dc1452756584563209b01853caf5dce2a85ca",
+        "semantic_instance_sha256": "e31da623fe26b64cba209f6007dcf4ccd845777c232e21a7156b3c02788fb60e"
+      },
+      {
+        "benchmark_row_sha256": "f3da414784613bbd1ebd943e386abfb2a2d68ad85185b9bbddec159c096ca915",
+        "example_index": 52,
+        "reference_output_sha256": "bd223dfe2865c10098aeb51aaaa75d088a883dff099f6922bdbdafc410d06372",
+        "semantic_instance_sha256": "7331858296408af8feb03995c91aa552729cf8cb348c3f68fdb83317aa13d566"
+      },
+      {
+        "benchmark_row_sha256": "37963d41bf1598ae07afa9c0574a82cbd674b59f92b19b45f01476b95466f629",
+        "example_index": 53,
+        "reference_output_sha256": "9ff04e3f15d4da33fb6fc4badf898e0af5731bea2e3911a3c6eabd859f4122f0",
+        "semantic_instance_sha256": "66e5cd46a2474b3b9d9e1f92e273e7fc58aee5abbfc66aafbd0dce08b34497d8"
+      },
+      {
+        "benchmark_row_sha256": "d1a732ffeff803f0b04fa4c994437059ca7c7987e4623221781597e08c380e51",
+        "example_index": 54,
+        "reference_output_sha256": "a54d5b5b55dbdb9a8cf2717e468495851edc3422e77a2f02ac0cd3c5463e510c",
+        "semantic_instance_sha256": "230fb85298c7f87c5b226e95fe2bce1219d4fd066b68efd8b55a45fe1db4f2cf"
+      },
+      {
+        "benchmark_row_sha256": "e454be3c90c5253d6791050da7ba340c5d016b8550d06773d8b27b1c2d9140be",
+        "example_index": 55,
+        "reference_output_sha256": "fe3de739905a9da1a49e6ac1492e8061761c866bdbbf219dbcc2a33bd6b3148a",
+        "semantic_instance_sha256": "1538ef75058dc9f26e500ddf0cc5f3d6313722c996b54d0af2379b90a732f689"
+      },
+      {
+        "benchmark_row_sha256": "98230a933ba267f6470862b2f83b8a31369816be98041249630f2666c4593334",
+        "example_index": 56,
+        "reference_output_sha256": "dacf456155ca43b09bad954ea11bc189e398dc0069bae3fbedaf75789d05a8b9",
+        "semantic_instance_sha256": "a0963d76ec77a49a3fd8019804c8a480682a7ce2db822ccc3bb655d20d2a34ba"
+      },
+      {
+        "benchmark_row_sha256": "5c2a48f026bb70b7a1cd251dec5cce8c38783d46d67238f9cc247a8396e3531b",
+        "example_index": 57,
+        "reference_output_sha256": "86e8c24510837b0ef66c3d61cb64ffeddf8b60ae34ca6a0f166a6b20fa490a39",
+        "semantic_instance_sha256": "beb9b8d8884ce3915d64daf5eb64e3b355dc7e0d02f74bac2e1a8cce91b28c86"
+      },
+      {
+        "benchmark_row_sha256": "5a6411157b912c6b352fa5373f126ae3a28ef33c226d40fb2920c7ffa510587e",
+        "example_index": 58,
+        "reference_output_sha256": "e09a38adceb15b41d5ba7ce6dcf6c47a9d3274eb754aaf3e27ce20d9cda621c4",
+        "semantic_instance_sha256": "918ee9b170b79abbcabadc91db850d0c8007e8281ecc8135c19e274d392cdda1"
+      },
+      {
+        "benchmark_row_sha256": "cc235577395d2fe0537884d24431ad98dfe546c78e931bb7edfb735da04fde59",
+        "example_index": 59,
+        "reference_output_sha256": "64075afcca50a2f74abdb0588086e3bb06a9ffeccacce3b79d53710b736f4e7c",
+        "semantic_instance_sha256": "56e359de4bfb233d2081f862874d1b4abf3319e9aba988340ea6e062cb1a21bc"
+      },
+      {
+        "benchmark_row_sha256": "8b64bffdb5ba6e7b87dc08693d4612402f503331f646ac19d1e6b403fd186e4a",
+        "example_index": 60,
+        "reference_output_sha256": "47c6a89733df6bf4dc49d4ca11dea1dd08980580e0793305ae8ccc6d6cadd42c",
+        "semantic_instance_sha256": "4713a504aaad289c4cef0f32be70890c6909558fdfebcd61779d2af55f29208b"
+      },
+      {
+        "benchmark_row_sha256": "991edf8499997450fe4e0350446b685d7748c47321c467bb0e8e46274afe51d3",
+        "example_index": 61,
+        "reference_output_sha256": "7ace3a1e4f88cdbe542fa3a1dd2450343b9fe1c46366474e4899ad0267012bf1",
+        "semantic_instance_sha256": "d754e3d4944f1c332b75d51493b7049b41ae0bee151b9627048d87b0f350078d"
+      },
+      {
+        "benchmark_row_sha256": "96bcc82aee8afb9ffb76f20cd252ef0b7224f2b6e0c0b8864cd3439ab83a854b",
+        "example_index": 62,
+        "reference_output_sha256": "227caf237eb0f9504a80f02b406f23d3dafc76122fc89bbf5bec26f0d684bb6e",
+        "semantic_instance_sha256": "b8b5eecc0ceb9ef4f40413e490747c2d1d4c787f4bc8d631b8d6b84d62d75eff"
+      },
+      {
+        "benchmark_row_sha256": "6946caa43b603d019ec91342e7ecbcb87bc63d570c211e3d3cb376ed3e973902",
+        "example_index": 63,
+        "reference_output_sha256": "393a4cd60d44d6d5d6e1b6c930033da9cb97070dac9869ac37197fccd360713d",
+        "semantic_instance_sha256": "8cfe65de6515b3f77a4f995ea6b35c5f52c08b3f50f8d2027cdfc62e7892115e"
+      },
+      {
+        "benchmark_row_sha256": "a18f0e4af16eb1bccfd4c0ba1783d8be7625c58af4fd9d2312644b164b929657",
+        "example_index": 64,
+        "reference_output_sha256": "96bcb4d00bddf351274db6c78e810db15a68f64b0a7067c0923cb5c74b9bf963",
+        "semantic_instance_sha256": "b119ffc84f8c3458713b3607d2d8ba1925d8a83a3e9b519e95aca5d59508e945"
+      },
+      {
+        "benchmark_row_sha256": "140c379676941314829c7ff1d8f8cd73cccaecf5bec88a943060870c85d0d712",
+        "example_index": 65,
+        "reference_output_sha256": "af460723166f2958a789a296e87270cde83f963ed9d86a2102da32f2a0cebfb5",
+        "semantic_instance_sha256": "079db24b14d573de6ab2dbc2515d4301646caa1892e119b4d49ee645de942c95"
+      },
+      {
+        "benchmark_row_sha256": "0d1c51fb8243ebbe1f9481e7869fcbf72f99f948c09328456633c84a3fc12a62",
+        "example_index": 66,
+        "reference_output_sha256": "634c91ff134917a4617ca4034d7f51f7763ab6e5cf54fe62b308f38e27247b56",
+        "semantic_instance_sha256": "9264aea30c2d37a104300dd8d1924189e844fee9fa733f8260567cdcb5784676"
+      },
+      {
+        "benchmark_row_sha256": "5c5f41989c67dab679f507864d6b4ae3ee491f40eb9940d90aadb335fb81fa18",
+        "example_index": 67,
+        "reference_output_sha256": "4942653154ee2fef3a6ff102bc3b25c714391ad0b6c7eaccf0ac14ed2a1d52db",
+        "semantic_instance_sha256": "901cff588b7a17707277baa02ed845e798c53ad5f397f169dfc5bd023880e2eb"
+      },
+      {
+        "benchmark_row_sha256": "a2f140241d2b2de4a723f8740c32b33f14986e99709b1a30be02797c5526a554",
+        "example_index": 68,
+        "reference_output_sha256": "aa349818598c69cea6045fe08a9eba8a86aff53d5e8465a1c6d706bfb7762661",
+        "semantic_instance_sha256": "15b73bc95e3c453fbae1893656e7ea81f43b61ca1a1e5909ec92ebb8bcdf923b"
+      },
+      {
+        "benchmark_row_sha256": "3e7d2713b63291cdda57609b4969fc439137ac3dbd05495df29157450f98bd14",
+        "example_index": 69,
+        "reference_output_sha256": "4e9f0c482601dcd217a04665e84e39e8c9687cdcad158cefedc63eb9e8b5062d",
+        "semantic_instance_sha256": "0a1813a9c968ea8a207bb525979e11e974dea961db64854b58ccfbb56c975bba"
+      },
+      {
+        "benchmark_row_sha256": "9f879e5b5ef9cc41170a5324ea294f84145724412c1534cdb2e580e03ecab37f",
+        "example_index": 70,
+        "reference_output_sha256": "4df2f3266dbc9d7effd0a0827de706387543f666ac4189d2130b4dece170b950",
+        "semantic_instance_sha256": "b4a047d6a25219203198ce4e134a4f779d86630a6ce1f71225cb87e187a9a209"
+      },
+      {
+        "benchmark_row_sha256": "a88667a805db2d723aad22733e1ccb8fd264ec8a76d42b62472a26d50b1fe913",
+        "example_index": 71,
+        "reference_output_sha256": "d1e54f4c53bb1cc3a79de84be95378bdc29e6c53c4aab1099006836c2993174a",
+        "semantic_instance_sha256": "2c589dbf67b9a802960d3b3278a4c56988d6d31f8d16fa3cf4508604c3510682"
+      },
+      {
+        "benchmark_row_sha256": "87856b421bd3ad3d766ee316721fe83504355a90165928b48ac6b5146ab54304",
+        "example_index": 72,
+        "reference_output_sha256": "3e6736791fdb01dc9e21d4ec8a7a9eba8e8aa6450d5012d5888aa2d6c2a559c8",
+        "semantic_instance_sha256": "40dc4452957da130527135163a18d45ddad60d8ed342233fa00f99ed1ee6c37c"
+      },
+      {
+        "benchmark_row_sha256": "de9bf852b68f7c1627c1bfa2735703ae54ead4c2def4bc3e970e3f0641fb6c76",
+        "example_index": 73,
+        "reference_output_sha256": "6d16d9d825b2c9db91bf698deb5434a4e5a441072762e4cfc0adc88cf477fbf3",
+        "semantic_instance_sha256": "5991a6486a9e1f84e9de2807d7feae4b71673bdbc96038b79e1772eb772dc584"
+      },
+      {
+        "benchmark_row_sha256": "1ef00fc493811f51a239d0ea5dafe53b91fabe8dabf25fce61a0539d516369c9",
+        "example_index": 74,
+        "reference_output_sha256": "a2a52ff5bbeae39a0fc6238757f94c8cd7b36f236bd4c764198eda1e7ad29cf6",
+        "semantic_instance_sha256": "58abaa5aca4b98576aed9ff083bbfb875474916643988ab1d635940a7ab3b80e"
+      },
+      {
+        "benchmark_row_sha256": "d58b47ac9a4a1b1a69cd4bc739b6e1f3e08382c9964914947062cbb2b0277bfd",
+        "example_index": 75,
+        "reference_output_sha256": "122ecb68b69c50e4a4cd92bde4ec5a4320b66ea2a7c173ad705c495b0f87d612",
+        "semantic_instance_sha256": "e3fd55f75b606cf127e50c50b73d043c77539087f3be265ce562172f370f285b"
+      },
+      {
+        "benchmark_row_sha256": "f97ee1c66d7efd7e060ed896981b7af768696ad869de9895faa57049cbdc7004",
+        "example_index": 76,
+        "reference_output_sha256": "8c647fb411928551ddbbec915a30e340a65e503772e87b3f17f3cabceaf4011c",
+        "semantic_instance_sha256": "490f63d79a5e31e73a3dc252c370050260d73e351bbf0c42a432c9ebb1bd73b3"
+      },
+      {
+        "benchmark_row_sha256": "ca2198a9b982e8bf5d2fe0c1e4f065452738d01af46859119ee5745b983390ac",
+        "example_index": 77,
+        "reference_output_sha256": "1ebb1a38a36d64339bab95c685711a49bdb7b88a65f81d915f1d5646abc18440",
+        "semantic_instance_sha256": "5e2dde5449f78da777f366f3797d5e955923ade5e6b122ad619b795814e08643"
+      },
+      {
+        "benchmark_row_sha256": "24a4de15dd04f753665bfa75299baa50c8138a36b876c2427c9aa4d4cd45d9df",
+        "example_index": 78,
+        "reference_output_sha256": "5195c4779aa0bfab509b3fcdeec5e5b6fb738302a7e65b16729902220f7db9c2",
+        "semantic_instance_sha256": "41eb305f2444122e13b74e77e588007b51a7db42ad73ae1d08246745d706422d"
+      },
+      {
+        "benchmark_row_sha256": "4095a583f8a786daa59c758017d18d772d60cf993da103ffc93f596207b2ef85",
+        "example_index": 79,
+        "reference_output_sha256": "9d555ccad1ea4e840518fad32ed7d98dcc459ed20bed49272e1c8f7436c8f761",
+        "semantic_instance_sha256": "cae1b1fe6ed21834516c62cd7d61f61d3f213b8d26f4c95baa6132267cc4bfb7"
+      },
+      {
+        "benchmark_row_sha256": "b7c2cb007d2b74cdc269c3276b334f21849589da22d616db904d2a44132b901b",
+        "example_index": 80,
+        "reference_output_sha256": "1324cd94d6bc9bc6d48ce998d938918f63c5aaf00fcdd1cb4567d74e764d378b",
+        "semantic_instance_sha256": "d7e1a9a6b54bd9de8be510f50e402d0c3a007f80047e3d7aa00448dd83f09586"
+      },
+      {
+        "benchmark_row_sha256": "f49864167acaf7937893214a9f07127847c22c8f0a494a0e7834779b8b2f1466",
+        "example_index": 81,
+        "reference_output_sha256": "30f9f0ff5a7d1b9345f61562797dda1747845947b8c82836eacef8fdf367b0ce",
+        "semantic_instance_sha256": "9ff75194078261ba002a656b776794d4a649470cfc0f76e48708c9da67198462"
+      },
+      {
+        "benchmark_row_sha256": "186bab55f373b8e5d63aa757f21af6f6aca2cd102836eaad861570e985f804ef",
+        "example_index": 82,
+        "reference_output_sha256": "83df3123e937e232dc8b61dfcada11690189c1476b03132c05178fcd37118249",
+        "semantic_instance_sha256": "dc0b1dffe1594a98dcabddd2368008c92c5b8b4ca71f2d6f22dff2a35f615b6a"
+      },
+      {
+        "benchmark_row_sha256": "8b2762761cdfee421df914e610f48d16ec8cf8da0964b18670fe65d0542b1608",
+        "example_index": 83,
+        "reference_output_sha256": "c9f38f4120a92b5cd9672c1821dea25cf158a6dbea71e586acbc06113a0686d2",
+        "semantic_instance_sha256": "720bf57e9aa97b892dd8fedfe9181d6ea2dde9bbc7da598beec2ca26e6b56553"
+      },
+      {
+        "benchmark_row_sha256": "948c623234581ea457e26b7d5ea0db4f837ccf46f35f9e178318c27ebc3db258",
+        "example_index": 84,
+        "reference_output_sha256": "0b42594fe61adee92840d614e694f01c86a5fcca26717997962f9dd10d31c761",
+        "semantic_instance_sha256": "659d0ddb71a2da376a315fc3eee65cdf33e01bb549015a96bac0008f4358c535"
+      },
+      {
+        "benchmark_row_sha256": "2401e3e1b68254d68ed871dae863e13cd9418d30be19145d5169d53377150427",
+        "example_index": 85,
+        "reference_output_sha256": "bef3dcaf52a35a92006c1df5f996e60d2b0facd2383130236251ac0ead1e37f8",
+        "semantic_instance_sha256": "df5d69d5132c6208d29a2ef37b0888cc3c6ea013c88ba320108eba4c562ae3f3"
+      },
+      {
+        "benchmark_row_sha256": "fd5cf0ca25ec9673771eb8e4e54f24a7f8d7f8786082c3dc7a27e732e67234f0",
+        "example_index": 86,
+        "reference_output_sha256": "c22dd60e984e9dd09de8cb1f196ed24bfa424d307ca9e76dc654aec23382a1a9",
+        "semantic_instance_sha256": "e588f21a1b2c1e6a73e3f702b6e19c4ed7ed39947c0baf4d28a17ad31e12c641"
+      },
+      {
+        "benchmark_row_sha256": "042d700edebd4b89135a0993722bc6b0a16c1a5e32cec900488c5f42b2b76927",
+        "example_index": 87,
+        "reference_output_sha256": "79ed54f4bf4aace6cf6beae2ca7adc68cadd61a50f9716c779731b203ccdda88",
+        "semantic_instance_sha256": "6fab58a6489896ed649e13bce7da3f9c9f4ba0954519aac172516bd42aa743b3"
+      },
+      {
+        "benchmark_row_sha256": "dabd17c35cfecf31dd16f18df3f5476b3adce1c24257536d4713827e59738899",
+        "example_index": 88,
+        "reference_output_sha256": "3374c753be520b5950a38e54e9f9b1a814c386659406991dd45385369884ac52",
+        "semantic_instance_sha256": "db364007849a8db2e0adb25aada21912507f6aea009b326ac1a751b20aee1b7e"
+      },
+      {
+        "benchmark_row_sha256": "7d80ce10265f311665529eddf0f98ea1881c2e1d6d430deb869abde320e93297",
+        "example_index": 89,
+        "reference_output_sha256": "e5373fcb3bd871b9b22495a7aca29c760309f45795d52d99532a5489e2016a0b",
+        "semantic_instance_sha256": "cef083b44ac37249aabfa06e10f16a7752e87fe600e030450717c1840c2e57b3"
+      },
+      {
+        "benchmark_row_sha256": "4fd2cd053b764e94deb8a1f2a8cabf237978e547c937ea1cf6141373b535add2",
+        "example_index": 90,
+        "reference_output_sha256": "1be155443bbd9e1967b98270cf2a77c4b227dce118c2ea144c07ac205e76bb91",
+        "semantic_instance_sha256": "9a6698b8f34620b41fbc46f5ff2c094eed1870bd1b32b043a91ca67699adc9bf"
+      },
+      {
+        "benchmark_row_sha256": "4b6ecea683b1d1a8590a334a72e783d721bb98324f74ccc3ad41e409ff90bb13",
+        "example_index": 91,
+        "reference_output_sha256": "01a3ada580384a67842125978350810b0aca1bca85abd8d61676b299ad6b1de7",
+        "semantic_instance_sha256": "2a01f04d0119e79967b1b513c5d9bac173f466f674dc10c48b86f6ae5a1434ae"
+      },
+      {
+        "benchmark_row_sha256": "bbfd8555ae4304c94fbae0202f6c9a58de4bceb31a7bd49c86d9148bd7487fd9",
+        "example_index": 92,
+        "reference_output_sha256": "4da090c2881a1e820e27f9f2b605089d58eb96815de00f743797076fe35a28c8",
+        "semantic_instance_sha256": "5afe2dad2f0ea4095932fdcd6e739c5e8aabbac5154dc18617d51b6eddf22eeb"
+      },
+      {
+        "benchmark_row_sha256": "d6943f51c5b7d333960e391c939f5d576a5056091f0442cebc1220cb25ac3e3c",
+        "example_index": 93,
+        "reference_output_sha256": "b19e2047cb78cae222333040af6fe03fb40d324433f38f9d1de2b8fe7bd98e97",
+        "semantic_instance_sha256": "15138bdccb6afc18b054ad9833b37c1435bc05162b20b930cd1aff0543e9b94f"
+      },
+      {
+        "benchmark_row_sha256": "f069702804d4b3bc7be10abeacb1e0da631f2d3c162b99104da9ee33000280ce",
+        "example_index": 94,
+        "reference_output_sha256": "9b18cadcdd51ccffd7305fd7c06f850c33ff30ae3950bc958e689b3d6d2f03a6",
+        "semantic_instance_sha256": "b72e4ea1b0dec684d3c0c267c8ba3242df2435c5b76963e256e3021c959ddf6e"
+      },
+      {
+        "benchmark_row_sha256": "d83786df1a30f31af785f518623d7194a72c069b784120632a374c1b2651ab0d",
+        "example_index": 95,
+        "reference_output_sha256": "ee58a1ef08142866368a29170b5f00da0b5b45e302ec2d73b0f992a4b8d5b725",
+        "semantic_instance_sha256": "ae78577f8ee1a157fb707feba30e827d3ce10f4beb0a9d82101beb5dc5b16336"
+      },
+      {
+        "benchmark_row_sha256": "b7faedc312ce86be72871b0a8db0036f3547c2b67febebc3cd330152a15ba964",
+        "example_index": 96,
+        "reference_output_sha256": "bffe779273f04f49d7c3e9b70b1d5cdab57ccdcf1dc20010dfab372ce62960ba",
+        "semantic_instance_sha256": "dd3b2f853ac7bea4f98b23206087a1cac160376377a7850191c40406226cdc1f"
+      },
+      {
+        "benchmark_row_sha256": "630784039d2604776790bdd9bbbd2d4724d357b9a922be82e4be7c3a0360547a",
+        "example_index": 97,
+        "reference_output_sha256": "68328a895621df66793b39c5f1a0ce7f2124f3b4f2dc60744bb46c6b4522b4cc",
+        "semantic_instance_sha256": "3fc1768312ae84c0c56a9eae9839619ddb7f96883146991a8ac3eb430d7d3dd6"
+      },
+      {
+        "benchmark_row_sha256": "13144dda1dd131b814baefba3add89c444095c5e2ebe0ace933e3f96daaf15e1",
+        "example_index": 98,
+        "reference_output_sha256": "39026dba47617dbf4f7588135cee582c04979c5f6a3d124c228977e9829fffeb",
+        "semantic_instance_sha256": "04bccf6158e9a14b8f96f0995b750350344ee2225f8c38ac2dc0a63fd8aa4423"
+      },
+      {
+        "benchmark_row_sha256": "563dbaa8995a357eb2b0ed9525e89e1cd403cddba968b2d779bace2a71b44c0b",
+        "example_index": 99,
+        "reference_output_sha256": "3a30a108fe7c98f210641f136334eb8a548cc40065c8fa446cebae5696a5ea30",
+        "semantic_instance_sha256": "b94e23185139c6508e25c6978b3e42205ff456b5776d24bfd47863e3f3828da5"
+      }
+    ],
+    "reference_evidence": [
+      {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/mis/reference_evidence.json",
+        "sha256": "150d0e0e844d02185ba20bb968593101527468ad022f783566af83c4a0a7fec3",
+        "size_bytes": 116641
+      },
+      {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/training_overlap_audit.json",
+        "sha256": "61a382d31356131a571786a5481648248640aaeb2b7649bcd1594dd766c5d62f",
+        "size_bytes": 14042
+      }
+    ],
+    "reference_kind": "certified_optimum",
+    "reference_objectives": [
+      23.0,
+      13.0,
+      13.0,
+      13.0,
+      20.0,
+      14.0,
+      7.0,
+      7.0,
+      73.0,
+      11.0,
+      49.0,
+      13.0,
+      14.0,
+      28.0,
+      27.0,
+      8.0,
+      15.0,
+      9.0,
+      48.0,
+      17.0,
+      21.0,
+      29.0,
+      21.0,
+      17.0,
+      21.0,
+      16.0,
+      11.0,
+      12.0,
+      28.0,
+      48.0,
+      8.0,
+      44.0,
+      38.0,
+      12.0,
+      29.0,
+      28.0,
+      14.0,
+      8.0,
+      13.0,
+      22.0,
+      17.0,
+      10.0,
+      16.0,
+      6.0,
+      22.0,
+      41.0,
+      12.0,
+      8.0,
+      54.0,
+      9.0,
+      22.0,
+      12.0,
+      46.0,
+      9.0,
+      29.0,
+      4.0,
+      37.0,
+      21.0,
+      5.0,
+      41.0,
+      14.0,
+      5.0,
+      15.0,
+      14.0,
+      12.0,
+      70.0,
+      27.0,
+      35.0,
+      19.0,
+      12.0,
+      60.0,
+      14.0,
+      18.0,
+      10.0,
+      9.0,
+      22.0,
+      9.0,
+      29.0,
+      33.0,
+      12.0,
+      11.0,
+      25.0,
+      25.0,
+      15.0,
+      48.0,
+      9.0,
+      15.0,
+      19.0,
+      12.0,
+      15.0,
+      28.0,
+      25.0,
+      22.0,
+      10.0,
+      16.0,
+      11.0,
+      28.0,
+      17.0,
+      10.0,
+      29.0
+    ]
+  },
+  "evaluation_contracts": {
+    "classic_grpo": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluation_contracts/mis_classic_grpo_eval_400.json",
+      "sha256": "f92a50fc0feedc5f1a9286cf72ea4a62cf7c8074161bc70f516adb7ae361cf03",
+      "size_bytes": 1706
+    },
+    "foarl": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluation_contracts/mis_foarl_eval_400.json",
+      "sha256": "23cfaa765f0e4c3141912fe41a454a4cdcb4dbf7f7df6762295ac59e7864c2f6",
+      "size_bytes": 1633
+    },
+    "rloo_legacy": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluation_contracts/mis_rloo_legacy_eval_400.json",
+      "sha256": "3dae94322fcb3d522fb3c4a057a45433bb9582454b543aef1c1907f985206982",
+      "size_bytes": 1651
+    },
+    "rloo_quality": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluation_contracts/mis_rloo_quality_eval_400.json",
+      "sha256": "6f1058ac8a954d3175fc9cdd0883d3168523fbd166384846c97392364bfe56b5",
+      "size_bytes": 1654
+    }
+  },
+  "horizon": 800,
+  "initialization": {
+    "checkpoint": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_jiang_f638_sft500k_sourcev17_production_output_iclr_20260828_v14/runs/mis/seed42/checkpoints/checkpoint-31250",
+    "files": {
+      "adapter_config.json": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_jiang_f638_sft500k_sourcev17_production_output_iclr_20260828_v14/runs/mis/seed42/checkpoints/checkpoint-31250/adapter_config.json",
+        "sha256": "22bdbfd064c968a5e82ada982140b4ae453ebb692d9ae87d2091e541ff327949",
+        "size_bytes": 1024
+      },
+      "adapter_model.safetensors": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_jiang_f638_sft500k_sourcev17_production_output_iclr_20260828_v14/runs/mis/seed42/checkpoints/checkpoint-31250/adapter_model.safetensors",
+        "sha256": "cb5e979325ba7691f75998326ce79e47038d6462596dbc815f2b54d2b550da15",
+        "size_bytes": 646245176
+      },
+      "checkpoint_fidelity.json": {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_jiang_f638_sft500k_sourcev17_production_output_iclr_20260828_v14/runs/mis/seed42/checkpoints/checkpoint-31250/checkpoint_fidelity.json",
+        "sha256": "e5390d7ab32080948c04078655ef2413356a53abdca74089e1249687f2e99911",
+        "size_bytes": 141808
+      }
+    }
+  },
+  "is_terminal": false,
+  "limitations": [
+    "One seed43 on inspected DEV100; no guarantee of improvement or confirmation claim.",
+    "Feasible@1 is sample zero of the eight generated candidates, not greedy decoding.",
+    "Gap is signed relative to the declared reference; own-success and paired joint-success denominators differ.",
+    "Failed outputs have no gap; the all-instance quality CDF retains all 100 instances.",
+    "Paired instance bootstrap intervals do not measure training-seed variation and are not multiplicity adjusted.",
+    "This is a common B9 prompt-budget comparison, not exact reproduction of the released FOARL recipe.",
+    "Checkpoint files were checked at admission; retained raw policy hashes and audit snapshots survive checkpoint rotation."
+  ],
+  "paired_comparisons": {
+    "classic_grpo_vs_foarl": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": -0.18,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": -0.05
+        },
+        "right_minus_left": -0.11
+      },
+      "joint_left_signed_gap": 0.023361955222980332,
+      "joint_right_signed_gap": 0.024563890542562715,
+      "joint_signed_gap": {
+        "denominator": 90,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.004092624423506775,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.007167656961774607
+        },
+        "right_minus_left": 0.0012019353195823787
+      },
+      "joint_success_count": 90,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "c6612eef43e28bd184e81a9c1b0c12ccf6e1dd9e40b268860d4b96fdb37df6a4",
+              "size_bytes": 20230
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "sha256": "74485a1cfcf0aa2f7d34bba1ae5d349178e1f3b10b4dde7ea1155bb2f3c70fa9",
+              "size_bytes": 1460343
+            },
+            "fingerprint": "eb04ebf6e44794aae9bcc1a40e7ebfeb4e54bd461a2f07ebd41a0de6caf8d785",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "9dfc62e9c4d0749c3ff4b32cf10419034bda8ac7e5185c3cad8a5cca4101abec",
+              "size_bytes": 20372
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "sha256": "e64704b8803171a87dbced776a9e228c269c98153b14f8d360c80fc64d9daee5",
+              "size_bytes": 1464295
+            },
+            "fingerprint": "ff93a17a0869cb0780e50d4bd30e229cd8a63bdcb5913fe2907191a6df42fd65",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "classic_grpo",
+          "right": "foarl"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 2.9103830456733704e-11,
+                "non_tied_pairs": 36,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 0,
+                "right_regressions": 36,
+                "ties": 64
+              },
+              "left": 0.84,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": -0.1575,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": -0.08125
+              },
+              "right": 0.7225,
+              "right_minus_left": -0.1175
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 1.0,
+                "non_tied_pairs": 8,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 4,
+                "right_regressions": 4,
+                "ties": 82
+              },
+              "jointly_feasible_instances": 90,
+              "left_feasible_instances": 97,
+              "left_mean_on_jointly_feasible_instances": 0.023361955222980332,
+              "left_mean_on_left_feasible_instances": 0.02906881997080203,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.004065140197493136,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.007022161389808438
+              },
+              "right_feasible_instances": 90,
+              "right_mean_on_jointly_feasible_instances": 0.024563890542562715,
+              "right_mean_on_right_feasible_instances": 0.024563890542562715,
+              "right_minus_left_on_jointly_feasible_instances": 0.0012019353195823787
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 7,
+                "exact_two_sided_p": 0.015625,
+                "left_only_success": 7,
+                "right_only_success": 0
+              },
+              "left": 0.97,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": -0.12,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": -0.03
+              },
+              "right": 0.9,
+              "right_minus_left": -0.07
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 2.9103830456733704e-11,
+              "non_tied_pairs": 36,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 0,
+              "right_regressions": 36,
+              "ties": 64
+            },
+            "left": 0.84,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": -0.1575,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": -0.08
+            },
+            "right": 0.7225,
+            "right_minus_left": -0.1175
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 1.0,
+              "non_tied_pairs": 8,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 4,
+              "right_regressions": 4,
+              "ties": 82
+            },
+            "jointly_feasible_instances": 90,
+            "left_feasible_instances": 97,
+            "left_mean_on_jointly_feasible_instances": 0.023361955222980332,
+            "left_mean_on_left_feasible_instances": 0.02906881997080203,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.004093879976232917,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0071428571428571435
+            },
+            "right_feasible_instances": 90,
+            "right_mean_on_jointly_feasible_instances": 0.024563890542562715,
+            "right_mean_on_right_feasible_instances": 0.024563890542562715,
+            "right_minus_left_on_jointly_feasible_instances": 0.0012019353195823787
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 7,
+              "exact_two_sided_p": 0.015625,
+              "left_only_success": 7,
+              "right_only_success": 0
+            },
+            "left": 0.97,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": -0.12,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": -0.02
+            },
+            "right": 0.9,
+            "right_minus_left": -0.07
+          }
+        },
+        "receipt_sha256": "6b8029fab5448a4f342232d9386cd3f6a55e9074d3f721ae9097db8a75a55aac",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    },
+    "classic_grpo_vs_rloo_legacy": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": 0.0,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.07
+        },
+        "right_minus_left": 0.03
+      },
+      "joint_left_signed_gap": 0.027139477321688366,
+      "joint_right_signed_gap": 0.02931374980846085,
+      "joint_signed_gap": {
+        "denominator": 96,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.0003720238095238095,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.00558862433862434
+        },
+        "right_minus_left": 0.002174272486772487
+      },
+      "joint_success_count": 96,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "c6612eef43e28bd184e81a9c1b0c12ccf6e1dd9e40b268860d4b96fdb37df6a4",
+              "size_bytes": 20230
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "sha256": "74485a1cfcf0aa2f7d34bba1ae5d349178e1f3b10b4dde7ea1155bb2f3c70fa9",
+              "size_bytes": 1460343
+            },
+            "fingerprint": "eb04ebf6e44794aae9bcc1a40e7ebfeb4e54bd461a2f07ebd41a0de6caf8d785",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "18e9d3cae77895224dc22969299ec46ce5f329ba5e540a62767bc7e3a9facaa9",
+              "size_bytes": 19942
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "sha256": "dd54ebc8c8f1bc64f0cbcf366108223117bff14e127e3655faa12c63214bc6dc",
+              "size_bytes": 1460052
+            },
+            "fingerprint": "497aa73a4ba99f61eedfd19f1ee4e1833291d19d976a7536a6572fe2be4d945b",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "classic_grpo",
+          "right": "rloo_legacy"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 0.03515625,
+                "non_tied_pairs": 15,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 12,
+                "right_regressions": 3,
+                "ties": 85
+              },
+              "left": 0.84,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": 0.00625,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.03625
+              },
+              "right": 0.86,
+              "right_minus_left": 0.02
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 0.625,
+                "non_tied_pairs": 4,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 1,
+                "right_regressions": 3,
+                "ties": 92
+              },
+              "jointly_feasible_instances": 96,
+              "left_feasible_instances": 97,
+              "left_mean_on_jointly_feasible_instances": 0.027139477321688366,
+              "left_mean_on_left_feasible_instances": 0.02906881997080203,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.0003720238095238095,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.005729166666666667
+              },
+              "right_feasible_instances": 96,
+              "right_mean_on_jointly_feasible_instances": 0.02931374980846085,
+              "right_mean_on_right_feasible_instances": 0.02931374980846085,
+              "right_minus_left_on_jointly_feasible_instances": 0.002174272486772487
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 1,
+                "exact_two_sided_p": 1.0,
+                "left_only_success": 1,
+                "right_only_success": 0
+              },
+              "left": 0.97,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": -0.03,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.0
+              },
+              "right": 0.96,
+              "right_minus_left": -0.01
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 0.03515625,
+              "non_tied_pairs": 15,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 12,
+              "right_regressions": 3,
+              "ties": 85
+            },
+            "left": 0.84,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": 0.00625,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.03625
+            },
+            "right": 0.86,
+            "right_minus_left": 0.02
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 0.625,
+              "non_tied_pairs": 4,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 1,
+              "right_regressions": 3,
+              "ties": 92
+            },
+            "jointly_feasible_instances": 96,
+            "left_feasible_instances": 97,
+            "left_mean_on_jointly_feasible_instances": 0.027139477321688366,
+            "left_mean_on_left_feasible_instances": 0.02906881997080203,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.0003720238095238095,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.00570436507936508
+            },
+            "right_feasible_instances": 96,
+            "right_mean_on_jointly_feasible_instances": 0.02931374980846085,
+            "right_mean_on_right_feasible_instances": 0.02931374980846085,
+            "right_minus_left_on_jointly_feasible_instances": 0.002174272486772487
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 1,
+              "exact_two_sided_p": 1.0,
+              "left_only_success": 1,
+              "right_only_success": 0
+            },
+            "left": 0.97,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": -0.03,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0
+            },
+            "right": 0.96,
+            "right_minus_left": -0.01
+          }
+        },
+        "receipt_sha256": "ec479a0f6b53d75331529c2158c5006339f0add7c15c1b21f4e9f544897b7179",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    },
+    "classic_grpo_vs_rloo_quality": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": -0.04,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.04
+        },
+        "right_minus_left": 0.0
+      },
+      "joint_left_signed_gap": 0.028850786845497887,
+      "joint_right_signed_gap": 0.026693048750259792,
+      "joint_signed_gap": {
+        "denominator": 96,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.00505952380952381,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.0
+        },
+        "right_minus_left": -0.002157738095238095
+      },
+      "joint_success_count": 96,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_config__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "c6612eef43e28bd184e81a9c1b0c12ccf6e1dd9e40b268860d4b96fdb37df6a4",
+              "size_bytes": 20230
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/rloo9_baseline_guarded_recovery_20261009/management_v4_v11/cold_evaluations/mis/classic_grpo/step400/eval/grpo/classic_grpo-checkpoint-400/run_details__grpo_classic_grpo-checkpoint-400_eval_k8_mis_classic_grpo_step400_of800_raw8_fpeb04ebf6e447.jsonl",
+              "sha256": "74485a1cfcf0aa2f7d34bba1ae5d349178e1f3b10b4dde7ea1155bb2f3c70fa9",
+              "size_bytes": 1460343
+            },
+            "fingerprint": "eb04ebf6e44794aae9bcc1a40e7ebfeb4e54bd461a2f07ebd41a0de6caf8d785",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "671d28b77660cbf87df723234e56c61e0228650ae6741b0f0d4eb527d20b537b",
+              "size_bytes": 19970
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "sha256": "b06b1cd58d05f772ed6f345dd57414924049ecec8c2f67e810ed68adcd882fab",
+              "size_bytes": 1460467
+            },
+            "fingerprint": "3f3a31ce60e34a71efb1576a6706940d21c66abba4e2593ca5b8806d895d45d5",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "classic_grpo",
+          "right": "rloo_quality"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 1.0,
+                "non_tied_pairs": 15,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 7,
+                "right_regressions": 8,
+                "ties": 85
+              },
+              "left": 0.84,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": -0.00875,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.015
+              },
+              "right": 0.8425,
+              "right_minus_left": 0.0025
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 0.25,
+                "non_tied_pairs": 3,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 3,
+                "right_regressions": 0,
+                "ties": 93
+              },
+              "jointly_feasible_instances": 96,
+              "left_feasible_instances": 97,
+              "left_mean_on_jointly_feasible_instances": 0.028850786845497887,
+              "left_mean_on_left_feasible_instances": 0.02906881997080203,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.00505952380952381,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.0
+              },
+              "right_feasible_instances": 96,
+              "right_mean_on_jointly_feasible_instances": 0.026693048750259792,
+              "right_mean_on_right_feasible_instances": 0.026693048750259792,
+              "right_minus_left_on_jointly_feasible_instances": -0.002157738095238095
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 1,
+                "exact_two_sided_p": 1.0,
+                "left_only_success": 1,
+                "right_only_success": 0
+              },
+              "left": 0.97,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": -0.03,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.0
+              },
+              "right": 0.96,
+              "right_minus_left": -0.01
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 1.0,
+              "non_tied_pairs": 15,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 7,
+              "right_regressions": 8,
+              "ties": 85
+            },
+            "left": 0.84,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": -0.00875,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.015
+            },
+            "right": 0.8425,
+            "right_minus_left": 0.0025
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 0.25,
+              "non_tied_pairs": 3,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 3,
+              "right_regressions": 0,
+              "ties": 93
+            },
+            "jointly_feasible_instances": 96,
+            "left_feasible_instances": 97,
+            "left_mean_on_jointly_feasible_instances": 0.028850786845497887,
+            "left_mean_on_left_feasible_instances": 0.02906881997080203,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.00505952380952381,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0
+            },
+            "right_feasible_instances": 96,
+            "right_mean_on_jointly_feasible_instances": 0.026693048750259792,
+            "right_mean_on_right_feasible_instances": 0.026693048750259792,
+            "right_minus_left_on_jointly_feasible_instances": -0.002157738095238095
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 1,
+              "exact_two_sided_p": 1.0,
+              "left_only_success": 1,
+              "right_only_success": 0
+            },
+            "left": 0.97,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": -0.03,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0
+            },
+            "right": 0.96,
+            "right_minus_left": -0.01
+          }
+        },
+        "receipt_sha256": "c8268d27e84a48b3965fe9b048e68bb54ec0eba0788de0d48f967f9f15432e24",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    },
+    "foarl_vs_rloo_legacy": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": 0.08,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.21
+        },
+        "right_minus_left": 0.14
+      },
+      "joint_left_signed_gap": 0.024563890542562715,
+      "joint_right_signed_gap": 0.02389105575208086,
+      "joint_signed_gap": {
+        "denominator": 90,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.00628978864272982,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.004262796027501911
+        },
+        "right_minus_left": -0.0006728347904818497
+      },
+      "joint_success_count": 90,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "9dfc62e9c4d0749c3ff4b32cf10419034bda8ac7e5185c3cad8a5cca4101abec",
+              "size_bytes": 20372
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "sha256": "e64704b8803171a87dbced776a9e228c269c98153b14f8d360c80fc64d9daee5",
+              "size_bytes": 1464295
+            },
+            "fingerprint": "ff93a17a0869cb0780e50d4bd30e229cd8a63bdcb5913fe2907191a6df42fd65",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "18e9d3cae77895224dc22969299ec46ce5f329ba5e540a62767bc7e3a9facaa9",
+              "size_bytes": 19942
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "sha256": "dd54ebc8c8f1bc64f0cbcf366108223117bff14e127e3655faa12c63214bc6dc",
+              "size_bytes": 1460052
+            },
+            "fingerprint": "497aa73a4ba99f61eedfd19f1ee4e1833291d19d976a7536a6572fe2be4d945b",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "foarl",
+          "right": "rloo_legacy"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 2.9103830456733704e-11,
+                "non_tied_pairs": 36,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 36,
+                "right_regressions": 0,
+                "ties": 64
+              },
+              "left": 0.7225,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": 0.09625,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.18125
+              },
+              "right": 0.86,
+              "right_minus_left": 0.1375
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 1.0,
+                "non_tied_pairs": 6,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 3,
+                "right_regressions": 3,
+                "ties": 84
+              },
+              "jointly_feasible_instances": 90,
+              "left_feasible_instances": 90,
+              "left_mean_on_jointly_feasible_instances": 0.024563890542562715,
+              "left_mean_on_left_feasible_instances": 0.024563890542562715,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.006132756132756133,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.004242424242424243
+              },
+              "right_feasible_instances": 96,
+              "right_mean_on_jointly_feasible_instances": 0.02389105575208086,
+              "right_mean_on_right_feasible_instances": 0.02931374980846085,
+              "right_minus_left_on_jointly_feasible_instances": -0.0006728347904818497
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 6,
+                "exact_two_sided_p": 0.03125,
+                "left_only_success": 0,
+                "right_only_success": 6
+              },
+              "left": 0.9,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": 0.02,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.11
+              },
+              "right": 0.96,
+              "right_minus_left": 0.06
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 2.9103830456733704e-11,
+              "non_tied_pairs": 36,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 36,
+              "right_regressions": 0,
+              "ties": 64
+            },
+            "left": 0.7225,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": 0.09625,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.18125
+            },
+            "right": 0.86,
+            "right_minus_left": 0.1375
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 1.0,
+              "non_tied_pairs": 6,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 3,
+              "right_regressions": 3,
+              "ties": 84
+            },
+            "jointly_feasible_instances": 90,
+            "left_feasible_instances": 90,
+            "left_mean_on_jointly_feasible_instances": 0.024563890542562715,
+            "left_mean_on_left_feasible_instances": 0.024563890542562715,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.006228390346037406,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0043103301926831344
+            },
+            "right_feasible_instances": 96,
+            "right_mean_on_jointly_feasible_instances": 0.02389105575208086,
+            "right_mean_on_right_feasible_instances": 0.02931374980846085,
+            "right_minus_left_on_jointly_feasible_instances": -0.0006728347904818497
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 6,
+              "exact_two_sided_p": 0.03125,
+              "left_only_success": 0,
+              "right_only_success": 6
+            },
+            "left": 0.9,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": 0.02,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.11
+            },
+            "right": 0.96,
+            "right_minus_left": 0.06
+          }
+        },
+        "receipt_sha256": "104142a671d0180f5b0a27a219592d4ac9de396adfcdf5a6e1d3dcc4c725b13a",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    },
+    "foarl_vs_rloo_quality": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": 0.05,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.18
+        },
+        "right_minus_left": 0.11
+      },
+      "joint_left_signed_gap": 0.024563890542562715,
+      "joint_right_signed_gap": 0.021060367921393035,
+      "joint_signed_gap": {
+        "denominator": 90,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.009243697478991597,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.0012463571287100695
+        },
+        "right_minus_left": -0.00350352262116968
+      },
+      "joint_success_count": 90,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_config__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "9dfc62e9c4d0749c3ff4b32cf10419034bda8ac7e5185c3cad8a5cca4101abec",
+              "size_bytes": 20372
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/foarl/step400/eval/grpo/foarl-checkpoint-400/run_details__grpo_foarl-checkpoint-400_eval_k8_mis_foarl_step400_of800_raw8_fpff93a17a0869.jsonl",
+              "sha256": "e64704b8803171a87dbced776a9e228c269c98153b14f8d360c80fc64d9daee5",
+              "size_bytes": 1464295
+            },
+            "fingerprint": "ff93a17a0869cb0780e50d4bd30e229cd8a63bdcb5913fe2907191a6df42fd65",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "671d28b77660cbf87df723234e56c61e0228650ae6741b0f0d4eb527d20b537b",
+              "size_bytes": 19970
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "sha256": "b06b1cd58d05f772ed6f345dd57414924049ecec8c2f67e810ed68adcd882fab",
+              "size_bytes": 1460467
+            },
+            "fingerprint": "3f3a31ce60e34a71efb1576a6706940d21c66abba4e2593ca5b8806d895d45d5",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "foarl",
+          "right": "rloo_quality"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 5.820766091346741e-11,
+                "non_tied_pairs": 35,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 35,
+                "right_regressions": 0,
+                "ties": 65
+              },
+              "left": 0.7225,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": 0.0825,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.16
+              },
+              "right": 0.8425,
+              "right_minus_left": 0.12
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 0.453125,
+                "non_tied_pairs": 7,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 5,
+                "right_regressions": 2,
+                "ties": 83
+              },
+              "jointly_feasible_instances": 90,
+              "left_feasible_instances": 90,
+              "left_mean_on_jointly_feasible_instances": 0.024563890542562715,
+              "left_mean_on_left_feasible_instances": 0.024563890542562715,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.009112306538777124,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.0013024502730384897
+              },
+              "right_feasible_instances": 96,
+              "right_mean_on_jointly_feasible_instances": 0.021060367921393035,
+              "right_mean_on_right_feasible_instances": 0.026693048750259792,
+              "right_minus_left_on_jointly_feasible_instances": -0.00350352262116968
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 6,
+                "exact_two_sided_p": 0.03125,
+                "left_only_success": 0,
+                "right_only_success": 6
+              },
+              "left": 0.9,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": 0.02,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.11
+              },
+              "right": 0.96,
+              "right_minus_left": 0.06
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 5.820766091346741e-11,
+              "non_tied_pairs": 35,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 35,
+              "right_regressions": 0,
+              "ties": 65
+            },
+            "left": 0.7225,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": 0.0825,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.16
+            },
+            "right": 0.8425,
+            "right_minus_left": 0.12
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 0.453125,
+              "non_tied_pairs": 7,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 5,
+              "right_regressions": 2,
+              "ties": 83
+            },
+            "jointly_feasible_instances": 90,
+            "left_feasible_instances": 90,
+            "left_mean_on_jointly_feasible_instances": 0.024563890542562715,
+            "left_mean_on_left_feasible_instances": 0.024563890542562715,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.00914325326090032,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.0012265512265512263
+            },
+            "right_feasible_instances": 96,
+            "right_mean_on_jointly_feasible_instances": 0.021060367921393035,
+            "right_mean_on_right_feasible_instances": 0.026693048750259792,
+            "right_minus_left_on_jointly_feasible_instances": -0.00350352262116968
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 6,
+              "exact_two_sided_p": 0.03125,
+              "left_only_success": 0,
+              "right_only_success": 6
+            },
+            "left": 0.9,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": 0.02,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.11
+            },
+            "right": 0.96,
+            "right_minus_left": 0.06
+          }
+        },
+        "receipt_sha256": "406a75355f606172ff8937dcaff183822b21b825ff176604ee415bc487b4df66",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    },
+    "rloo_legacy_vs_rloo_quality": {
+      "first_sample_feasibility": {
+        "denominator": 100,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 13853366487603436910,
+          "interval": "paired_percentile",
+          "lower": -0.07,
+          "replicates": 20000,
+          "resampling_unit": "paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": 0.0
+        },
+        "right_minus_left": -0.03
+      },
+      "joint_left_signed_gap": 0.02856968401697096,
+      "joint_right_signed_gap": 0.024718389113044484,
+      "joint_signed_gap": {
+        "denominator": 95,
+        "paired_bootstrap": {
+          "base_seed": 20260814,
+          "confidence_level": 0.95,
+          "derived_seed": 6648370886764890658,
+          "interval": "paired_percentile",
+          "lower": -0.007986842105263155,
+          "replicates": 20000,
+          "resampling_unit": "jointly_feasible_paired_instance",
+          "rng": "numpy.random.PCG64",
+          "upper": -0.0007518796992481202
+        },
+        "right_minus_left": -0.003851294903926483
+      },
+      "joint_success_count": 95,
+      "strict_comparison": {
+        "artifacts": {
+          "left": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_config__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "18e9d3cae77895224dc22969299ec46ce5f329ba5e540a62767bc7e3a9facaa9",
+              "size_bytes": 19942
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_legacy/step400/eval/grpo/rloo_legacy-checkpoint-400/run_details__grpo_rloo_legacy-checkpoint-400_eval_k8_mis_rloo_legacy_step400_of800_raw8_fp497aa73a4ba9.jsonl",
+              "sha256": "dd54ebc8c8f1bc64f0cbcf366108223117bff14e127e3655faa12c63214bc6dc",
+              "size_bytes": 1460052
+            },
+            "fingerprint": "497aa73a4ba99f61eedfd19f1ee4e1833291d19d976a7536a6572fe2be4d945b",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          },
+          "right": {
+            "artifact_type": "native_raw",
+            "candidate_budget": 8,
+            "companion_snapshot": {
+              "basename": "run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_config__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.json",
+              "self_hash_field": "run_config_sha256",
+              "sha256": "671d28b77660cbf87df723234e56c61e0228650ae6741b0f0d4eb527d20b537b",
+              "size_bytes": 19970
+            },
+            "details_snapshot": {
+              "basename": "run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v1/evaluations/mis/rloo_quality/step400/eval/grpo/rloo_quality-checkpoint-400/run_details__grpo_rloo_quality-checkpoint-400_eval_k8_mis_rloo_quality_step400_of800_raw8_fp3f3a31ce60e3.jsonl",
+              "sha256": "b06b1cd58d05f772ed6f345dd57414924049ecec8c2f67e810ed68adcd882fab",
+              "size_bytes": 1460467
+            },
+            "fingerprint": "3f3a31ce60e34a71efb1576a6706940d21c66abba4e2593ca5b8806d895d45d5",
+            "fingerprint_field": "experiment_fingerprint",
+            "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+            "record_count": 100,
+            "record_self_hash_field": "record_sha256",
+            "tasks": [
+              "mis"
+            ]
+          }
+        },
+        "claim_eligibility": "not_confirmation_and_not_sota_evidence",
+        "comparison_direction": "right_minus_left",
+        "evidence_scope": "development_only",
+        "generated_at_utc": "2026-10-11T14:55:16Z",
+        "implementation_snapshot": {
+          "basename": "compare_development.py",
+          "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "realpath": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/source_v3/scripts/compare_development.py",
+          "sha256": "253fc73e58141f7d6ca7ce46a0dab914361d13ad321f032f2c821f68aa5dc380",
+          "size_bytes": 51086
+        },
+        "labels": {
+          "left": "rloo_legacy",
+          "right": "rloo_quality"
+        },
+        "limitations": [
+          "This receipt is development-only and cannot support a confirmation or SOTA claim.",
+          "Per-task analyses are primary; pooled instances are descriptive because tasks may differ in size and difficulty.",
+          "Instance bootstrap intervals quantify paired development-set sampling variation, not training-seed uncertainty.",
+          "No multiplicity correction is applied; exact tests are descriptive diagnostics.",
+          "Conditional gap comparisons use only jointly feasible paired instances and must be read together with pass@K and candidate feasibility."
+        ],
+        "pairing": {
+          "candidate_budget": 8,
+          "key_fields": [
+            "task",
+            "semantic_instance_sha256",
+            "per_example_seed"
+          ],
+          "native_repair_verbatim_linkage": "not_applicable",
+          "pair_count": 100,
+          "per_example_seed_source_field": "sampling_seed",
+          "protocol_fingerprint": "cb2a9e97a2faddd5d1c9cb747eec1b9762e10bc647285d7da2ebdf9a0df97276",
+          "source_row_and_content_identity": "exact",
+          "status": "exact",
+          "strict_verifier": {
+            "implementation_manifest_sha256": "57640c9b9ecf967a6c2f3f05932b79c5f0a7754a8729832a75cde5c01745b6b9",
+            "implementations": [
+              {
+                "path": "rewards/co_tasks.py",
+                "sha256": "fa8a3c4a41af32d5e2851a5aae52a602809f3a1a8cc234dd24f3519f56a2380b",
+                "size": 119631
+              },
+              {
+                "path": "entrypoints/evaluate.py",
+                "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908",
+                "size": 275552
+              }
+            ],
+            "name": "clasp_strict_shared_verifier",
+            "schema_version": 1,
+            "tasks": [
+              "cvrp",
+              "jssp",
+              "mis",
+              "op",
+              "tsp"
+            ]
+          }
+        },
+        "per_task": {
+          "mis": {
+            "candidate_feasibility": {
+              "instance_level_exact_sign_test": {
+                "exact_two_sided_p": 0.0308837890625,
+                "non_tied_pairs": 18,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 4,
+                "right_regressions": 14,
+                "ties": 82
+              },
+              "left": 0.86,
+              "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11909662034767100116,
+                "interval": "paired_percentile",
+                "lower": -0.03375,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance_candidate_rate",
+                "rng": "numpy.random.PCG64",
+                "upper": -0.00375
+              },
+              "right": 0.8425,
+              "right_minus_left": -0.0175
+            },
+            "conditional_best_feasible_gap": {
+              "jointly_feasible_exact_sign_test": {
+                "exact_two_sided_p": 0.125,
+                "non_tied_pairs": 4,
+                "null": "equal probability of a positive or negative non-tied paired difference",
+                "right_improvements": 4,
+                "right_regressions": 0,
+                "ties": 91
+              },
+              "jointly_feasible_instances": 95,
+              "left_feasible_instances": 96,
+              "left_mean_on_jointly_feasible_instances": 0.02856968401697096,
+              "left_mean_on_left_feasible_instances": 0.02931374980846085,
+              "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 843881249324474932,
+                "interval": "paired_percentile",
+                "lower": -0.008003341687552214,
+                "replicates": 20000,
+                "resampling_unit": "jointly_feasible_paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": -0.0007518796992481202
+              },
+              "right_feasible_instances": 96,
+              "right_mean_on_jointly_feasible_instances": 0.024718389113044484,
+              "right_mean_on_right_feasible_instances": 0.026693048750259792,
+              "right_minus_left_on_jointly_feasible_instances": -0.003851294903926483
+            },
+            "paired_instances": 100,
+            "pass_at_k": {
+              "exact_mcnemar": {
+                "discordant_pairs": 2,
+                "exact_two_sided_p": 1.0,
+                "left_only_success": 1,
+                "right_only_success": 1
+              },
+              "left": 0.96,
+              "paired_bootstrap_95pct_ci": {
+                "base_seed": 20260814,
+                "confidence_level": 0.95,
+                "derived_seed": 11397651759245967447,
+                "interval": "paired_percentile",
+                "lower": -0.03,
+                "replicates": 20000,
+                "resampling_unit": "paired_instance",
+                "rng": "numpy.random.PCG64",
+                "upper": 0.03
+              },
+              "right": 0.96,
+              "right_minus_left": 0.0
+            }
+          }
+        },
+        "pooled_descriptive_only": {
+          "candidate_feasibility": {
+            "instance_level_exact_sign_test": {
+              "exact_two_sided_p": 0.0308837890625,
+              "non_tied_pairs": 18,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 4,
+              "right_regressions": 14,
+              "ties": 82
+            },
+            "left": 0.86,
+            "note": "Inference is paired at the instance level; candidates within an instance are not treated as independent replicates.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 13294240123489175897,
+              "interval": "paired_percentile",
+              "lower": -0.03375,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance_candidate_rate",
+              "rng": "numpy.random.PCG64",
+              "upper": -0.0025
+            },
+            "right": 0.8425,
+            "right_minus_left": -0.0175
+          },
+          "conditional_best_feasible_gap": {
+            "jointly_feasible_exact_sign_test": {
+              "exact_two_sided_p": 0.125,
+              "non_tied_pairs": 4,
+              "null": "equal probability of a positive or negative non-tied paired difference",
+              "right_improvements": 4,
+              "right_regressions": 0,
+              "ties": 91
+            },
+            "jointly_feasible_instances": 95,
+            "left_feasible_instances": 96,
+            "left_mean_on_jointly_feasible_instances": 0.02856968401697096,
+            "left_mean_on_left_feasible_instances": 0.02931374980846085,
+            "note": "The paired gap delta is conditioned on both systems having at least one strictly feasible candidate; negative right-minus-left is better.",
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 14498859797002034563,
+              "interval": "paired_percentile",
+              "lower": -0.00799498746867168,
+              "replicates": 20000,
+              "resampling_unit": "jointly_feasible_paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": -0.0007518796992481202
+            },
+            "right_feasible_instances": 96,
+            "right_mean_on_jointly_feasible_instances": 0.024718389113044484,
+            "right_mean_on_right_feasible_instances": 0.026693048750259792,
+            "right_minus_left_on_jointly_feasible_instances": -0.003851294903926483
+          },
+          "paired_instances": 100,
+          "pass_at_k": {
+            "exact_mcnemar": {
+              "discordant_pairs": 2,
+              "exact_two_sided_p": 1.0,
+              "left_only_success": 1,
+              "right_only_success": 1
+            },
+            "left": 0.96,
+            "paired_bootstrap_95pct_ci": {
+              "base_seed": 20260814,
+              "confidence_level": 0.95,
+              "derived_seed": 4161554366633659326,
+              "interval": "paired_percentile",
+              "lower": -0.03,
+              "replicates": 20000,
+              "resampling_unit": "paired_instance",
+              "rng": "numpy.random.PCG64",
+              "upper": 0.03
+            },
+            "right": 0.96,
+            "right_minus_left": 0.0
+          }
+        },
+        "receipt_sha256": "42ecbde3792f852033c18b94f241c736e9ed3e337f4122a3e18af39c8c51ae26",
+        "schema_version": 1,
+        "statistics_contract": {
+          "bootstrap_base_seed": 20260814,
+          "bootstrap_interval": "paired_percentile_95pct",
+          "bootstrap_replicates": 20000,
+          "bootstrap_rng": "numpy.random.PCG64",
+          "candidate_feasibility_inference_unit": "paired_instance_candidate_rate",
+          "gap_conditioning": "jointly_best_of_k_feasible_instances",
+          "multiple_comparison_adjustment": null
+        }
+      }
+    }
+  },
+  "protocol": "budget-matched-grpo-dev100-raw8-20260918-v1",
+  "quality_cdf": [
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.0,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.0,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.0,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.0,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.01,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.01,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.01,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.01,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.03,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.03,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.03,
+      "success_fraction": 0.67,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.03,
+      "success_fraction": 0.68,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.03571428571428571,
+      "success_fraction": 0.69,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.03571428571428571,
+      "success_fraction": 0.7,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.03571428571428571,
+      "success_fraction": 0.69,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.03571428571428571,
+      "success_fraction": 0.7,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.037037037037037035,
+      "success_fraction": 0.7,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.037037037037037035,
+      "success_fraction": 0.71,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.037037037037037035,
+      "success_fraction": 0.7,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.037037037037037035,
+      "success_fraction": 0.71,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.045454545454545456,
+      "success_fraction": 0.71,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.045454545454545456,
+      "success_fraction": 0.72,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.045454545454545456,
+      "success_fraction": 0.71,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.045454545454545456,
+      "success_fraction": 0.72,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.047619047619047616,
+      "success_fraction": 0.72,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.047619047619047616,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.047619047619047616,
+      "success_fraction": 0.72,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.047619047619047616,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.05,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.05,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.05,
+      "success_fraction": 0.72,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.05,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.05263157894736842,
+      "success_fraction": 0.74,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.05263157894736842,
+      "success_fraction": 0.74,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.05263157894736842,
+      "success_fraction": 0.73,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.05263157894736842,
+      "success_fraction": 0.74,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.06666666666666667,
+      "success_fraction": 0.76,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.06666666666666667,
+      "success_fraction": 0.76,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.06666666666666667,
+      "success_fraction": 0.75,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.06666666666666667,
+      "success_fraction": 0.76,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.07142857142857142,
+      "success_fraction": 0.77,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.07142857142857142,
+      "success_fraction": 0.77,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.07142857142857142,
+      "success_fraction": 0.77,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.07142857142857142,
+      "success_fraction": 0.79,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.07692307692307693,
+      "success_fraction": 0.79,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.07692307692307693,
+      "success_fraction": 0.79,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.07692307692307693,
+      "success_fraction": 0.79,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.07692307692307693,
+      "success_fraction": 0.81,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.08333333333333333,
+      "success_fraction": 0.82,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.08333333333333333,
+      "success_fraction": 0.8,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.08333333333333333,
+      "success_fraction": 0.81,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.08333333333333333,
+      "success_fraction": 0.84,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.09090909090909091,
+      "success_fraction": 0.84,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.09090909090909091,
+      "success_fraction": 0.8,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.09090909090909091,
+      "success_fraction": 0.83,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.09090909090909091,
+      "success_fraction": 0.86,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.09523809523809523,
+      "success_fraction": 0.85,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.09523809523809523,
+      "success_fraction": 0.8,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.09523809523809523,
+      "success_fraction": 0.84,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.09523809523809523,
+      "success_fraction": 0.87,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.1,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.1,
+      "success_fraction": 0.82,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.1,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.1,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.10714285714285714,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.10714285714285714,
+      "success_fraction": 0.82,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.10714285714285714,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.10714285714285714,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.1111111111111111,
+      "success_fraction": 0.91,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.1111111111111111,
+      "success_fraction": 0.83,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.1111111111111111,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.1111111111111111,
+      "success_fraction": 0.91,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.11764705882352941,
+      "success_fraction": 0.92,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.11764705882352941,
+      "success_fraction": 0.83,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.11764705882352941,
+      "success_fraction": 0.91,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.11764705882352941,
+      "success_fraction": 0.92,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.14285714285714285,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.14285714285714285,
+      "success_fraction": 0.86,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.14285714285714285,
+      "success_fraction": 0.93,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.14285714285714285,
+      "success_fraction": 0.93,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.16666666666666666,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.16666666666666666,
+      "success_fraction": 0.87,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.16666666666666666,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.16666666666666666,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.17647058823529413,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.17647058823529413,
+      "success_fraction": 0.88,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.17647058823529413,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.17647058823529413,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.18181818181818182,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.18181818181818182,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.18181818181818182,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.18181818181818182,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.21428571428571427,
+      "success_fraction": 0.96,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.21428571428571427,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.21428571428571427,
+      "success_fraction": 0.94,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.21428571428571427,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.22727272727272727,
+      "success_fraction": 0.97,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.22727272727272727,
+      "success_fraction": 0.89,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.22727272727272727,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.22727272727272727,
+      "success_fraction": 0.96,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.25,
+      "success_fraction": 0.97,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.25,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.25,
+      "success_fraction": 0.95,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.25,
+      "success_fraction": 0.96,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "classic_grpo",
+      "signed_gap_threshold": 0.2777777777777778,
+      "success_fraction": 0.97,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "foarl",
+      "signed_gap_threshold": 0.2777777777777778,
+      "success_fraction": 0.9,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_legacy",
+      "signed_gap_threshold": 0.2777777777777778,
+      "success_fraction": 0.96,
+      "task": "mis"
+    },
+    {
+      "instances": 100,
+      "method": "rloo_quality",
+      "signed_gap_threshold": 0.2777777777777778,
+      "success_fraction": 0.96,
+      "task": "mis"
+    }
+  ],
+  "receipt_sha256": "ef79646a7144e0d2fb3c73486a9757a551f0070f7df3fef983e3c059ef10eed8",
+  "reference": {
+    "certification_audit": {
+      "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/benchmark_v1/mis/existing_dev100_certification.json",
+      "sha256": "fe64c0dbab5670e1c92c2e89ecaa22811780b4772909e64690a2a1d64c3f585a",
+      "size_bytes": 1335
+    },
+    "description": "Previously inspected fresh DEV100; original native reference certificates retained.",
+    "evidence": [
+      {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/mis/reference_evidence.json",
+        "sha256": "150d0e0e844d02185ba20bb968593101527468ad022f783566af83c4a0a7fec3",
+        "size_bytes": 116641
+      },
+      {
+        "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/training_overlap_audit.json",
+        "sha256": "61a382d31356131a571786a5481648248640aaeb2b7649bcd1594dd766c5d62f",
+        "size_bytes": 14042
+      }
+    ],
+    "kind": "certified_optimum"
+  },
+  "source": {
+    "manifest_sha256": "52633632e3151ea95f46adfb2c2fd353c5c08bdccc6298e7e017c93768f543f6",
+    "root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v1"
+  },
+  "status": "complete_four_methods_within_task_milestone",
+  "step": 400,
+  "summary": [
+    {
+      "candidate_count": 800,
+      "candidate_feasibility_percent": 84.0,
+      "feasible_at_1_count": 82,
+      "feasible_at_1_percent": 82.0,
+      "feasible_at_8_count": 97,
+      "feasible_at_8_percent": 97.0,
+      "feasible_candidate_count": 672,
+      "instances": 100,
+      "mean_signed_reference_gap_percent": 2.906881997080203,
+      "method": "classic_grpo",
+      "own_success_gap_denominator": 97,
+      "reference_kind": "certified_optimum",
+      "success_within_0pct_percent": 67.0,
+      "success_within_10pct_percent": 89.0,
+      "success_within_1pct_percent": 67.0,
+      "success_within_3pct_percent": 67.0,
+      "success_within_5pct_percent": 73.0,
+      "task": "mis"
+    },
+    {
+      "candidate_count": 800,
+      "candidate_feasibility_percent": 72.25,
+      "feasible_at_1_count": 71,
+      "feasible_at_1_percent": 71.0,
+      "feasible_at_8_count": 90,
+      "feasible_at_8_percent": 90.0,
+      "feasible_candidate_count": 578,
+      "instances": 100,
+      "mean_signed_reference_gap_percent": 2.4563890542562716,
+      "method": "foarl",
+      "own_success_gap_denominator": 90,
+      "reference_kind": "certified_optimum",
+      "success_within_0pct_percent": 68.0,
+      "success_within_10pct_percent": 82.0,
+      "success_within_1pct_percent": 68.0,
+      "success_within_3pct_percent": 68.0,
+      "success_within_5pct_percent": 73.0,
+      "task": "mis"
+    },
+    {
+      "candidate_count": 800,
+      "candidate_feasibility_percent": 86.0,
+      "feasible_at_1_count": 85,
+      "feasible_at_1_percent": 85.0,
+      "feasible_at_8_count": 96,
+      "feasible_at_8_percent": 96.0,
+      "feasible_candidate_count": 688,
+      "instances": 100,
+      "mean_signed_reference_gap_percent": 2.931374980846085,
+      "method": "rloo_legacy",
+      "own_success_gap_denominator": 96,
+      "reference_kind": "certified_optimum",
+      "success_within_0pct_percent": 67.0,
+      "success_within_10pct_percent": 89.0,
+      "success_within_1pct_percent": 67.0,
+      "success_within_3pct_percent": 67.0,
+      "success_within_5pct_percent": 72.0,
+      "task": "mis"
+    },
+    {
+      "candidate_count": 800,
+      "candidate_feasibility_percent": 84.25,
+      "feasible_at_1_count": 82,
+      "feasible_at_1_percent": 82.0,
+      "feasible_at_8_count": 96,
+      "feasible_at_8_percent": 96.0,
+      "feasible_candidate_count": 674,
+      "instances": 100,
+      "mean_signed_reference_gap_percent": 2.669304875025979,
+      "method": "rloo_quality",
+      "own_success_gap_denominator": 96,
+      "reference_kind": "certified_optimum",
+      "success_within_0pct_percent": 68.0,
+      "success_within_10pct_percent": 90.0,
+      "success_within_1pct_percent": 68.0,
+      "success_within_3pct_percent": 68.0,
+      "success_within_5pct_percent": 73.0,
+      "task": "mis"
+    }
+  ],
+  "task": "mis",
+  "units": {
+    "paired_differences_and_95pct_CIs": "right minus left, fraction; multiply by 100 for percentage points",
+    "summary_feasibility_and_gap": "percent"
+  }
+}

@@ -32,6 +32,10 @@ from clasp.baselines.quality_signal_dev import QualitySignalRuntime
 from clasp.rewards import co_tasks
 
 PROTOCOL = 'budget-matched-grpo-development-20260918-v1'
+# A scoped continuation of the full-budget campaign reuses this runtime with its
+# own protocol string, so its contracts and receipts stay distinguishable.
+PROTOCOL_CONTINUATION = 'budget-matched-grpo-development-20260918-v2-continuation'
+PROTOCOLS = (PROTOCOL, PROTOCOL_CONTINUATION)
 PROFILE_ID = PROTOCOL
 METHODS = ('classic_grpo', 'foarl', 'rloo_legacy', 'rloo_quality')
 HORIZONS = {'cvrp': 500, 'tsp': 800, 'mis': 800, 'jssp': 800, 'op': 1250}
@@ -76,7 +80,7 @@ def file_identity(path):
 def validate_contract(contract):
     required = {'protocol', 'task', 'method', 'horizon', 'chunk_boundaries', 'source', 'expected_train_count'}
     require(isinstance(contract, dict) and required <= contract.keys(), 'Incomplete budget contract')
-    require(contract['protocol'] == PROTOCOL and contract['task'] in HORIZONS
+    require(contract['protocol'] in PROTOCOLS and contract['task'] in HORIZONS
             and contract['method'] in METHODS, 'Unknown budget task/method/protocol')
     task, horizon = contract['task'], contract['horizon']
     require(type(horizon) is int and horizon == HORIZONS[task], 'Task full horizon differs')
@@ -233,7 +237,7 @@ class BudgetMatchedRuntime:
 
     def resume_contract(self):
         self._check_binding()
-        return {'protocol': PROTOCOL, 'method': self.method, 'task': self.task, 'seed': 43,
+        return {'protocol': self.contract['protocol'], 'method': self.method, 'task': self.task, 'seed': 43,
                 'horizon': self.contract['horizon'], 'contract_file': copy.deepcopy(dict(self.contract_binding)),
                 'declaration': copy.deepcopy(dict(self.contract)),
                 'source': copy.deepcopy(self.contract['source']), 'algorithm_config': self.algorithm_config(),

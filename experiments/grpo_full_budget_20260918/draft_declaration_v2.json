@@ -56,6 +56,16 @@
     "top_k": 50,
     "top_p": 0.9
   },
+  "evaluation_binding_notes": {
+    "mis": {
+      "bound_file": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/mis/eval/test.json",
+      "reason": "v1-bound benchmark_v1 evaluation files were pruned on 2026-11-12; bound instead to the frozen data_eval DEV100 cohort that every published row was measured on"
+    },
+    "op": {
+      "bound_file": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/op/eval/test.json",
+      "reason": "v1-bound benchmark_v1 evaluation files were pruned on 2026-11-12; bound instead to the frozen data_eval DEV100 cohort that every published row was measured on"
+    }
+  },
   "evaluation_policy": "training-only continuation; arms are scored with the same standalone matched-protocol evaluator as the published rows (DEV100, raw8, seed 271828, jiang_f638)",
   "horizons": {
     "cvrp": 500,
@@ -619,7 +629,7 @@
   },
   "seed": 43,
   "source": {
-    "manifest_sha256": "ccc422fbc5b4f159a4eb24312b3843c5e3cad00bd2b18b939c2aa37c3e0a0811",
+    "manifest_sha256": "e8c64367235cc6b66f3d05e986cf1fea56f1f4468ee878ff55102d6dde2c38be",
     "root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v2"
   },
   "tasks": {
@@ -759,9 +769,9 @@
         "count": 100,
         "data_files": [
           {
-            "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3/mis/eval/test.json",
-            "sha256": "74242473abf4067eddd1898cfeb91f03147bb4a7f90ce3a46c575be6c9faf9f8",
-            "size_bytes": 1895648
+            "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/mis/eval/test.json",
+            "sha256": "c1616b87886ac37ee31db106d1c0f826992ce42283aa320aa71e83dcc8d218f4",
+            "size_bytes": 9871952
           }
         ],
         "data_root": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_fair_development_benchmark_20260905_v1/data_v3",
@@ -829,9 +839,9 @@
         "count": 100,
         "data_files": [
           {
-            "path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/benchmark_v1/op/eval/test.json",
-            "sha256": "06c4fb430f770409e7a8a6fc4f5d454e9c0227a8da265712eefccb4168f88c42",
-            "size_bytes": 870781
+            "path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/op/eval/test.json",
+            "sha256": "649446b39f4e98a9e58b9e45b4a5499d27904dfea25776c5f16a605a632686de",
+            "size_bytes": 5386373
           }
         ],
         "data_root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_external_baseline_all_tasks_20260910/benchmark_v1",

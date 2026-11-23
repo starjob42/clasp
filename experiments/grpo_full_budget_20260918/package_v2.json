@@ -1,18 +1,18 @@
 {
   "archive": {
     "path": "/lustre/fshomisc/home/rech/genlam01/uag72kz/clasp_campaigns/stage_v2/experiments/grpo_full_budget_20260918/source_v2.tar.gz",
-    "sha256": "c8b3971579b024dae45e8840ce57c6e74c5f3b83f15242b7cf32511bb58bfdec",
-    "size_bytes": 662873
+    "sha256": "26b70ce3ff0713bd657e16acc0320f6a8899d23d4b3917c74ec328049692cfc2",
+    "size_bytes": 663160
   },
   "draft_declaration": {
     "native_path": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/draft_declaration_v2.json",
     "path": "/lustre/fshomisc/home/rech/genlam01/uag72kz/clasp_campaigns/stage_v2/experiments/grpo_full_budget_20260918/draft_declaration_v2.json",
-    "sha256": "d82099c8ed0912adcf64b4bbefbe9f4ce4d1f00f3680d6ef54021595618f9f79",
-    "size_bytes": 31754
+    "sha256": "f182f9d4ee359bd9dc9dfcd78f5efa17922094b1d9772503e93b34a213ec3495",
+    "size_bytes": 32437
   },
   "numerical_changes_to_prior_campaigns": false,
   "source": {
-    "manifest_sha256": "ccc422fbc5b4f159a4eb24312b3843c5e3cad00bd2b18b939c2aa37c3e0a0811",
+    "manifest_sha256": "e8c64367235cc6b66f3d05e986cf1fea56f1f4468ee878ff55102d6dde2c38be",
     "root": "/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/source_v2"
   },
   "source_file_count": 126

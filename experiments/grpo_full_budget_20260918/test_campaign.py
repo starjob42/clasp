@@ -125,3 +125,115 @@ def test_no_dependency_gate_bypassed_on_dry_observation(tmp_path, monkeypatch):
     assert value.tick(False)
     assert len(value.state['eligible']) == 16
     assert all(jobs[name]['kind'] == 'diagnostic' and jobs[name]['step'] == 5 for name in value.state['eligible'])
+
+
+SCOPE = {'tasks': ['mis', 'op'], 'methods': ['foarl']}
+
+
+def continuation_declaration(root='/lustre/fsn1/projects/rech/vas/uag72kz/grpo_full_budget_20260918/campaign_v2_mis_op'):
+    jobs = common.continuation_graph(SCOPE)
+    return {'protocol': common.PROTOCOL_V2, 'schema_version': 1,
+            'claim_scope': 'continuation_single_seed_inspected_development_cohorts',
+            'initialization_attestation': 'checkpoint_fidelity_adapter_bytes',
+            'root': root, 'seed': 43, 'methods': list(common.METHODS), 'horizons': common.HORIZONS,
+            'tasks': {task: {} for task in common.TASKS}, 'scope': SCOPE, 'jobs': jobs,
+            'budget': {'maximum_jobs': len(jobs),
+                       'maximum_outstanding': 2,
+                       'maximum_a100_reservation_hours': sum(j['gpus'] * j['walltime_seconds'] / 3600 for j in jobs.values()),
+                       'controller_duration_days': 60, 'automatic_retry': False}}
+
+
+def test_continuation_graph_is_closed_and_single_arm():
+    jobs = common.continuation_graph(SCOPE)
+    assert len(jobs) == 44 and 'mis_foarl_eval_400' not in jobs
+    for name, job in jobs.items():
+        assert set(job['depends']) <= set(jobs), name
+    first = jobs['mis_foarl_train_50']
+    assert first['depends'] == ['mis_foarl_diagnostic_10']
+    assert jobs['op_foarl_train_1250']['prior_step'] == 1200
+    assert common.job_key('mis', 'foarl', 'train', 750) not in jobs
+    # Diagnostics stay inside the arm: no method waits for another method.
+    for task in ('mis', 'op'):
+        for method in common.METHODS:
+            if method == 'foarl':
+                continue
+            assert not any(name.startswith(f'{task}_{method}_') for name in jobs)
+    remaining, done = set(jobs), set()
+    while remaining:
+        ready = {name for name in remaining if set(jobs[name]['depends']) <= done}
+        assert ready
+        done.update(ready)
+        remaining -= ready
+
+
+def test_continuation_declaration_validates_and_refuses_drift():
+    d = continuation_declaration()
+    assert common.validate_declaration(d) is d
+    assert common.validate_declaration({**d, 'root': d['root']}) == d
+    wrong_protocol = {**d, 'protocol': common.PROTOCOL}
+    with pytest.raises(ValueError):
+        common.validate_declaration(wrong_protocol)
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'claim_scope': 'prospective_single_seed_inspected_development_cohorts'})
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'scope': {'tasks': ['mis', 'cvrp'], 'methods': ['foarl']}})
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'initialization_attestation': 'trust_me'})
+    dropped = {name: job for name, job in d['jobs'].items() if name != 'op_foarl_train_1250'}
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'jobs': dropped})
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'budget': {**d['budget'], 'automatic_retry': True}})
+    # A reduced graph must never validate as a full campaign.
+    with pytest.raises(ValueError):
+        common.validate_declaration({**d, 'scope': None, 'protocol': common.PROTOCOL})
+
+
+def test_continuation_initializer_rejects_missing_trainer_state_without_attestation(tmp_path, monkeypatch):
+    import sys
+    stub = type(sys)('clasp_stub')
+    models = type(sys)('models'); fidelity = type(sys)('fidelity')
+    fidelity.verify_checkpoint_fidelity = lambda checkpoint: {'receipt_sha256': 'stub'}
+    models.checkpoint_fidelity = fidelity
+    stub.models = models
+    monkeypatch.setitem(sys.modules, 'clasp', stub)
+    monkeypatch.setitem(sys.modules, 'clasp.models', models)
+    monkeypatch.setitem(sys.modules, 'clasp.models.checkpoint_fidelity', fidelity)
+    d = {'protocol': common.PROTOCOL_V2, 'root': str(tmp_path), 'initialization_attestation': None,
+         'tasks': {'op': {'initialization': {'checkpoint': '/sft', 'files': {}}}},
+         'jobs': {'x': {}}}
+    value = campaign.Campaign(d, {'path': '/tmp/d', 'sha256': 'a' * 64, 'size_bytes': 1})
+    (tmp_path / 'initializations').mkdir()
+    with pytest.raises(ValueError, match='attestation'):
+        value.initialization('op')
+    d['initialization_attestation'] = 'checkpoint_fidelity_adapter_bytes'
+    value = campaign.Campaign(d, {'path': '/tmp/d', 'sha256': 'a' * 64, 'size_bytes': 1})
+    assert value.initialization('op') is True
+    receipt = common.read(tmp_path / 'initializations' / 'op.json', sealed=True)
+    assert receipt['sft_trainer_state'] is None
+    assert receipt['initialization_attestation'] == 'checkpoint_fidelity_adapter_bytes'
+    assert receipt['protocol'] == common.PROTOCOL_V2
+
+
+def test_full_initializer_still_records_trainer_state(tmp_path, monkeypatch):
+    import sys
+    stub = type(sys)('clasp_stub')
+    models = type(sys)('models'); fidelity = type(sys)('fidelity')
+    fidelity.verify_checkpoint_fidelity = lambda checkpoint: {'receipt_sha256': 'stub'}
+    models.checkpoint_fidelity = fidelity
+    stub.models = models
+    monkeypatch.setitem(sys.modules, 'clasp', stub)
+    monkeypatch.setitem(sys.modules, 'clasp.models', models)
+    monkeypatch.setitem(sys.modules, 'clasp.models.checkpoint_fidelity', fidelity)
+    sft = tmp_path / 'sft'
+    sft.mkdir()
+    common.write_once(sft / 'trainer_state.json', {'global_step': 31250, 'max_steps': 31250})
+    d = {'protocol': common.PROTOCOL, 'root': str(tmp_path),
+         'tasks': {'mis': {'initialization': {'checkpoint': str(sft), 'files': {}}}},
+         'jobs': {'x': {}}}
+    value = campaign.Campaign(d, {'path': '/tmp/d', 'sha256': 'a' * 64, 'size_bytes': 1})
+    (tmp_path / 'initializations').mkdir()
+    assert value.initialization('mis') is True
+    receipt = common.read(tmp_path / 'initializations' / 'mis.json', sealed=True)
+    assert receipt['sft_trainer_state']['sha256'] == common.identity(sft / 'trainer_state.json')['sha256']
+    assert 'initialization_attestation' not in receipt

@@ -18,6 +18,15 @@ from common import (CONTRACT_NAME, COUNTS, METHODS, PROTOCOL, identity,
                     load_declaration, read, require, run_contract, signed,
                     verify, write_once)
 
+CAMPAIGN_TASKS = ('op', 'jssp', 'cvrp', 'mis', 'tsp')
+
+
+def declared_scope(d):
+    """Task/method coverage: full campaign, or the declared continuation scope."""
+    if d.get("scope") is None:
+        return CAMPAIGN_TASKS, METHODS
+    return tuple(d["scope"]["tasks"]), tuple(d["scope"]["methods"])
+
 
 def check_runtime_and_source(d):
     require(not os.environ.get('SLURM_JOB_ID'), 'CPU preflight runs outside a GPU allocation')
@@ -170,14 +179,14 @@ def main(argv=None):
         return 0
     verified_source = check_runtime_and_source(d)
     output.mkdir(exist_ok=False)
-    tasks = ('op', 'jssp', 'cvrp', 'mis', 'tsp')
+    tasks, methods = declared_scope(d)
     write_once(output / 'launch.json', signed({'protocol': PROTOCOL, 'declaration': binding,
-               'implementation': identity(__file__), 'tasks': list(tasks), 'methods': list(METHODS),
+               'implementation': identity(__file__), 'tasks': list(tasks), 'methods': list(methods),
                'created_at_utc': dt.datetime.now(dt.timezone.utc).isoformat(), 'gpu_used': False}))
     reports = {}
     for task in tasks:
         task_hash = None
-        for method in METHODS:
+        for method in methods:
             invocation = [d['runtime_python'], '-B', str(Path(__file__).absolute()),
                           '--declaration', binding['path'], '--declaration-sha', binding['sha256'],
                           '--output', str(output), '--task', task, '--method', method]

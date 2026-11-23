@@ -9,7 +9,7 @@ import subprocess
 import sys
 import time
 
-from common import (CONTRACT_NAME, HORIZONS, PROTOCOL, SEAL_NAME, identity,
+from common import (CONTRACT_NAME, HORIZONS, SEAL_NAME, identity,
                     load_declaration, output_dir, read, require, run_contract,
                     signed, verify, write_once)
 
@@ -69,7 +69,7 @@ def checkpoint_material(checkpoint, contract, contract_path, step, source_bindin
         require(bound["sha256"] == item["sha256"] and bound["size_bytes"] == item["size"],
                 "Inference artifact changed while sealing: " + item["path"])
     files.update(rank_state["files"])
-    return {"protocol": PROTOCOL, "status": "verified_budget_checkpoint", "task": contract["task"],
+    return {"protocol": contract["protocol"], "status": "verified_budget_checkpoint", "task": contract["task"],
             "method": contract["method"], "step": step, "max_steps": contract["horizon"], "world_size": 4,
             "contract": identity(contract_path), "files": files, "rank_state": rank_state,
             "initialization": contract["initialization"], "source": contract["source"],
@@ -163,7 +163,7 @@ def main():
             require(completed["checkpoint"] == predecessor == signed(checkpoint_material(checkpoint, contract, contract_path, prior, verified)), "Predecessor seal differs")
         resume = environment(d, contract, contract_path, job)
         cmd = command(d, contract, contract_path)
-        admission = {"protocol": PROTOCOL, "job": name, "job_id": os.environ["SLURM_JOB_ID"],
+        admission = {"protocol": contract["protocol"], "job": name, "job_id": os.environ["SLURM_JOB_ID"],
                      "contract": identity(contract_path), "command": cmd, "gpu_names": gpu_names,
                      "started_at_unix": time.time(), "source_verified_file_count": verified["verified_file_count"]}
         write_once(output / f"chunk-{job['step']}-admission.json", signed(admission))
@@ -182,7 +182,7 @@ def main():
         material = signed(checkpoint_material(checkpoint, contract, contract_path, job["step"], verified))
         write_once(checkpoint / SEAL_NAME, material)
         write_once(output / f"chunk-{job['step']}-complete.json", signed({
-            "protocol": PROTOCOL, "status": "verified_budget_training", "task": job["task"],
+            "protocol": contract["protocol"], "status": "verified_budget_training", "task": job["task"],
             "method": job["method"], "step": job["step"], "max_steps": HORIZONS[job["task"]],
             "world_size": 4, "contract": identity(contract_path), "checkpoint": material,
             "live_rank_restoration": live, "admission": identity(output / f"chunk-{job['step']}-admission.json"),

@@ -151,7 +151,7 @@ class Campaign:
             self.state = read(self.path, sealed=True)
             require(self.state["declaration"] == binding and set(self.state["jobs"]) == set(d["jobs"]), "Restart scope differs")
         else:
-            self.state = {"protocol": PROTOCOL, "declaration": binding, "started_at_unix": time.time(),
+            self.state = {"protocol": self.d.get("protocol", PROTOCOL), "declaration": binding, "started_at_unix": time.time(),
                           "deadline_unix": time.time() + 60 * 86400, "status": "monitoring",
                           "jobs": {name: {"status": "not_submitted"} for name in d["jobs"]}}
             self.save()
@@ -182,10 +182,28 @@ class Campaign:
             verify(record)
         from clasp.models.checkpoint_fidelity import verify_checkpoint_fidelity
         verify_checkpoint_fidelity(init["checkpoint"])
-        state = read(Path(init["checkpoint"]) / "trainer_state.json")
-        require(state.get("global_step") == 31250 and state.get("max_steps") == 31250, "Incomplete SFT initialization")
-        write_once(path, signed({"protocol": PROTOCOL, "task": task, "declaration": self.binding,
-                                 "initialization": init, "sft_trainer_state": identity(Path(init["checkpoint"]) / "trainer_state.json")}))
+        state_path = Path(init["checkpoint"]) / "trainer_state.json"
+        attestation = self.d.get("initialization_attestation")
+        if state_path.is_file():
+            state = read(state_path)
+            require(state.get("global_step") == 31250 and state.get("max_steps") == 31250,
+                    "Incomplete SFT initialization")
+            sft_state = identity(state_path)
+            recorded = None
+        else:
+            # The pruned 2026-11-13/14 cleanup removed one initializer's trainer
+            # state. The trainer never consumes it: the starting policy is the
+            # adapter itself, attested by checkpoint_fidelity.json. Record the
+            # declared attestation instead of pretending the state was seen.
+            require(attestation == "checkpoint_fidelity_adapter_bytes",
+                    "Missing SFT trainer state without a declared attestation")
+            sft_state = None
+            recorded = attestation
+        receipt = {"protocol": self.d.get("protocol", PROTOCOL), "task": task, "declaration": self.binding,
+                   "initialization": init, "sft_trainer_state": sft_state}
+        if recorded:
+            receipt["initialization_attestation"] = recorded
+        write_once(path, signed(receipt))
         return True
 
     def audit_completion(self, name, record):
@@ -298,7 +316,7 @@ class Campaign:
             require(reserved <= self.d["budget"]["maximum_a100_reservation_hours"], "Reservation bound exceeded")
             eval_binding = evaluation_binding(self.d, self.binding, job, name) if job["kind"] == "eval" else None
             cmd = submission_command(self.d, self.binding, name, job, eval_binding)
-            intent = {"protocol": PROTOCOL, "name": name, "job": job, "declaration": self.binding,
+            intent = {"protocol": self.d.get("protocol", PROTOCOL), "name": name, "job": job, "declaration": self.binding,
                       "command": cmd, "created_at_unix": time.time(), "evaluation_contract": eval_binding}
             write_once(self.root / "intents" / (name + ".json"), signed(intent))
             record = self.state["jobs"][name]

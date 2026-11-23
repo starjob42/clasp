@@ -7,6 +7,9 @@ import os
 from pathlib import Path
 
 PROTOCOL = "budget-matched-grpo-development-20260918-v1"
+# A continuation declares an explicit task/method scope and its own protocol, so
+# its receipts can never be mistaken for a row of the prospective full campaign.
+PROTOCOL_V2 = "budget-matched-grpo-development-20260918-v2-continuation"
 METHODS = ("classic_grpo", "foarl", "rloo_legacy", "rloo_quality")
 TASKS = ("op", "jssp", "cvrp", "mis", "tsp")
 HORIZONS = {"cvrp": 500, "mis": 800, "jssp": 800, "tsp": 800, "op": 1250}
@@ -116,16 +119,64 @@ def graph():
     return jobs
 
 
+def continuation_graph(scope):
+    """Dependency-closed subgraph for a declared continuation scope.
+
+    The job schema is identical to `graph()`. Two deliberate differences, both
+    recorded in the declaration:
+
+    * only the declared task/method pairs are present, and
+    * a method's first training chunk waits for *its own* 5->10 diagnostics
+      rather than for all four methods' diagnostics. The v1 rule gated a task
+      once for four arms that all ran; a single-arm continuation has nothing to
+      compare against, and paying for three unused arms would not make the
+      remaining arm any more comparable.
+    """
+    require(set(scope) == {"tasks", "methods"}, "Continuation scope keys")
+    require(scope["tasks"] and set(scope["tasks"]) <= set(TASKS), "Unknown continuation task")
+    require(scope["methods"] and set(scope["methods"]) <= set(METHODS), "Unknown continuation method")
+    jobs = {}
+    for task in TASKS:
+        if task not in scope["tasks"]:
+            continue
+        for method in METHODS:
+            if method not in scope["methods"]:
+                continue
+            for kind, stops in (("diagnostic", [5, 10]), ("train", boundaries(task))):
+                previous = 0
+                for stop in stops:
+                    if previous:
+                        dependencies = [job_key(task, method, kind, previous)]
+                    elif kind == "train":
+                        dependencies = [job_key(task, method, "diagnostic", 10)]
+                    else:
+                        dependencies = []
+                    hours = 1 if kind == "diagnostic" else CHUNK_HOURS[task] * ((stop - previous) // 50)
+                    name = job_key(task, method, kind, stop)
+                    jobs[name] = {"task": task, "method": method, "kind": kind, "step": stop,
+                                  "prior_step": previous, "depends": dependencies, "gpus": 4,
+                                  "walltime_seconds": hours * 3600}
+                    previous = stop
+    return jobs
+
+
 def output_dir(declaration, job):
     return Path(declaration["root"]) / ("diagnostics" if job["kind"] == "diagnostic" else "train") / job["task"] / job["method"]
 
 
 def validate_declaration(d):
-    require(d["protocol"] == PROTOCOL, "Wrong full-budget protocol")
+    continuation = d.get("scope") is not None
+    require(d["protocol"] == (PROTOCOL_V2 if continuation else PROTOCOL),
+            "Wrong full-budget protocol")
     require(d["methods"] == list(METHODS) and d["horizons"] == HORIZONS, "Changed numerical graph")
     require(set(d["tasks"]) == set(TASKS) and d["seed"] == 43, "Changed task/seed scope")
-    jobs = graph()
+    jobs = continuation_graph(d["scope"]) if continuation else graph()
     require(d["jobs"] == jobs, "Changed declared job graph")
+    if continuation:
+        require(d["claim_scope"] == "continuation_single_seed_inspected_development_cohorts",
+                "Continuation must not claim the prospective campaign scope")
+        require(d.get("initialization_attestation") in (None, "checkpoint_fidelity_adapter_bytes"),
+                "Unknown initializer attestation")
     require(d["budget"] == {"maximum_jobs": len(jobs), "maximum_outstanding": 2,
                            "maximum_a100_reservation_hours": sum(j["gpus"] * j["walltime_seconds"] / 3600 for j in jobs.values()),
                            "controller_duration_days": 60, "automatic_retry": False}, "Changed budget")
@@ -146,7 +197,7 @@ def load_declaration(path, sha):
 def run_contract(d, binding, job, initialization):
     task, method = job["task"], job["method"]
     diagnostic = job["kind"] == "diagnostic"
-    return {"protocol": PROTOCOL, "schema_version": 1, "stage": "grpo", "task": task,
+    return {"protocol": d.get("protocol", PROTOCOL), "schema_version": 1, "stage": "grpo", "task": task,
             "method": method, "status": "development_only_not_publication_eligible",
             "horizon": HORIZONS[task], "fixed_horizon": {"max_steps": HORIZONS[task], "world_size": 4},
             "chunk_boundaries": [5, 10] if diagnostic else boundaries(task), "expected_train_count": COUNTS[task],

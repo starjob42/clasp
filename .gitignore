@@ -65,3 +65,9 @@ experiments/grpo_full_budget_20260918/**/__pycache__/
 experiments/grpo_full_budget_20260918/**/*.pyc
 experiments/grpo_full_budget_20260918/**/*.log
 experiments/grpo_full_budget_20260918/.*.lock
+
+# The budget-matched campaign's numerical audit helper is part of the published
+# reproduction path; the surrounding external-baseline campaign tree is not.
+!experiments/grpo_external_baseline_all_tasks_20260910/
+experiments/grpo_external_baseline_all_tasks_20260910/*
+!experiments/grpo_external_baseline_all_tasks_20260910/all_tasks_evaluation.py

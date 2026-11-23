@@ -250,7 +250,12 @@ def test_wrapper_has_one_gpu_bounded_runtime_and_actual_spool_binding():
 
 def test_adapter_preserves_generation_and_replaces_hardcoded_terminal100(tmp_path):
     root = HERE.parents[1]
+    # In the private workspace the cohort's canonical root is the frozen
+    # external-baseline source; the published layout carries only the
+    # byte-identical numerical audit helper, so fall back to the repo root.
     canonical = root / "experiments/grpo_external_baseline_all_tasks_20260910/source_v3"
+    if not (canonical / ev.HELPER).is_file():
+        canonical = root
     value = {"task": "cvrp", "method": "rloo_quality", "step": 400, "horizon": 500,
              "source": {"root": str(root)}, "runtime_python": "/native/python",
              "output_root": str(tmp_path / "evaluation"), "terminal_audit": {"sha256": "audit"}}

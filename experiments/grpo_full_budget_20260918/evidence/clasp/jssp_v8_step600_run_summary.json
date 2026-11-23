@@ -1,0 +1,589 @@
+{
+  "stage": "sft",
+  "evaluation_purpose": "development",
+  "benchmark_manifest": null,
+  "campaign_manifest": null,
+  "campaign_run_binding": null,
+  "confirmation_attempt_claim": null,
+  "best_run_update_requested": false,
+  "stage_dirname": "sft",
+  "model_stage": "sft_only",
+  "checkpoint_name": "seg500_600-checkpoint-600",
+  "run_label": "sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33",
+  "run_status": "complete",
+  "experiment_fingerprint": "ec0063914b3346c9ee352083303051fc9ac58cac7ac56d45fdd8cfdfd37c8e65",
+  "experiment_fingerprint_schema_version": 1,
+  "protocol_fingerprint": "74496e35fbf2e2d44909d140cc13b9f06419f488b5cbb08760b19cb6ffa9bbe0",
+  "experiment_provenance": {
+    "schema_version": 1,
+    "model": {
+      "checkpoint_artifact": {
+        "kind": "local_directory",
+        "basename": "checkpoint-600",
+        "manifest_sha256": "7db4f9c881935a5d795e34281864af0641535e644f8ebd7d8488635450717925",
+        "files": [
+          {
+            "path": "adapter_config.json",
+            "size": 1143,
+            "sha256": "f7aa0c35ea55db27e2c451187769df8dd5de1c4347851158df69ed6fff87a087"
+          },
+          {
+            "path": "adapter_model.safetensors",
+            "size": 646245176,
+            "sha256": "2374901c638405082f26b4976e0baed35f648aec4e432fb978d4a65d0f9e8d7b"
+          },
+          {
+            "path": "added_tokens.json",
+            "size": 605,
+            "sha256": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b"
+          },
+          {
+            "path": "checkpoint_fidelity.json",
+            "size": 141180,
+            "sha256": "d21a7d3a89178d4aa226aa8b6f9e84fa0d19440771e846637e0fd91da2954c02"
+          },
+          {
+            "path": "merges.txt",
+            "size": 1671853,
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+          },
+          {
+            "path": "special_tokens_map.json",
+            "size": 617,
+            "sha256": "560aa69e8ac8bb38c99dc2d38be9307e5380fe9047d61eb434d2a6b97272d296"
+          },
+          {
+            "path": "tokenizer.json",
+            "size": 11422164,
+            "sha256": "0b8677cc3a1f61e4f579577cced1576973e184cf4cbc6a7cab96250fb64644b1"
+          },
+          {
+            "path": "tokenizer_config.json",
+            "size": 4911,
+            "sha256": "72c71e8f9e2543217ecca42e30aa0297155a900a1d799c151b406518976d5f08"
+          },
+          {
+            "path": "vocab.json",
+            "size": 2776833,
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+          }
+        ]
+      },
+      "checkpoint_fidelity": null,
+      "exact_peft_kl_runtime": null,
+      "exact_peft_kl_post_step": null,
+      "base_model_reference": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_base_sft500k_clean_20260821_anchor_v1/inputs/Qwen2.5-7B-base_86e6e1ec",
+      "base_model_artifact": {
+        "kind": "local_directory",
+        "basename": "Qwen2.5-7B-base_86e6e1ec",
+        "manifest_sha256": "f75ccf500516ae00436d754a0a894f8a8cd1ab4ad573b0b36739d4443540f445",
+        "files": [
+          {
+            "path": "added_tokens.json",
+            "size": 605,
+            "sha256": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b"
+          },
+          {
+            "path": "config.json",
+            "size": 776,
+            "sha256": "b26a5ed46a16c83389be4f0d6ca36340af9d7089931ea4a844937a1fe8102d4b"
+          },
+          {
+            "path": "generation_config.json",
+            "size": 172,
+            "sha256": "9809d6405255be41d508714c24f5ab8071f079f533e6dabc51c924993b5b58ea"
+          },
+          {
+            "path": "merges.txt",
+            "size": 1671853,
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+          },
+          {
+            "path": "model-00001-of-00004.safetensors",
+            "size": 4877660776,
+            "sha256": "37753d1c8dc943058221bf364c12695f6c2afafaa29b470af86d40ce0655e7a5"
+          },
+          {
+            "path": "model-00002-of-00004.safetensors",
+            "size": 4932751008,
+            "sha256": "cc3a200b9309fec7d681071e1d38434ce64644fee1a47fb4fcc02f3e282b3bf3"
+          },
+          {
+            "path": "model-00003-of-00004.safetensors",
+            "size": 4330865200,
+            "sha256": "a59fee34dc91e53bff70df11b369bef26b42c978647f879f39e189764edc296b"
+          },
+          {
+            "path": "model-00004-of-00004.safetensors",
+            "size": 1089994880,
+            "sha256": "5be8567a86b9f8fdf251358a5757baf1e45239e4ba2ed2bb04d81d824a7031c5"
+          },
+          {
+            "path": "special_tokens_map.json",
+            "size": 617,
+            "sha256": "560aa69e8ac8bb38c99dc2d38be9307e5380fe9047d61eb434d2a6b97272d296"
+          },
+          {
+            "path": "tokenizer.json",
+            "size": 11421896,
+            "sha256": "9c5ae00e602b8860cbd784ba82a8aa14e8feecec692e7076590d014d7b7fdafa"
+          },
+          {
+            "path": "tokenizer_config.json",
+            "size": 4716,
+            "sha256": "a2537cb661e6d09ae28780d1b6b0b17469b124431b00062ad7321bde80e696c4"
+          },
+          {
+            "path": "vocab.json",
+            "size": 2776833,
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+          }
+        ]
+      },
+      "loaded_revision": null,
+      "loaded_config": {
+        "class": "Qwen2Config",
+        "sha256": "ab0a2e88024930c1bb08ea86ea0b15dadcb53a62b17848b02914bdc052878838"
+      },
+      "tokenizer_artifact": {
+        "kind": "local_directory",
+        "basename": "checkpoint-600",
+        "manifest_sha256": "143aad51e184956f64ed0eb5dee833360e60afbc6e58dde9b0fbdb379351628d",
+        "files": [
+          {
+            "path": "added_tokens.json",
+            "size": 605,
+            "sha256": "58b54bbe36fc752f79a24a271ef66a0a0830054b4dfad94bde757d851968060b"
+          },
+          {
+            "path": "merges.txt",
+            "size": 1671853,
+            "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+          },
+          {
+            "path": "special_tokens_map.json",
+            "size": 617,
+            "sha256": "560aa69e8ac8bb38c99dc2d38be9307e5380fe9047d61eb434d2a6b97272d296"
+          },
+          {
+            "path": "tokenizer.json",
+            "size": 11422164,
+            "sha256": "0b8677cc3a1f61e4f579577cced1576973e184cf4cbc6a7cab96250fb64644b1"
+          },
+          {
+            "path": "tokenizer_config.json",
+            "size": 4911,
+            "sha256": "72c71e8f9e2543217ecca42e30aa0297155a900a1d799c151b406518976d5f08"
+          },
+          {
+            "path": "vocab.json",
+            "size": 2776833,
+            "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+          }
+        ]
+      },
+      "loaded_tokenizer": {
+        "class": "Qwen2TokenizerFast",
+        "vocab_sha256": "3b15706f4d44a6e9298fb9659de247fc7a1afb59c6989b184fbb354e8332dd60",
+        "special_tokens_sha256": "d49da07609b0f5b9bbdf2efae7b881fa8479a8c4341e12ae34772ca63595b8c9",
+        "chat_template_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "commit_hash": null
+      }
+    },
+    "training_run_contract": null,
+    "training_run_contract_sha256": null,
+    "data": {
+      "manifest_sha256": "6507bf27562d02ceff6ef09f0afbd04ab2a55e660bb78c8051ff928d28c8b116",
+      "files": [
+        {
+          "task": "jssp",
+          "split": "eval",
+          "path": "jssp/eval/test.json",
+          "size": 5305285,
+          "sha256": "be14c30f929923a33c0e212bd5e4c72bbc6dfff4c9fe30891f699ebb209169e5"
+        }
+      ]
+    },
+    "prompting": {
+      "no_reason": true,
+      "prompt_template": "jiang_f638_no_reason",
+      "prompt_style_stage_default": "jiang_f638",
+      "prompt_style_requested": "jiang_f638",
+      "prompt_style_resolved": "jiang_f638",
+      "strict_chat_prompt": false,
+      "op_strict_budget_hint": false,
+      "op_prompt_budget_scale": 1.0,
+      "op_prompt_budget_scale_min_size": 0,
+      "op_prompt_budget_scale_max_size": 0,
+      "op_prompt_budget_scale_size_ranges": [],
+      "clasp_tsp_prompt_knn": "0",
+      "clasp_tsp_prompt_knn_distances": "0",
+      "clasp_tsp_input_order": "",
+      "clasp_tsp_relabel_order": "",
+      "clasp_tsp_route_canonicalize": "",
+      "clasp_tsp_route_only_output": "0",
+      "clasp_tsp_label_tta_schedule": "",
+      "clasp_mis_relabel_order": "",
+      "clasp_mis_jiang_response_output": "0",
+      "clasp_mis_prompt_node_degrees": "0",
+      "clasp_mis_prompt_low_degree_k": "32"
+    },
+    "generation": {
+      "seed": 271828,
+      "seed_policy": "per_example_sha256_v1",
+      "dtype": "float16",
+      "max_new_tokens": 3000,
+      "max_prompt_length": 29768,
+      "num_return_sequences": 8,
+      "generation_batch_size": 8,
+      "do_sample": true,
+      "temperature": 0.7,
+      "temperature_schedule": [],
+      "top_p": 0.9,
+      "top_p_schedule": [],
+      "op_size_band_top_p_schedule": [],
+      "op_size_band_top_p_min_size": 0,
+      "op_size_band_top_p_max_size": 0,
+      "top_k": 50,
+      "repetition_penalty": 1.0,
+      "model_context_window": 131072
+    },
+    "selection": {
+      "evaluation_purpose": "development",
+      "benchmark_manifest": null,
+      "campaign_manifest": null,
+      "checkpoint_selection_receipt": null,
+      "tasks": [
+        "jssp"
+      ],
+      "split": "eval",
+      "max_eval_samples_per_task": 100,
+      "eval_start_index": 0,
+      "eval_samples_per_task": {},
+      "size_bucket": "all",
+      "min_instance_size": 0,
+      "max_instance_size": 0,
+      "prefer_subset_files": false
+    },
+    "verifier": {
+      "name": "clasp_strict_shared_verifier",
+      "schema_version": 1,
+      "implementation_manifest_sha256": "60bfa381f4ec91b9de464e88e55f008949d9a75b025e7c5f354f6aa4a7dbb1d3",
+      "implementations": [
+        {
+          "path": "rewards/co_tasks.py",
+          "size": 123313,
+          "sha256": "ceff9604483e3aa443b89c2dcbb4f17a8d8719d3ddda4efa3520d7ae051a3ab9"
+        },
+        {
+          "path": "entrypoints/evaluate.py",
+          "size": 275552,
+          "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+        }
+      ],
+      "tasks": [
+        "cvrp",
+        "jssp",
+        "mis",
+        "op",
+        "tsp"
+      ]
+    },
+    "code": {
+      "manifest_sha256": "fb37551f3e4fee0ed59ff004ef9a77fbf0553d45d8111dabff0b4141e31cec2d",
+      "files": [
+        {
+          "path": "entrypoints/evaluate.py",
+          "size": 275552,
+          "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+        },
+        {
+          "path": "data/loaders.py",
+          "size": 79285,
+          "sha256": "0be26d0bf5593934a57329d448ffe8dd04232fd4a3d715d169c353fe51f2a3b1"
+        },
+        {
+          "path": "data/prompts.py",
+          "size": 13140,
+          "sha256": "6270e81b15485eeaccb1119d694bb3590074295e8973a5aebbd299605a59e232"
+        },
+        {
+          "path": "models/loading.py",
+          "size": 16739,
+          "sha256": "b93057dfdb582a9339c799ae8314e63bd3da63e89ad3ed633eb2e179ff8736e8"
+        },
+        {
+          "path": "rewards/co_tasks.py",
+          "size": 123313,
+          "sha256": "ceff9604483e3aa443b89c2dcbb4f17a8d8719d3ddda4efa3520d7ae051a3ab9"
+        },
+        {
+          "path": "runtime.py",
+          "size": 34598,
+          "sha256": "c5d1a81f1551b432950deda87b6b7a23822bf06cade4041e4ba6899b8d0cc8e4"
+        }
+      ]
+    },
+    "runtime_versions": {
+      "python": "3.10.8",
+      "datasets": "4.3.0",
+      "peft": "0.18.0",
+      "safetensors": "0.7.0",
+      "torch": "2.9.1",
+      "transformers": "4.57.3",
+      "cuda_runtime": "12.8",
+      "cudnn": 91002,
+      "cuda_available": true,
+      "gpu_name": "NVIDIA A100-SXM4-80GB",
+      "gpu_capability": [
+        8,
+        0
+      ]
+    }
+  },
+  "training_run_contract": null,
+  "training_run_contract_sha256": null,
+  "training_run_contract_identity": null,
+  "checkpoint_selection_binding": null,
+  "code_identity": {
+    "manifest_sha256": "fb37551f3e4fee0ed59ff004ef9a77fbf0553d45d8111dabff0b4141e31cec2d",
+    "files": [
+      {
+        "path": "entrypoints/evaluate.py",
+        "size": 275552,
+        "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+      },
+      {
+        "path": "data/loaders.py",
+        "size": 79285,
+        "sha256": "0be26d0bf5593934a57329d448ffe8dd04232fd4a3d715d169c353fe51f2a3b1"
+      },
+      {
+        "path": "data/prompts.py",
+        "size": 13140,
+        "sha256": "6270e81b15485eeaccb1119d694bb3590074295e8973a5aebbd299605a59e232"
+      },
+      {
+        "path": "models/loading.py",
+        "size": 16739,
+        "sha256": "b93057dfdb582a9339c799ae8314e63bd3da63e89ad3ed633eb2e179ff8736e8"
+      },
+      {
+        "path": "rewards/co_tasks.py",
+        "size": 123313,
+        "sha256": "ceff9604483e3aa443b89c2dcbb4f17a8d8719d3ddda4efa3520d7ae051a3ab9"
+      },
+      {
+        "path": "runtime.py",
+        "size": 34598,
+        "sha256": "c5d1a81f1551b432950deda87b6b7a23822bf06cade4041e4ba6899b8d0cc8e4"
+      }
+    ]
+  },
+  "verifier_identity": {
+    "name": "clasp_strict_shared_verifier",
+    "schema_version": 1,
+    "implementation_manifest_sha256": "60bfa381f4ec91b9de464e88e55f008949d9a75b025e7c5f354f6aa4a7dbb1d3",
+    "implementations": [
+      {
+        "path": "rewards/co_tasks.py",
+        "size": 123313,
+        "sha256": "ceff9604483e3aa443b89c2dcbb4f17a8d8719d3ddda4efa3520d7ae051a3ab9"
+      },
+      {
+        "path": "entrypoints/evaluate.py",
+        "size": 275552,
+        "sha256": "e9ab65f8486ceacf7f8e020e48efc571a3f2915ce4d3a7db05813aa424198908"
+      }
+    ],
+    "tasks": [
+      "cvrp",
+      "jssp",
+      "mis",
+      "op",
+      "tsp"
+    ]
+  },
+  "generated_at_utc": "2026-11-22T23:55:44Z",
+  "tasks": [
+    "jssp"
+  ],
+  "split": "eval",
+  "resolved_model_path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/train/jssp/seg500_600/checkpoints/checkpoint-600",
+  "resolved_run_dir": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/train/jssp/seg500_600",
+  "resolved_hyperparams_path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/train/jssp/seg500_600/hyperparams.json",
+  "base_model_name": "Qwen2.5-7B-base_86e6e1ec",
+  "data_root": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval",
+  "inference_root": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp",
+  "results_dir": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp/sft/seg500_600-checkpoint-600",
+  "best_run_scope": "eval_jssp_sample_k8_seed271828_start0_max100_caps-none_protocol74496e35fbf2",
+  "generation": {
+    "seed": 271828,
+    "seed_policy": "per_example_sha256_v1",
+    "dtype": "float16",
+    "max_new_tokens": 3000,
+    "max_prompt_length": 29768,
+    "num_return_sequences": 8,
+    "generation_batch_size": 8,
+    "do_sample": true,
+    "temperature": 0.7,
+    "temperature_schedule": [],
+    "top_p": 0.9,
+    "top_p_schedule": [],
+    "op_size_band_top_p_schedule": [],
+    "op_size_band_top_p_min_size": 0,
+    "op_size_band_top_p_max_size": 0,
+    "top_k": 50,
+    "repetition_penalty": 1.0,
+    "model_context_window": 131072
+  },
+  "prompting": {
+    "no_reason": true,
+    "prompt_template": "jiang_f638_no_reason",
+    "prompt_style_stage_default": "jiang_f638",
+    "prompt_style_requested": "jiang_f638",
+    "prompt_style_resolved": "jiang_f638",
+    "strict_chat_prompt": false,
+    "op_strict_budget_hint": false,
+    "op_prompt_budget_scale": 1.0,
+    "op_prompt_budget_scale_min_size": 0,
+    "op_prompt_budget_scale_max_size": 0,
+    "op_prompt_budget_scale_size_ranges": [],
+    "clasp_tsp_prompt_knn": "0",
+    "clasp_tsp_prompt_knn_distances": "0",
+    "clasp_tsp_input_order": "",
+    "clasp_tsp_relabel_order": "",
+    "clasp_tsp_route_canonicalize": "",
+    "clasp_tsp_route_only_output": "0",
+    "clasp_tsp_label_tta_schedule": "",
+    "clasp_mis_relabel_order": "",
+    "clasp_mis_jiang_response_output": "0",
+    "clasp_mis_prompt_node_degrees": "0",
+    "clasp_mis_prompt_low_degree_k": "32",
+    "tokenizer_path": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/train/jssp/seg500_600/checkpoints/checkpoint-600"
+  },
+  "limits": {
+    "evaluation_purpose": "development",
+    "benchmark_manifest": null,
+    "campaign_manifest": null,
+    "checkpoint_selection_receipt": null,
+    "tasks": [
+      "jssp"
+    ],
+    "split": "eval",
+    "max_eval_samples_per_task": 100,
+    "eval_start_index": 0,
+    "eval_samples_per_task": {},
+    "size_bucket": "all",
+    "min_instance_size": 0,
+    "max_instance_size": 0,
+    "prefer_subset_files": false,
+    "resume": true
+  },
+  "per_task_dataset_info": {
+    "jssp": {
+      "source": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/jssp/eval/test.json",
+      "json_files": [
+        "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/jssp/eval/test.json"
+      ],
+      "available_examples": 500,
+      "requested_examples": 100,
+      "loaded_examples": 100,
+      "size_selection": {
+        "size_bucket": "all",
+        "min_instance_size": 0,
+        "max_instance_size": 0,
+        "size_filter_active": false,
+        "available_examples": 500,
+        "bucket_examples_before_cap": 500,
+        "requested_examples": 100,
+        "eval_start_index": 0,
+        "loaded_examples": 100,
+        "all_size_summary": {
+          "known_examples": 500,
+          "unknown_examples": 0,
+          "min": 25,
+          "median": 140.0,
+          "mean": 157.05,
+          "max": 400
+        },
+        "selected_size_summary": {
+          "known_examples": 100,
+          "unknown_examples": 0,
+          "min": 35,
+          "median": 160.0,
+          "mean": 166.28,
+          "max": 360
+        }
+      },
+      "num_candidates_per_instance": 8,
+      "expected_candidates_total": 800
+    }
+  },
+  "overall": {
+    "examples": 100,
+    "candidates": 800,
+    "feasible_candidates": 793,
+    "candidate_feasibility_rate": 0.99125,
+    "best_of_n_feasible_examples": 100,
+    "best_of_n_instance_feasibility_rate": 1.0,
+    "mean_best_feasible_gap": 0.06396380275799803,
+    "median_best_feasible_gap": 0.061810121538155016,
+    "std_best_feasible_gap": 0.04730624654171942,
+    "mean_feasible_gap_std_in_batch": 0.04370158124945493,
+    "std_feasible_gap_std_in_batch": 0.020540090708339977,
+    "total_generation_time_sec": 2883.8058149938006,
+    "mean_generation_time_sec": 28.838058149938007,
+    "std_generation_time_sec": 16.064977968686303,
+    "mean_generation_time_sec_per_candidate": 3.604757268742251,
+    "std_generation_time_sec_per_candidate": 2.008122246085788,
+    "generated_tokens": 446412,
+    "mean_generated_tokens_per_instance": 4464.12,
+    "peak_gpu_memory_allocated_bytes": 25397527040,
+    "peak_gpu_memory_reserved_bytes": 38377881600
+  },
+  "per_task": {
+    "jssp": {
+      "examples": 100,
+      "candidates": 800,
+      "feasible_candidates": 793,
+      "candidate_feasibility_rate": 0.99125,
+      "best_of_n_feasible_examples": 100,
+      "best_of_n_instance_feasibility_rate": 1.0,
+      "mean_best_feasible_gap": 0.06396380275799803,
+      "median_best_feasible_gap": 0.061810121538155016,
+      "std_best_feasible_gap": 0.04730624654171942,
+      "mean_feasible_gap_std_in_batch": 0.04370158124945493,
+      "std_feasible_gap_std_in_batch": 0.020540090708339977,
+      "total_generation_time_sec": 2883.8058149938006,
+      "mean_generation_time_sec": 28.838058149938007,
+      "std_generation_time_sec": 16.064977968686303,
+      "mean_generation_time_sec_per_candidate": 3.604757268742251,
+      "std_generation_time_sec_per_candidate": 2.008122246085788,
+      "generated_tokens": 446412,
+      "mean_generated_tokens_per_instance": 4464.12,
+      "peak_gpu_memory_allocated_bytes": 25397527040,
+      "peak_gpu_memory_reserved_bytes": 38377881600,
+      "available_examples": 500,
+      "requested_examples": 100,
+      "loaded_examples": 100,
+      "source": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_foarl_v3_reproduction_20261018_v1/data_eval/jssp/eval/test.json"
+    }
+  },
+  "details_artifact": {
+    "basename": "run_details__sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33.jsonl",
+    "sha256": "ab5b37c3ccc5332d71b98937a39e29d2ad257546a77f0237a485eb9681de13d9",
+    "size_bytes": 2213084,
+    "record_count": 100
+  },
+  "files": {
+    "run_config": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp/sft/seg500_600-checkpoint-600/run_config__sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33.json",
+    "summary": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp/sft/seg500_600-checkpoint-600/run_summary__sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33.json",
+    "details": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp/sft/seg500_600-checkpoint-600/run_details__sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33.jsonl",
+    "csv_by_task": {
+      "jssp": "/lustre/fsn1/projects/rech/vas/uag72kz/clasp_v8_jssp800_20261118/eval/inference_matched_20261122/jssp_v8_s600/jssp/sft/seg500_600-checkpoint-600/jssp__sft_only_seg500_600-checkpoint-600_eval_k8_jssp_v8_s600_jssp_eval0_n100_bon8_fpec0063914b33.csv"
+    },
+    "best_run_dir": null
+  },
+  "summary_sha256": "82aaf443b9aefe1c5a213387a3604d46c9309ab5fef23090b94f6411f1bf4fd1"
+}

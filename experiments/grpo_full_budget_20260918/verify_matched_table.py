@@ -53,6 +53,15 @@ FOARL_REPORT_ROWS = [
     ("MIS", "foarl/mis_step400_campaign_report.json", 400, 0.90, 0.024563890542562715),
 ]
 
+# CLASP retains checkpoints only at 100-step boundaries, so the two tasks whose
+# FOARL arm stopped at 650 are also measured one step either side of it.
+CLASP_BRACKET_ROWS = [
+    ("JSSP", "clasp/jssp_v8_step600_run_summary.json", 600, 1.0, 0.06396380275799803),
+    ("JSSP", "clasp/jssp_v8_step700_run_summary.json", 700, 1.0, 0.0635415065771699),
+    ("TSP", "clasp/tsp_v8_step600_run_summary.json", 600, 1.0, 0.00637115856623555),
+    ("TSP", "clasp/tsp_v8_step700_run_summary.json", 700, 1.0, 0.006331326856957716),
+]
+
 
 def require(condition, message):
     if not condition:
@@ -133,12 +142,16 @@ def main():
     args = parser.parse_args()
 
     clasp = [run_summary_row(*row, method="clasp") for row in CLASP_ROWS]
+    bracket = [run_summary_row(*row, method="clasp") for row in CLASP_BRACKET_ROWS]
     foarl = [run_summary_row(*row, method="foarl") for row in FOARL_ROWS]
     foarl += [campaign_report_row(*row) for row in FOARL_REPORT_ROWS]
     foarl.sort(key=lambda item: item["task"])
 
-    for row in clasp:
+    for row in clasp + bracket:
         require(row["prompt_style"] == "jiang_f638", "CLASP rows must use the jiang_f638 prompt")
+    for row in bracket:
+        require(row["checkpoint"].endswith(f"checkpoint-{row['step']}"),
+                f"{row['evidence']}: checkpoint does not match its step")
 
     table = {}
     for row in clasp + foarl:
@@ -158,9 +171,23 @@ def main():
             fmt = lambda r: (f"{r['step']}", f"{r['bon_feasibility']:.1%} / {r['mean_gap']:.3%}") if r else ("-", "-")
             (ls, lg), (rs, rg) = fmt(left), fmt(right)
             print(f"| {task} | {ls} | {lg} | {rs} | {rg} | {delta_text} |")
+
+        steps = {}
+        for row in bracket:
+            steps.setdefault(row["task"], {})[row["step"]] = row
+        print()
+        print("| Task | CLASP 600 gap | CLASP 700 gap | FOARL 650 gap | Both CLASP endpoints better |")
+        print("| --- | ---: | ---: | ---: | :---: |")
+        for task in ("JSSP", "TSP"):
+            left, right = steps[task][600], steps[task][700]
+            foarl_row = table[task]["foarl"]
+            better = all(row["mean_gap"] < foarl_row["mean_gap"] for row in (left, right))
+            print(f"| {task} | {left['mean_gap']:.3%} | {right['mean_gap']:.3%} "
+                  f"| {foarl_row['mean_gap']:.3%} | {'yes' if better else 'no'} |")
         return 0
 
-    print(json.dumps({"protocol": PROTOCOL, "table": table}, indent=2, sort_keys=True))
+    print(json.dumps({"protocol": PROTOCOL, "table": table, "bracket": bracket},
+                     indent=2, sort_keys=True))
     print("\nMATCHED_TABLE_VERIFIED rows=%d" % sum(len(v) for v in table.values()))
     return 0
 
